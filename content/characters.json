@@ -1,0 +1,1424 @@
+[
+  [
+    "Makino",
+    "Tenancière du bar",
+    "Village de Fuchsia",
+    0
+  ],
+  [
+    "Higuma",
+    "Chef des bandits des montagnes",
+    "Bandits des montagnes",
+    0
+  ],
+  [
+    "Woop Slap",
+    "Maire du village",
+    "Village de Fuchsia",
+    0
+  ],
+  [
+    "Rika",
+    "Habitante de Shells Town",
+    "Shells Town",
+    0
+  ],
+  [
+    "Ripper",
+    "Officier de la Marine",
+    "Marine",
+    0
+  ],
+  [
+    "Morgan",
+    "Colonel de la Marine",
+    "Marine",
+    0
+  ],
+  [
+    "Helmeppo",
+    "Fils du colonel Morgan",
+    "Marine",
+    0
+  ],
+  [
+    "Boodle",
+    "Maire du Village d’Orange",
+    "Village d’Orange",
+    1
+  ],
+  [
+    "Chouchou",
+    "Chien du Village d’Orange",
+    "Village d’Orange",
+    1
+  ],
+  [
+    "Gaimon",
+    "Gardien d’une île aux animaux",
+    "Grand Line",
+    1
+  ],
+  [
+    "Kaya",
+    "Habitante du village de Sirop",
+    "Village de Sirop",
+    2
+  ],
+  [
+    "Merry",
+    "Intendant de la famille Kaya",
+    "Village de Sirop",
+    2
+  ],
+  [
+    "Ninjin",
+    "Membre du trio d’Usopp",
+    "Village de Sirop",
+    2
+  ],
+  [
+    "Piiman",
+    "Membre du trio d’Usopp",
+    "Village de Sirop",
+    2
+  ],
+  [
+    "Tamanegi",
+    "Membre du trio d’Usopp",
+    "Village de Sirop",
+    2
+  ],
+  [
+    "Kuro",
+    "Capitaine des Pirates du Chat Noir",
+    "Pirates du Chat Noir",
+    2
+  ],
+  [
+    "Jango",
+    "Hypnotiseur",
+    "Pirates du Chat Noir",
+    2
+  ],
+  [
+    "Patty",
+    "Cuisinier du Baratie",
+    "Baratie",
+    3
+  ],
+  [
+    "Carne",
+    "Cuisinier du Baratie",
+    "Baratie",
+    3
+  ],
+  [
+    "Fullbody",
+    "Lieutenant de la Marine",
+    "Marine",
+    3
+  ],
+  [
+    "Zeff",
+    "Chef du Baratie",
+    "Baratie",
+    3
+  ],
+  [
+    "Pearl",
+    "Officier des Pirates de Krieg",
+    "Pirates de Krieg",
+    3
+  ],
+  [
+    "Bellemere",
+    "Ancienne Marine",
+    "Cocoyashi",
+    4
+  ],
+  [
+    "Nojiko",
+    "Habitante de Cocoyashi",
+    "Cocoyashi",
+    4
+  ],
+  [
+    "Genzo",
+    "Shérif de Cocoyashi",
+    "Cocoyashi",
+    4
+  ],
+  [
+    "Nezumi",
+    "Colonel corrompu de la Marine",
+    "Marine",
+    4
+  ],
+  [
+    "Kuroobi",
+    "Combattant homme-poisson",
+    "Pirates d’Arlong",
+    4
+  ],
+  [
+    "Chew",
+    "Combattant homme-poisson",
+    "Pirates d’Arlong",
+    4
+  ],
+  [
+    "Ipponmatsu",
+    "Armurier de Loguetown",
+    "Loguetown",
+    5
+  ],
+  [
+    "Koushirou",
+    "Maître du dojo du village Shimotsuki",
+    "Village Shimotsuki",
+    5
+  ],
+  [
+    "Kuina",
+    "Élève du dojo du village Shimotsuki",
+    "Village Shimotsuki",
+    5
+  ],
+  [
+    "Laboon",
+    "Baleine de Reverse Mountain",
+    "Cap des Jumeaux",
+    6
+  ],
+  [
+    "Crocus",
+    "Gardien du phare du Cap des Jumeaux",
+    "Cap des Jumeaux",
+    6
+  ],
+  [
+    "Miss Monday",
+    "Agent de Baroque Works",
+    "Baroque Works",
+    7
+  ],
+  [
+    "Mr. 9",
+    "Agent de Baroque Works",
+    "Baroque Works",
+    7
+  ],
+  [
+    "Igaram",
+    "Officier d’Alabasta",
+    "Royaume d’Alabasta",
+    7
+  ],
+  [
+    "Dorry",
+    "Capitaine géant",
+    "Pirates guerriers géants",
+    8
+  ],
+  [
+    "Brogy",
+    "Capitaine géant",
+    "Pirates guerriers géants",
+    8
+  ],
+  [
+    "Wapol",
+    "Ancien roi de Drum",
+    "Royaume de Drum",
+    9
+  ],
+  [
+    "Dalton",
+    "Gardien du royaume de Drum",
+    "Royaume de Drum",
+    9
+  ],
+  [
+    "Dr. Kureha",
+    "Médecin de Drum",
+    "Royaume de Drum",
+    9
+  ],
+  [
+    "Chess",
+    "Garde royal de Wapol",
+    "Royaume de Drum",
+    9
+  ],
+  [
+    "Kuromarimo",
+    "Garde royal de Wapol",
+    "Royaume de Drum",
+    9
+  ],
+  [
+    "Nefertari Cobra",
+    "Roi d’Alabasta",
+    "Royaume d’Alabasta",
+    10
+  ],
+  [
+    "Pell",
+    "Garde royal d’Alabasta",
+    "Royaume d’Alabasta",
+    10
+  ],
+  [
+    "Chaka",
+    "Garde royal d’Alabasta",
+    "Royaume d’Alabasta",
+    10
+  ],
+  [
+    "Koza",
+    "Chef des rebelles d’Alabasta",
+    "Royaume d’Alabasta",
+    10
+  ],
+  [
+    "Toto",
+    "Habitant d’Yuba",
+    "Royaume d’Alabasta",
+    10
+  ],
+  [
+    "Terracotta",
+    "Servante du palais",
+    "Royaume d’Alabasta",
+    10
+  ],
+  [
+    "Carue",
+    "Canard coureur d’Alabasta",
+    "Royaume d’Alabasta",
+    10
+  ],
+  [
+    "Hina",
+    "Officière de la Marine",
+    "Marine",
+    10
+  ],
+  [
+    "Mont Blanc Cricket",
+    "Habitant de Jaya",
+    "Jaya",
+    11
+  ],
+  [
+    "Masira",
+    "Chasseur d’épaves",
+    "Alliance Saruyama",
+    11
+  ],
+  [
+    "Shoujou",
+    "Chasseur d’épaves",
+    "Alliance Saruyama",
+    11
+  ],
+  [
+    "Bellamy",
+    "Capitaine pirate",
+    "Pirates de Bellamy",
+    11
+  ],
+  [
+    "Sarquiss",
+    "Second de Bellamy",
+    "Pirates de Bellamy",
+    11
+  ],
+  [
+    "Mont Blanc Noland",
+    "Explorateur de North Blue",
+    "Histoire de Skypiea",
+    12
+  ],
+  [
+    "Kalgara",
+    "Guerrier de Shandora",
+    "Shandia",
+    12
+  ],
+  [
+    "Wyper",
+    "Guerrier de Shandia",
+    "Shandia",
+    12
+  ],
+  [
+    "Conis",
+    "Habitante de Skypiea",
+    "Skypiea",
+    12
+  ],
+  [
+    "Pagaya",
+    "Ingénieur de Skypiea",
+    "Skypiea",
+    12
+  ],
+  [
+    "Aisa",
+    "Enfant de Shandia",
+    "Shandia",
+    12
+  ],
+  [
+    "Gan Fall",
+    "Ancien Dieu de Skypiea",
+    "Skypiea",
+    12
+  ],
+  [
+    "Pierre",
+    "Oiseau de Gan Fall",
+    "Skypiea",
+    12
+  ],
+  [
+    "Shura",
+    "Prêtre de Skypiea",
+    "Skypiea",
+    12
+  ],
+  [
+    "Satori",
+    "Prêtre de Skypiea",
+    "Skypiea",
+    12
+  ],
+  [
+    "Ohm",
+    "Prêtre de Skypiea",
+    "Skypiea",
+    12
+  ],
+  [
+    "Gedatsu",
+    "Prêtre de Skypiea",
+    "Skypiea",
+    12
+  ],
+  [
+    "Yama",
+    "Combattant de Skypiea",
+    "Skypiea",
+    12
+  ],
+  [
+    "Kamakiri",
+    "Guerrier de Shandia",
+    "Shandia",
+    12
+  ],
+  [
+    "Braham",
+    "Guerrier de Shandia",
+    "Shandia",
+    12
+  ],
+  [
+    "Raki",
+    "Guerrière de Shandia",
+    "Shandia",
+    12
+  ],
+  [
+    "McKinley",
+    "Chef de la milice de Skypiea",
+    "Skypiea",
+    12
+  ],
+  [
+    "Hotori",
+    "Garde de Skypiea",
+    "Skypiea",
+    12
+  ],
+  [
+    "Kotori",
+    "Garde de Skypiea",
+    "Skypiea",
+    12
+  ],
+  [
+    "Foxy",
+    "Capitaine des Pirates de Foxy",
+    "Pirates de Foxy",
+    13
+  ],
+  [
+    "Porche",
+    "Officière des Pirates de Foxy",
+    "Pirates de Foxy",
+    13
+  ],
+  [
+    "Hamburg",
+    "Combattant des Pirates de Foxy",
+    "Pirates de Foxy",
+    13
+  ],
+  [
+    "Pickles",
+    "Combattant des Pirates de Foxy",
+    "Pirates de Foxy",
+    13
+  ],
+  [
+    "Big Pan",
+    "Combattant des Pirates de Foxy",
+    "Pirates de Foxy",
+    13
+  ],
+  [
+    "Iceburg",
+    "Maire de Water Seven",
+    "Water Seven",
+    14
+  ],
+  [
+    "Paulie",
+    "Charpentier de la Galley-La",
+    "Galley-La",
+    14
+  ],
+  [
+    "Lulu",
+    "Charpentier de la Galley-La",
+    "Galley-La",
+    14
+  ],
+  [
+    "Tilestone",
+    "Charpentier de la Galley-La",
+    "Galley-La",
+    14
+  ],
+  [
+    "Kokoro",
+    "Cheffe de gare",
+    "Water Seven",
+    14
+  ],
+  [
+    "Chimney",
+    "Habitante de Water Seven",
+    "Water Seven",
+    14
+  ],
+  [
+    "Gonbe",
+    "Compagnon de Chimney",
+    "Water Seven",
+    14
+  ],
+  [
+    "Yokozuna",
+    "Grenouille de Water Seven",
+    "Water Seven",
+    14
+  ],
+  [
+    "Zambai",
+    "Chef de la Franky Family",
+    "Franky Family",
+    14
+  ],
+  [
+    "Mozu",
+    "Membre de la Franky Family",
+    "Franky Family",
+    14
+  ],
+  [
+    "Kiwi",
+    "Membre de la Franky Family",
+    "Franky Family",
+    14
+  ],
+  [
+    "Oimo",
+    "Géant gardien d’Enies Lobby",
+    "Marine",
+    14
+  ],
+  [
+    "Kashii",
+    "Géant gardien d’Enies Lobby",
+    "Marine",
+    14
+  ],
+  [
+    "Blueno",
+    "Agent du Cipher Pol 9",
+    "Cipher Pol 9",
+    15
+  ],
+  [
+    "Kalifa",
+    "Agent du Cipher Pol 9",
+    "Cipher Pol 9",
+    15
+  ],
+  [
+    "Jabra",
+    "Agent du Cipher Pol 9",
+    "Cipher Pol 9",
+    15
+  ],
+  [
+    "Kumadori",
+    "Agent du Cipher Pol 9",
+    "Cipher Pol 9",
+    15
+  ],
+  [
+    "Fukuro",
+    "Agent du Cipher Pol 9",
+    "Cipher Pol 9",
+    15
+  ],
+  [
+    "Nero",
+    "Agent du Cipher Pol 9",
+    "Cipher Pol 9",
+    15
+  ],
+  [
+    "Baskerville",
+    "Juge d’Enies Lobby",
+    "Enies Lobby",
+    15
+  ],
+  [
+    "T-Bone",
+    "Officier de la Marine",
+    "Marine",
+    15
+  ],
+  [
+    "Spandine",
+    "Ancien directeur du Cipher Pol 9",
+    "Gouvernement mondial",
+    15
+  ],
+  [
+    "Monkey D. Dragon",
+    "Chef de l’Armée révolutionnaire",
+    "Armée révolutionnaire",
+    16
+  ],
+  [
+    "Curly Dadan",
+    "Cheffe des bandits des montagnes",
+    "Mont Corvo",
+    16
+  ],
+  [
+    "Dogra",
+    "Bandit du mont Corvo",
+    "Mont Corvo",
+    16
+  ],
+  [
+    "Magra",
+    "Bandit du mont Corvo",
+    "Mont Corvo",
+    16
+  ],
+  [
+    "Lola",
+    "Capitaine des Pirates Rolling",
+    "Pirates Rolling",
+    17
+  ],
+  [
+    "Oars",
+    "Géant zombie",
+    "Thriller Bark",
+    17
+  ],
+  [
+    "Kumashi",
+    "Zombie de Thriller Bark",
+    "Thriller Bark",
+    17
+  ],
+  [
+    "Tararan",
+    "Zombie géant araignée",
+    "Thriller Bark",
+    17
+  ],
+  [
+    "Ryuma",
+    "Samouraï légendaire",
+    "Thriller Bark",
+    17
+  ],
+  [
+    "Shakuyaku",
+    "Tenancière du bar de Sabaody",
+    "Archipel Sabaody",
+    18
+  ],
+  [
+    "Camie",
+    "Sirène de l’archipel Sabaody",
+    "Archipel Sabaody",
+    18
+  ],
+  [
+    "Pappag",
+    "Créateur de mode",
+    "Archipel Sabaody",
+    18
+  ],
+  [
+    "Duval",
+    "Chef des Rosy Life Riders",
+    "Rosy Life Riders",
+    18
+  ],
+  [
+    "Disco",
+    "Commissaire-priseur",
+    "Archipel Sabaody",
+    18
+  ],
+  [
+    "Sentomaru",
+    "Officier de la Marine",
+    "Marine",
+    18
+  ],
+  [
+    "Marguerite",
+    "Guerrière Kuja",
+    "Amazon Lily",
+    19
+  ],
+  [
+    "Gloriosa",
+    "Ancienne impératrice Kuja",
+    "Amazon Lily",
+    19
+  ],
+  [
+    "Sweet Pea",
+    "Guerrière Kuja",
+    "Amazon Lily",
+    19
+  ],
+  [
+    "Aphelandra",
+    "Guerrière Kuja",
+    "Amazon Lily",
+    19
+  ],
+  [
+    "Ran",
+    "Guerrière Kuja",
+    "Amazon Lily",
+    19
+  ],
+  [
+    "Domino",
+    "Gardienne d’Impel Down",
+    "Impel Down",
+    20
+  ],
+  [
+    "Sadi",
+    "Responsable des gardiens d’Impel Down",
+    "Impel Down",
+    20
+  ],
+  [
+    "Saldeath",
+    "Chef des Blugori",
+    "Impel Down",
+    20
+  ],
+  [
+    "Minotaurus",
+    "Gardien démon d’Impel Down",
+    "Impel Down",
+    20
+  ],
+  [
+    "Minozebra",
+    "Gardien démon d’Impel Down",
+    "Impel Down",
+    20
+  ],
+  [
+    "Minokoala",
+    "Gardien démon d’Impel Down",
+    "Impel Down",
+    20
+  ],
+  [
+    "Tsuru",
+    "Vice-amirale de la Marine",
+    "Marine",
+    21
+  ],
+  [
+    "John Giant",
+    "Vice-amiral géant",
+    "Marine",
+    21
+  ],
+  [
+    "Momonga",
+    "Vice-amiral de la Marine",
+    "Marine",
+    21
+  ],
+  [
+    "Onigumo",
+    "Vice-amiral de la Marine",
+    "Marine",
+    21
+  ],
+  [
+    "Doberman",
+    "Vice-amiral de la Marine",
+    "Marine",
+    21
+  ],
+  [
+    "Yamakaji",
+    "Vice-amiral de la Marine",
+    "Marine",
+    21
+  ],
+  [
+    "Dalmatian",
+    "Vice-amiral de la Marine",
+    "Marine",
+    21
+  ],
+  [
+    "Strawberry",
+    "Vice-amiral de la Marine",
+    "Marine",
+    21
+  ],
+  [
+    "Squard",
+    "Capitaine pirate allié à Barbe Blanche",
+    "Flotte de Barbe Blanche",
+    21
+  ],
+  [
+    "Whitey Bay",
+    "Capitaine pirate alliée à Barbe Blanche",
+    "Flotte de Barbe Blanche",
+    21
+  ],
+  [
+    "Doma",
+    "Capitaine pirate allié à Barbe Blanche",
+    "Flotte de Barbe Blanche",
+    21
+  ],
+  [
+    "Oars Jr.",
+    "Capitaine géant allié à Barbe Blanche",
+    "Flotte de Barbe Blanche",
+    21
+  ],
+  [
+    "Frères Decalvan",
+    "Capitaines pirates alliés à Barbe Blanche",
+    "Flotte de Barbe Blanche",
+    21
+  ],
+  [
+    "Sabo",
+    "Chef d’état-major de l’Armée révolutionnaire",
+    "Armée révolutionnaire",
+    22
+  ],
+  [
+    "Koala",
+    "Membre de l’Armée révolutionnaire",
+    "Armée révolutionnaire",
+    22
+  ],
+  [
+    "Hack",
+    "Combattant de l’Armée révolutionnaire",
+    "Armée révolutionnaire",
+    22
+  ],
+  [
+    "Demaro Black",
+    "Imposteur se faisant passer pour Luffy",
+    "Faux équipage du Chapeau de paille",
+    23
+  ],
+  [
+    "Caribou",
+    "Capitaine pirate",
+    "Pirates de Caribou",
+    23
+  ],
+  [
+    "Coribou",
+    "Pirate",
+    "Pirates de Caribou",
+    23
+  ],
+  [
+    "Shirahoshi",
+    "Princesse sirène",
+    "Royaume de Ryugu",
+    24
+  ],
+  [
+    "Neptune",
+    "Roi de l’île des Hommes-Poissons",
+    "Royaume de Ryugu",
+    24
+  ],
+  [
+    "Fukaboshi",
+    "Prince de l’île des Hommes-Poissons",
+    "Royaume de Ryugu",
+    24
+  ],
+  [
+    "Ryuboshi",
+    "Prince de l’île des Hommes-Poissons",
+    "Royaume de Ryugu",
+    24
+  ],
+  [
+    "Manboshi",
+    "Prince de l’île des Hommes-Poissons",
+    "Royaume de Ryugu",
+    24
+  ],
+  [
+    "Otohime",
+    "Ancienne reine de l’île des Hommes-Poissons",
+    "Royaume de Ryugu",
+    24
+  ],
+  [
+    "Fisher Tiger",
+    "Fondateur des Pirates du Soleil",
+    "Pirates du Soleil",
+    24
+  ],
+  [
+    "Hody Jones",
+    "Capitaine des Nouveaux Pirates Hommes-Poissons",
+    "Nouveaux Pirates Hommes-Poissons",
+    24
+  ],
+  [
+    "Zeo",
+    "Combattant homme-poisson",
+    "Nouveaux Pirates Hommes-Poissons",
+    24
+  ],
+  [
+    "Dosun",
+    "Combattant homme-poisson",
+    "Nouveaux Pirates Hommes-Poissons",
+    24
+  ],
+  [
+    "Ikaros Much",
+    "Combattant homme-poisson",
+    "Nouveaux Pirates Hommes-Poissons",
+    24
+  ],
+  [
+    "Daruma",
+    "Combattant homme-poisson",
+    "Nouveaux Pirates Hommes-Poissons",
+    24
+  ],
+  [
+    "Hammond",
+    "Combattant homme-poisson",
+    "Nouveaux Pirates Hommes-Poissons",
+    24
+  ],
+  [
+    "Vander Decken IX",
+    "Capitaine des Pirates Flying",
+    "Pirates Flying",
+    24
+  ],
+  [
+    "Madame Shyarly",
+    "Voyante de l’île des Hommes-Poissons",
+    "Île des Hommes-Poissons",
+    24
+  ],
+  [
+    "Caesar Clown",
+    "Scientifique criminel",
+    "Punk Hazard",
+    25
+  ],
+  [
+    "Monet",
+    "Assistante de Caesar",
+    "Punk Hazard",
+    25
+  ],
+  [
+    "Vergo",
+    "Officier de la Marine",
+    "Marine",
+    25
+  ],
+  [
+    "Brownbeard",
+    "Capitaine pirate",
+    "Pirates de Brownbeard",
+    25
+  ],
+  [
+    "Kinemon",
+    "Samouraï de Wano",
+    "Wano",
+    25
+  ],
+  [
+    "Momonosuke",
+    "Jeune samouraï",
+    "Punk Hazard",
+    25
+  ],
+  [
+    "Rebecca",
+    "Gladiatrice de Dressrosa",
+    "Dressrosa",
+    26
+  ],
+  [
+    "Kyros",
+    "Ancien gladiateur",
+    "Dressrosa",
+    26
+  ],
+  [
+    "Riku Doldo III",
+    "Ancien roi de Dressrosa",
+    "Dressrosa",
+    26
+  ],
+  [
+    "Viola",
+    "Princesse de Dressrosa",
+    "Dressrosa",
+    26
+  ],
+  [
+    "Scarlet",
+    "Ancienne princesse de Dressrosa",
+    "Dressrosa",
+    26
+  ],
+  [
+    "Lao G",
+    "Officier des Pirates Don Quichotte",
+    "Pirates Don Quichotte",
+    26
+  ],
+  [
+    "Buffalo",
+    "Officier des Pirates Don Quichotte",
+    "Pirates Don Quichotte",
+    26
+  ],
+  [
+    "Dellinger",
+    "Officier des Pirates Don Quichotte",
+    "Pirates Don Quichotte",
+    26
+  ],
+  [
+    "Gladius",
+    "Officier des Pirates Don Quichotte",
+    "Pirates Don Quichotte",
+    26
+  ],
+  [
+    "Machvise",
+    "Officier des Pirates Don Quichotte",
+    "Pirates Don Quichotte",
+    26
+  ],
+  [
+    "Fujitora",
+    "Amiral de la Marine",
+    "Marine",
+    26
+  ],
+  [
+    "Bastille",
+    "Vice-amiral de la Marine",
+    "Marine",
+    26
+  ],
+  [
+    "Bartolomeo",
+    "Capitaine pirate",
+    "Pirates Barto Club",
+    26
+  ],
+  [
+    "Sai",
+    "Chef de la Happo Navy",
+    "Happo Navy",
+    26
+  ],
+  [
+    "Ideo",
+    "Boxeur et capitaine",
+    "Pirates d’Ideo",
+    26
+  ],
+  [
+    "Leo",
+    "Combattant nain",
+    "Tontatta",
+    26
+  ],
+  [
+    "Hajrudin",
+    "Capitaine géant",
+    "Pirates guerriers géants",
+    26
+  ],
+  [
+    "Orlumbus",
+    "Amiral de la flotte Yonta Maria",
+    "Pirates Yonta Maria",
+    26
+  ],
+  [
+    "Inuarashi",
+    "Duc de Mokomo",
+    "Tribu des Minks",
+    27
+  ],
+  [
+    "Nekomamushi",
+    "Duc de Mokomo",
+    "Tribu des Minks",
+    27
+  ],
+  [
+    "Carrot",
+    "Guerrière mink",
+    "Tribu des Minks",
+    27
+  ],
+  [
+    "Wanda",
+    "Guerrière mink",
+    "Tribu des Minks",
+    27
+  ],
+  [
+    "Pedro",
+    "Capitaine des Gardiens",
+    "Tribu des Minks",
+    27
+  ],
+  [
+    "Zunesha",
+    "Éléphant géant",
+    "Zou",
+    27
+  ],
+  [
+    "Raizo",
+    "Ninja de Wano",
+    "Neuf Fourreaux rouges",
+    27
+  ],
+  [
+    "Sicilian",
+    "Chef des mousquetaires de Mokomo",
+    "Tribu des Minks",
+    27
+  ],
+  [
+    "Pekoms",
+    "Combattant mink",
+    "Pirates de Big Mom",
+    27
+  ],
+  [
+    "Charlotte Pudding",
+    "Fille de Charlotte Linlin",
+    "Famille Charlotte",
+    28
+  ],
+  [
+    "Charlotte Oven",
+    "Fils de Charlotte Linlin",
+    "Famille Charlotte",
+    28
+  ],
+  [
+    "Charlotte Daifuku",
+    "Fils de Charlotte Linlin",
+    "Famille Charlotte",
+    28
+  ],
+  [
+    "Charlotte Brûlée",
+    "Fille de Charlotte Linlin",
+    "Famille Charlotte",
+    28
+  ],
+  [
+    "Charlotte Mont-d’Or",
+    "Fils de Charlotte Linlin",
+    "Famille Charlotte",
+    28
+  ],
+  [
+    "Charlotte Galette",
+    "Fille de Charlotte Linlin",
+    "Famille Charlotte",
+    28
+  ],
+  [
+    "Charlotte Flampe",
+    "Fille de Charlotte Linlin",
+    "Famille Charlotte",
+    28
+  ],
+  [
+    "Charlotte Pound",
+    "Ancien époux de Charlotte Linlin",
+    "Famille Charlotte",
+    28
+  ],
+  [
+    "Charlotte Praline",
+    "Fille de Charlotte Linlin",
+    "Famille Charlotte",
+    28
+  ],
+  [
+    "Charlotte Amande",
+    "Combattante de la famille Charlotte",
+    "Famille Charlotte",
+    28
+  ],
+  [
+    "Charlotte Compote",
+    "Fille de Charlotte Linlin",
+    "Famille Charlotte",
+    28
+  ],
+  [
+    "Tamago",
+    "Combattant de Big Mom",
+    "Pirates de Big Mom",
+    28
+  ],
+  [
+    "Loki",
+    "Prince d’Elbaph",
+    "Elbaph",
+    28
+  ],
+  [
+    "Kozuki Hiyori",
+    "Fille de Kozuki Oden",
+    "Wano",
+    30
+  ],
+  [
+    "Tama",
+    "Habitante du pays de Wano",
+    "Wano",
+    30
+  ],
+  [
+    "Kikunojo",
+    "Samouraï des Neuf Fourreaux rouges",
+    "Wano",
+    30
+  ],
+  [
+    "Denjiro",
+    "Samouraï des Neuf Fourreaux rouges",
+    "Wano",
+    30
+  ],
+  [
+    "Ashura Doji",
+    "Samouraï des Neuf Fourreaux rouges",
+    "Wano",
+    30
+  ],
+  [
+    "Kawamatsu",
+    "Samouraï des Neuf Fourreaux rouges",
+    "Wano",
+    30
+  ],
+  [
+    "Shinobu",
+    "Kunoichi de Wano",
+    "Wano",
+    30
+  ],
+  [
+    "Hyogoro",
+    "Ancien chef yakuza",
+    "Wano",
+    30
+  ],
+  [
+    "Toko",
+    "Habitante de Wano",
+    "Wano",
+    30
+  ],
+  [
+    "Shimotsuki Yasuie",
+    "Ancien daimyo de Wano",
+    "Wano",
+    30
+  ],
+  [
+    "Onimaru",
+    "Renard de Wano",
+    "Wano",
+    30
+  ],
+  [
+    "Komachiyo",
+    "Chien de Tama",
+    "Wano",
+    30
+  ],
+  [
+    "Yamato",
+    "Enfant de Kaido",
+    "Wano",
+    30
+  ],
+  [
+    "Dr. Vegapunk",
+    "Scientifique en chef du Gouvernement mondial",
+    "Egghead",
+    31
+  ],
+  [
+    "Shaka",
+    "Satellite de Vegapunk",
+    "Egghead",
+    31
+  ],
+  [
+    "Lilith",
+    "Satellite de Vegapunk",
+    "Egghead",
+    31
+  ],
+  [
+    "Edison",
+    "Satellite de Vegapunk",
+    "Egghead",
+    31
+  ],
+  [
+    "Pythagoras",
+    "Satellite de Vegapunk",
+    "Egghead",
+    31
+  ],
+  [
+    "Atlas",
+    "Satellite de Vegapunk",
+    "Egghead",
+    31
+  ],
+  [
+    "York",
+    "Satellite de Vegapunk",
+    "Egghead",
+    31
+  ],
+  [
+    "S-Snake",
+    "Seraphim",
+    "Gouvernement mondial",
+    31
+  ],
+  [
+    "S-Hawk",
+    "Seraphim",
+    "Gouvernement mondial",
+    31
+  ],
+  [
+    "S-Bear",
+    "Seraphim",
+    "Gouvernement mondial",
+    31
+  ],
+  [
+    "S-Shark",
+    "Seraphim",
+    "Gouvernement mondial",
+    31
+  ],
+  [
+    "Jarul",
+    "Ancien géant d’Elbaph",
+    "Elbaph",
+    32
+  ],
+  [
+    "Road",
+    "Guerrier géant",
+    "Nouveaux Pirates Géants",
+    32
+  ],
+  [
+    "Gerd",
+    "Guerrière géante",
+    "Nouveaux Pirates Géants",
+    32
+  ],
+  [
+    "Goldberg",
+    "Guerrier géant",
+    "Nouveaux Pirates Géants",
+    32
+  ],
+  [
+    "Scopper Gaban",
+    "Ancien membre de l’équipage de Roger",
+    "Elbaph",
+    32
+  ]
+]

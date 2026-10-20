@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0d1316">
+    <meta name="description" content="Explore l’univers de One Piece à ton rythme, avec un wiki filtré par l’arc que tu as terminé.">
+    <title>Grand Line — Wiki One Piece sans spoilers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./data.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navigation principale">
+        <a class="brand" href="#accueil" data-page="home" aria-label="Grand Line, accueil">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img"><path d="M24 3 28 19l16 5-16 4-4 17-4-17-16-4 16-5 4-16Z" fill="currentColor"/><circle cx="24" cy="24" r="4" fill="#173c3a"/><path d="M9 38c8-3 22-3 30 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="brand-type"><strong>GRAND</strong><em>LINE</em></span>
+        </a>
+        <p class="sidebar-caption">LE WIKI QUI GARDE LE CAP</p>
+        <nav class="main-nav">
+          <span class="nav-label">EXPLORER</span>
+          <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span><span>Accueil</span></button>
+          <button class="nav-item" data-page="guide"><span class="nav-icon">▤</span><span>Épisodes & chapitres</span></button>
+          <button class="nav-item" data-page="crews"><span class="nav-icon">⚑</span><span>Équipages</span></button>
+          <button class="nav-item" data-page="government"><span class="nav-icon">⚓</span><span>Marine & Gouvernement</span></button>
+          <button class="nav-item" data-page="blades"><span class="nav-icon">⌁</span><span>Les lames</span></button>
+          <span class="nav-label nav-label-spaced">COMPLÉTER LA CARTE</span>
+          <button class="nav-item" data-page="characters"><span class="nav-icon">◎</span><span>Personnages</span></button>
+          <button class="nav-item" data-page="fruits"><span class="nav-icon">◉</span><span>Fruits du Démon</span></button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="safety-card">
+            <span class="safety-icon">✦</span>
+            <div>
+              <strong>Ton voyage, ton rythme</strong>
+              <p>Les fiches restent cachées au-delà de ton arc.</p>
+            </div>
+          </div>
+          <button class="nav-item nav-settings" data-action="open-progress"><span class="nav-icon">◷</span><span>Mon arc de lecture</span></button>
+          <div class="sidebar-foot">UNE AVENTURE SANS SPOILERS <span>©</span></div>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobileMenu" aria-label="Ouvrir le menu">☰</button>
+          <div class="breadcrumb"><span>GRAND LINE</span><i>/</i><strong id="crumbCurrent">ACCUEIL</strong></div>
+          <div class="topbar-actions">
+            <label class="search-wrap" aria-label="Rechercher dans le wiki">
+              <span>⌕</span><input id="globalSearch" type="search" placeholder="Chercher un personnage, un arc…" autocomplete="off">
+              <kbd>⌘ K</kbd>
+            </label>
+            <button class="progress-pill" data-action="open-progress" title="Modifier ton arc terminé"><span class="progress-dot"></span><span id="progressPillText">Choisir mon arc</span><span class="chevron">⌄</span></button>
+            <button class="update-button" id="updateButton" aria-label="Mettre à jour les informations" title="Mettre à jour les informations"><span class="refresh-icon" aria-hidden="true">↻</span><span>Mettre à jour</span></button>
+          </div>
+        </header>
+        <div class="sync-line" id="syncLine" aria-live="polite"></div>
+        <section id="pageContent" class="page-content" aria-live="polite"></section>
+        <footer class="site-footer">
+          <span>Projet de fan, indépendant de Eiichiro Oda, Shueisha et Toei Animation.</span>
+          <span>Les correspondances anime / manga sont indicatives et peuvent varier selon l’adaptation.</span>
+          <button data-action="show-sources">Sources & données</button>
+        </footer>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="progressModal" hidden>
+      <section class="progress-modal" role="dialog" aria-modal="true" aria-labelledby="progressTitle" aria-describedby="progressDescription">
+        <button class="modal-close" data-action="close-progress" aria-label="Fermer">×</button>
+        <div class="modal-compass" aria-hidden="true">✦</div>
+        <p class="eyebrow">RÉGLAGE ANTI-SPOILER</p>
+        <h1 id="progressTitle">Où en es-tu dans l’aventure&nbsp;?</h1>
+        <p id="progressDescription">Choisis le dernier arc que tu as terminé. Le wiki masquera tout ce qui vient après. Cette préférence reste enregistrée sur cet appareil.</p>
+        <label class="field-label" for="progressSelect">MON DERNIER ARC TERMINÉ</label>
+        <select id="progressSelect" aria-describedby="progressArcHint"><option value="">Choisir un arc…</option></select>
+        <p class="field-hint" id="progressArcHint">La liste contient tous les arcs. Les informations restent filtrées selon l’arc que tu sélectionnes.</p>
+        <div class="modal-note"><span>◈</span><span>Avancer le repère dévoile les informations des arcs suivants.</span></div>
+        <div class="modal-actions">
+          <button class="button-quiet" id="beginnerMode">Je débute</button>
+          <button class="button-primary" id="saveProgress">Garder le cap <span>→</span></button>
+        </div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

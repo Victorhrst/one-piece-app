@@ -1,0 +1,183 @@
+[
+  {
+    "name": "Gomu Gomu no Mi",
+    "firstSeen": 0,
+    "knownAs": "Fruit du caoutchoutier",
+    "typeHistory": [
+      {
+        "from": 0,
+        "label": "Paramecia, selon la classification connue"
+      },
+      {
+        "from": 30,
+        "label": "Hito Hito no Mi, modèle Nika · Zoan mythique"
+      }
+    ],
+    "user": "Monkey D. Luffy"
+  },
+  {
+    "name": "Bara Bara no Mi",
+    "firstSeen": 1,
+    "knownAs": "Fruit du fragment",
+    "typeHistory": [
+      {
+        "from": 1,
+        "label": "Paramecia"
+      }
+    ],
+    "user": "Baggy"
+  },
+  {
+    "name": "Moku Moku no Mi",
+    "firstSeen": 5,
+    "knownAs": "Fruit du fumigène",
+    "typeHistory": [
+      {
+        "from": 5,
+        "label": "Logia"
+      }
+    ],
+    "user": "Smoker"
+  },
+  {
+    "name": "Suna Suna no Mi",
+    "firstSeen": 10,
+    "knownAs": "Fruit des sables",
+    "typeHistory": [
+      {
+        "from": 10,
+        "label": "Logia"
+      }
+    ],
+    "user": "Crocodile"
+  },
+  {
+    "name": "Mera Mera no Mi",
+    "firstSeen": 22,
+    "knownAs": "Fruit du feu",
+    "typeHistory": [
+      {
+        "from": 22,
+        "label": "Logia"
+      }
+    ],
+    "user": "Ace"
+  },
+  {
+    "name": "Goro Goro no Mi",
+    "firstSeen": 12,
+    "knownAs": "Fruit de la foudre",
+    "typeHistory": [
+      {
+        "from": 12,
+        "label": "Logia"
+      }
+    ],
+    "user": "Ener"
+  },
+  {
+    "name": "Hito Hito no Mi",
+    "firstSeen": 9,
+    "knownAs": "Fruit de l’humain",
+    "typeHistory": [
+      {
+        "from": 9,
+        "label": "Zoan"
+      }
+    ],
+    "user": "Tony Tony Chopper"
+  },
+  {
+    "name": "Ope Ope no Mi",
+    "firstSeen": 18,
+    "knownAs": "Fruit de l’opération",
+    "typeHistory": [
+      {
+        "from": 18,
+        "label": "Paramecia"
+      }
+    ],
+    "user": "Trafalgar Law"
+  },
+  {
+    "name": "Ito Ito no Mi",
+    "firstSeen": 26,
+    "knownAs": "Fruit des fils",
+    "typeHistory": [
+      {
+        "from": 26,
+        "label": "Paramecia"
+      }
+    ],
+    "user": "Don Quichotte Doflamingo"
+  },
+  {
+    "name": "Toki Toki no Mi",
+    "firstSeen": 30,
+    "knownAs": "Fruit du temps",
+    "typeHistory": [
+      {
+        "from": 30,
+        "label": "Paramecia"
+      }
+    ],
+    "user": "Kozuki Toki"
+  },
+  {
+    "name": "Kuku Kuku no Mi",
+    "apiNames": ["Cook-Cook Fruit", "Kuku Kuku no Mi"],
+    "firstSeen": 28,
+    "firstChapter": 868,
+    "knownAs": "Permet de transformer des objets en nourriture. La fiche ne dévoile pas les usages postérieurs à Whole Cake Island.",
+    "typeHistory": [
+      {
+        "from": 28,
+        "label": "Paramecia"
+      }
+    ],
+    "user": "Streusen"
+  },
+  {
+    "name": "Gunyo Gunyo no Mi",
+    "apiNames": ["Glorp-Glorp Fruit"],
+    "firstSeen": 30,
+    "firstChapter": 966,
+    "knownAs": "Permet à son utilisateur de créer et manipuler de l’argile.",
+    "canonStatus": "Canon manga · type non confirmé",
+    "typeHistory": [
+      {
+        "from": 30,
+        "label": "Type non confirmé"
+      }
+    ],
+    "user": "Prince Grus"
+  },
+  {
+    "name": "Fruit non nommé de Laffitte",
+    "firstSeen": 20,
+    "firstChapter": 542,
+    "knownAs": "Laffitte montre des ailes. Le lien entre cette capacité et un Fruit du Démon n’est pas confirmé.",
+    "canonStatus": "Pouvoir et attribution non confirmés",
+    "typeHistory": [
+      {
+        "from": 20,
+        "label": "Type et nom inconnus"
+      }
+    ],
+    "user": "Laffitte"
+  },
+  {
+    "name": "Fruit aperçu chez le Requin-Panda",
+    "firstSeen": 10,
+    "firstChapter": 185,
+    "knownAs": "Un fruit apparaît dans une scène de couverture. Sa nature de Fruit du Démon et son utilisateur restent inconnus.",
+    "canonStatus": "Identification non confirmée",
+    "typeHistory": [
+      {
+        "from": 10,
+        "label": "Type et utilisateur inconnus"
+      }
+    ],
+    "user": "Inconnu"
+  }
+]

@@ -1,0 +1,1015 @@
+[
+  {
+    "id": "straw-hats",
+    "name": "Pirates au Chapeau de paille",
+    "knownAt": 0,
+    "tag": "Équipage pirate",
+    "description": "Un petit équipage qui grandit au fil du voyage, réuni autour d’un même rêve.",
+    "members": [
+      [
+        "Monkey D. Luffy",
+        "Capitaine",
+        0
+      ],
+      [
+        "Roronoa Zoro",
+        "Combattant",
+        0
+      ],
+      [
+        "Nami",
+        "Navigatrice",
+        1
+      ],
+      [
+        "Usopp",
+        "Tireur d’élite",
+        2
+      ],
+      [
+        "Sanji",
+        "Cuisinier",
+        3
+      ],
+      [
+        "Tony Tony Chopper",
+        "Médecin",
+        9
+      ],
+      [
+        "Nico Robin",
+        "Archéologue",
+        10
+      ],
+      [
+        "Franky",
+        "Charpentier",
+        15
+      ],
+      [
+        "Brook",
+        "Musicien",
+        17
+      ],
+      [
+        "Jinbe",
+        "Timonnier",
+        30
+      ]
+    ]
+  },
+  {
+    "id": "red-hair",
+    "name": "Pirates du Roux",
+    "knownAt": 0,
+    "tag": "Équipage pirate",
+    "description": "L’équipage de Shanks, rencontré dès les premiers souvenirs de l’aventure.",
+    "members": [
+      [
+        "Shanks",
+        "Capitaine",
+        0
+      ],
+      [
+        "Benn Beckman",
+        "Second",
+        0
+      ],
+      [
+        "Lucky Roux",
+        "Combattant",
+        0
+      ],
+      [
+        "Yasopp",
+        "Tireur d’élite",
+        0
+      ]
+    ]
+  },
+  {
+    "id": "buggy",
+    "name": "Pirates de Baggy",
+    "knownAt": 1,
+    "tag": "Équipage pirate",
+    "description": "Une bande de pirates hauts en couleur, connue pour son capitaine imprévisible.",
+    "members": [
+      [
+        "Baggy",
+        "Capitaine",
+        1
+      ],
+      [
+        "Cabaji",
+        "Chef d’état-major",
+        1
+      ],
+      [
+        "Mohji",
+        "Dresseur",
+        1
+      ],
+      [
+        "Richie",
+        "Lion",
+        1
+      ],
+      [
+        "Alvida",
+        "Alliée",
+        5
+      ]
+    ]
+  },
+  {
+    "id": "black-cat",
+    "name": "Équipage du Chat Noir",
+    "knownAt": 2,
+    "tag": "Équipage pirate",
+    "description": "Un équipage organisé autour de son capitaine et de ses officiers.",
+    "members": [
+      [
+        "Kuro",
+        "Capitaine",
+        2
+      ],
+      [
+        "Jango",
+        "Hypnotiseur",
+        2
+      ],
+      [
+        "Sham",
+        "Combattant",
+        2
+      ],
+      [
+        "Buchi",
+        "Combattant",
+        2
+      ]
+    ]
+  },
+  {
+    "id": "krieg",
+    "name": "Pirates de Krieg",
+    "knownAt": 3,
+    "tag": "Équipage pirate",
+    "description": "Un équipage de l’East Blue qui mise sur son armement et ses effectifs.",
+    "members": [
+      [
+        "Don Krieg",
+        "Capitaine",
+        3
+      ],
+      [
+        "Gin",
+        "Commandant",
+        3
+      ],
+      [
+        "Pearl",
+        "Officier",
+        3
+      ]
+    ]
+  },
+  {
+    "id": "arlong",
+    "name": "Pirates d’Arlong",
+    "knownAt": 4,
+    "tag": "Équipage pirate",
+    "description": "Un groupe de pirates hommes-poissons établi dans l’East Blue.",
+    "members": [
+      [
+        "Arlong",
+        "Capitaine",
+        4
+      ],
+      [
+        "Hatchan",
+        "Combattant",
+        4
+      ],
+      [
+        "Kuroobi",
+        "Combattant",
+        4
+      ],
+      [
+        "Chew",
+        "Combattant",
+        4
+      ]
+    ]
+  },
+  {
+    "id": "baroque",
+    "name": "Baroque Works",
+    "knownAt": 6,
+    "tag": "Organisation",
+    "description": "Un réseau d’agents qui utilisent des noms de code et opèrent en secret.",
+    "members": [
+      [
+        "Crocodile",
+        "Mr. 0",
+        10
+      ],
+      [
+        "Nico Robin",
+        "Agent",
+        10
+      ],
+      [
+        "Daz Bones",
+        "Mr. 1",
+        10
+      ],
+      [
+        "Zala",
+        "Miss Doublefinger",
+        10
+      ],
+      [
+        "Bentham",
+        "Mr. 2",
+        10
+      ],
+      [
+        "Mikita",
+        "Miss Valentine",
+        10
+      ],
+      [
+        "Gem",
+        "Mr. 5",
+        10
+      ],
+      [
+        "Nefertari Vivi",
+        "Agent",
+        6
+      ]
+    ]
+  },
+  {
+    "id": "giant-warriors",
+    "name": "Pirates guerriers géants",
+    "knownAt": 8,
+    "tag": "Équipage pirate",
+    "description": "Deux capitaines géants se retrouvent au cœur d’un duel ancien.",
+    "members": [
+      [
+        "Dorry",
+        "Capitaine",
+        8
+      ],
+      [
+        "Brogy",
+        "Capitaine",
+        8
+      ]
+    ]
+  },
+  {
+    "id": "blackbeard",
+    "name": "Pirates de Barbe Noire",
+    "knownAt": 11,
+    "tag": "Équipage pirate",
+    "description": "Un équipage ambitieux, organisé autour de son capitaine et de ses premiers commandants.",
+    "members": [
+      [
+        "Marshall D. Teach",
+        "Capitaine",
+        11
+      ],
+      [
+        "Jesus Burgess",
+        "Capitaine de navire",
+        11
+      ],
+      [
+        "Van Augur",
+        "Tireur d’élite",
+        11
+      ],
+      [
+        "Doc Q",
+        "Médecin",
+        11
+      ],
+      [
+        "Laffitte",
+        "Navigateur",
+        11
+      ],
+      [
+        "Shiryu",
+        "Capitaine de navire",
+        21
+      ],
+      [
+        "Catarina Devon",
+        "Capitaine de navire",
+        21
+      ],
+      [
+        "Avalo Pizarro",
+        "Capitaine de navire",
+        21
+      ],
+      [
+        "Sanjuan Wolf",
+        "Capitaine de navire",
+        21
+      ],
+      [
+        "Vasco Shot",
+        "Capitaine de navire",
+        21
+      ]
+    ]
+  },
+  {
+    "id": "whitebeard",
+    "name": "Pirates de Barbe Blanche",
+    "knownAt": 21,
+    "tag": "Équipage pirate",
+    "description": "Une grande flotte organisée en divisions autour d’Edward Newgate.",
+    "members": [
+      [
+        "Edward Newgate",
+        "Capitaine",
+        21
+      ],
+      [
+        "Marco",
+        "Commandant de la première division",
+        21
+      ],
+      [
+        "Portgas D. Ace",
+        "Commandant de la deuxième division",
+        21
+      ],
+      [
+        "Jozu",
+        "Commandant de la troisième division",
+        21
+      ],
+      [
+        "Thatch",
+        "Commandant de la quatrième division",
+        21
+      ],
+      [
+        "Vista",
+        "Commandant de la cinquième division",
+        21
+      ],
+      [
+        "Blamenco",
+        "Commandant de la sixième division",
+        21
+      ],
+      [
+        "Rakuyo",
+        "Commandant de la septième division",
+        21
+      ],
+      [
+        "Namur",
+        "Commandant de la huitième division",
+        21
+      ],
+      [
+        "Blenheim",
+        "Commandant de la neuvième division",
+        21
+      ],
+      [
+        "Curiel",
+        "Commandant de la dixième division",
+        21
+      ],
+      [
+        "Kingdew",
+        "Commandant de la onzième division",
+        21
+      ],
+      [
+        "Haruta",
+        "Commandant de la douzième division",
+        21
+      ],
+      [
+        "Atmos",
+        "Commandant de la treizième division",
+        21
+      ],
+      [
+        "Speed Jiru",
+        "Commandant de la quatorzième division",
+        21
+      ],
+      [
+        "Fossa",
+        "Commandant de la quinzième division",
+        21
+      ],
+      [
+        "Izo",
+        "Commandant de la seizième division",
+        21
+      ]
+    ]
+  },
+  {
+    "id": "kuja",
+    "name": "Pirates Kuja",
+    "knownAt": 19,
+    "tag": "Équipage pirate",
+    "description": "Un équipage de guerrières qui navigue depuis l’île d’Amazon Lily.",
+    "members": [
+      [
+        "Boa Hancock",
+        "Impératrice et capitaine",
+        19
+      ],
+      [
+        "Boa Sandersonia",
+        "Combattante",
+        19
+      ],
+      [
+        "Boa Marigold",
+        "Combattante",
+        19
+      ],
+      [
+        "Nyon",
+        "Ancienne impératrice",
+        19
+      ]
+    ]
+  },
+  {
+    "id": "heart",
+    "name": "Pirates du Heart",
+    "knownAt": 18,
+    "tag": "Équipage pirate",
+    "description": "Un équipage de sous-mariniers mené par Trafalgar Law.",
+    "members": [
+      [
+        "Trafalgar D. Water Law",
+        "Capitaine",
+        18
+      ],
+      [
+        "Bepo",
+        "Navigateur",
+        18
+      ],
+      [
+        "Shachi",
+        "Combattant",
+        18
+      ],
+      [
+        "Penguin",
+        "Combattant",
+        18
+      ],
+      [
+        "Jean Bart",
+        "Combattant",
+        18
+      ]
+    ]
+  },
+  {
+    "id": "kid",
+    "name": "Pirates de Kid",
+    "knownAt": 18,
+    "tag": "Équipage pirate",
+    "description": "L’équipage d’Eustass Kid, rencontré sur l’archipel Sabaody.",
+    "members": [
+      [
+        "Eustass Kid",
+        "Capitaine",
+        18
+      ],
+      [
+        "Killer",
+        "Combattant",
+        18
+      ],
+      [
+        "Heat",
+        "Combattant",
+        18
+      ],
+      [
+        "Wire",
+        "Combattant",
+        18
+      ]
+    ]
+  },
+  {
+    "id": "donquixote",
+    "name": "Pirates Don Quichotte",
+    "knownAt": 26,
+    "tag": "Équipage pirate",
+    "description": "Un équipage structuré en divisions, dont les membres se distinguent par leurs pouvoirs.",
+    "members": [
+      [
+        "Don Quichotte Doflamingo",
+        "Capitaine",
+        26
+      ],
+      [
+        "Vergo",
+        "Officier",
+        26
+      ],
+      [
+        "Trebol",
+        "Officier",
+        26
+      ],
+      [
+        "Diamante",
+        "Officier",
+        26
+      ],
+      [
+        "Pica",
+        "Officier",
+        26
+      ],
+      [
+        "Sugar",
+        "Officière",
+        26
+      ],
+      [
+        "Senor Pink",
+        "Officier",
+        26
+      ],
+      [
+        "Baby 5",
+        "Officière",
+        26
+      ],
+      [
+        "Corazon",
+        "Ancien officier",
+        26
+      ]
+    ]
+  },
+  {
+    "id": "grand-fleet",
+    "name": "Grande flotte du Chapeau de paille",
+    "knownAt": 26,
+    "tag": "Alliance",
+    "description": "Une alliance de capitaines formée à la suite d’une rencontre à Dressrosa.",
+    "members": [
+      [
+        "Cavendish",
+        "1re flotte",
+        26
+      ],
+      [
+        "Bartolomeo",
+        "2e flotte",
+        26
+      ],
+      [
+        "Sai",
+        "3e flotte",
+        26
+      ],
+      [
+        "Ideo",
+        "4e flotte",
+        26
+      ],
+      [
+        "Leo",
+        "5e flotte",
+        26
+      ],
+      [
+        "Hajrudin",
+        "6e flotte",
+        26
+      ],
+      [
+        "Orlumbus",
+        "7e flotte",
+        26
+      ]
+    ]
+  },
+  {
+    "id": "firetank",
+    "name": "Pirates de Firetank",
+    "knownAt": 29,
+    "tag": "Équipage pirate",
+    "description": "Un équipage de pirates organisé comme une famille et dirigé par Bege.",
+    "members": [
+      [
+        "Capone Bege",
+        "Capitaine",
+        29
+      ],
+      [
+        "Vito",
+        "Conseiller",
+        29
+      ],
+      [
+        "Gotti",
+        "Combattant",
+        29
+      ],
+      [
+        "Charlotte Chiffon",
+        "Alliée",
+        29
+      ]
+    ]
+  },
+  {
+    "id": "big-mom",
+    "name": "Pirates de Big Mom",
+    "knownAt": 29,
+    "tag": "Équipage pirate",
+    "description": "Une vaste famille pirate installée sur un archipel composé de plusieurs îles.",
+    "members": [
+      [
+        "Charlotte Linlin",
+        "Capitaine",
+        29
+      ],
+      [
+        "Charlotte Katakuri",
+        "Commandant",
+        29
+      ],
+      [
+        "Charlotte Smoothie",
+        "Commandante",
+        29
+      ],
+      [
+        "Charlotte Cracker",
+        "Commandant",
+        29
+      ],
+      [
+        "Charlotte Perospero",
+        "Officier",
+        29
+      ],
+      [
+        "Charlotte Pudding",
+        "Membre de la famille",
+        29
+      ]
+    ]
+  },
+  {
+    "id": "beasts",
+    "name": "Pirates aux Cent Bêtes",
+    "knownAt": 30,
+    "tag": "Équipage pirate",
+    "description": "Une flotte de combattants regroupés sous le pavillon de Kaido.",
+    "members": [
+      [
+        "Kaido",
+        "Capitaine",
+        30
+      ],
+      [
+        "King",
+        "Calamité",
+        30
+      ],
+      [
+        "Queen",
+        "Calamité",
+        30
+      ],
+      [
+        "Jack",
+        "Calamité",
+        30
+      ],
+      [
+        "Ulti",
+        "Tête d’affiche",
+        30
+      ],
+      [
+        "Page One",
+        "Tête d’affiche",
+        30
+      ],
+      [
+        "Who's-Who",
+        "Tête d’affiche",
+        30
+      ],
+      [
+        "Sasaki",
+        "Tête d’affiche",
+        30
+      ],
+      [
+        "Black Maria",
+        "Tête d’affiche",
+        30
+      ],
+      [
+        "X Drake",
+        "Tête d’affiche",
+        30
+      ]
+    ]
+  },
+  {
+    "id": "roger",
+    "name": "Équipage de Roger",
+    "knownAt": 6,
+    "tag": "Équipage pirate",
+    "description": "L’équipage du pirate qui atteignit la dernière île de Grand Line.",
+    "members": [
+      [
+        "Gol D. Roger",
+        "Capitaine",
+        6
+      ],
+      [
+        "Silvers Rayleigh",
+        "Second",
+        18
+      ],
+      [
+        "Shanks",
+        "Apprenti",
+        30
+      ],
+      [
+        "Baggy",
+        "Apprenti",
+        30
+      ],
+      [
+        "Kozuki Oden",
+        "Membre",
+        30
+      ],
+      [
+        "Scopper Gaban",
+        "Membre",
+        32
+      ],
+      [
+        "Crocus",
+        "Membre",
+        30
+      ]
+    ]
+  },
+  {
+    "id": "sun-pirates",
+    "name": "Pirates du Soleil",
+    "knownAt": 24,
+    "tag": "Équipage pirate",
+    "description": "Un équipage d’hommes-poissons associé à l’histoire de l’île des Hommes-Poissons.",
+    "members": [
+      [
+        "Fisher Tiger",
+        "Capitaine",
+        24
+      ],
+      [
+        "Jinbe",
+        "Capitaine",
+        24
+      ],
+      [
+        "Aladine",
+        "Officier",
+        24
+      ],
+      [
+        "Hatchan",
+        "Membre",
+        24
+      ],
+      [
+        "Arlong",
+        "Ancien membre",
+        24
+      ]
+    ]
+  },
+  {
+    "id": "moria",
+    "name": "Pirates de Moria",
+    "knownAt": 17,
+    "tag": "Équipage pirate",
+    "description": "L’équipage de Gecko Moria, installé sur un grand navire fantôme.",
+    "members": [
+      [
+        "Gecko Moria",
+        "Capitaine",
+        17
+      ],
+      [
+        "Perona",
+        "Officière",
+        17
+      ],
+      [
+        "Absalom",
+        "Officier",
+        17
+      ],
+      [
+        "Hogback",
+        "Médecin",
+        17
+      ],
+      [
+        "Victoria Cindry",
+        "Servante",
+        17
+      ]
+    ]
+  },
+  {
+    "id": "foxy",
+    "name": "Pirates de Foxy",
+    "knownAt": 13,
+    "tag": "Équipage pirate",
+    "description": "Un équipage célèbre pour ses jeux de compétition et ses paris.",
+    "members": [
+      [
+        "Foxy",
+        "Capitaine",
+        13
+      ],
+      [
+        "Porche",
+        "Officière",
+        13
+      ],
+      [
+        "Hamburg",
+        "Combattant",
+        13
+      ],
+      [
+        "Pickles",
+        "Combattant",
+        13
+      ],
+      [
+        "Big Pan",
+        "Combattant",
+        13
+      ]
+    ]
+  },
+  {
+    "id": "rumbar",
+    "name": "Pirates Rumbar",
+    "knownAt": 17,
+    "tag": "Équipage pirate",
+    "description": "L’équipage musicien dont l’histoire croise celle de Brook.",
+    "members": [
+      [
+        "Yorki",
+        "Capitaine",
+        17
+      ],
+      [
+        "Brook",
+        "Musicien",
+        17
+      ]
+    ]
+  },
+  {
+    "id": "germa",
+    "name": "Germa 66",
+    "knownAt": 29,
+    "tag": "Organisation",
+    "description": "Une organisation militaire et familiale liée au royaume de Germa.",
+    "members": [
+      [
+        "Vinsmoke Judge",
+        "Roi et commandant",
+        28
+      ],
+      [
+        "Vinsmoke Reiju",
+        "Officière",
+        28
+      ],
+      [
+        "Vinsmoke Ichiji",
+        "Combattant",
+        28
+      ],
+      [
+        "Vinsmoke Niji",
+        "Combattant",
+        28
+      ],
+      [
+        "Vinsmoke Sanji",
+        "Membre de la famille",
+        28
+      ],
+      [
+        "Vinsmoke Yonji",
+        "Combattant",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "hawkins",
+    "name": "Pirates de Hawkins",
+    "knownAt": 18,
+    "tag": "Équipage pirate",
+    "description": "L’équipage de Basil Hawkins, apparu parmi les équipages de la nouvelle génération.",
+    "members": [
+      [
+        "Basil Hawkins",
+        "Capitaine",
+        18
+      ],
+      [
+        "Faust",
+        "Combattant",
+        18
+      ]
+    ]
+  },
+  {
+    "id": "bonney",
+    "name": "Pirates de Bonney",
+    "knownAt": 18,
+    "tag": "Équipage pirate",
+    "description": "L’équipage de Jewelry Bonney.",
+    "members": [
+      [
+        "Jewelry Bonney",
+        "Capitaine",
+        18
+      ],
+      [
+        "Gyogyo",
+        "Membre",
+        18
+      ],
+      [
+        "Tritto",
+        "Membre",
+        18
+      ]
+    ]
+  },
+  {
+    "id": "cross-guild",
+    "name": "Cross Guild",
+    "knownAt": 31,
+    "tag": "Alliance",
+    "description": "Une organisation pirate fondée par d’anciens adversaires et alliés.",
+    "members": [
+      [
+        "Baggy",
+        "Figure de proue",
+        31
+      ],
+      [
+        "Crocodile",
+        "Fondateur",
+        31
+      ],
+      [
+        "Dracule Mihawk",
+        "Fondateur",
+        31
+      ]
+    ]
+  }
+]
