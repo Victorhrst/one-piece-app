@@ -57,7 +57,14 @@
       image: record.image || null,
       knownAt: Number(record.knownAt),
       members: (record.members || []).map(function (member) {
-        return [member.name, member.role || "Membre", Number(member.knownAt)];
+        return {
+          id: member.id || null,
+          name: member.name,
+          role: member.role || "Membre",
+          knownAt: Number(member.knownAt),
+          image: member.image || null,
+          description: member.description || null,
+        };
       }),
     };
   }

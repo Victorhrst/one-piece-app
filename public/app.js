@@ -6,6 +6,7 @@
   var CACHE_KEY = "grand-line-safe-cache-v1";
   var state = {
     page: "home",
+    detail: null,
     progress: null,
     episodes: [],
     chapters: [],
@@ -368,8 +369,30 @@
 
 
   function pageTitle(page) {
-    var titles = {home:"ACCUEIL",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES",characters:"PERSONNAGES",fruits:"FRUITS DU DÉMON",sources:"SOURCES"};
+    var titles = {home:"ACCUEIL",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES", "crew-detail":"FICHE D’ÉQUIPAGE",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES",characters:"PERSONNAGES", "character-detail":"FICHE PERSONNAGE",fruits:"FRUITS DU DÉMON",sources:"SOURCES"};
     return titles[page] || "ACCUEIL";
+  }
+
+  function decodeRoutePart(value) {
+    try { return decodeURIComponent(value || ""); } catch (_) { return ""; }
+  }
+
+  function restoreRouteFromHash() {
+    var route = window.location.hash || "";
+    if (route.indexOf("#equipage/") === 0) {
+      state.page = "crew-detail";
+      state.detail = { type:"crew", key:decodeRoutePart(route.slice("#equipage/".length)) };
+      return;
+    }
+    if (route.indexOf("#personnage/") === 0) {
+      state.page = "character-detail";
+      state.detail = { type:"character", key:decodeRoutePart(route.slice("#personnage/".length)), returnCrew:window.history.state && window.history.state.returnCrew || null };
+      return;
+    }
+    var page = route.indexOf("#page/") === 0 ? decodeRoutePart(route.slice("#page/".length)) : "home";
+    var allowed = ["home","guide","crews","government","blades","characters","fruits","sources"];
+    state.page = allowed.indexOf(page) >= 0 ? page : "home";
+    state.detail = null;
   }
 
   function render() {
@@ -378,9 +401,11 @@
     var html = page === "home" ? window.GRANDLINE_PAGES.renderHome()
       : page === "guide" ? window.GRANDLINE_PAGES.renderGuide()
       : page === "crews" ? window.GRANDLINE_PAGES.renderCrews()
+      : page === "crew-detail" ? window.GRANDLINE_PAGES.renderCrewDetail(state.detail && state.detail.key)
       : page === "government" ? window.GRANDLINE_PAGES.renderGovernment()
       : page === "blades" ? window.GRANDLINE_PAGES.renderBlades()
       : page === "characters" ? window.GRANDLINE_PAGES.renderCharacters()
+      : page === "character-detail" ? window.GRANDLINE_PAGES.renderCharacterDetail(state.detail && state.detail.key, state.detail && state.detail.returnCrew)
       : page === "fruits" ? window.GRANDLINE_PAGES.renderFruits()
       : window.GRANDLINE_PAGES.renderSources();
     content.innerHTML = html;
@@ -413,6 +438,8 @@
 
   function setPage(page) {
     state.page = page;
+    state.detail = null;
+    if (window.location.hash !== "#page/" + page) window.history.pushState({page:page}, "", "#page/" + page);
     state.query = "";
     state.guideLimit = 30;
     state.characterLimit = 90;
@@ -422,6 +449,24 @@
     render();
     window.scrollTo({top:0,behavior:"smooth"});
     if (page === "guide") loadGuideCatalog(false);
+  }
+
+  function openCrewDetail(key) {
+    state.page = "crew-detail";
+    state.detail = { type:"crew", key:String(key || "") };
+    window.history.pushState({page:"crew-detail"}, "", "#equipage/" + encodeURIComponent(state.detail.key));
+    document.body.classList.remove("menu-open");
+    render();
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+
+  function openCharacterDetail(key, returnCrew) {
+    state.page = "character-detail";
+    state.detail = { type:"character", key:String(key || ""), returnCrew:returnCrew || null };
+    window.history.pushState({page:"character-detail",returnCrew:returnCrew || null}, "", "#personnage/" + encodeURIComponent(state.detail.key));
+    document.body.classList.remove("menu-open");
+    render();
+    window.scrollTo({top:0,behavior:"smooth"});
   }
 
   function openProgress() {
@@ -595,6 +640,14 @@
       setPage(target.getAttribute("data-page"));
       return;
     }
+    if (target.hasAttribute("data-open-crew")) {
+      openCrewDetail(target.getAttribute("data-open-crew"));
+      return;
+    }
+    if (target.hasAttribute("data-open-character")) {
+      openCharacterDetail(target.getAttribute("data-open-character"),target.getAttribute("data-return-crew"));
+      return;
+    }
     if (target.hasAttribute("data-action")) {
       var action = target.getAttribute("data-action");
       if (action === "open-progress") openProgress();
@@ -672,8 +725,15 @@
     if (event.target.id === "progressModal") closeProgress();
   });
 
+  window.addEventListener("popstate", function () {
+    restoreRouteFromHash();
+    render();
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+
   state.progress = readProgress();
   readCache();
+  restoreRouteFromHash();
   updateProgressPill();
   render();
   if (state.progress === null) openProgress();

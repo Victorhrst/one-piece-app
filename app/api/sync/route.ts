@@ -3,6 +3,7 @@ import arcsSource from "../../../content/arcs.json";
 import curatedCrews from "../../../content/crews.json";
 import curatedCharacters from "../../../content/characters.json";
 import curatedFruits from "../../../content/fruits.json";
+import fruitTimelineSource from "../../../content/fruits-timeline.json";
 import { arcForChapter, chapterFromAppearance, DATA_SOURCE, getDb, jsonResponse, localized, numeric, rowsFromPayload, safeLabel, type ArcRecord } from "../_lib";
 
 const ONEPIECE_API = "https://www.onepieceapi.com/api";
@@ -13,12 +14,23 @@ const SAFE_REMOTE_IMAGE = /^https:\/\//i;
 type ApiRecord = Record<string, unknown>;
 type CuratedCrew = { name: string; description: string; tag?: string; knownAt: number; members: [string, string, number][] };
 type CuratedCharacter = [string, string, string, number];
-type CuratedFruit = { name: string; firstSeen: number; firstChapter?: number; knownAs?: string; canonStatus?: string; typeHistory?: { from: number; label: string }[]; user?: string; apiNames?: string[] };
+type CuratedFruit = { name: string; firstSeen?: number; firstChapter?: number; knownAs?: string; canonStatus?: string; typeHistory?: { from: number; label: string }[]; user?: string; apiNames?: string[]; apiName?: string; apiModel?: string | null };
 
 const arcs = arcsSource as ArcRecord[];
 const crews = curatedCrews as CuratedCrew[];
 const knownCharacters = curatedCharacters as CuratedCharacter[];
-const knownFruits = curatedFruits as CuratedFruit[];
+const timelineRows = fruitTimelineSource as [number, string, string?, string?, string?][];
+const timelineFruits: CuratedFruit[] = timelineRows.map(([firstChapter, name, model, user, canonStatus]) => {
+  const modelMatch = name.match(/, modèle (.+)$/i);
+  const apiModel = model || (modelMatch ? modelMatch[1] : null);
+  const apiName = modelMatch ? name.slice(0, modelMatch.index).trim() : name;
+  return { name, firstChapter, apiName, apiModel, user: user || undefined, canonStatus: canonStatus || undefined };
+});
+const curatedFruitEntries = (curatedFruits as CuratedFruit[]).map((known) => {
+  const timeline = timelineFruits.find((fruit) => normalize(fruit.name) === normalize(known.name));
+  return timeline ? Object.assign({}, timeline, known, { firstChapter:known.firstChapter ?? timeline.firstChapter, apiName:timeline.apiName, apiModel:timeline.apiModel }) : known;
+});
+const knownFruits = curatedFruitEntries.concat(timelineFruits.filter((fruit) => !curatedFruitEntries.some((known) => normalize(known.name) === normalize(fruit.name))));
 
 function normalize(value: unknown) {
   return String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -67,7 +79,18 @@ function findArcId(chapter: number | null) {
 
 function curatedFruit(name: string, model: string) {
   const keys = [name, model].map(normalize).filter(Boolean);
-  return knownFruits.find((fruit) => [fruit.name, ...(fruit.apiNames ?? [])].map(normalize).some((key) => keys.includes(key))) ?? null;
+  return knownFruits.find((fruit) => {
+    if (fruit.apiName) {
+      const sourceName = normalize(name);
+      const curatedName = normalize(fruit.apiName);
+      const sourceModel = normalize(model);
+      const nameMatches = sourceName === curatedName || (sourceModel && sourceName.indexOf(curatedName) === 0 && sourceName.indexOf(sourceModel) >= 0);
+      const expectedModel = normalize(fruit.apiModel);
+      const modelMatches = fruit.apiModel == null ? (!sourceModel || sourceModel === "unknown") : sourceModel === expectedModel;
+      if (nameMatches && modelMatches) return true;
+    }
+    return [fruit.name, ...(fruit.apiNames ?? [])].map(normalize).some((key) => keys.includes(key));
+  }) ?? null;
 }
 
 function curatedCharacter(name: string) {
@@ -128,22 +151,29 @@ async function importFruits(db: D1Database, items: ApiRecord[]) {
     if (!name) return [];
     const model = localized(item.model);
     const curated = curatedFruit(name, model);
-    const chapter = curated ? (curated.firstChapter ?? arcs[curated.firstSeen]?.chapterStart ?? null) : null;
-    const arcId = curated ? (arcs[curated.firstSeen]?.id ?? null) : null;
+    const extra = (item.extra_data && typeof item.extra_data === "object" ? item.extra_data : {}) as ApiRecord;
+    const chapter = curated ? (curated.firstChapter ?? (curated.firstSeen == null ? null : arcs[curated.firstSeen]?.chapterStart) ?? null) : chapterFromAppearance(extra.first_appearance);
+    const arcId = curated && curated.firstSeen != null ? (arcs[curated.firstSeen]?.id ?? findArcId(chapter)) : findArcId(chapter);
     const description = curated?.knownAs ?? (curated ? `Fruit connu depuis le chapitre ${chapter}.` : null);
     const canonStatus = curated?.canonStatus ?? (curated ? "Canon manga" : "À confirmer");
     return [db.prepare("INSERT INTO devil_fruits (id, name, model, type, sub_type, image_url, first_chapter, first_arc_id, canon_status, description, source_url, source_payload, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET name=excluded.name, model=excluded.model, type=excluded.type, sub_type=excluded.sub_type, image_url=COALESCE(excluded.image_url, devil_fruits.image_url), first_chapter=COALESCE(excluded.first_chapter, devil_fruits.first_chapter), first_arc_id=COALESCE(excluded.first_arc_id, devil_fruits.first_arc_id), canon_status=CASE WHEN excluded.canon_status='Canon manga' THEN excluded.canon_status ELSE devil_fruits.canon_status END, description=COALESCE(excluded.description, devil_fruits.description), source_url=excluded.source_url, source_payload=excluded.source_payload, updated_at=excluded.updated_at")
-      .bind(sourceId(item, "fruit", name), name, model || null, safeLabel(item.type) || null, safeLabel(item.sub_type) || null, safeImage(item.image_url), chapter, arcId, canonStatus, description, DATA_SOURCE, JSON.stringify(item), now)];
+      .bind(sourceId(item, "fruit", name), curated?.name ?? name, model || null, safeLabel(item.type) || null, safeLabel(item.sub_type) || null, safeImage(item.image_url), chapter, arcId, canonStatus, description, DATA_SOURCE, JSON.stringify(item), now)];
   });
-  const importedNames = new Set(items.flatMap((item) => [localized(item.name), localized(item.model)].map(normalize).filter(Boolean)));
+  const hasSourceRecord = (fruit: CuratedFruit) => items.some((item) => {
+    const matched = curatedFruit(localized(item.name), localized(item.model));
+    return matched?.name === fruit.name;
+  });
+  const insertedNames = new Set<string>();
   for (const fruit of knownFruits) {
-    const aliases = [fruit.name, ...(fruit.apiNames ?? [])].map(normalize);
-    if (aliases.some((alias) => importedNames.has(alias))) continue;
-    const arc = arcs[fruit.firstSeen];
+    const fruitKey = normalize(fruit.name);
+    if (insertedNames.has(fruitKey) || hasSourceRecord(fruit)) continue;
+    insertedNames.add(fruitKey);
+    const arc = fruit.firstSeen == null ? arcs.find((item) => fruit.firstChapter != null && fruit.firstChapter >= item.chapterStart && fruit.firstChapter <= item.chapterEnd) : arcs[fruit.firstSeen];
     if (!arc) continue;
     const canonStatus = fruit.canonStatus ?? "Canon manga";
+    const firstChapter = fruit.firstChapter ?? arc.chapterStart;
     statements.push(db.prepare("INSERT INTO devil_fruits (id, name, model, type, sub_type, image_url, first_chapter, first_arc_id, canon_status, description, source_url, source_payload, updated_at) VALUES (?, ?, NULL, ?, NULL, NULL, ?, ?, ?, ?, ?, '{}', ?) ON CONFLICT(id) DO UPDATE SET first_chapter=excluded.first_chapter, first_arc_id=excluded.first_arc_id, canon_status=excluded.canon_status, description=excluded.description, updated_at=excluded.updated_at")
-      .bind(`curated-fruit:${normalize(fruit.name)}`, fruit.name, fruit.typeHistory?.[0]?.label ?? null, fruit.firstChapter ?? arc.chapterStart, arc.id, canonStatus, fruit.knownAs ?? null, "https://onepiece.fandom.com/wiki/Category:Devil_Fruits", now));
+      .bind(`curated-fruit:${normalize(fruit.name)}`, fruit.name, fruit.typeHistory?.[0]?.label ?? null, firstChapter, arc.id, canonStatus, fruit.knownAs ?? `Fruit répertorié à partir du chapitre ${firstChapter}.`, "https://onepiece.fandom.com/wiki/Category:Devil_Fruits", now));
   }
   await runBatch(db, statements);
 }
@@ -252,6 +282,34 @@ async function importGuideList(db: D1Database, resource: "episodes" | "chapters"
   return items.length;
 }
 
+async function seedCuratedFruitTimeline(db: D1Database) {
+  const existing = await db.prepare("SELECT id, name, model FROM devil_fruits").all<{ id: string; name: string; model: string | null }>();
+  const known = new Set<string>();
+  const statements: D1PreparedStatement[] = [];
+  for (const row of existing.results ?? []) {
+    const fruit = curatedFruit(row.name, row.model ?? "");
+    if (!fruit) continue;
+    known.add(fruit.name);
+    const chapter = fruit.firstChapter ?? (fruit.firstSeen == null ? null : arcs[fruit.firstSeen]?.chapterStart) ?? null;
+    const arc = fruit.firstSeen == null ? arcs.find((item) => chapter != null && chapter >= item.chapterStart && chapter <= item.chapterEnd) : arcs[fruit.firstSeen];
+    if (!arc) continue;
+    const status = fruit.canonStatus ?? "Canon manga";
+    const description = fruit.knownAs ?? (chapter ? `Fruit répertorié à partir du chapitre ${chapter}.` : null);
+    statements.push(db.prepare("UPDATE devil_fruits SET first_chapter=COALESCE(?, first_chapter), first_arc_id=COALESCE(?, first_arc_id), canon_status=CASE WHEN ? IS NOT NULL THEN ? ELSE canon_status END, description=COALESCE(?, description) WHERE id=?")
+      .bind(chapter, arc.id, fruit.canonStatus ?? null, status, description, row.id));
+  }
+  for (const fruit of knownFruits) {
+    if (known.has(fruit.name)) continue;
+    const arc = fruit.firstSeen == null ? arcs.find((item) => fruit.firstChapter != null && fruit.firstChapter >= item.chapterStart && fruit.firstChapter <= item.chapterEnd) : arcs[fruit.firstSeen];
+    if (!arc) continue;
+    known.add(fruit.name);
+    const chapter = fruit.firstChapter ?? arc.chapterStart;
+    statements.push(db.prepare("INSERT OR IGNORE INTO devil_fruits (id, name, model, type, sub_type, image_url, first_chapter, first_arc_id, canon_status, description, source_url, source_payload, updated_at) VALUES (?, ?, NULL, ?, NULL, NULL, ?, ?, ?, ?, ?, '{}', ?)")
+      .bind(`curated-fruit:${normalize(fruit.name)}`, fruit.name, fruit.typeHistory?.[0]?.label ?? null, chapter, arc.id, fruit.canonStatus ?? "Canon manga", fruit.knownAs ?? `Fruit répertorié à partir du chapitre ${chapter}.`, "https://onepiece.fandom.com/wiki/Category:Devil_Fruits", NOW()));
+  }
+  await runBatch(db, statements);
+}
+
 async function fetchGuide(resource: "episodes" | "chapters") {
   const response = await fetchJson(`${EPISODE_API}/${resource}/fr`, 25000);
   return rowsFromPayload(response) as ApiRecord[];
@@ -269,6 +327,7 @@ export async function POST(request: Request) {
     const last = await db.prepare("SELECT MAX(synced_at) AS syncedAt FROM sync_state").first<{ syncedAt: string | null }>();
     const lastTime = last?.syncedAt ? Date.parse(last.syncedAt) : 0;
     if (Date.now() - lastTime < 120000) {
+      await seedCuratedFruitTimeline(db);
       return jsonResponse({ skipped: true, syncedAt: last?.syncedAt, message: "Les données viennent d’être actualisées." });
     }
 
