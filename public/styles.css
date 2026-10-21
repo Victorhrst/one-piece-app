@@ -212,6 +212,15 @@ button { cursor: pointer; }
 .sources-card h3 { margin: 0 0 8px; color: var(--ink); font: 600 18px var(--serif); }
 .sources-card ul { padding-left: 18px; }
 .sources-card a { color: #386b5d; }
+@supports (content-visibility: auto) {
+  .catalogue-row { content-visibility: auto; contain-intrinsic-size: auto 82px; }
+  .crew-card { content-visibility: auto; contain-intrinsic-size: auto 250px; }
+  .system-card { content-visibility: auto; contain-intrinsic-size: auto 360px; }
+  .blade-card { content-visibility: auto; contain-intrinsic-size: auto 280px; }
+  .fruit-card { content-visibility: auto; contain-intrinsic-size: auto 310px; }
+  .character-grid > .character-card { content-visibility: auto; contain-intrinsic-size: auto 170px; }
+  .ship-card { content-visibility: auto; contain-intrinsic-size: auto 460px; }
+}
 .modal-backdrop { position: fixed; z-index: 20; inset: 0; display: grid; place-items: center; overflow-y: auto; padding: 20px; background: rgba(15,36,34,.68); backdrop-filter: blur(5px); }
 .modal-backdrop[hidden] { display: none; }
 .progress-modal { position: relative; width: min(100%,520px); padding: 33px 36px 28px; border: 1px solid rgba(255,255,255,.4); border-radius: 15px; background: var(--paper); box-shadow: 0 28px 90px rgba(8,27,24,.3); }

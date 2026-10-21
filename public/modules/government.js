@@ -1,6 +1,8 @@
 window.GRANDLINE_PAGE_FACTORIES = window.GRANDLINE_PAGE_FACTORIES || {};
 window.GRANDLINE_PAGE_FACTORIES.government = function (context) {
   var { DATA, state, progressArc, escapeHtml, safeCharacterName, identityKey, filtered, heading, progressHint } = context;
+  var characterIndexSource = null;
+  var characterIndex = new Map();
   var marineRanks = [
     {label:"Direction", rank:"Amiral en chef", members:[["Sengoku",21,22],["Sakazuki",24]]},
     {label:"Amiraux", rank:"Amiral", members:[["Borsalino",21],["Kuzan",21,24],["Fujitora",26],["Ryokugyu",29]]},
@@ -26,7 +28,15 @@ window.GRANDLINE_PAGE_FACTORIES.government = function (context) {
   }
 
   function findCharacter(name) {
-    return (state.characters || []).find(function (character) { return identityKey(character.name) === identityKey(name); }) || null;
+    if (characterIndexSource !== state.characters) {
+      characterIndex = new Map();
+      (state.characters || []).forEach(function (character) {
+        var key = identityKey(character.name);
+        if (!characterIndex.has(key)) characterIndex.set(key, character);
+      });
+      characterIndexSource = state.characters;
+    }
+    return characterIndex.get(identityKey(name)) || null;
   }
 
   function portraitMarkup(name, character, className) {

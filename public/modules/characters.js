@@ -2,13 +2,18 @@ window.GRANDLINE_PAGE_FACTORIES = window.GRANDLINE_PAGE_FACTORIES || {};
 window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
   var { DATA, state, progressArc, emperorsRevealed, escapeHtml, stripMarks, identityKey, safeCharacterName, filtered, heading, progressHint } = context;
   var emperorCrewReveal = {"pirates du roux":432,"pirates de barbe blanche":432,"pirates de barbe noire":650,"pirates de big mom":651,"pirates aux cent betes":698,"pirates au chapeau de paille":1053,"cross guild":1058};
+  var characterSource = null;
+  var characterProgress = null;
+  var characterCatalogCache = null;
+  var characterArtCache = new Map();
 
   function collectCharacters() {
+    if (characterSource === state.characters && characterProgress === state.progress && characterCatalogCache) return characterCatalogCache;
     var result = [];
-    var seen = {};
+    var seen = new Map();
     function add(character) {
       var key = identityKey(character.name);
-      var existing = seen[key] ? result.find(function (item) { return identityKey(item.name) === key; }) : null;
+      var existing = seen.get(key);
       var displayName = safeCharacterName(character.name);
       if (!displayName) return;
       if (existing) {
@@ -35,9 +40,10 @@ window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
         if (character.group && !existing.affiliations.some(function (group) { return stripMarks(group) === stripMarks(character.group); })) existing.affiliations.push(character.group);
         return;
       }
-      seen[key] = true;
       var groups = character.affiliations || (character.group ? [character.group] : []);
-      result.push(Object.assign({},character,{name:displayName,group:groups[0] || "Personnage",affiliations:groups.slice()}));
+      var entry = Object.assign({},character,{name:displayName,group:groups[0] || "Personnage",affiliations:groups.slice()});
+      seen.set(key, entry);
+      result.push(entry);
     }
 
     // The arc-filtered catalog endpoint is the source of truth. The static
@@ -46,15 +52,22 @@ window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
     (state.characters || []).forEach(function (character) {
       if (character.knownAt <= state.progress) add(character);
     });
-    return result.sort(function (a, b) { return a.name.localeCompare(b.name,"fr"); });
+    characterSource = state.characters;
+    characterProgress = state.progress;
+    characterCatalogCache = result.sort(function (a, b) { return a.name.localeCompare(b.name,"fr"); });
+    return characterCatalogCache;
   }
 
   function characterIllustration(character, large) {
+    var cacheKey = JSON.stringify([character.name, Boolean(large)]);
+    if (characterArtCache.has(cacheKey)) return characterArtCache.get(cacheKey);
     var hash = String(character.name || "?").split("").reduce(function (value, char) { return (value * 31 + char.charCodeAt(0)) >>> 0; }, 11);
     var hue = hash % 360;
     var initial = escapeHtml(String(character.name || "?").slice(0,1).toUpperCase());
     var className = large ? "detail-image character-art-large" : "character-photo character-art";
-    return '<svg class="' + className + '" viewBox="0 0 120 140" role="img" aria-label="Illustration de ' + escapeHtml(character.name) + '"><defs><linearGradient id="portrait-' + hash + '" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(' + hue + ' 46% 43%)"/><stop offset="1" stop-color="hsl(' + ((hue + 58) % 360) + ' 48% 17%)"/></linearGradient></defs><rect width="120" height="140" rx="10" fill="url(#portrait-' + hash + ')"/><circle cx="60" cy="49" r="25" fill="#ead9bd"/><path d="M21 133c2-32 18-48 39-48s37 16 39 48" fill="#182129"/><path d="M36 48c2-22 14-32 28-29 14 2 22 12 21 29-13-7-31-7-49 0Z" fill="#20272d"/><circle cx="93" cy="111" r="16" fill="#101b20" stroke="#dfc77c" stroke-width="2"/><text x="93" y="117" text-anchor="middle" fill="#f2e6bf" font-size="17" font-family="serif">' + initial + '</text></svg>';
+    var markup = '<svg class="' + className + '" viewBox="0 0 120 140" role="img" aria-label="Illustration de ' + escapeHtml(character.name) + '"><defs><linearGradient id="portrait-' + hash + '" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(' + hue + ' 46% 43%)"/><stop offset="1" stop-color="hsl(' + ((hue + 58) % 360) + ' 48% 17%)"/></linearGradient></defs><rect width="120" height="140" rx="10" fill="url(#portrait-' + hash + ')"/><circle cx="60" cy="49" r="25" fill="#ead9bd"/><path d="M21 133c2-32 18-48 39-48s37 16 39 48" fill="#182129"/><path d="M36 48c2-22 14-32 28-29 14 2 22 12 21 29-13-7-31-7-49 0Z" fill="#20272d"/><circle cx="93" cy="111" r="16" fill="#101b20" stroke="#dfc77c" stroke-width="2"/><text x="93" y="117" text-anchor="middle" fill="#f2e6bf" font-size="17" font-family="serif">' + initial + '</text></svg>';
+    characterArtCache.set(cacheKey, markup);
+    return markup;
   }
 
   function characterImage(character, large) {
@@ -172,7 +185,7 @@ window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
     if (!progressArc()) return html + progressHint();
     var characters = filtered(state.query, collectCharacters(), function (item) {
       return [item.name, item.role, item.group, item.affiliations.join(" ")];
-    });
+    }).slice();
     var showEmperorFilter = emperorsRevealed();
     if (showEmperorFilter && state.characterEmperorsOnly) characters = characters.filter(function (item) { return item.greatEmperor === true; });
     characters.sort(function (a,b) {

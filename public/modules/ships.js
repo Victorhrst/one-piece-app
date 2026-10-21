@@ -1,14 +1,24 @@
 window.GRANDLINE_PAGE_FACTORIES = window.GRANDLINE_PAGE_FACTORIES || {};
 window.GRANDLINE_PAGE_FACTORIES.ships = function (context) {
   var { DATA, state, progressArc, escapeHtml, stripMarks, filtered, heading, progressHint } = context;
+  var shipSource = null;
+  var shipProgress = null;
+  var shipCatalogCache = null;
+  var crewRows = null;
+  var crewIndex = new Map();
+  var shipArtCache = new Map();
 
   function collectShips() {
+    if (shipSource === state.ships && shipProgress === state.progress && shipCatalogCache) return shipCatalogCache;
     var end = Number(progressArc() && progressArc().chapterEnd) || 0;
-    return (state.ships || []).filter(function (ship) {
+    shipCatalogCache = (state.ships || []).filter(function (ship) {
       return Number.isFinite(Number(ship.firstChapter)) && Number(ship.firstChapter) <= end && ship.knownAt !== null && ship.knownAt <= state.progress;
     }).slice().sort(function (a,b) {
       return Number(a.firstChapter) - Number(b.firstChapter) || a.name.localeCompare(b.name,"fr");
     });
+    shipSource = state.ships;
+    shipProgress = state.progress;
+    return shipCatalogCache;
   }
 
   function shipKey(ship) {
@@ -22,10 +32,17 @@ window.GRANDLINE_PAGE_FACTORIES.ships = function (context) {
 
   function visibleCrew(ship) {
     if (!ship.crewId) return null;
-    return window.GRANDLINE_PAGES.collectCrews().find(function (crew) { return String(crew.id) === String(ship.crewId); }) || null;
+    var crews = window.GRANDLINE_PAGES.collectCrews();
+    if (crewRows !== crews) {
+      crewRows = crews;
+      crewIndex = new Map(crews.map(function (crew) { return [String(crew.id), crew]; }));
+    }
+    return crewIndex.get(String(ship.crewId)) || null;
   }
 
   function shipIllustration(ship, large) {
+    var cacheKey = JSON.stringify([ship.id, ship.name, ship.color, ship.art, ship.image, Boolean(large)]);
+    if (shipArtCache.has(cacheKey)) return shipArtCache.get(cacheKey);
     var seed = String(ship.id || ship.name || "ship").split("").reduce(function (value,char) { return (value * 31 + char.charCodeAt(0)) >>> 0; }, 31);
     var sea = "ship-sea-" + seed;
     var sky = "ship-sky-" + seed;
@@ -53,8 +70,11 @@ window.GRANDLINE_PAGE_FACTORIES.ships = function (context) {
       motif += '<circle cx="296" cy="132" r="14" fill="' + accent + '" stroke="#f2dfb5" stroke-width="3"/><path d="M289 128h14m-12 8h10" stroke="#172324" stroke-width="2" stroke-linecap="round"/>';
     }
     var svg = '<svg class="' + className + '" viewBox="0 0 360 220" role="img" aria-label="Illustration de ' + label + '"><defs><linearGradient id="' + sea + '" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#315c5c"/><stop offset="1" stop-color="#13282d"/></linearGradient><linearGradient id="' + sky + '" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d2aa68"/><stop offset="1" stop-color="#497171"/></linearGradient><linearGradient id="' + hull + '" x1="0" y1="0" x2="0" y2="1"><stop stop-color="' + accent + '"/><stop offset="1" stop-color="#17262a"/></linearGradient><linearGradient id="' + sail + '" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff4da"/><stop offset="1" stop-color="#d8c8a2"/></linearGradient></defs><rect width="360" height="220" rx="12" fill="url(#' + sea + ')"/><path d="M0 146c55-16 100-11 153 2s128 6 207-10v82H0z" fill="#142a30" opacity=".64"/><circle cx="298" cy="45" r="24" fill="url(#' + sky + ')" opacity=".8"/><path d="M0 185q43-13 85 0t85 0 85 0 105 0" fill="none" stroke="#83b7ad" stroke-width="3" opacity=".65"/><path d="M12 199q45-13 90 0t90 0 90 0 78 0" fill="none" stroke="#d5b97d" stroke-width="2" opacity=".6"/>' + motif + '<rect x="18" y="16" width="120" height="24" rx="12" fill="#102225" fill-opacity=".76" stroke="#e0c57f" stroke-opacity=".55"/><text x="78" y="32" text-anchor="middle" fill="#f4e6c5" font-size="11" font-family="sans-serif" font-weight="700">' + label + '</text></svg>';
-    if (!ship.image) return svg;
-    return '<img class="' + className + ' ship-source-image" src="' + escapeHtml(ship.image) + '" alt="Visuel du bateau ' + label + '" ' + (large ? 'decoding="async"' : 'loading="lazy" decoding="async"') + ' onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="ship-art-fallback" hidden>' + svg + '</span>';
+    var markup = !ship.image
+      ? svg
+      : '<img class="' + className + ' ship-source-image" src="' + escapeHtml(ship.image) + '" alt="Visuel du bateau ' + label + '" ' + (large ? 'decoding="async"' : 'loading="lazy" decoding="async"') + ' onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="ship-art-fallback" hidden>' + svg + '</span>';
+    shipArtCache.set(cacheKey, markup);
+    return markup;
   }
 
   function shipCard(ship, compact) {

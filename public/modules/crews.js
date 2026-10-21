@@ -2,6 +2,12 @@ window.GRANDLINE_PAGE_FACTORIES = window.GRANDLINE_PAGE_FACTORIES || {};
 window.GRANDLINE_PAGE_FACTORIES.crews = function (context) {
   var { DATA, state, progressArc, emperorsRevealed, escapeHtml, stripMarks, identityKey, safeCharacterName, filtered, heading, progressHint } = context;
   var bountyIndex = null;
+  var bountySource = null;
+  var crewSource = null;
+  var crewProgress = null;
+  var crewCatalogCache = null;
+  var visibleMemberCache = new WeakMap();
+  var crewArtCache = new Map();
   var emperorCrewReveal = {"red-hair":432,"whitebeard":432,"blackbeard":650,"big-mom":651,"beasts":698,"straw-hats":1053,"cross-guild":1058};
   var emperorCrewRanges = {
     "red-hair":{min:5000000000,max:25000000000},
@@ -48,10 +54,11 @@ window.GRANDLINE_PAGE_FACTORIES.crews = function (context) {
   }
 
   function collectCrews() {
+    if (crewSource === state.crews && crewProgress === state.progress && crewCatalogCache) return crewCatalogCache;
     // API results are already filtered by chapter, including staged descriptions.
     // Static snapshots can contain current crew names and must not be merged back in.
     var end = Number(progressArc() && progressArc().chapterEnd) || 0;
-    return (state.crews || []).filter(function (crew) { return Number(crew.knownAt) <= state.progress; }).map(function (crew) {
+    crewCatalogCache = (state.crews || []).filter(function (crew) { return Number(crew.knownAt) <= state.progress; }).map(function (crew) {
       var copy = Object.assign({},crew,{members:(crew.members || []).map(memberData)});
       if (copy.nameRevealChapter && end < Number(copy.nameRevealChapter)) copy.name = copy.preRevealName || copy.name;
       if (copy.descriptionChapter && end >= Number(copy.descriptionChapter)) copy.description = copy.description;
@@ -59,22 +66,41 @@ window.GRANDLINE_PAGE_FACTORIES.crews = function (context) {
       else if (copy.preRevealDescription) copy.description = copy.preRevealDescription;
       return copy;
     });
+    crewSource = state.crews;
+    crewProgress = state.progress;
+    visibleMemberCache = new WeakMap();
+    return crewCatalogCache;
   }
 
   function visibleMembers(crew) {
-    return (crew.members || []).map(memberData).filter(function (member) {
+    var cached = visibleMemberCache.get(crew);
+    if (cached) return cached;
+    var members = (crew.members || []).map(memberData).filter(function (member) {
       return Number.isFinite(member.knownAt) && member.knownAt <= state.progress && safeCharacterName(member.name);
     }).map(function (member) {
       member.displayName = safeCharacterName(member.name);
       return member;
     });
+    visibleMemberCache.set(crew, members);
+    return members;
+  }
+
+  function prepareBountyIndex() {
+    if (bountySource === state.characters && bountyIndex) return;
+    bountyIndex = new Map();
+    (state.characters || []).forEach(function (item) { bountyIndex.set(identityKey(item.name), item); });
+    bountySource = state.characters;
   }
 
   function crewIllustration(crew, large) {
+    var cacheKey = JSON.stringify([crew.name, Boolean(large)]);
+    if (crewArtCache.has(cacheKey)) return crewArtCache.get(cacheKey);
     var hash = String(crew.name || "").split("").reduce(function (value,char) { return (value * 31 + char.charCodeAt(0)) >>> 0; }, 13);
     var hue = hash % 360;
     var className = large ? "detail-image crew-art-large" : "crew-photo crew-art";
-    return '<svg class="' + className + ' crew-flag-art" viewBox="0 0 120 100" role="img" aria-label="Pavillon illustré de ' + escapeHtml(crew.name) + '"><defs><linearGradient id="crew-' + hash + '" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(' + hue + ' 52% 38%)"/><stop offset="1" stop-color="hsl(' + ((hue + 66) % 360) + ' 56% 17%)"/></linearGradient></defs><rect width="120" height="100" rx="10" fill="#11191c"/><path d="M14 10v80" stroke="#c5ae75" stroke-width="3"/><path d="M17 17h87v62H17l9-31Z" fill="url(#crew-' + hash + ')" stroke="#e7d6a8" stroke-width="2"/><circle cx="62" cy="48" r="21" fill="#f2ead5"/><path d="M49 43c2-11 9-15 14-13 6 2 11 7 12 14-8-3-17-3-26-1Z" fill="#182125"/><circle cx="55" cy="48" r="2.3" fill="#11191c"/><circle cx="69" cy="48" r="2.3" fill="#11191c"/><path d="M57 59c3 2 8 2 11 0" fill="none" stroke="#11191c" stroke-width="2" stroke-linecap="round"/><path d="m40 69 13-4 6 4 6-4 13 4M42 72l14-3m8 0 14 3" fill="none" stroke="#f2ead5" stroke-width="2" stroke-linecap="round"/><text x="98" y="72" text-anchor="end" fill="#f5e7bf" font-size="9" font-weight="700" font-family="sans-serif">' + escapeHtml(String(crew.name || "Équipage").slice(0,1).toUpperCase()) + '</text></svg>';
+    var markup = '<svg class="' + className + ' crew-flag-art" viewBox="0 0 120 100" role="img" aria-label="Pavillon illustré de ' + escapeHtml(crew.name) + '"><defs><linearGradient id="crew-' + hash + '" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(' + hue + ' 52% 38%)"/><stop offset="1" stop-color="hsl(' + ((hue + 66) % 360) + ' 56% 17%)"/></linearGradient></defs><rect width="120" height="100" rx="10" fill="#11191c"/><path d="M14 10v80" stroke="#c5ae75" stroke-width="3"/><path d="M17 17h87v62H17l9-31Z" fill="url(#crew-' + hash + ')" stroke="#e7d6a8" stroke-width="2"/><circle cx="62" cy="48" r="21" fill="#f2ead5"/><path d="M49 43c2-11 9-15 14-13 6 2 11 7 12 14-8-3-17-3-26-1Z" fill="#182125"/><circle cx="55" cy="48" r="2.3" fill="#11191c"/><circle cx="69" cy="48" r="2.3" fill="#11191c"/><path d="M57 59c3 2 8 2 11 0" fill="none" stroke="#11191c" stroke-width="2" stroke-linecap="round"/><path d="m40 69 13-4 6 4 6-4 13 4M42 72l14-3m8 0 14 3" fill="none" stroke="#f2ead5" stroke-width="2" stroke-linecap="round"/><text x="98" y="72" text-anchor="end" fill="#f5e7bf" font-size="9" font-weight="700" font-family="sans-serif">' + escapeHtml(String(crew.name || "Équipage").slice(0,1).toUpperCase()) + '</text></svg>';
+    crewArtCache.set(cacheKey, markup);
+    return markup;
   }
 
   function crewImage(crew, large) {
@@ -187,8 +213,7 @@ window.GRANDLINE_PAGE_FACTORIES.crews = function (context) {
   }
 
   function renderCrews() {
-    bountyIndex = new Map();
-    (state.characters || []).forEach(function (item) { bountyIndex.set(identityKey(item.name), item); });
+    prepareBountyIndex();
     var html = heading("ATLAS DES PIRATES", "Équipages", "Ouvre une fiche pour découvrir l’histoire, la composition et les membres déjà révélés à ton point de progression.", "⚑");
     if (!progressArc()) return html + progressHint();
     var groups = filtered(state.query, collectCrews().filter(isPirateCrew), function (crew) {
@@ -225,8 +250,7 @@ window.GRANDLINE_PAGE_FACTORIES.crews = function (context) {
   }
 
   function renderCrewDetail(routeKey) {
-    bountyIndex = new Map();
-    (state.characters || []).forEach(function (item) { bountyIndex.set(identityKey(item.name), item); });
+    prepareBountyIndex();
     var crews = collectCrews();
     var key = String(routeKey || "");
     var crew = crews.find(function (item) { return crewKey(item) === key || stripMarks(item.name).replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") === key; });

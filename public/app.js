@@ -35,8 +35,26 @@
     rarity: "Toutes",
     toastTimer: null,
     catalogLoading: false,
-    loading: false
+    loading: false,
+    renderRevision: 0
   };
+  var arcSource = null;
+  var arcChapterSource = null;
+  var arcsCache = null;
+  var chapterSource = null;
+  var maxChapterCache = 0;
+  var visibleEpisodeSource = null;
+  var visibleEpisodeChapterSource = null;
+  var visibleEpisodeProgress = null;
+  var visibleEpisodesCache = [];
+  var visibleChapterSource = null;
+  var visibleChapterEpisodeSource = null;
+  var visibleChapterProgress = null;
+  var visibleChaptersCache = [];
+  var pageViewCache = new Map();
+  var activeView = null;
+  var maxCachedPageViews = 3;
+  var safeCacheTask = null;
 
   function readProgress() {
     try {
@@ -71,16 +89,19 @@
   }
 
   function availableArcs() {
+    if (arcSource === state.episodes && arcChapterSource === state.chapters && arcsCache) return arcsCache;
     var base = DATA.arcs.slice();
     var lastEpisode = base[base.length - 1].episodeEnd;
     var lastChapter = base[base.length - 1].chapterEnd;
     var groups = {};
+    var knownArcNames = new Set(base.map(function (arc) { return normalizedArcName(arc.name); }));
+    var knownChapterMax = maxKnownChapter();
     state.episodes.forEach(function (item) {
       var number = episodeNumber(item);
       var title = item && item.arc && plain(item.arc.title).replace(/^Arc\s+/i, "");
       if (!number || number <= lastEpisode || !title) return;
       var normalized = normalizedArcName(title);
-      if (base.some(function (arc) { return normalizedArcName(arc.name) === normalized; })) return;
+      if (knownArcNames.has(normalized)) return;
       var key = normalized || title;
       if (!groups[key]) groups[key] = {name:title,saga:plain(item.saga && item.saga.title),episodes:[]};
       groups[key].episodes.push(item);
@@ -93,7 +114,7 @@
         var found = String(item.chapter || "").match(/\d+/g) || [];
         found.forEach(function (value) {
           var number = Number(value);
-          if (number > 0 && number <= maxKnownChapter()) chapters.push(number);
+          if (number > 0 && number <= knownChapterMax) chapters.push(number);
         });
       });
       var forward = chapters.filter(function (number) { return number > lastChapter; });
@@ -116,12 +137,18 @@
         live:true
       };
     }).sort(function (a,b) { return a.episodeStart-b.episodeStart; });
-    return base.concat(additions);
+    arcSource = state.episodes;
+    arcChapterSource = state.chapters;
+    arcsCache = base.concat(additions);
+    return arcsCache;
   }
 
   function maxKnownChapter() {
+    if (chapterSource === state.chapters) return maxChapterCache;
     var values = state.chapters.map(chapterNumber).filter(function (number) { return number > 0; });
-    return values.length ? Math.max.apply(null, values) : DATA.arcs[DATA.arcs.length-1].chapterEnd;
+    chapterSource = state.chapters;
+    maxChapterCache = values.length ? Math.max.apply(null, values) : DATA.arcs[DATA.arcs.length-1].chapterEnd;
+    return maxChapterCache;
   }
 
   function progressArc() {
@@ -145,15 +172,27 @@
   }
 
   function visibleEpisodes() {
-    return state.episodes.filter(function (item) {
-      return episodeNumber(item) > 0 && episodeNumber(item) <= maxEpisode();
+    if (visibleEpisodeSource === state.episodes && visibleEpisodeChapterSource === state.chapters && visibleEpisodeProgress === state.progress) return visibleEpisodesCache;
+    var end = maxEpisode();
+    visibleEpisodesCache = state.episodes.filter(function (item) {
+      return episodeNumber(item) > 0 && episodeNumber(item) <= end;
     }).sort(function (a, b) { return episodeNumber(a) - episodeNumber(b); });
+    visibleEpisodeSource = state.episodes;
+    visibleEpisodeChapterSource = state.chapters;
+    visibleEpisodeProgress = state.progress;
+    return visibleEpisodesCache;
   }
 
   function visibleChapters() {
-    return state.chapters.filter(function (item) {
-      return chapterNumber(item) > 0 && chapterNumber(item) <= maxChapter();
+    if (visibleChapterSource === state.chapters && visibleChapterEpisodeSource === state.episodes && visibleChapterProgress === state.progress) return visibleChaptersCache;
+    var end = maxChapter();
+    visibleChaptersCache = state.chapters.filter(function (item) {
+      return chapterNumber(item) > 0 && chapterNumber(item) <= end;
     }).sort(function (a, b) { return chapterNumber(a) - chapterNumber(b); });
+    visibleChapterSource = state.chapters;
+    visibleChapterEpisodeSource = state.episodes;
+    visibleChapterProgress = state.progress;
+    return visibleChaptersCache;
   }
 
   function safeCache() {
@@ -189,7 +228,16 @@
   }
 
   function scheduleSafeCache() {
-    window.setTimeout(safeCache, 0);
+    if (safeCacheTask !== null) return;
+    var persist = function () {
+      safeCacheTask = null;
+      safeCache();
+    };
+    if (typeof window.requestIdleCallback === "function") {
+      safeCacheTask = window.requestIdleCallback(persist, {timeout:1200});
+    } else {
+      safeCacheTask = window.setTimeout(persist, 120);
+    }
   }
 
   function escapeHtml(value) {
@@ -412,6 +460,55 @@
     return titles[page] || "ACCUEIL";
   }
 
+  function routeIdentity() {
+    var detail = state.detail || {};
+    return JSON.stringify([state.page, detail.key || "", detail.returnCrew || ""]);
+  }
+
+  function viewCacheKey(route) {
+    return JSON.stringify([
+      route,
+      state.renderRevision,
+      state.progress,
+      state.query,
+      state.guideMode,
+      state.guideLimit,
+      state.characterLimit,
+      state.characterSort,
+      state.characterEmperorsOnly,
+      state.crewSort,
+      state.crewEmperorsOnly,
+      state.rarity,
+      state.catalogLoading,
+      state.guideLoading,
+      state.fruitLoreLoaded,
+      state.unclassifiedFruits,
+      state.characterTotal
+    ]);
+  }
+
+  function cacheActiveView(content) {
+    if (!activeView || !activeView.cacheable) return;
+    if (content.querySelectorAll("*").length > 2600) return;
+    var fragment = document.createDocumentFragment();
+    while (content.firstChild) fragment.appendChild(content.firstChild);
+    if (!fragment.firstChild) return;
+    pageViewCache.delete(activeView.cacheKey);
+    pageViewCache.set(activeView.cacheKey, fragment);
+    while (pageViewCache.size > maxCachedPageViews) {
+      pageViewCache.delete(pageViewCache.keys().next().value);
+    }
+  }
+
+  function invalidatePageViews() {
+    state.renderRevision += 1;
+    pageViewCache.clear();
+  }
+
+  function scrollToPageTop() {
+    window.scrollTo({top:0,left:0,behavior:"instant"});
+  }
+
   function decodeRoutePart(value) {
     try { return decodeURIComponent(value || ""); } catch (_) { return ""; }
   }
@@ -447,20 +544,41 @@
   function render() {
     var content = document.getElementById("pageContent");
     var page = state.page;
-    var html = page === "home" ? window.GRANDLINE_PAGES.renderHome()
-      : page === "guide" ? window.GRANDLINE_PAGES.renderGuide()
-      : page === "crews" ? window.GRANDLINE_PAGES.renderCrews()
-      : page === "crew-detail" ? window.GRANDLINE_PAGES.renderCrewDetail(state.detail && state.detail.key)
-      : page === "ships" ? window.GRANDLINE_PAGES.renderShips()
-      : page === "ship-detail" ? window.GRANDLINE_PAGES.renderShipDetail(state.detail && state.detail.key)
-      : page === "government" ? window.GRANDLINE_PAGES.renderGovernment()
-      : page === "blades" ? window.GRANDLINE_PAGES.renderBlades()
-      : page === "characters" ? window.GRANDLINE_PAGES.renderCharacters()
-      : page === "character-detail" ? window.GRANDLINE_PAGES.renderCharacterDetail(state.detail && state.detail.key, state.detail && state.detail.returnCrew)
-      : page === "fruits" ? window.GRANDLINE_PAGES.renderFruits()
-      : page === "fruit-detail" ? window.GRANDLINE_PAGES.renderFruitDetail(state.detail && state.detail.key)
-      : window.GRANDLINE_PAGES.renderSources();
-    content.innerHTML = html;
+    var route = routeIdentity();
+    var cacheKey = viewCacheKey(route);
+    var routeChanged = Boolean(activeView && activeView.route !== route);
+    var renderedFromCache = false;
+    if (routeChanged) cacheActiveView(content);
+    if (routeChanged) {
+      var cachedFragment = pageViewCache.get(cacheKey);
+      if (cachedFragment) {
+        pageViewCache.delete(cacheKey);
+        pageViewCache.set(cacheKey, cachedFragment);
+        content.replaceChildren(cachedFragment);
+        renderedFromCache = true;
+      }
+    }
+    if (!renderedFromCache && (!activeView || activeView.route !== route || activeView.cacheKey !== cacheKey)) {
+      var html = page === "home" ? window.GRANDLINE_PAGES.renderHome()
+        : page === "guide" ? window.GRANDLINE_PAGES.renderGuide()
+        : page === "crews" ? window.GRANDLINE_PAGES.renderCrews()
+        : page === "crew-detail" ? window.GRANDLINE_PAGES.renderCrewDetail(state.detail && state.detail.key)
+        : page === "ships" ? window.GRANDLINE_PAGES.renderShips()
+        : page === "ship-detail" ? window.GRANDLINE_PAGES.renderShipDetail(state.detail && state.detail.key)
+        : page === "government" ? window.GRANDLINE_PAGES.renderGovernment()
+        : page === "blades" ? window.GRANDLINE_PAGES.renderBlades()
+        : page === "characters" ? window.GRANDLINE_PAGES.renderCharacters()
+        : page === "character-detail" ? window.GRANDLINE_PAGES.renderCharacterDetail(state.detail && state.detail.key, state.detail && state.detail.returnCrew)
+        : page === "fruits" ? window.GRANDLINE_PAGES.renderFruits()
+        : page === "fruit-detail" ? window.GRANDLINE_PAGES.renderFruitDetail(state.detail && state.detail.key)
+        : window.GRANDLINE_PAGES.renderSources();
+      content.innerHTML = html;
+    }
+    activeView = {
+      route:route,
+      cacheKey:cacheKey,
+      cacheable:!state.query.trim() && !state.catalogLoading && !state.guideLoading
+    };
     document.getElementById("crumbCurrent").textContent = pageTitle(page);
     var activePage = page === "ship-detail" ? "ships" : page === "crew-detail" ? "crews" : page === "character-detail" ? "characters" : page === "fruit-detail" ? "fruits" : page;
     document.querySelectorAll(".nav-item[data-page]").forEach(function (button) {
@@ -500,7 +618,7 @@
     if (search) search.value = "";
     document.body.classList.remove("menu-open");
     render();
-    window.scrollTo({top:0,behavior:"smooth"});
+    scrollToPageTop();
     if (page === "guide") loadGuideCatalog(false);
     if (page === "fruits") loadFruitLoreForPage();
   }
@@ -509,6 +627,7 @@
     if (state.progress === null || state.progress < 0 || (state.page !== "fruits" && state.page !== "fruit-detail")) return;
     window.GRANDLINE_REPOSITORY.loadFruitLore(state, DATA).then(function (updated) {
       if (!updated) return;
+      invalidatePageViews();
       if (state.page === "fruits" || state.page === "fruit-detail") render();
       scheduleSafeCache();
     }).catch(function () {});
@@ -520,7 +639,7 @@
     window.history.pushState({page:"crew-detail"}, "", "#equipage/" + encodeURIComponent(state.detail.key));
     document.body.classList.remove("menu-open");
     render();
-    window.scrollTo({top:0,behavior:"smooth"});
+    scrollToPageTop();
   }
 
   function openShipDetail(key) {
@@ -529,7 +648,7 @@
     window.history.pushState({page:"ship-detail"}, "", "#bateau/" + encodeURIComponent(state.detail.key));
     document.body.classList.remove("menu-open");
     render();
-    window.scrollTo({top:0,behavior:"smooth"});
+    scrollToPageTop();
   }
 
   function openCharacterDetail(key, returnCrew) {
@@ -538,7 +657,7 @@
     window.history.pushState({page:"character-detail",returnCrew:returnCrew || null}, "", "#personnage/" + encodeURIComponent(state.detail.key));
     document.body.classList.remove("menu-open");
     render();
-    window.scrollTo({top:0,behavior:"smooth"});
+    scrollToPageTop();
   }
 
   function openFruitDetail(key) {
@@ -547,7 +666,7 @@
     window.history.pushState({page:"fruit-detail"}, "", "#fruit/" + encodeURIComponent(state.detail.key));
     document.body.classList.remove("menu-open");
     render();
-    window.scrollTo({top:0,behavior:"smooth"});
+    scrollToPageTop();
   }
 
   function openProgress() {
@@ -612,6 +731,7 @@
     state.guideLoadedArc = null;
     state.guideLoading = false;
     state.catalogLoading = value >= 0;
+    invalidatePageViews();
     try { localStorage.setItem(STORAGE_KEY, String(value)); } catch (_) {}
     document.getElementById("progressModal").hidden = true;
     document.body.classList.remove("modal-open");
@@ -646,6 +766,7 @@
     var requestedProgress = state.progress;
     try {
       var payload = await window.GRANDLINE_REPOSITORY.load(state, DATA);
+      if (payload && payload.ok && !payload.empty) invalidatePageViews();
       if (state.progress === requestedProgress) state.catalogLoading = false;
       if (payload && payload.syncedAt) {
         state.cacheEpisodeMax = maxEpisode();
@@ -675,6 +796,7 @@
       var payload = await window.GRANDLINE_REPOSITORY.loadGuide(state, DATA);
       if (payload && payload.ok && !payload.empty) {
         state.guideLoadedArc = arc.id;
+        invalidatePageViews();
         state.cacheEpisodeMax = maxEpisode();
         state.cacheChapterMax = maxChapter();
         scheduleSafeCache();
@@ -781,7 +903,10 @@
       if (state.page === "characters") {
         state.characterLimit += 60;
         if (state.characterLimit > state.characters.length && state.characters.length < state.characterTotal) {
-          window.GRANDLINE_REPOSITORY.loadMoreCharacters(state, DATA).then(render).catch(function () { render(); });
+          window.GRANDLINE_REPOSITORY.loadMoreCharacters(state, DATA).then(function (loaded) {
+            if (loaded) invalidatePageViews();
+            render();
+          }).catch(function () { render(); });
         } else render();
       } else {
         state.guideLimit += 30;
@@ -862,7 +987,7 @@
     restoreRouteFromHash();
     render();
     if (state.page === "fruits" || state.page === "fruit-detail") loadFruitLoreForPage();
-    window.scrollTo({top:0,behavior:"smooth"});
+    scrollToPageTop();
   });
 
   state.progress = readProgress();

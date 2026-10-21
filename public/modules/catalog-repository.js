@@ -185,6 +185,7 @@
   async function loadFruitLore(state, data) {
     if (state.fruitLoreLoaded) return false;
     var fruitLore = await getFruitLore();
+    if (state.fruitLoreLoaded) return false;
     if (Array.isArray(state.fruits) && state.fruits.length) state.fruits = mergeFruitRows(state.fruits, data, fruitLore || {});
     state.fruitLoreLoaded = true;
     return true;
