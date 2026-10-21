@@ -1,0 +1,394 @@
+[
+  {
+    "id": "going-merry",
+    "name": "Going Merry",
+    "aliases": ["Merry Go", "Vogue Merry"],
+    "type": "Caravelle",
+    "firstChapter": 41,
+    "crewId": "straw-hats",
+    "art": "sheep",
+    "color": "#d7b568",
+    "preRevealDescription": "Offert par Kaya, le Going Merry devient le premier navire des Chapeaux de paille. Il permet à l’équipage de quitter le village de Sirop et de poursuivre son voyage.",
+    "descriptionChapter": 430,
+    "description": "Offert par Kaya, le Going Merry accompagne les Chapeaux de paille de leur départ du village de Sirop jusqu’à Enies Lobby. Après avoir sauvé l’équipage une dernière fois, le navire est confié aux flammes lors d’adieux qui marquent durablement ses compagnons.",
+    "achievements": [
+      { "chapter": 41, "text": "Kaya offre le navire à Usopp, qui le remet à Luffy et à ses compagnons pour leur départ." },
+      { "chapter": 302, "text": "Le Going Merry achève la traversée de Skypiea et poursuit la route avec l’équipage." },
+      { "chapter": 351, "text": "À Water Seven, Iceburg annonce que les dégâts subis dépassent les possibilités de réparation." },
+      { "chapter": 430, "text": "Le Going Merry vient secourir l’équipage à Enies Lobby, puis reçoit ses adieux en mer." }
+    ]
+  },
+  {
+    "id": "thousand-sunny",
+    "name": "Thousand Sunny",
+    "aliases": ["Sunny"],
+    "type": "Brigantin",
+    "firstChapter": 436,
+    "crewId": "straw-hats",
+    "art": "lion",
+    "color": "#e7b94f",
+    "description": "Construit par Franky avec l’aide des charpentiers de Galley-La, le Thousand Sunny prend la relève du Going Merry. Son vaste pont et ses installations conçues par Franky accompagnent l’équipage dans la suite de son voyage.",
+    "descriptionChapter": 436,
+    "achievements": [
+      { "chapter": 436, "text": "Franky remet le navire aux Chapeaux de paille, qui le baptisent Thousand Sunny." },
+      { "chapter": 443, "text": "Le Sunny quitte Water Seven avec l’équipage et échappe à la Marine grâce au Coup de Burst." },
+      { "chapter": 603, "text": "Après deux ans d’attente, l’équipage retrouve le Sunny et reprend la mer." }
+    ]
+  },
+  {
+    "id": "red-force",
+    "name": "Red Force",
+    "type": "Navire pirate",
+    "firstChapter": 1,
+    "crewId": "red-hair",
+    "art": "eagle",
+    "color": "#ad5148",
+    "preRevealDescription": "Le Red Force est le navire des Pirates du Roux, aperçu au village de Fuchsia lors des premières années de Luffy.",
+    "descriptionChapter": 580,
+    "description": "Navire des Pirates du Roux, le Red Force transporte l’équipage de Shanks. Il apparaît au village de Fuchsia puis à Marineford, où l’arrivée de ses passagers met fin à la bataille.",
+    "achievements": [
+      { "chapter": 1, "text": "Le navire mouille près du village de Fuchsia pendant le séjour de Shanks et de son équipage." },
+      { "chapter": 580, "text": "Le Red Force arrive à Marineford avec les Pirates du Roux à son bord." }
+    ]
+  },
+  {
+    "id": "oro-jackson",
+    "name": "Oro Jackson",
+    "type": "Navire pirate",
+    "firstChapter": 965,
+    "crewId": "roger",
+    "art": "dragon",
+    "color": "#c28f51",
+    "description": "Construit par Tom à Water Seven, l’Oro Jackson accompagne l’équipage de Roger dans son voyage sur Grand Line. Son nom et son histoire prennent place dans le récit consacré à l’expédition de Roger.",
+    "descriptionChapter": 967,
+    "preRevealDescription": "Un grand navire mène l’équipage de Roger dans son expédition sur Grand Line. Son histoire est révélée au fil du récit consacré au voyage de Roger.",
+    "achievements": [
+      { "chapter": 965, "text": "Le récit du voyage de Roger révèle le navire qui accompagne son équipage." },
+      { "chapter": 967, "text": "L’équipage atteint Laugh Tale après avoir réuni les quatre Ponéglyphes rouges." }
+    ]
+  },
+  {
+    "id": "moby-dick",
+    "name": "Moby Dick",
+    "type": "Navire amiral",
+    "firstChapter": 552,
+    "crewId": "whitebeard",
+    "art": "whale",
+    "color": "#c4c9c1",
+    "description": "Le Moby Dick est le navire amiral de Barbe Blanche. Sa figure de proue en forme de baleine mène la flotte qui traverse la baie de Marineford pour tenter de sauver Ace.",
+    "descriptionChapter": 552,
+    "achievements": [
+      { "chapter": 552, "text": "Le Moby Dick surgit dans la baie de Marineford avec Barbe Blanche et ses alliés." },
+      { "chapter": 576, "text": "Après la bataille, le navire reste au cœur du dernier hommage rendu à Barbe Blanche." }
+    ]
+  },
+  {
+    "id": "polar-tang",
+    "name": "Polar Tang",
+    "type": "Sous-marin",
+    "firstChapter": 498,
+    "crewId": "heart",
+    "art": "submarine",
+    "color": "#e2c453",
+    "description": "Le Polar Tang est le sous-marin des Pirates du Heart. Law et son équipage l’utilisent pour naviguer sous la surface et rejoindre les différentes opérations de leur alliance.",
+    "descriptionChapter": 498,
+    "achievements": [
+      { "chapter": 498, "text": "Le sous-marin accompagne Law et son équipage lors de leur apparition à l’archipel Sabaody." },
+      { "chapter": 700, "text": "Le Polar Tang sert aux déplacements de l’alliance pendant l’opération menée à Punk Hazard." }
+    ]
+  },
+  {
+    "id": "victoria-punk",
+    "name": "Victoria Punk",
+    "type": "Navire pirate",
+    "firstChapter": 498,
+    "crewId": "kid",
+    "art": "skull",
+    "color": "#a94c43",
+    "description": "Le Victoria Punk est le navire des Pirates de Kid. Il transporte l’équipage au fil de ses confrontations avec les grandes puissances du Nouveau Monde.",
+    "descriptionChapter": 498,
+    "achievements": [
+      { "chapter": 498, "text": "Le navire est associé aux Pirates de Kid lors de leur présentation à Sabaody." },
+      { "chapter": 1079, "text": "Après l’affrontement d’Elbaf, le navire est détruit et l’expédition des Pirates de Kid prend fin." }
+    ]
+  },
+  {
+    "id": "thriller-bark",
+    "name": "Thriller Bark",
+    "type": "Navire-île",
+    "firstChapter": 442,
+    "crewId": "moria",
+    "art": "castle",
+    "color": "#847d9d",
+    "description": "Thriller Bark est un immense navire aménagé comme une île et commandé par Gecko Moria. Il abrite un cimetière, des forêts et les installations où l’équipage de Moria prépare son armée de zombies.",
+    "descriptionChapter": 442,
+    "achievements": [
+      { "chapter": 442, "text": "Le navire-île apparaît dans le brouillard et accueille les Chapeaux de paille après leur entrée dans le Triangle Florian." },
+      { "chapter": 488, "text": "Après la défaite de Moria, les ombres volées sont rendues à leurs propriétaires." }
+    ]
+  },
+  {
+    "id": "ark-maxim",
+    "name": "Ark Maxim",
+    "type": "Arche volante",
+    "firstChapter": 274,
+    "affiliationLabel": "Équipage de Dieu Enel",
+    "art": "ark",
+    "color": "#c3ad65",
+    "description": "L’Ark Maxim est le grand navire volant conçu pour Enel. Propulsé par la foudre, il lui permet de quitter Skypiea et de mettre son projet à exécution.",
+    "descriptionChapter": 302,
+    "preRevealDescription": "Enel fait construire une imposante embarcation dont la capacité à voler est révélée au cours de l’affrontement sur Skypiea.",
+    "achievements": [
+      { "chapter": 274, "text": "La construction du navire d’Enel se poursuit sous les yeux des habitants de Skypiea." },
+      { "chapter": 302, "text": "L’Ark Maxim quitte Skypiea et emporte Enel vers la lune." }
+    ]
+  },
+  {
+    "id": "noah",
+    "name": "Noah",
+    "type": "Arche antique",
+    "firstChapter": 606,
+    "affiliationLabel": "Île des Hommes-Poissons",
+    "art": "ark",
+    "color": "#8b9daa",
+    "preRevealDescription": "Une arche gigantesque repose au fond de la mer près de l’île des Hommes-Poissons. Son rôle et son histoire se précisent au cours de l’arc.",
+    "descriptionChapter": 648,
+    "description": "Le Noah est une arche antique d’une taille exceptionnelle, liée à une promesse ancienne. Lorsque sa chute menace l’île des Hommes-Poissons, Shirahoshi appelle les Rois des Mers pour arrêter le navire.",
+    "achievements": [
+      { "chapter": 606, "text": "Les habitants de l’île des Hommes-Poissons découvrent l’arche au fond de la mer." },
+      { "chapter": 648, "text": "Les Rois des Mers retiennent le Noah avant qu’il ne s’écrase sur l’île." }
+    ]
+  },
+  {
+    "id": "flying-dutchman",
+    "name": "Flying Dutchman",
+    "type": "Navire fantôme",
+    "firstChapter": 606,
+    "affiliationLabel": "Pirates du Hollandais volant",
+    "art": "ghost",
+    "color": "#7fa59e",
+    "description": "Le Flying Dutchman est le navire de Vander Decken IX, qui navigue dans les profondeurs autour de l’île des Hommes-Poissons.",
+    "descriptionChapter": 611,
+    "achievements": [
+      { "chapter": 606, "text": "Le navire de Vander Decken IX apparaît dans les eaux profondes près de l’île." },
+      { "chapter": 611, "text": "Vander Decken met son navire au service de l’attaque contre le royaume." }
+    ]
+  },
+  {
+    "id": "perfume-yuda",
+    "name": "Perfume Yuda",
+    "type": "Navire serpent",
+    "firstChapter": 514,
+    "crewId": "kuja",
+    "art": "serpent",
+    "color": "#c0839e",
+    "description": "Le Perfume Yuda est un navire des Kuja, manœuvré par des serpents géants. Boa Hancock l’utilise pour voyager en mer avec ses guerrières.",
+    "descriptionChapter": 514,
+    "achievements": [
+      { "chapter": 514, "text": "Le navire des Kuja rejoint les abords d’Amazon Lily après le sauvetage de Luffy." },
+      { "chapter": 523, "text": "Hancock conduit le navire vers Impel Down afin d’aider Luffy à retrouver Ace." }
+    ]
+  },
+  {
+    "id": "queen-mama-chanter",
+    "name": "Queen Mama Chanter",
+    "type": "Navire amiral",
+    "firstChapter": 834,
+    "crewId": "big-mom",
+    "art": "cake",
+    "color": "#d18183",
+    "description": "Le Queen Mama Chanter est le navire amiral des Pirates de Big Mom. Sa décoration évoque les fêtes de Totto Land et il accompagne la flotte de Charlotte Linlin en mer.",
+    "descriptionChapter": 834,
+    "achievements": [
+      { "chapter": 834, "text": "Le Queen Mama Chanter prend la mer avec Big Mom et sa flotte." },
+      { "chapter": 877, "text": "Le navire poursuit le Thousand Sunny durant la fuite de Totto Land." }
+    ]
+  },
+  {
+    "id": "baratie",
+    "name": "Baratie",
+    "type": "Restaurant flottant",
+    "firstChapter": 42,
+    "affiliationLabel": "Restaurant de Zeff",
+    "art": "fish",
+    "color": "#6e9d90",
+    "description": "Le Baratie est un restaurant flottant dirigé par Zeff. Son bâtiment en forme de poisson accueille les marins et devient le théâtre du recrutement de Sanji.",
+    "descriptionChapter": 68,
+    "preRevealDescription": "Un restaurant flottant accueille les navires de passage au large de l’East Blue. Sanji y travaille aux côtés de Zeff et des cuisiniers du Baratie.",
+    "achievements": [
+      { "chapter": 42, "text": "Le Baratie accueille Luffy, qui vient demander à Sanji de rejoindre son équipage." },
+      { "chapter": 68, "text": "Le restaurant résiste à l’attaque de Krieg et Sanji prend la mer avec Luffy." }
+    ]
+  },
+  {
+    "id": "dreadnaught-sabre",
+    "name": "Dreadnaught Sabre",
+    "type": "Galion de guerre",
+    "firstChapter": 56,
+    "crewId": "krieg",
+    "art": "battleship",
+    "color": "#a87850",
+    "description": "Le Dreadnaught Sabre est le navire de Don Krieg. La flotte l’utilise pour tenter de retourner sur Grand Line après avoir été vaincue par Dracule Mihawk.",
+    "descriptionChapter": 68,
+    "preRevealDescription": "Don Krieg commande une flotte qui cherche à repartir sur Grand Line depuis l’East Blue. Son navire amiral est un imposant galion de guerre.",
+    "achievements": [
+      { "chapter": 56, "text": "La flotte de Krieg revient dans l’East Blue avec son navire amiral gravement endommagé." },
+      { "chapter": 68, "text": "L’affrontement au Baratie met fin au projet de Krieg de reprendre la mer vers Grand Line." }
+    ]
+  },
+  {
+    "id": "big-top",
+    "name": "Big Top",
+    "type": "Navire pirate",
+    "firstChapter": 9,
+    "crewId": "buggy",
+    "art": "circus",
+    "color": "#c36b55",
+    "description": "Le Big Top est le navire des Pirates de Baggy. Son allure de cirque reprend le goût de son capitaine pour le spectacle et les entrées théâtrales.",
+    "descriptionChapter": 9,
+    "achievements": [
+      { "chapter": 9, "text": "Le navire de Baggy apparaît lors de l’attaque du village d’Orange." },
+      { "chapter": 19, "text": "Après la défaite de Baggy, le navire et l’équipage repartent en mer." }
+    ]
+  },
+  {
+    "id": "bezan-black",
+    "name": "Bezan Black",
+    "type": "Navire pirate",
+    "firstChapter": 24,
+    "crewId": "black-cat",
+    "art": "cat",
+    "color": "#687a86",
+    "description": "Le Bezan Black est le navire des Pirates du Chat Noir. Kuro s’en sert pour approcher le village de Sirop dans le cadre de son plan contre Kaya.",
+    "descriptionChapter": 41,
+    "preRevealDescription": "Les Pirates du Chat Noir possèdent un navire qui les conduit jusqu’aux côtes du village de Sirop.",
+    "achievements": [
+      { "chapter": 24, "text": "Les Pirates du Chat Noir mettent le cap sur le village de Sirop sous une fausse identité." },
+      { "chapter": 41, "text": "L’attaque de Kuro échoue et les Pirates du Chapeau de paille repoussent l’équipage sur la côte." }
+    ]
+  },
+  {
+    "id": "shark-superb",
+    "name": "Shark Superb",
+    "type": "Navire pirate",
+    "firstChapter": 69,
+    "crewId": "arlong",
+    "art": "shark",
+    "color": "#49869b",
+    "description": "Le Shark Superb est le navire des Pirates d’Arlong. Sa proue de requin accompagne l’équipage lorsqu’il impose sa domination aux villages voisins de Cocoyashi.",
+    "descriptionChapter": 95,
+    "preRevealDescription": "Arlong et ses hommes disposent d’un navire à proue de requin pour circuler autour de Cocoyashi.",
+    "achievements": [
+      { "chapter": 69, "text": "Arlong et son équipage arrivent dans les eaux de Cocoyashi à bord de leur navire." },
+      { "chapter": 95, "text": "Après la défaite d’Arlong, la menace qui pesait sur les villages de la région prend fin." }
+    ]
+  },
+  {
+    "id": "sexy-foxy",
+    "name": "Sexy Foxy",
+    "type": "Navire pirate",
+    "firstChapter": 305,
+    "crewId": "foxy",
+    "art": "fox",
+    "color": "#b64e4e",
+    "description": "Le Sexy Foxy transporte l’équipage de Foxy, qui préfère les ruses et les Davy Back Fight aux affrontements navals classiques.",
+    "descriptionChapter": 321,
+    "achievements": [
+      { "chapter": 305, "text": "Le navire de Foxy approche Long Ring Long Land avant le défi lancé aux Chapeaux de paille." },
+      { "chapter": 321, "text": "Foxy perd le dernier tour du Davy Back Fight et Chopper reste auprès de son équipage." }
+    ]
+  },
+  {
+    "id": "snapper-head",
+    "name": "Snapper Head",
+    "type": "Navire pirate",
+    "firstChapter": 620,
+    "crewId": "sun-pirates",
+    "art": "sunfish",
+    "color": "#d47948",
+    "description": "Le Snapper Head est l’un des navires associés aux Pirates du Soleil, l’équipage fondé par Fisher Tiger et poursuivi par la Marine.",
+    "descriptionChapter": 630,
+    "preRevealDescription": "Un navire portant le pavillon du Soleil accompagne les hommes-poissons qui ont quitté l’île pour naviguer à la surface.",
+    "achievements": [
+      { "chapter": 620, "text": "Le navire des Pirates du Soleil est aperçu dans le récit consacré à l’histoire de Fisher Tiger et de Jinbe." },
+      { "chapter": 630, "text": "Les révélations sur l’équipage expliquent le symbole du Soleil choisi pour son pavillon." }
+    ]
+  },
+  {
+    "id": "yonta-maria",
+    "name": "Yonta Maria",
+    "type": "Navire amiral",
+    "firstChapter": 775,
+    "crewId": "grand-fleet",
+    "art": "armada",
+    "color": "#75a5a4",
+    "description": "Le Yonta Maria est le navire amiral de la flotte d’Orlumbus. Il rejoint les équipages qui choisissent de soutenir Luffy après la bataille de Dressrosa.",
+    "descriptionChapter": 800,
+    "preRevealDescription": "Un grand navire commandé par Orlumbus apparaît au large de Dressrosa avec sa flotte.",
+    "achievements": [
+      { "chapter": 775, "text": "Orlumbus et ses navires entrent dans la bataille de Dressrosa aux côtés de Luffy." },
+      { "chapter": 800, "text": "Orlumbus rejoint les capitaines qui fondent la Grande Flotte du Chapeau de paille." }
+    ]
+  },
+  {
+    "id": "going-luffy-senpai",
+    "name": "Going Luffy-senpai",
+    "type": "Navire pirate",
+    "firstChapter": 801,
+    "crewId": "grand-fleet",
+    "art": "lion",
+    "color": "#d69b52",
+    "description": "Le Going Luffy-senpai est le navire du Barto Club, l’équipage de Bartolomeo au sein de la Grande Flotte du Chapeau de paille. Son nom rend hommage à Luffy.",
+    "descriptionChapter": 801,
+    "achievements": [
+      { "chapter": 801, "text": "Le Barto Club prend la mer à bord du Going Luffy-senpai après la fondation de la Grande Flotte." }
+    ]
+  },
+  {
+    "id": "mammoth",
+    "name": "Mammoth",
+    "type": "Navire pirate",
+    "firstChapter": 795,
+    "crewId": "beasts",
+    "art": "mammoth",
+    "color": "#8a7157",
+    "description": "Le Mammoth est un navire des Pirates aux Cent Bêtes associé à Jack. Sa figure de proue reprend l’apparence d’un mammouth.",
+    "descriptionChapter": 795,
+    "achievements": [
+      { "chapter": 795, "text": "Le navire de Jack est aperçu au large de Zou au cours de la poursuite de Raizo." }
+    ]
+  },
+  {
+    "id": "nostra-castello",
+    "name": "Nostra Castello",
+    "type": "Navire forteresse",
+    "firstChapter": 829,
+    "crewId": "firetank",
+    "art": "castle",
+    "color": "#9b7b65",
+    "description": "Le Nostra Castello est le navire-forteresse des Firetank, conçu pour protéger la famille de Bege et se transformer en château de combat.",
+    "descriptionChapter": 902,
+    "preRevealDescription": "Capone Bege commande un navire-forteresse dont l’équipage peut se réfugier à l’intérieur.",
+    "achievements": [
+      { "chapter": 829, "text": "Le navire de Bege apparaît dans les eaux de Totto Land." },
+      { "chapter": 902, "text": "Après l’échec du plan visant Big Mom, les Firetank s’échappent à bord de leur navire." }
+    ]
+  },
+  {
+    "id": "saber-of-xebec",
+    "name": "Saber of Xebec",
+    "aliases": ["Sāberu Obu Jībekku"],
+    "type": "Navire amiral",
+    "firstChapter": 1081,
+    "crewId": "blackbeard",
+    "art": "skull",
+    "color": "#716584",
+    "preRevealDescription": "Un navire de guerre des Pirates de Barbe Noire approche Amazon Lily. Le nom et les caractéristiques de leur navire amiral restent à confirmer à ce point du récit.",
+    "descriptionChapter": 1081,
+    "description": "Le Saber of Xebec est le nom attribué au navire amiral des Pirates de Barbe Noire. Leur flotte compte plusieurs navires de guerre, dont l’apparence varie selon les membres qui les commandent.",
+    "achievements": [
+      { "chapter": 1059, "text": "Un navire de guerre des Pirates de Barbe Noire approche Amazon Lily." },
+      { "chapter": 1081, "text": "Le récit montre plusieurs navires utilisés par les capitaines titanesques de l’équipage." }
+    ]
+  }
+]

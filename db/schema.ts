@@ -39,6 +39,19 @@ export const devilFruits = sqliteTable("devil_fruits", {
   updatedAt: text("updated_at").notNull(),
 }, (table) => [index("devil_fruits_first_arc_idx").on(table.firstArcId), index("devil_fruits_name_idx").on(table.name)]);
 
+export const ships = sqliteTable("ships", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  type: text("type"),
+  imageUrl: text("image_url"),
+  firstChapter: integer("first_chapter"),
+  firstArcId: text("first_arc_id").references(() => arcs.id),
+  affiliation: text("affiliation"),
+  sourceUrl: text("source_url"),
+  sourcePayload: text("source_payload").notNull().default("{}"),
+  updatedAt: text("updated_at").notNull(),
+}, (table) => [index("ships_first_arc_idx").on(table.firstArcId), index("ships_name_idx").on(table.name)]);
+
 export const affiliations = sqliteTable("affiliations", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),

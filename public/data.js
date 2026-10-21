@@ -35,8 +35,8 @@ window.GRANDLINE_DATA = {
     {id:"elbaph",name:"Elbaph",saga:"Saga finale",chapterStart:1126,chapterEnd:1195,episodeStart:1156,episodeEnd:1180,volumeStart:112,volumeEnd:115}
   ],
   crews: [
-    {id:"straw-hats",name:"Pirates au Chapeau de paille",knownAt:0,tag:"Équipage pirate",description:"Un petit équipage qui grandit au fil du voyage, réuni autour d’un même rêve.",members:[
-      ["Monkey D. Luffy","Capitaine",0],["Roronoa Zoro","Combattant",0],["Nami","Navigatrice",1],["Usopp","Tireur d’élite",2],["Sanji","Cuisinier",3],["Tony Tony Chopper","Médecin",9],["Nico Robin","Archéologue",10],["Franky","Charpentier",15],["Brook","Musicien",17],["Jinbe","Timonnier",30]
+    {id:"straw-hats",name:"Pirates au Chapeau de paille",knownAt:0,tag:"Équipage pirate",description:"Un équipage mené par Luffy, formé au fil des rencontres de l’East Blue puis de Grand Line. Ses compagnons poursuivent chacun un rêve personnel et choisissent de faire route ensemble.",members:[
+      ["Monkey D. Luffy","Capitaine",0],["Roronoa Zoro","Combattant",0],["Nami","Navigatrice",4],["Usopp","Tireur d’élite",2],["Sanji","Cuisinier",3],["Tony Tony Chopper","Médecin",9],["Nico Robin","Archéologue",11],["Franky","Charpentier",16],["Brook","Musicien",17],["Jinbe","Timonnier",30]
     ]},
     {id:"red-hair",name:"Pirates du Roux",knownAt:0,tag:"Équipage pirate",description:"L’équipage de Shanks, rencontré dès les premiers souvenirs de l’aventure.",members:[
       ["Shanks","Capitaine",0],["Benn Beckman","Second",0],["Lucky Roux","Combattant",0],["Yasopp","Tireur d’élite",0]
@@ -53,7 +53,7 @@ window.GRANDLINE_DATA = {
     {id:"arlong",name:"Pirates d’Arlong",knownAt:4,tag:"Équipage pirate",description:"Un groupe de pirates hommes-poissons établi dans l’East Blue.",members:[
       ["Arlong","Capitaine",4],["Hatchan","Combattant",4],["Kuroobi","Combattant",4],["Chew","Combattant",4]
     ]},
-    {id:"baroque",name:"Baroque Works",knownAt:6,tag:"Organisation",description:"Un réseau d’agents qui utilisent des noms de code et opèrent en secret.",members:[
+    {id:"baroque",name:"Baroque Works",knownAt:7,tag:"Organisation",description:"Un réseau d’agents qui utilisent des noms de code et opèrent en secret.",members:[
       ["Crocodile","Mr. 0",10],["Nico Robin","Agent",10],["Daz Bones","Mr. 1",10],["Zala","Miss Doublefinger",10],["Bentham","Mr. 2",10],["Mikita","Miss Valentine",10],["Gem","Mr. 5",10],["Nefertari Vivi","Agent",6]
     ]},
     {id:"giant-warriors",name:"Pirates guerriers géants",knownAt:8,tag:"Équipage pirate",description:"Deux capitaines géants se retrouvent au cœur d’un duel ancien.",members:[
@@ -86,8 +86,8 @@ window.GRANDLINE_DATA = {
     {id:"big-mom",name:"Pirates de Big Mom",knownAt:29,tag:"Équipage pirate",description:"Une vaste famille pirate installée sur un archipel composé de plusieurs îles.",members:[
       ["Charlotte Linlin","Capitaine",29],["Charlotte Katakuri","Commandant",29],["Charlotte Smoothie","Commandante",29],["Charlotte Cracker","Commandant",29],["Charlotte Perospero","Officier",29],["Charlotte Pudding","Membre de la famille",29]
     ]},
-    {id:"beasts",name:"Pirates aux Cent Bêtes",knownAt:30,tag:"Équipage pirate",description:"Une flotte de combattants regroupés sous le pavillon de Kaido.",members:[
-      ["Kaido","Capitaine",30],["King","Calamité",30],["Queen","Calamité",30],["Jack","Calamité",30],["Ulti","Tête d’affiche",30],["Page One","Tête d’affiche",30],["Who's-Who","Tête d’affiche",30],["Sasaki","Tête d’affiche",30],["Black Maria","Tête d’affiche",30],["X Drake","Tête d’affiche",30]
+    {id:"beasts",name:"Pirates aux Cent Bêtes",knownAt:25,preRevealName:"Forces de Kaido",nameRevealChapter:808,tag:"Équipage pirate",description:"Une flotte de combattants regroupés sous le pavillon de Kaido.",descriptionChapter:909,preRevealDescription:"À Punk Hazard, l’alliance formée avec Law vise Kaido, l’un des quatre Empereurs, en s’attaquant à l’approvisionnement en SMILE. Le récit indique que ses forces comptent déjà plus de 500 utilisateurs de Zoan artificiels. Le nom officiel du groupe et sa hiérarchie ne sont pas encore précisés.",middleRevealChapter:808,middleRevealDescription:"À Zou, le groupe est nommé Pirates aux Cent Bêtes. Jack, l’un des trois Calamités et un homme de confiance de Kaido, mène l’assaut contre les Minks avec une arme toxique; sa prime d’un milliard de berrys est révélée. Sheepshead et Ginrummy apparaissent parmi les cadres de l’équipage.",members:[
+      ["Kaido","Empereur (Yonkō)",25],["Sheepshead","Homme de Kaido",26],["Ginrummy","Officière",26],["King","Calamité",30],["Queen","Calamité",30],["Jack","Calamité",27],["Ulti","Tête d’affiche",30],["Page One","Tête d’affiche",30],["Who's-Who","Tête d’affiche",30],["Sasaki","Tête d’affiche",30],["Black Maria","Tête d’affiche",30],["X Drake","Tête d’affiche",30]
     ]},
     {id:"roger",name:"Équipage de Roger",knownAt:6,tag:"Équipage pirate",description:"L’équipage du pirate qui atteignit la dernière île de Grand Line.",members:[
       ["Gol D. Roger","Capitaine",6],["Silvers Rayleigh","Second",18],["Shanks","Apprenti",30],["Baggy","Apprenti",30],["Kozuki Oden","Membre",30],["Scopper Gaban","Membre",32],["Crocus","Membre",30]
@@ -113,8 +113,8 @@ window.GRANDLINE_DATA = {
     {id:"bonney",name:"Pirates de Bonney",knownAt:18,tag:"Équipage pirate",description:"L’équipage de Jewelry Bonney.",members:[
       ["Jewelry Bonney","Capitaine",18],["Gyogyo","Membre",18],["Tritto","Membre",18]
     ]},
-    {id:"cross-guild",name:"Cross Guild",knownAt:31,tag:"Alliance",description:"Une organisation pirate fondée par d’anciens adversaires et alliés.",members:[
-      ["Baggy","Figure de proue",31],["Crocodile","Fondateur",31],["Dracule Mihawk","Fondateur",31]
+    {id:"cross-guild",name:"Cross Guild",knownAt:30,tag:"Alliance",description:"Une organisation pirate fondée par d’anciens adversaires et alliés.",members:[
+      ["Baggy","Figure de proue",30],["Crocodile","Fondateur",30],["Dracule Mihawk","Fondateur",30]
     ]}
   ],
   characters: [
@@ -152,13 +152,13 @@ window.GRANDLINE_DATA = {
   systems: [
     {id:"world-gov",name:"Gouvernement mondial",kind:"Pouvoir politique",knownAt:0,description:"Une coalition de royaumes qui dirige l’ordre politique mondial et dont la Marine est le principal bras armé.",status:"active",members:[]},
     {id:"marines",name:"La Marine",kind:"Force militaire",knownAt:0,description:"La principale force navale chargée de faire appliquer la loi au nom du Gouvernement mondial.",status:"active",members:[
-      ["Morgan","Colonel",0],["Smoker","Colonel",5],["Tashigi","Lieutenante",5],["Monkey D. Garp","Vice-amiral",16],["Sengoku","Amiral en chef",21],["Borsalino","Amiral",21],["Sakazuki","Amiral",21],["Issho","Amiral",26],["Kuzan","Amiral",21],["Koby","Officier",0]
+      ["Morgan","Colonel",0],["Nezumi","Colonel",4],["Smoker","Colonel",5],["Tashigi","Lieutenante",5],["Hina","Officière",10],["Monkey D. Garp","Vice-amiral",16],["Sengoku","Amiral en chef",21],["Borsalino","Amiral",21],["Tsuru","Vice-amirale",21],["John Giant","Vice-amiral",21],["Momonga","Vice-amiral",21],["Onigumo","Vice-amiral",21],["Doberman","Vice-amiral",21],["Yamakaji","Vice-amiral",21],["Dalmatian","Vice-amiral",21],["Strawberry","Vice-amiral",21],["Sakazuki","Amiral",21],["Koby","Recrue",0],["Helmeppo","Recrue",0],["Vergo","Vice-amiral",25],["Bastille","Vice-amiral",26],["Maynard","Vice-amiral",26],["Issho","Amiral",26],["Ryokugyu","Amiral",29],["X Drake","Officier",29],["Prince Grus","Officier",29]
     ]},
     {id:"ranks",name:"Grades de la Marine",kind:"Hiérarchie",knownAt:0,description:"Les grades organisent le commandement, des postes de terrain jusqu’au quartier général.",status:"active",ranks:[
       ["Matelot","Équipage et opérations navales",0],["Sergent","Encadrement des petites unités",0],["Lieutenant","Commandement intermédiaire",0],["Capitaine","Commandement d’une unité",0],["Commodore","Commandement supérieur",3],["Contre-amiral","Officier supérieur",5],["Vice-amiral","Haut commandement",5],["Amiral","Commandement de premier rang",21],["Amiral en chef","Direction de la Marine",21]
     ]},
-    {id:"warlords",name:"Les Sept Grands Corsaires",kind:"Statut gouvernemental",knownAt:3,description:"Un système qui accordait une reconnaissance officielle à certains pirates en échange de services rendus au Gouvernement.",status:"active",statusHistory:[{from:0,label:"Système en vigueur"},{from:30,label:"Système aboli"}],members:[
-      ["Dracule Mihawk",3],["Crocodile",10],["Boa Hancock",19],["Jinbe",21],["Don Quichotte Doflamingo",26],["Bartholomew Kuma",19],["Gecko Moria",17]
+    {id:"warlords",name:"Les Sept Grands Corsaires",kind:"Statut gouvernemental",knownAt:3,description:"Un système qui accordait une reconnaissance officielle à certains pirates en échange de services rendus au Gouvernement. La composition évolue au rythme des nominations, départs et révocations.",status:"active",statusHistory:[{from:0,label:"Système en vigueur"},{from:29,label:"Système aboli"}],members:[
+      ["Dracule Mihawk","Corsaire",3,29],["Crocodile","Corsaire",10,11],["Don Quichotte Doflamingo","Corsaire",11,27],["Gecko Moria","Corsaire",17,22],["Bartholomew Kuma","Corsaire",17,29],["Boa Hancock","Corsaire",19,29],["Marshall D. Teach","Corsaire",20,22],["Jinbe","Corsaire",20,22],["Trafalgar D. Water Law","Corsaire",25,27],["Buggy","Corsaire",26,29],["Edward Weevil","Corsaire",27,29]
     ]},
     {id:"cipher-pol",name:"Cipher Pol",kind:"Renseignement",knownAt:14,description:"Un réseau d’unités de renseignement du Gouvernement mondial. Les divisions portent des numéros.",status:"active",members:[
       ["Rob Lucci","Agent du Cipher Pol",14],["Kaku","Agent du Cipher Pol",14],["Spandam","Directeur du Cipher Pol",14]
@@ -176,8 +176,8 @@ window.GRANDLINE_DATA = {
     {id:"revolutionaries",name:"Armée révolutionnaire",kind:"Mouvement",knownAt:16,description:"Un mouvement opposé au pouvoir politique établi du Gouvernement mondial.",status:"active",members:[
       ["Monkey D. Dragon","Chef",16],["Sabo","Chef d’état-major",22],["Emporio Ivankov","Commandant",21],["Koala","Officière",22]
     ]},
-    {id:"sword",name:"SWORD",kind:"Unité de la Marine",knownAt:30,description:"Une unité spéciale de la Marine dont les membres agissent avec une autonomie particulière.",status:"active",members:[
-      ["X Drake","Officier",30],["Koby","Officier",30],["Helmeppo","Officier",30],["Prince Grus","Officier",30]
+    {id:"sword",name:"SWORD",kind:"Unité de la Marine",knownAt:29,description:"Une unité spéciale de la Marine dont les membres agissent avec une autonomie particulière.",status:"active",members:[
+      ["X Drake","Officier",29],["Koby","Officier",29],["Helmeppo","Officier",29],["Prince Grus","Officier",29]
     ]},
     {id:"impel-down",name:"Impel Down",kind:"Système pénitentiaire",knownAt:20,description:"La grande prison sous-marine du Gouvernement mondial, organisée en niveaux de sécurité.",status:"active",members:[
       ["Magellan","Directeur",20],["Hannyabal","Directeur adjoint",20]

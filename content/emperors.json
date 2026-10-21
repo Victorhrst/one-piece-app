@@ -1,0 +1,10 @@
+[
+  { "name": "Shanks", "from": 432 },
+  { "name": "Edward Newgate", "from": 432, "to": 576 },
+  { "name": "Marshall D. Teach", "from": 650 },
+  { "name": "Charlotte Linlin", "from": 651, "to": 1052 },
+  { "name": "Kaido", "from": 698, "to": 1052 },
+  { "name": "Monkey D. Luffy", "from": 903, "to": 1052, "title": "Cinquième Empereur (titre de presse)" },
+  { "name": "Monkey D. Luffy", "from": 1053, "title": "Empereur (Yonkō)" },
+  { "name": "Buggy", "from": 1053 }
+]

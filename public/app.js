@@ -3,7 +3,7 @@
 
   var DATA = window.GRANDLINE_DATA;
   var STORAGE_KEY = "grand-line-progress-v1";
-  var CACHE_KEY = "grand-line-safe-cache-v1";
+  var CACHE_KEY = "grand-line-safe-cache-v3";
   var state = {
     page: "home",
     detail: null,
@@ -13,8 +13,10 @@
     arcs: [],
     swords: [],
     crews: [],
+    ships: [],
     characters: [],
     fruits: [],
+    fruitLoreLoaded: false,
     characterTotal: 0,
     unclassifiedFruits: 0,
     cacheEpisodeMax: 0,
@@ -26,8 +28,13 @@
     guideLimit: 30,
     characterLimit: 90,
     query: "",
+    characterSort: "alpha",
+    characterEmperorsOnly: false,
+    crewSort: "alpha",
+    crewEmperorsOnly: false,
     rarity: "Toutes",
     toastTimer: null,
+    catalogLoading: false,
     loading: false
   };
 
@@ -43,11 +50,20 @@
   function readCache() {
     try {
       var cache = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
-      if (!cache || cache.version !== 1) return;
+      if (!cache || cache.version !== 3) return;
       state.episodes = Array.isArray(cache.episodes) ? cache.episodes : [];
       state.chapters = Array.isArray(cache.chapters) ? cache.chapters : [];
-      state.characters = Array.isArray(cache.characters) ? cache.characters : [];
-      state.characterTotal = state.characters.length;
+      var cachedCharacterArc = Number(cache.characterArc);
+      state.characters = Number.isInteger(cachedCharacterArc) && cachedCharacterArc <= state.progress && Array.isArray(cache.characters) ? cache.characters : [];
+      var cachedShipArc = Number(cache.shipArc);
+      state.ships = Number.isInteger(cachedShipArc) && cachedShipArc <= state.progress && Array.isArray(cache.ships) ? cache.ships : [];
+      var cachedCrewArc = Number(cache.crewArc);
+      state.crews = Number.isInteger(cachedCrewArc) && cachedCrewArc <= state.progress && Array.isArray(cache.crews) ? cache.crews : [];
+      var cachedFruitArc = Number(cache.fruitArc);
+      state.fruits = Number.isInteger(cachedFruitArc) && cachedFruitArc <= state.progress && Array.isArray(cache.fruits) ? cache.fruits : [];
+      state.unclassifiedFruits = Number.isInteger(cachedFruitArc) && cachedFruitArc <= state.progress ? Number(cache.unclassifiedFruits) || 0 : 0;
+      state.fruitLoreLoaded = Number.isInteger(cachedFruitArc) && cachedFruitArc <= state.progress && cache.fruitLoreLoaded === true;
+      state.characterTotal = Number(cache.characterTotal) || state.characters.length;
       state.cacheEpisodeMax = Number(cache.episodeMax) || 0;
       state.cacheChapterMax = Number(cache.chapterMax) || 0;
       state.syncedAt = cache.syncedAt || null;
@@ -113,6 +129,11 @@
     return availableArcs()[state.progress] || DATA.arcs[DATA.arcs.length - 1];
   }
 
+  function emperorsRevealed() {
+    var arc = progressArc();
+    return Boolean(arc && Number(arc.chapterEnd) >= 432);
+  }
+
   function maxEpisode() {
     var arc = progressArc();
     return arc ? arc.episodeEnd : 0;
@@ -146,15 +167,29 @@
     });
     try {
       localStorage.setItem(CACHE_KEY, JSON.stringify({
-        version: 1,
+        version: 3,
         episodeMax: epLimit,
         chapterMax: chLimit,
+        characterArc: state.progress,
+        shipArc: state.progress,
         episodes: safeEpisodes,
         chapters: safeChapters,
-        characters: state.characters.slice(0, 300),
+        characters: state.characters.slice(0, 500),
+        characterTotal: state.characterTotal,
+        ships: state.ships.filter(function (item) { return item.knownAt !== null && item.knownAt <= state.progress; }),
+        crewArc: state.progress,
+        fruitArc: state.progress,
+        crews: state.crews.filter(function (item) { return Number.isInteger(Number(item.knownAt)) && Number(item.knownAt) <= state.progress; }),
+        fruits: state.fruits.filter(function (item) { return Number.isInteger(Number(item.firstSeen)) && Number(item.firstSeen) <= state.progress; }),
+        unclassifiedFruits: state.progress >= 0 ? state.unclassifiedFruits : 0,
+        fruitLoreLoaded: state.fruitLoreLoaded === true,
         syncedAt: state.syncedAt
       }));
     } catch (_) {}
+  }
+
+  function scheduleSafeCache() {
+    window.setTimeout(safeCache, 0);
   }
 
   function escapeHtml(value) {
@@ -174,6 +209,9 @@
   // La source API emploie parfois des noms complets avant que le manga ne les révèle.
   // Ces alias conservent l'entrée dans l'index sans exposer une identité prématurément.
   var identityReveals = [
+    {key:"buggy",aliases:["Baggy","Buggy"],revealAt:1,earlyName:"Baggy",lateName:"Baggy"},
+    {key:"kureha",aliases:["Dr. Kureha","Kureha"],revealAt:9,earlyName:"Dr. Kureha",lateName:"Dr. Kureha"},
+    {key:"bellemere",aliases:["Bellemere","Bell-mère","Bell-mere"],revealAt:4,earlyName:"Bellemere",lateName:"Bellemere"},
     {key:"luffy",aliases:["Monkey D. Luffy","Luffy"],revealAt:16,earlyName:"Luffy",lateName:"Monkey D. Luffy"},
     {key:"vivi",aliases:["Nefertari Vivi","Vivi","Miss Wednesday"],revealAt:10,earlyName:"Miss Wednesday",lateName:"Nefertari Vivi"},
     {key:"robin",aliases:["Nico Robin","Miss All Sunday"],revealAt:10,earlyName:"Miss All Sunday",lateName:"Nico Robin"},
@@ -182,6 +220,7 @@
     {key:"teach",aliases:["Marshall D. Teach","Teach","Blackbeard","Barbe Noire"],revealAt:16,earlyName:"Barbe Noire",lateName:"Marshall D. Teach"},
     {key:"ace",aliases:["Portgas D. Ace","Ace"],revealAt:21,earlyName:"Ace",lateName:"Portgas D. Ace"},
     {key:"law",aliases:["Trafalgar D. Water Law","Trafalgar Law"],revealAt:26,earlyName:"Trafalgar Law",lateName:"Trafalgar Law"},
+    {key:"doflamingo",aliases:["Donquixote Doflamingo","Don Quichotte Doflamingo","Doflamingo"],revealAt:11,earlyName:"Doflamingo",lateName:"Don Quichotte Doflamingo"},
     {key:"sanji",aliases:["Vinsmoke Sanji","Sanji"],revealAt:28,earlyName:"Sanji",lateName:"Vinsmoke Sanji"},
     {key:"momonosuke",aliases:["Kozuki Momonosuke","Momonosuke"],revealAt:30,earlyName:"Momonosuke",lateName:"Kozuki Momonosuke"},
     {key:"kuzan",aliases:["Kuzan","Aokiji"],revealAt:31,earlyName:"Aokiji",lateName:"Kuzan"}
@@ -369,7 +408,7 @@
 
 
   function pageTitle(page) {
-    var titles = {home:"ACCUEIL",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES", "crew-detail":"FICHE D’ÉQUIPAGE",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES",characters:"PERSONNAGES", "character-detail":"FICHE PERSONNAGE",fruits:"FRUITS DU DÉMON",sources:"SOURCES"};
+    var titles = {home:"ACCUEIL",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES", "crew-detail":"FICHE D’ÉQUIPAGE",ships:"BATEAUX", "ship-detail":"FICHE DE BATEAU",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES",characters:"PERSONNAGES", "character-detail":"FICHE PERSONNAGE",fruits:"FRUITS DU DÉMON", "fruit-detail":"FICHE FRUIT DU DÉMON",sources:"SOURCES"};
     return titles[page] || "ACCUEIL";
   }
 
@@ -384,13 +423,23 @@
       state.detail = { type:"crew", key:decodeRoutePart(route.slice("#equipage/".length)) };
       return;
     }
+    if (route.indexOf("#bateau/") === 0) {
+      state.page = "ship-detail";
+      state.detail = { type:"ship", key:decodeRoutePart(route.slice("#bateau/".length)) };
+      return;
+    }
     if (route.indexOf("#personnage/") === 0) {
       state.page = "character-detail";
       state.detail = { type:"character", key:decodeRoutePart(route.slice("#personnage/".length)), returnCrew:window.history.state && window.history.state.returnCrew || null };
       return;
     }
+    if (route.indexOf("#fruit/") === 0) {
+      state.page = "fruit-detail";
+      state.detail = { type:"fruit", key:decodeRoutePart(route.slice("#fruit/".length)) };
+      return;
+    }
     var page = route.indexOf("#page/") === 0 ? decodeRoutePart(route.slice("#page/".length)) : "home";
-    var allowed = ["home","guide","crews","government","blades","characters","fruits","sources"];
+    var allowed = ["home","guide","crews","ships","government","blades","characters","fruits","sources"];
     state.page = allowed.indexOf(page) >= 0 ? page : "home";
     state.detail = null;
   }
@@ -402,16 +451,20 @@
       : page === "guide" ? window.GRANDLINE_PAGES.renderGuide()
       : page === "crews" ? window.GRANDLINE_PAGES.renderCrews()
       : page === "crew-detail" ? window.GRANDLINE_PAGES.renderCrewDetail(state.detail && state.detail.key)
+      : page === "ships" ? window.GRANDLINE_PAGES.renderShips()
+      : page === "ship-detail" ? window.GRANDLINE_PAGES.renderShipDetail(state.detail && state.detail.key)
       : page === "government" ? window.GRANDLINE_PAGES.renderGovernment()
       : page === "blades" ? window.GRANDLINE_PAGES.renderBlades()
       : page === "characters" ? window.GRANDLINE_PAGES.renderCharacters()
       : page === "character-detail" ? window.GRANDLINE_PAGES.renderCharacterDetail(state.detail && state.detail.key, state.detail && state.detail.returnCrew)
       : page === "fruits" ? window.GRANDLINE_PAGES.renderFruits()
+      : page === "fruit-detail" ? window.GRANDLINE_PAGES.renderFruitDetail(state.detail && state.detail.key)
       : window.GRANDLINE_PAGES.renderSources();
     content.innerHTML = html;
     document.getElementById("crumbCurrent").textContent = pageTitle(page);
+    var activePage = page === "ship-detail" ? "ships" : page === "crew-detail" ? "crews" : page === "character-detail" ? "characters" : page === "fruit-detail" ? "fruits" : page;
     document.querySelectorAll(".nav-item[data-page]").forEach(function (button) {
-      button.classList.toggle("active", button.getAttribute("data-page") === page);
+      button.classList.toggle("active", button.getAttribute("data-page") === activePage);
     });
     syncLine();
   }
@@ -449,6 +502,16 @@
     render();
     window.scrollTo({top:0,behavior:"smooth"});
     if (page === "guide") loadGuideCatalog(false);
+    if (page === "fruits") loadFruitLoreForPage();
+  }
+
+  function loadFruitLoreForPage() {
+    if (state.progress === null || state.progress < 0 || (state.page !== "fruits" && state.page !== "fruit-detail")) return;
+    window.GRANDLINE_REPOSITORY.loadFruitLore(state, DATA).then(function (updated) {
+      if (!updated) return;
+      if (state.page === "fruits" || state.page === "fruit-detail") render();
+      scheduleSafeCache();
+    }).catch(function () {});
   }
 
   function openCrewDetail(key) {
@@ -460,10 +523,28 @@
     window.scrollTo({top:0,behavior:"smooth"});
   }
 
+  function openShipDetail(key) {
+    state.page = "ship-detail";
+    state.detail = { type:"ship", key:String(key || "") };
+    window.history.pushState({page:"ship-detail"}, "", "#bateau/" + encodeURIComponent(state.detail.key));
+    document.body.classList.remove("menu-open");
+    render();
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+
   function openCharacterDetail(key, returnCrew) {
     state.page = "character-detail";
     state.detail = { type:"character", key:String(key || ""), returnCrew:returnCrew || null };
     window.history.pushState({page:"character-detail",returnCrew:returnCrew || null}, "", "#personnage/" + encodeURIComponent(state.detail.key));
+    document.body.classList.remove("menu-open");
+    render();
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+
+  function openFruitDetail(key) {
+    state.page = "fruit-detail";
+    state.detail = { type:"fruit", key:String(key || "") };
+    window.history.pushState({page:"fruit-detail"}, "", "#fruit/" + encodeURIComponent(state.detail.key));
     document.body.classList.remove("menu-open");
     render();
     window.scrollTo({top:0,behavior:"smooth"});
@@ -511,7 +592,26 @@
     }
     var previous = state.progress;
     state.progress = value;
+    if (!emperorsRevealed()) {
+      state.characterEmperorsOnly = false;
+      state.crewEmperorsOnly = false;
+    }
+    // Clear the previous arc before the first render. If the user moves
+    // backwards, no old profile or affiliation may flash while the next query loads.
+    state.characters = [];
+    state.characterTotal = 0;
+    state.crews = [];
+    state.ships = [];
+    state.fruits = [];
+    state.unclassifiedFruits = 0;
+    state.fruitLoreLoaded = false;
+    state.episodes = [];
+    state.chapters = [];
+    state.cacheEpisodeMax = 0;
+    state.cacheChapterMax = 0;
     state.guideLoadedArc = null;
+    state.guideLoading = false;
+    state.catalogLoading = value >= 0;
     try { localStorage.setItem(STORAGE_KEY, String(value)); } catch (_) {}
     document.getElementById("progressModal").hidden = true;
     document.body.classList.remove("modal-open");
@@ -543,17 +643,23 @@
 
   async function loadLocalCatalog(showErrors) {
     if (state.progress === null || state.progress < 0) return null;
+    var requestedProgress = state.progress;
     try {
       var payload = await window.GRANDLINE_REPOSITORY.load(state, DATA);
+      if (state.progress === requestedProgress) state.catalogLoading = false;
       if (payload && payload.syncedAt) {
         state.cacheEpisodeMax = maxEpisode();
         state.cacheChapterMax = maxChapter();
-        safeCache();
+        scheduleSafeCache();
       }
       render();
       if (state.page === "guide") loadGuideCatalog(false);
       return payload;
     } catch (error) {
+      if (state.progress === requestedProgress) {
+        state.catalogLoading = false;
+        render();
+      }
       if (showErrors) toast('Les fiches enregistrées ne sont pas joignables pour le moment.');
       return null;
     }
@@ -571,7 +677,7 @@
         state.guideLoadedArc = arc.id;
         state.cacheEpisodeMax = maxEpisode();
         state.cacheChapterMax = maxChapter();
-        safeCache();
+        scheduleSafeCache();
       }
       return payload;
     } catch (error) {
@@ -595,12 +701,14 @@
       state.guideLoadedArc = null;
       await loadLocalCatalog(false);
       state.syncedAt = result.syncedAt || new Date().toISOString();
-      safeCache();
+      scheduleSafeCache();
       render();
       if (showToast !== false) {
         var counts = result.counts || {};
-        var total = Object.keys(counts).reduce(function (sum, key) { return sum + (Number(counts[key]) || 0); }, 0);
-        toast(result.skipped ? 'Les données viennent d’être actualisées.' : 'Mise à jour terminée : ' + total + ' fiches de référence importées.');
+        var keys = Object.keys(counts);
+        var total = keys.filter(function (key) { return !/Images$/i.test(key); }).reduce(function (sum, key) { return sum + (Number(counts[key]) || 0); }, 0);
+        var images = keys.filter(function (key) { return /Images$/i.test(key); }).reduce(function (sum, key) { return sum + (Number(counts[key]) || 0); }, 0);
+        toast(result.skipped ? 'Les données viennent d’être actualisées.' : 'Mise à jour terminée : ' + total + ' fiches et ' + images + ' visuels indexés.');
       }
       if (result.errors && result.errors.length) {
         document.getElementById('syncLine').textContent += ' · Sources indisponibles : ' + result.errors.join(', ') + '.';
@@ -618,11 +726,11 @@
     setPage("sources");
   }
 
-  var pageContext = { DATA:DATA, state:state, progressArc:progressArc, visibleEpisodes:visibleEpisodes, visibleChapters:visibleChapters, escapeHtml:escapeHtml, stripMarks:stripMarks, safeCharacterName:safeCharacterName, identityKey:identityKey, episodeNumber:episodeNumber, chapterNumber:chapterNumber, chapterValues:chapterValues, formatChapterValues:formatChapterValues, volumeText:volumeText, arcLabelForEpisode:arcLabelForEpisode, filtered:filtered, heading:heading, progressHint:progressHint, plain:plain };
-  window.GRANDLINE_PAGES = Object.assign({}, window.GRANDLINE_PAGE_FACTORIES.home(pageContext), window.GRANDLINE_PAGE_FACTORIES.guide(pageContext), window.GRANDLINE_PAGE_FACTORIES.crews(pageContext), window.GRANDLINE_PAGE_FACTORIES.government(pageContext), window.GRANDLINE_PAGE_FACTORIES.blades(pageContext), window.GRANDLINE_PAGE_FACTORIES.characters(pageContext), window.GRANDLINE_PAGE_FACTORIES.fruits(pageContext), window.GRANDLINE_PAGE_FACTORIES.sources(pageContext));
+  var pageContext = { DATA:DATA, state:state, progressArc:progressArc, emperorsRevealed:emperorsRevealed, visibleEpisodes:visibleEpisodes, visibleChapters:visibleChapters, escapeHtml:escapeHtml, stripMarks:stripMarks, safeCharacterName:safeCharacterName, identityKey:identityKey, episodeNumber:episodeNumber, chapterNumber:chapterNumber, chapterValues:chapterValues, formatChapterValues:formatChapterValues, volumeText:volumeText, arcLabelForEpisode:arcLabelForEpisode, filtered:filtered, heading:heading, progressHint:progressHint, plain:plain };
+  window.GRANDLINE_PAGES = Object.assign({}, window.GRANDLINE_PAGE_FACTORIES.home(pageContext), window.GRANDLINE_PAGE_FACTORIES.guide(pageContext), window.GRANDLINE_PAGE_FACTORIES.crews(pageContext), window.GRANDLINE_PAGE_FACTORIES.ships(pageContext), window.GRANDLINE_PAGE_FACTORIES.government(pageContext), window.GRANDLINE_PAGE_FACTORIES.blades(pageContext), window.GRANDLINE_PAGE_FACTORIES.characters(pageContext), window.GRANDLINE_PAGE_FACTORIES.fruits(pageContext), window.GRANDLINE_PAGE_FACTORIES.sources(pageContext));
 
   document.addEventListener("click", function (event) {
-    var target = event.target.closest("button,[data-page]");
+    var target = event.target.closest("button,[data-page],[data-open-fruit],[data-open-ship]");
     if (!target) return;
     if (target.id === "updateButton") {
       updateLive(true);
@@ -644,8 +752,16 @@
       openCrewDetail(target.getAttribute("data-open-crew"));
       return;
     }
+    if (target.hasAttribute("data-open-ship")) {
+      openShipDetail(target.getAttribute("data-open-ship"));
+      return;
+    }
     if (target.hasAttribute("data-open-character")) {
       openCharacterDetail(target.getAttribute("data-open-character"),target.getAttribute("data-return-crew"));
+      return;
+    }
+    if (target.hasAttribute("data-open-fruit")) {
+      openFruitDetail(target.getAttribute("data-open-fruit"));
       return;
     }
     if (target.hasAttribute("data-action")) {
@@ -696,7 +812,7 @@
       global.setSelectionRange(state.query.length, state.query.length);
       return;
     }
-    if (["guideSearch","bladeSearch","characterSearch"].indexOf(event.target.id) !== -1) {
+    if (["guideSearch","bladeSearch","characterSearch","crewSearch"].indexOf(event.target.id) !== -1) {
       state.query = event.target.value;
       if (state.page === "guide") state.guideLimit = 30;
       if (state.page === "characters") state.characterLimit = 90;
@@ -707,6 +823,23 @@
         input.focus();
         input.setSelectionRange(state.query.length, state.query.length);
       }
+    }
+  });
+
+  document.addEventListener("change", function (event) {
+    var target = event.target;
+    if (target.matches("[data-character-sort]")) {
+      state.characterSort = target.value === "bounty" ? "bounty" : "alpha";
+      render();
+    } else if (target.matches("[data-character-emperors]")) {
+      state.characterEmperorsOnly = emperorsRevealed() && target.value === "yes";
+      render();
+    } else if (target.matches("[data-crew-sort]")) {
+      state.crewSort = target.value === "bounty" ? "bounty" : "alpha";
+      render();
+    } else if (target.matches("[data-crew-emperors]")) {
+      state.crewEmperorsOnly = emperorsRevealed() && target.value === "yes";
+      render();
     }
   });
 
@@ -728,11 +861,13 @@
   window.addEventListener("popstate", function () {
     restoreRouteFromHash();
     render();
+    if (state.page === "fruits" || state.page === "fruit-detail") loadFruitLoreForPage();
     window.scrollTo({top:0,behavior:"smooth"});
   });
 
   state.progress = readProgress();
   readCache();
+  state.catalogLoading = state.progress !== null && state.progress >= 0;
   restoreRouteFromHash();
   updateProgressPill();
   render();

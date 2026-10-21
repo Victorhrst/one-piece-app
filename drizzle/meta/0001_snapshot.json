@@ -1,0 +1,845 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "1d761039-d7d9-4283-8e06-571e2ff07861",
+  "prevId": "c5707706-13b0-4a33-a1fc-b3c059ce8c97",
+  "tables": {
+    "affiliation_members": {
+      "name": "affiliation_members",
+      "columns": {
+        "affiliation_id": {
+          "name": "affiliation_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "character_id": {
+          "name": "character_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "known_arc_id": {
+          "name": "known_arc_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "affiliation_members_pair_idx": {
+          "name": "affiliation_members_pair_idx",
+          "columns": [
+            "affiliation_id",
+            "character_id"
+          ],
+          "isUnique": true
+        },
+        "affiliation_members_arc_idx": {
+          "name": "affiliation_members_arc_idx",
+          "columns": [
+            "known_arc_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "affiliation_members_affiliation_id_affiliations_id_fk": {
+          "name": "affiliation_members_affiliation_id_affiliations_id_fk",
+          "tableFrom": "affiliation_members",
+          "tableTo": "affiliations",
+          "columnsFrom": [
+            "affiliation_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "affiliation_members_character_id_characters_id_fk": {
+          "name": "affiliation_members_character_id_characters_id_fk",
+          "tableFrom": "affiliation_members",
+          "tableTo": "characters",
+          "columnsFrom": [
+            "character_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "affiliation_members_known_arc_id_arcs_id_fk": {
+          "name": "affiliation_members_known_arc_id_arcs_id_fk",
+          "tableFrom": "affiliation_members",
+          "tableTo": "arcs",
+          "columnsFrom": [
+            "known_arc_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "affiliations": {
+      "name": "affiliations",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'Équipage ou organisation'"
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "first_arc_id": {
+          "name": "first_arc_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "source_url": {
+          "name": "source_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "source_payload": {
+          "name": "source_payload",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'{}'"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "affiliations_first_arc_idx": {
+          "name": "affiliations_first_arc_idx",
+          "columns": [
+            "first_arc_id"
+          ],
+          "isUnique": false
+        },
+        "affiliations_name_idx": {
+          "name": "affiliations_name_idx",
+          "columns": [
+            "name"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "affiliations_first_arc_id_arcs_id_fk": {
+          "name": "affiliations_first_arc_id_arcs_id_fk",
+          "tableFrom": "affiliations",
+          "tableTo": "arcs",
+          "columnsFrom": [
+            "first_arc_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "arcs": {
+      "name": "arcs",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "saga": {
+          "name": "saga",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "chapter_start": {
+          "name": "chapter_start",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "chapter_end": {
+          "name": "chapter_end",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "episode_start": {
+          "name": "episode_start",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "episode_end": {
+          "name": "episode_end",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "chapters": {
+      "name": "chapters",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "number": {
+          "name": "number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "volume": {
+          "name": "volume",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "arc_id": {
+          "name": "arc_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "source_payload": {
+          "name": "source_payload",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'{}'"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "chapters_number_idx": {
+          "name": "chapters_number_idx",
+          "columns": [
+            "number"
+          ],
+          "isUnique": true
+        },
+        "chapters_arc_idx": {
+          "name": "chapters_arc_idx",
+          "columns": [
+            "arc_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "chapters_arc_id_arcs_id_fk": {
+          "name": "chapters_arc_id_arcs_id_fk",
+          "tableFrom": "chapters",
+          "tableTo": "arcs",
+          "columnsFrom": [
+            "arc_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "characters": {
+      "name": "characters",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "first_chapter": {
+          "name": "first_chapter",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "first_arc_id": {
+          "name": "first_arc_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "source_url": {
+          "name": "source_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "source_payload": {
+          "name": "source_payload",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'{}'"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "characters_first_arc_idx": {
+          "name": "characters_first_arc_idx",
+          "columns": [
+            "first_arc_id"
+          ],
+          "isUnique": false
+        },
+        "characters_name_idx": {
+          "name": "characters_name_idx",
+          "columns": [
+            "name"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "characters_first_arc_id_arcs_id_fk": {
+          "name": "characters_first_arc_id_arcs_id_fk",
+          "tableFrom": "characters",
+          "tableTo": "arcs",
+          "columnsFrom": [
+            "first_arc_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "devil_fruits": {
+      "name": "devil_fruits",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "model": {
+          "name": "model",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "sub_type": {
+          "name": "sub_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "first_chapter": {
+          "name": "first_chapter",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "first_arc_id": {
+          "name": "first_arc_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "canon_status": {
+          "name": "canon_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'À confirmer'"
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "source_url": {
+          "name": "source_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "source_payload": {
+          "name": "source_payload",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'{}'"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "devil_fruits_first_arc_idx": {
+          "name": "devil_fruits_first_arc_idx",
+          "columns": [
+            "first_arc_id"
+          ],
+          "isUnique": false
+        },
+        "devil_fruits_name_idx": {
+          "name": "devil_fruits_name_idx",
+          "columns": [
+            "name"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "devil_fruits_first_arc_id_arcs_id_fk": {
+          "name": "devil_fruits_first_arc_id_arcs_id_fk",
+          "tableFrom": "devil_fruits",
+          "tableTo": "arcs",
+          "columnsFrom": [
+            "first_arc_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "episodes": {
+      "name": "episodes",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "number": {
+          "name": "number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "chapter_text": {
+          "name": "chapter_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "arc_id": {
+          "name": "arc_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "source_payload": {
+          "name": "source_payload",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'{}'"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "episodes_number_idx": {
+          "name": "episodes_number_idx",
+          "columns": [
+            "number"
+          ],
+          "isUnique": true
+        },
+        "episodes_arc_idx": {
+          "name": "episodes_arc_idx",
+          "columns": [
+            "arc_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "episodes_arc_id_arcs_id_fk": {
+          "name": "episodes_arc_id_arcs_id_fk",
+          "tableFrom": "episodes",
+          "tableTo": "arcs",
+          "columnsFrom": [
+            "arc_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "sync_state": {
+      "name": "sync_state",
+      "columns": {
+        "source": {
+          "name": "source",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "synced_at": {
+          "name": "synced_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "record_count": {
+          "name": "record_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'ok'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "ships": {
+      "compositePrimaryKeys": {},
+      "checkConstraints": {},
+      "columns": {
+        "image_url": {
+          "primaryKey": false,
+          "autoincrement": false,
+          "notNull": false,
+          "type": "text",
+          "name": "image_url"
+        },
+        "updated_at": {
+          "primaryKey": false,
+          "autoincrement": false,
+          "notNull": true,
+          "type": "text",
+          "name": "updated_at"
+        },
+        "affiliation": {
+          "primaryKey": false,
+          "autoincrement": false,
+          "notNull": false,
+          "type": "text",
+          "name": "affiliation"
+        },
+        "first_chapter": {
+          "primaryKey": false,
+          "autoincrement": false,
+          "notNull": false,
+          "type": "integer",
+          "name": "first_chapter"
+        },
+        "id": {
+          "primaryKey": true,
+          "autoincrement": false,
+          "notNull": true,
+          "type": "text",
+          "name": "id"
+        },
+        "source_url": {
+          "primaryKey": false,
+          "autoincrement": false,
+          "notNull": false,
+          "type": "text",
+          "name": "source_url"
+        },
+        "first_arc_id": {
+          "primaryKey": false,
+          "autoincrement": false,
+          "notNull": false,
+          "type": "text",
+          "name": "first_arc_id"
+        },
+        "name": {
+          "primaryKey": false,
+          "autoincrement": false,
+          "notNull": true,
+          "type": "text",
+          "name": "name"
+        },
+        "type": {
+          "primaryKey": false,
+          "autoincrement": false,
+          "notNull": false,
+          "type": "text",
+          "name": "type"
+        },
+        "source_payload": {
+          "type": "text",
+          "primaryKey": false,
+          "default": "'{}'",
+          "name": "source_payload",
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "name": "ships",
+      "indexes": {
+        "ships_first_arc_idx": {
+          "isUnique": false,
+          "columns": [
+            "first_arc_id"
+          ],
+          "name": "ships_first_arc_idx"
+        },
+        "ships_name_idx": {
+          "isUnique": false,
+          "columns": [
+            "name"
+          ],
+          "name": "ships_name_idx"
+        }
+      },
+      "uniqueConstraints": {},
+      "foreignKeys": {
+        "ships_first_arc_id_arcs_id_fk": {
+          "columnsFrom": [
+            "first_arc_id"
+          ],
+          "name": "ships_first_arc_id_arcs_id_fk",
+          "tableFrom": "ships",
+          "onUpdate": "no action",
+          "columnsTo": [
+            "id"
+          ],
+          "tableTo": "arcs",
+          "onDelete": "no action"
+        }
+      }
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}

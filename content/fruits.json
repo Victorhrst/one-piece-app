@@ -179,5 +179,14 @@
       }
     ],
     "user": "Inconnu"
-  }
+  },
+  {"name":"Batto Batto no Mi","apiNames":["Bat-Bat Fruit"],"typeHistory":[{"from":31,"label":"Zoan"}]},
+  {"name":"Nori Nori no Mi","apiNames":["Ride-Ride Fruit"],"typeHistory":[{"from":32,"label":"Paramecia"}]},
+  {"name":"Rako Rako no Mi","apiNames":["Otter-Otter Fruit"],"typeHistory":[{"from":32,"label":"Zoan"}]},
+  {"name":"Tsutsu Tsutsu no Mi","apiNames":["Barrel-Barrel Fruit"],"typeHistory":[{"from":32,"label":"Paramecia"}]},
+  {"name":"Iku Iku no Mi","apiNames":["Grow-Grow Fruit"],"typeHistory":[{"from":32,"label":"Paramecia"}]},
+  {"name":"Aro Aro no Mi","apiNames":["Arrow-Arrow Fruit"],"typeHistory":[{"from":32,"label":"Paramecia"}]},
+  {"name":"Iba Iba no Mi","apiNames":["Thorn-Thorn Fruit"],"typeHistory":[{"from":32,"label":"Paramecia"}]},
+  {"name":"Ryu Ryu no Mi, modèle Nidhöggr","typeHistory":[{"from":32,"label":"Zoan mythique"}]},
+  {"name":"Akuma no Mi","firstSeen":32,"firstChapter":1179,"knownAs":"Cette capacité permet à son utilisateur de prendre une forme démoniaque et d’employer plusieurs pouvoirs associés à cette transformation.","canonStatus":"Canon manga · classification non confirmée","typeHistory":[{"from":32,"label":"Type non confirmé"}],"user":"Nerona Imu"}
 ]

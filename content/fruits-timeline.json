@@ -154,8 +154,12 @@
   [1085, "Pouvoir de fruit non nommé d’Ethanbaron V. Nusjuro", null, "Ethanbaron V. Nusjuro", "Nature du pouvoir non confirmée"],
   [1085, "Pouvoir de fruit non nommé de Shepherd Ju Peter", null, "Shepherd Ju Peter", "Nature du pouvoir non confirmée"],
   [1085, "Pouvoir de fruit non nommé de Jaygarcia Saturn", null, "Jaygarcia Saturn", "Nature du pouvoir non confirmée"],
+  [1179, "Akuma no Mi", null, "Nerona Imu", "Canon manga · classification non confirmée"],
   [1094, "Nori Nori no Mi"],
-  [1094, "Rako Rako no Mi"],
+  [1094, "Rako Rako no Mi", "Sea Otter"],
   [1095, "Tsutsu Tsutsu no Mi"],
+  [1135, "Iku Iku no Mi"],
+  [1137, "Aro Aro no Mi"],
+  [1143, "Iba Iba no Mi"],
   [1175, "Ryu Ryu no Mi, modèle Nidhöggr", "Nidhoggr"]
 ]

@@ -4,7 +4,7 @@
     "name": "Pirates au Chapeau de paille",
     "knownAt": 0,
     "tag": "Équipage pirate",
-    "description": "Un petit équipage qui grandit au fil du voyage, réuni autour d’un même rêve.",
+    "description": "Les Pirates au Chapeau de paille sont l’équipage mené par Luffy. À ce point du voyage, il rassemble les compagnons déjà rencontrés et décidés à poursuivre leur route ensemble. Chacun garde son rêve propre, tandis que la confiance entre eux se construit à travers les épreuves déjà traversées.",
     "members": [
       [
         "Monkey D. Luffy",
@@ -19,7 +19,7 @@
       [
         "Nami",
         "Navigatrice",
-        1
+        4
       ],
       [
         "Usopp",
@@ -39,12 +39,12 @@
       [
         "Nico Robin",
         "Archéologue",
-        10
+        11
       ],
       [
         "Franky",
         "Charpentier",
-        15
+        16
       ],
       [
         "Brook",
@@ -56,6 +56,20 @@
         "Timonnier",
         30
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 217,
+        "text": "À Alabasta, l’équipage contribue à mettre fin à la guerre civile et à déjouer le plan de Crocodile."
+      },
+      {
+        "chapter": 398,
+        "text": "À Enies Lobby, il affronte le Gouvernement mondial pour permettre à Robin de choisir sa vie."
+      },
+      {
+        "chapter": 1050,
+        "text": "À Wano, ses membres et leurs alliés prennent part à la bataille qui renverse Kaido."
+      }
     ]
   },
   {
@@ -63,7 +77,7 @@
     "name": "Pirates du Roux",
     "knownAt": 0,
     "tag": "Équipage pirate",
-    "description": "L’équipage de Shanks, rencontré dès les premiers souvenirs de l’aventure.",
+    "description": "Les Pirates du Roux sont l’équipage de Shanks, rencontré au village de Fuchsia au début du récit. Leur camaraderie et la confiance que Shanks accorde à Luffy donnent à cette première rencontre un rôle déterminant dans le départ du jeune pirate.",
     "members": [
       [
         "Shanks",
@@ -85,6 +99,16 @@
         "Tireur d’élite",
         0
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 1,
+        "text": "Shanks protège le village de Fuchsia et inspire le départ de Luffy vers la mer."
+      },
+      {
+        "chapter": 580,
+        "text": "À Marineford, l’arrivée de l’équipage du Roux met un terme à la bataille."
+      }
     ]
   },
   {
@@ -92,7 +116,7 @@
     "name": "Pirates de Baggy",
     "knownAt": 1,
     "tag": "Équipage pirate",
-    "description": "Une bande de pirates hauts en couleur, connue pour son capitaine imprévisible.",
+    "description": "L’équipage de Baggy est une bande de pirates aux profils disparates, fédérée par le panache de son capitaine. Son histoire alterne entre affrontements, alliances inattendues et coups de chance qui amplifient la réputation de Baggy.",
     "members": [
       [
         "Baggy",
@@ -119,14 +143,26 @@
         "Alliée",
         5
       ]
-    ]
+    ],
+    "achievements": [
+      {
+        "chapter": 19,
+        "text": "À Village d’Orange, l’équipage affronte Luffy et ses alliés."
+      },
+      {
+        "chapter": 594,
+        "text": "Après Marineford, Baggy rassemble de nombreux anciens prisonniers autour de son pavillon."
+      }
+    ],
+    "descriptionChapter": 594,
+    "preRevealDescription": "À Orange Town, Baggy commande une bande de pirates hauts en couleur. Les événements ultérieurs de son parcours restent masqués jusqu’aux arcs où ils se produisent."
   },
   {
     "id": "black-cat",
     "name": "Équipage du Chat Noir",
     "knownAt": 2,
     "tag": "Équipage pirate",
-    "description": "Un équipage organisé autour de son capitaine et de ses officiers.",
+    "description": "L’équipage du Chat Noir est une bande de l’East Blue dont le capitaine Kuro privilégie la ruse et la dissimulation. Ses officiers suivent un plan construit autour de l’infiltration et de l’effet de surprise.",
     "members": [
       [
         "Kuro",
@@ -148,6 +184,12 @@
         "Combattant",
         2
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 41,
+        "text": "Au village de Sirop, son plan est déjoué par Usopp, Kaya et les Pirates au Chapeau de paille."
+      }
     ]
   },
   {
@@ -155,7 +197,7 @@
     "name": "Pirates de Krieg",
     "knownAt": 3,
     "tag": "Équipage pirate",
-    "description": "Un équipage de l’East Blue qui mise sur son armement et ses effectifs.",
+    "description": "Les Pirates de Krieg misent sur leur nombre, leur armement et la réputation de leur capitaine. Leur arrivée au Baratie met à l’épreuve la résistance du restaurant et de ses défenseurs.",
     "members": [
       [
         "Don Krieg",
@@ -172,6 +214,12 @@
         "Officier",
         3
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 68,
+        "text": "L’équipage est vaincu au Baratie après l’intervention de Luffy et de ses compagnons."
+      }
     ]
   },
   {
@@ -179,7 +227,7 @@
     "name": "Pirates d’Arlong",
     "knownAt": 4,
     "tag": "Équipage pirate",
-    "description": "Un groupe de pirates hommes-poissons établi dans l’East Blue.",
+    "description": "Les Pirates d’Arlong sont un groupe d’hommes-poissons qui impose sa domination sur plusieurs villages de l’East Blue. L’histoire de cet équipage révèle les conséquences de la discrimination et de la violence entre humains et hommes-poissons.",
     "members": [
       [
         "Arlong",
@@ -201,14 +249,20 @@
         "Combattant",
         4
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 95,
+        "text": "La défaite d’Arlong libère le village de Nami et met fin à la domination du groupe dans l’East Blue."
+      }
     ]
   },
   {
     "id": "baroque",
     "name": "Baroque Works",
-    "knownAt": 6,
+    "knownAt": 7,
     "tag": "Organisation",
-    "description": "Un réseau d’agents qui utilisent des noms de code et opèrent en secret.",
+    "description": "Baroque Works est un réseau clandestin d’agents identifiés par des noms de code. L’organisation fonctionne en cellules et poursuit un objectif politique sous la direction de Mr. 0.",
     "members": [
       [
         "Crocodile",
@@ -250,14 +304,22 @@
         "Agent",
         6
       ]
-    ]
+    ],
+    "achievements": [
+      {
+        "chapter": 217,
+        "text": "À Alabasta, la conspiration de l’organisation est démasquée et ses principaux agents sont vaincus."
+      }
+    ],
+    "descriptionChapter": 155,
+    "preRevealDescription": "Baroque Works est un réseau clandestin dont les agents se reconnaissent à leurs noms de code. À ce point du récit, son objectif et son commanditaire restent inconnus."
   },
   {
     "id": "giant-warriors",
     "name": "Pirates guerriers géants",
     "knownAt": 8,
     "tag": "Équipage pirate",
-    "description": "Deux capitaines géants se retrouvent au cœur d’un duel ancien.",
+    "description": "Les Pirates Guerriers Géants sont menés par Dorry et Brogy, deux capitaines dont le duel sur Little Garden s’inscrit dans une tradition de combat et d’honneur. Leur force et leur rivalité attirent l’attention des visiteurs de l’île.",
     "members": [
       [
         "Dorry",
@@ -269,6 +331,16 @@
         "Capitaine",
         8
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 129,
+        "text": "À Little Garden, leur affrontement et leur entraide permettent aux Chapeaux de paille de poursuivre leur route."
+      },
+      {
+        "chapter": 1106,
+        "text": "À Egghead, leur arrivée aide les Chapeaux de paille à quitter l’île."
+      }
     ]
   },
   {
@@ -276,7 +348,7 @@
     "name": "Pirates de Barbe Noire",
     "knownAt": 11,
     "tag": "Équipage pirate",
-    "description": "Un équipage ambitieux, organisé autour de son capitaine et de ses premiers commandants.",
+    "description": "Les Pirates de Barbe Noire sont un équipage ambitieux dont le capitaine avance par étapes et sait attendre une occasion favorable. Leur composition rassemble des combattants aux profils variés, réunis autour du projet de Teach.",
     "members": [
       [
         "Marshall D. Teach",
@@ -328,6 +400,16 @@
         "Capitaine de navire",
         21
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 237,
+        "text": "À Jaya, Teach croise la route de Luffy et expose sa conviction que les rêves des pirates survivent aux défaites."
+      },
+      {
+        "chapter": 576,
+        "text": "À Marineford, l’équipage profite de la confusion de la guerre pour modifier l’équilibre des forces."
+      }
     ]
   },
   {
@@ -335,7 +417,7 @@
     "name": "Pirates de Barbe Blanche",
     "knownAt": 21,
     "tag": "Équipage pirate",
-    "description": "Une grande flotte organisée en divisions autour d’Edward Newgate.",
+    "description": "Les Pirates de Barbe Blanche sont une grande flotte divisée en unités, dont les membres se considèrent comme une famille. Edward Newgate protège ses hommes avec une autorité paternelle et une puissance reconnue par ses rivaux.",
     "members": [
       [
         "Edward Newgate",
@@ -422,14 +504,26 @@
         "Commandant de la seizième division",
         21
       ]
-    ]
+    ],
+    "achievements": [
+      {
+        "chapter": 234,
+        "text": "Le nom de Barbe Blanche est associé aux plus grandes puissances du Nouveau Monde."
+      },
+      {
+        "chapter": 576,
+        "text": "À Marineford, la flotte affronte la Marine pour tenter de sauver Ace."
+      }
+    ],
+    "descriptionChapter": 550,
+    "preRevealDescription": "À Jaya, Barbe Blanche est cité comme l’une des figures majeures de la piraterie. L’organisation de son équipage et ses liens avec ses membres seront précisés plus tard."
   },
   {
     "id": "kuja",
     "name": "Pirates Kuja",
     "knownAt": 19,
     "tag": "Équipage pirate",
-    "description": "Un équipage de guerrières qui navigue depuis l’île d’Amazon Lily.",
+    "description": "Les Pirates Kuja sont des guerrières originaires d’Amazon Lily, habituées à naviguer dans le Calm Belt. Leurs compétences à l’arc et au combat reflètent la culture martiale de leur île.",
     "members": [
       [
         "Boa Hancock",
@@ -451,6 +545,12 @@
         "Ancienne impératrice",
         19
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 516,
+        "text": "Après avoir rencontré Luffy, Hancock met son équipage et son navire au service de son évasion."
+      }
     ]
   },
   {
@@ -458,7 +558,7 @@
     "name": "Pirates du Heart",
     "knownAt": 18,
     "tag": "Équipage pirate",
-    "description": "Un équipage de sous-mariniers mené par Trafalgar Law.",
+    "description": "Les Pirates du Heart sont un équipage de sous-mariniers mené par Trafalgar Law. Leur organisation repose sur une forte cohésion et sur les compétences médicales et tactiques de leur capitaine.",
     "members": [
       [
         "Trafalgar D. Water Law",
@@ -485,6 +585,16 @@
         "Combattant",
         18
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 700,
+        "text": "À Punk Hazard, l’alliance avec Luffy devient le point de départ d’une opération contre Doflamingo."
+      },
+      {
+        "chapter": 1040,
+        "text": "À Wano, l’équipage prend part à l’affrontement contre Big Mom par l’intermédiaire de son capitaine."
+      }
     ]
   },
   {
@@ -492,7 +602,7 @@
     "name": "Pirates de Kid",
     "knownAt": 18,
     "tag": "Équipage pirate",
-    "description": "L’équipage d’Eustass Kid, rencontré sur l’archipel Sabaody.",
+    "description": "Les Pirates de Kid sont menés par Eustass Kid, un capitaine de la même génération que Luffy. L’équipage est marqué par un tempérament offensif et une volonté de rivaliser avec les grandes puissances.",
     "members": [
       [
         "Eustass Kid",
@@ -514,6 +624,16 @@
         "Combattant",
         18
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 498,
+        "text": "À Sabaody, l’équipage est présenté parmi les nouveaux pirates dont la prime attire l’attention."
+      },
+      {
+        "chapter": 1040,
+        "text": "À Wano, Kid combat Big Mom au sein d’une alliance temporaire."
+      }
     ]
   },
   {
@@ -521,7 +641,7 @@
     "name": "Pirates Don Quichotte",
     "knownAt": 26,
     "tag": "Équipage pirate",
-    "description": "Un équipage structuré en divisions, dont les membres se distinguent par leurs pouvoirs.",
+    "description": "Les Pirates Don Quichotte sont une organisation structurée en familles et divisions, dominée par Doflamingo. Ses membres ont des rôles spécialisés et entretiennent avec leur chef un lien de loyauté souvent imposé par la force.",
     "members": [
       [
         "Don Quichotte Doflamingo",
@@ -568,6 +688,12 @@
         "Ancien officier",
         26
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 790,
+        "text": "À Dressrosa, l’organisation perd le pouvoir après le combat de Luffy et Law et la révolte des habitants."
+      }
     ]
   },
   {
@@ -575,7 +701,7 @@
     "name": "Grande flotte du Chapeau de paille",
     "knownAt": 26,
     "tag": "Alliance",
-    "description": "Une alliance de capitaines formée à la suite d’une rencontre à Dressrosa.",
+    "description": "La Grande Flotte du Chapeau de paille rassemble des capitaines rencontrés à Dressrosa, qui choisissent de naviguer sous le pavillon de Luffy. Chaque équipage conserve son autonomie tout en formant une alliance durable.",
     "members": [
       [
         "Cavendish",
@@ -612,87 +738,225 @@
         "7e flotte",
         26
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 800,
+        "text": "À Dressrosa, sept capitaines promettent de soutenir Luffy et fondent la Grande Flotte."
+      }
     ]
   },
   {
     "id": "firetank",
     "name": "Pirates de Firetank",
-    "knownAt": 29,
+    "knownAt": 18,
     "tag": "Équipage pirate",
-    "description": "Un équipage de pirates organisé comme une famille et dirigé par Bege.",
+    "description": "Les Pirates de Firetank sont l’équipage de Capone Bege, construit sur les codes d’une famille mafieuse : hiérarchie ferme, loyauté envers les proches et plans préparés avec soin. Présentés à Sabaody parmi les Supernovas, ils apparaissent ensuite à Zou dans l’orbite de Big Mom. À Totto Land, leur alliance avec les Chapeaux de paille transforme leur organisation en force d’extraction et de fuite.",
     "members": [
       [
         "Capone Bege",
         "Capitaine",
-        29
+        18
       ],
       [
         "Vito",
         "Conseiller",
-        29
+        27
       ],
       [
         "Gotti",
         "Combattant",
-        29
+        28
       ],
       [
         "Charlotte Chiffon",
         "Alliée",
-        29
+        28
       ]
-    ]
+    ],
+    "achievements": [
+      {
+        "chapter": 498,
+        "text": "Bege et les Firetank apparaissent à Sabaody parmi les équipages de la nouvelle génération."
+      },
+      {
+        "chapter": 812,
+        "text": "À Zou, Bege et Vito montrent que les Firetank ont rejoint le territoire de Big Mom."
+      },
+      {
+        "chapter": 834,
+        "text": "L’équipage conclut une alliance avec les Chapeaux de paille autour d’un plan visant Big Mom."
+      },
+      {
+        "chapter": 902,
+        "text": "Après l’échec du plan, les Firetank parviennent à quitter Totto Land."
+      }
+    ],
+    "descriptionChapter": 834,
+    "preRevealDescription": "Capone Bege apparaît à Sabaody parmi les capitaines de la nouvelle génération, entouré des Pirates de Firetank. Leur allure mafieuse et leur discipline les distinguent; les événements ultérieurs de l’équipage restent masqués.",
+    "middleRevealChapter": 812,
+    "middleRevealDescription": "À Zou, Bege et les Pirates de Firetank opèrent dans le territoire de Big Mom. La présence de Vito auprès du capitaine souligne l’organisation de l’équipage, sans révéler encore le plan de Totto Land."
   },
   {
     "id": "big-mom",
     "name": "Pirates de Big Mom",
-    "knownAt": 29,
+    "knownAt": 24,
     "tag": "Équipage pirate",
-    "description": "Une vaste famille pirate installée sur un archipel composé de plusieurs îles.",
+    "description": "Les Pirates de Big Mom forment une puissance familiale organisée autour de Charlotte Linlin. Leur flotte et leurs officiers contrôlent Totto Land, un archipel où les liens de parenté, les titres ministériels et les pouvoirs des Homies structurent la vie politique. L’équipage exige des tributs de ses territoires et protège jalousement les informations qu’il détient. À Whole Cake Island, ses membres se retrouvent au cœur d’une alliance, d’une cérémonie et d’une tentative d’évasion qui mettent à l’épreuve leur organisation.",
     "members": [
       [
         "Charlotte Linlin",
         "Capitaine",
-        29
+        28
       ],
       [
         "Charlotte Katakuri",
-        "Commandant",
-        29
+        "Général sucré",
+        28
       ],
       [
         "Charlotte Smoothie",
-        "Commandante",
-        29
+        "Général sucré",
+        28
       ],
       [
         "Charlotte Cracker",
-        "Commandant",
-        29
+        "Général sucré",
+        28
       ],
       [
         "Charlotte Perospero",
         "Officier",
-        29
+        28
       ],
       [
         "Charlotte Pudding",
         "Membre de la famille",
-        29
+        28
+      ],
+      [
+        "Charlotte Brûlée",
+        "Officière",
+        28
+      ],
+      [
+        "Charlotte Daifuku",
+        "Officier",
+        28
+      ],
+      [
+        "Charlotte Oven",
+        "Officier",
+        28
+      ],
+      [
+        "Charlotte Amande",
+        "Combattante",
+        28
+      ],
+      [
+        "Charlotte Galette",
+        "Officière",
+        28
+      ],
+      [
+        "Charlotte Mont-d’Or",
+        "Officier",
+        28
+      ],
+      [
+        "Charlotte Flampe",
+        "Membre de la famille",
+        28
+      ],
+      [
+        "Charlotte Pound",
+        "Membre de la famille",
+        28
+      ],
+      [
+        "Charlotte Praline",
+        "Membre de la famille",
+        28
+      ],
+      [
+        "Charlotte Compote",
+        "Officière",
+        28
+      ],
+      [
+        "Charlotte Snack",
+        "Officier",
+        28
+      ],
+      [
+        "Tamago",
+        "Chevalier",
+        24
+      ],
+      [
+        "Pekoms",
+        "Combattant mink",
+        24
+      ],
+      [
+        "Bobbin",
+        "Combattant",
+        28
       ]
-    ]
+    ],
+    "achievements": [
+      {
+        "chapter": 651,
+        "text": "À l’île des Hommes-Poissons, Tamago et Pekoms réclament le tribut dû à Big Mom."
+      },
+      {
+        "chapter": 829,
+        "text": "Le territoire de Totto Land et l’organisation familiale de l’équipage sont détaillés."
+      },
+      {
+        "chapter": 846,
+        "text": "Les officiers protègent les trésors et la salle des Ponéglyphes pendant les préparatifs de la cérémonie."
+      },
+      {
+        "chapter": 877,
+        "text": "Les officiers de Big Mom poursuivent le Thousand Sunny et cherchent à empêcher sa fuite."
+      },
+      {
+        "chapter": 902,
+        "text": "Après l’évasion des Chapeaux de paille, l’équipage se tourne vers Wano."
+      }
+    ],
+    "descriptionChapter": 829,
+    "preRevealDescription": "L’équipage connu sous le nom de Big Mom protège des territoires du Nouveau Monde et réclame un tribut aux îles placées sous sa protection. À l’île des Hommes-Poissons, ses représentants Tamago et Pekoms apparaissent; les détails sur sa capitaine et sa famille attendent leur révélation."
   },
   {
     "id": "beasts",
     "name": "Pirates aux Cent Bêtes",
-    "knownAt": 30,
+    "knownAt": 25,
+    "preRevealName": "Forces de Kaido",
+    "nameRevealChapter": 808,
     "tag": "Équipage pirate",
-    "description": "Une flotte de combattants regroupés sous le pavillon de Kaido.",
+    "descriptionChapter": 909,
+    "preRevealDescription": "À Punk Hazard, l’alliance formée avec Law vise Kaido, l’un des quatre Empereurs, en s’attaquant à l’approvisionnement en SMILE. Le récit indique que ses forces comptent déjà plus de 500 utilisateurs de Zoan artificiels. Le nom officiel du groupe et sa hiérarchie ne sont pas encore précisés.",
+    "middleRevealChapter": 808,
+    "middleRevealDescription": "À Zou, le groupe est nommé Pirates aux Cent Bêtes. Jack, l’un des trois Calamités et un homme de confiance de Kaido, mène l’assaut contre les Minks avec une arme toxique; sa prime d’un milliard de berrys est révélée. Sheepshead et Ginrummy apparaissent parmi les cadres de l’équipage. À ce point du récit, la hiérarchie complète et les autres officiers ne sont pas encore présentés.",
+    "description": "Les Pirates aux Cent Bêtes sont une flotte construite autour de la puissance de Kaido et d’une hiérarchie de combattants. La recherche de puissance et la transformation des membres en combattants augmentés structurent cette organisation.",
     "members": [
       [
         "Kaido",
-        "Capitaine",
-        30
+        "Empereur (Yonkō)",
+        25
+      ],
+      [
+        "Sheepshead",
+        "Homme de Kaido",
+        26
+      ],
+      [
+        "Ginrummy",
+        "Officière",
+        26
       ],
       [
         "King",
@@ -707,7 +971,7 @@
       [
         "Jack",
         "Calamité",
-        30
+        27
       ],
       [
         "Ulti",
@@ -739,6 +1003,20 @@
         "Tête d’affiche",
         30
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 698,
+        "text": "L’alliance des Chapeaux de paille et du Heart cherche à couper Kaido de la production de SMILE; ses forces comptent déjà plus de 500 utilisateurs de Zoan artificiels."
+      },
+      {
+        "chapter": 808,
+        "text": "À Zou, le récit nomme les Pirates aux Cent Bêtes et présente Jack comme l’un des trois Calamités de Kaido."
+      },
+      {
+        "chapter": 1050,
+        "text": "À Wano, l’alliance des samouraïs, des pirates et des minks renverse la domination de Kaido."
+      }
     ]
   },
   {
@@ -746,7 +1024,7 @@
     "name": "Équipage de Roger",
     "knownAt": 6,
     "tag": "Équipage pirate",
-    "description": "L’équipage du pirate qui atteignit la dernière île de Grand Line.",
+    "description": "L’équipage de Roger est celui qui a accompagné le futur Roi des Pirates dans son voyage sur Grand Line. Son parcours est essentiel à l’histoire de la grande ère de la piraterie et au mystère du One Piece.",
     "members": [
       [
         "Gol D. Roger",
@@ -783,6 +1061,16 @@
         "Membre",
         30
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 506,
+        "text": "L’exécution de Roger et ses dernières paroles déclenchent la grande ère de la piraterie."
+      },
+      {
+        "chapter": 967,
+        "text": "Le récit de son voyage montre comment l’équipage atteint la dernière île de Grand Line."
+      }
     ]
   },
   {
@@ -790,7 +1078,7 @@
     "name": "Pirates du Soleil",
     "knownAt": 24,
     "tag": "Équipage pirate",
-    "description": "Un équipage d’hommes-poissons associé à l’histoire de l’île des Hommes-Poissons.",
+    "description": "Les Pirates du Soleil sont un équipage d’hommes-poissons lié à Fisher Tiger, puis à Jinbe. Leur emblème et leur histoire portent la mémoire de la lutte contre l’esclavage et de la recherche d’une coexistence plus juste.",
     "members": [
       [
         "Fisher Tiger",
@@ -817,14 +1105,26 @@
         "Ancien membre",
         24
       ]
-    ]
+    ],
+    "achievements": [
+      {
+        "chapter": 623,
+        "text": "Le récit de Fisher Tiger et de la formation de l’équipage éclaire l’histoire des hommes-poissons."
+      },
+      {
+        "chapter": 630,
+        "text": "À l’île des Hommes-Poissons, l’héritage des Pirates du Soleil est raconté aux Chapeaux de paille."
+      }
+    ],
+    "descriptionChapter": 623,
+    "preRevealDescription": "Les Pirates du Soleil sont un équipage d’hommes-poissons associé aux événements de l’île des Hommes-Poissons. Son histoire est racontée plus tard dans l’arc."
   },
   {
     "id": "moria",
     "name": "Pirates de Moria",
     "knownAt": 17,
     "tag": "Équipage pirate",
-    "description": "L’équipage de Gecko Moria, installé sur un grand navire fantôme.",
+    "description": "Les Pirates de Moria vivent à bord du Thriller Bark, un immense navire qui traverse le Triangle Florian. Leur équipage mêle pirates, zombies et serviteurs liés aux pouvoirs de leur capitaine.",
     "members": [
       [
         "Gecko Moria",
@@ -851,6 +1151,12 @@
         "Servante",
         17
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 488,
+        "text": "À Thriller Bark, Moria est vaincu et les ombres volées sont rendues à leurs propriétaires."
+      }
     ]
   },
   {
@@ -858,7 +1164,7 @@
     "name": "Pirates de Foxy",
     "knownAt": 13,
     "tag": "Équipage pirate",
-    "description": "Un équipage célèbre pour ses jeux de compétition et ses paris.",
+    "description": "Les Pirates de Foxy sont connus pour les Davy Back Fight, des épreuves qui permettent de parier des membres d’équipage. Leur capitaine mise sur la ruse et des tactiques de compétition.",
     "members": [
       [
         "Foxy",
@@ -885,6 +1191,12 @@
         "Combattant",
         13
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 321,
+        "text": "Les Chapeaux de paille affrontent Foxy dans un Davy Back Fight sur Long Ring Long Land."
+      }
     ]
   },
   {
@@ -892,7 +1204,7 @@
     "name": "Pirates Rumbar",
     "knownAt": 17,
     "tag": "Équipage pirate",
-    "description": "L’équipage musicien dont l’histoire croise celle de Brook.",
+    "description": "Les Pirates Rumbar étaient un équipage de musiciens dont Brook faisait partie avant son long voyage solitaire. Leur histoire est liée à une promesse faite à Laboon, à l’entrée de Grand Line.",
     "members": [
       [
         "Yorki",
@@ -904,14 +1216,22 @@
         "Musicien",
         17
       ]
-    ]
+    ],
+    "achievements": [
+      {
+        "chapter": 488,
+        "text": "Le flashback de Brook révèle le destin des Rumbar et la chanson enregistrée pour Laboon."
+      }
+    ],
+    "descriptionChapter": 488,
+    "preRevealDescription": "Les Pirates Rumbar sont un ancien équipage de musiciens lié à Laboon. Le récit de leur voyage n’est pas encore complet à ce point de l’arc."
   },
   {
     "id": "germa",
     "name": "Germa 66",
-    "knownAt": 29,
+    "knownAt": 28,
     "tag": "Organisation",
-    "description": "Une organisation militaire et familiale liée au royaume de Germa.",
+    "description": "Germa 66 est à la fois une organisation militaire et une famille royale, dirigée par Judge. Ses soldats et ses enfants modifiés sont au centre des tensions qui entourent Sanji à Whole Cake Island.",
     "members": [
       [
         "Vinsmoke Judge",
@@ -943,6 +1263,12 @@
         "Combattant",
         28
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 840,
+        "text": "À Whole Cake Island, Sanji retrouve sa famille et les Chapeaux de paille découvrent les projets de Germa."
+      }
     ]
   },
   {
@@ -950,7 +1276,7 @@
     "name": "Pirates de Hawkins",
     "knownAt": 18,
     "tag": "Équipage pirate",
-    "description": "L’équipage de Basil Hawkins, apparu parmi les équipages de la nouvelle génération.",
+    "description": "Les Pirates de Hawkins sont dirigés par Basil Hawkins, un capitaine qui s’appuie sur les cartes et les prédictions pour évaluer ses chances. Leur arrivée dans le Nouveau Monde les place dans les luttes entre les grands équipages.",
     "members": [
       [
         "Basil Hawkins",
@@ -962,14 +1288,26 @@
         "Combattant",
         18
       ]
-    ]
+    ],
+    "achievements": [
+      {
+        "chapter": 498,
+        "text": "À Sabaody, l’équipage est présenté parmi les pirates de la nouvelle génération."
+      },
+      {
+        "chapter": 954,
+        "text": "À Wano, Hawkins sert le camp de Kaido et affronte les conséquences de ses choix."
+      }
+    ],
+    "descriptionChapter": 654,
+    "preRevealDescription": "Basil Hawkins mène un équipage de pirates de la nouvelle génération, présenté à Sabaody. Les choix de l’équipage dans le Nouveau Monde seront révélés plus tard."
   },
   {
     "id": "bonney",
     "name": "Pirates de Bonney",
     "knownAt": 18,
     "tag": "Équipage pirate",
-    "description": "L’équipage de Jewelry Bonney.",
+    "description": "Les Pirates de Bonney sont un équipage de la nouvelle génération, mené par Jewelry Bonney. Leur capitaine se distingue par son caractère indépendant et son pouvoir lié à l’âge. L’équipage accompagne ses choix de route et constitue son cercle de confiance pendant les premières étapes de son parcours.",
     "members": [
       [
         "Jewelry Bonney",
@@ -986,6 +1324,12 @@
         "Membre",
         18
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 498,
+        "text": "À Sabaody, Bonney et son équipage sont présentés parmi les nouveaux pirates du Nouveau Monde."
+      }
     ]
   },
   {
@@ -993,23 +1337,1185 @@
     "name": "Cross Guild",
     "knownAt": 31,
     "tag": "Alliance",
-    "description": "Une organisation pirate fondée par d’anciens adversaires et alliés.",
+    "description": "Cross Guild est une organisation pirate apparue après les événements de Wano, autour de Buggy, Crocodile et Mihawk. Elle bouleverse les rapports entre pirates et Marine en plaçant des récompenses sur des soldats de la Marine.",
     "members": [
       [
         "Baggy",
         "Figure de proue",
-        31
+        30
       ],
       [
         "Crocodile",
         "Fondateur",
-        31
+        30
       ],
       [
         "Dracule Mihawk",
         "Fondateur",
-        31
+        30
       ]
+    ],
+    "achievements": [
+      {
+        "chapter": 1058,
+        "text": "La création de Cross Guild et son système de primes ciblant la Marine sont révélés après la bataille de Wano."
+      }
+    ]
+  },
+  {
+    "id": "revolutionary-army",
+    "name": "Revolutionary Army",
+    "tag": "Organisation révolutionnaire",
+    "knownAt": 22,
+    "description": "L’Armée révolutionnaire agit contre le Gouvernement mondial et soutient les populations soumises à son autorité. Ses dirigeants, ses réseaux et ses opérations sont révélés progressivement, sans dévoiler ici les éléments postérieurs à l’arc choisi.",
+    "achievements": [
+      {
+        "chapter": 594,
+        "text": "Le récit confirme le rôle de l’Armée révolutionnaire dans l’équilibre du monde et son opposition au Gouvernement mondial."
+      }
+    ],
+    "members": [
+      [
+        "Bartholomew Kuma",
+        "Membre",
+        11
+      ],
+      [
+        "Monkey D. Dragon",
+        "Chef de l’Armée révolutionnaire",
+        16
+      ],
+      [
+        "Emporio Ivankov",
+        "Membre",
+        20
+      ],
+      [
+        "Inazuma",
+        "Membre",
+        20
+      ],
+      [
+        "Koala",
+        "Membre de l’Armée révolutionnaire",
+        22
+      ],
+      [
+        "Sabo",
+        "Chef d’état-major de l’Armée révolutionnaire",
+        22
+      ],
+      [
+        "Ushiano",
+        "Membre",
+        29
+      ],
+      [
+        "Karasu",
+        "Commandant de l’armée du Nord",
+        29
+      ]
+    ]
+  },
+  {
+    "id": "shandia",
+    "name": "Shandia",
+    "tag": "Peuple de Skypiea",
+    "knownAt": 12,
+    "description": "Les Shandia sont un peuple de guerriers attaché à son île, à ses traditions et à la mémoire de ses ancêtres. Leur conflit avec les habitants de Skypiea est au cœur de l’arc et se comprend à travers plusieurs générations.",
+    "achievements": [
+      {
+        "chapter": 300,
+        "text": "À Skypiea, la cloche d’or résonne et permet aux Shandia de renouer avec leur histoire."
+      }
+    ],
+    "members": [
+      [
+        "Aisa",
+        "Enfant de Shandia",
+        12
+      ],
+      [
+        "Braham",
+        "Guerrier de Shandia",
+        12
+      ],
+      [
+        "Chiya",
+        "Membre",
+        12
+      ],
+      [
+        "Coburn",
+        "Membre",
+        12
+      ],
+      [
+        "Genbo",
+        "Membre",
+        12
+      ],
+      [
+        "Herb",
+        "Membre",
+        12
+      ],
+      [
+        "Isa",
+        "Membre",
+        12
+      ],
+      [
+        "Kalgara",
+        "Guerrier de Shandora",
+        12
+      ],
+      [
+        "Kamakiri",
+        "Guerrier de Shandia",
+        12
+      ],
+      [
+        "Mayushika",
+        "Membre",
+        12
+      ],
+      [
+        "Mousse",
+        "Membre",
+        12
+      ],
+      [
+        "Raki",
+        "Guerrière de Shandia",
+        12
+      ],
+      [
+        "Seto",
+        "Membre",
+        12
+      ],
+      [
+        "Shandia Chief",
+        "Membre",
+        12
+      ],
+      [
+        "Warashi",
+        "Membre",
+        12
+      ],
+      [
+        "Wyper",
+        "Guerrier de Shandia",
+        12
+      ],
+      [
+        "Yotsubane",
+        "Membre",
+        12
+      ]
+    ]
+  },
+  {
+    "id": "cp0",
+    "name": "CP0",
+    "tag": "Service de renseignement",
+    "knownAt": 26,
+    "description": "Le CP0 est une unité de renseignement directement liée aux plus hautes autorités du Gouvernement mondial. Ses interventions montrent que les affaires des royaumes et des pirates peuvent attirer des agents opérant dans l’ombre.",
+    "achievements": [
+      {
+        "chapter": 705,
+        "text": "À Dressrosa, la présence du CP0 révèle l’existence d’une unité d’agents opérant au plus haut niveau."
+      }
+    ],
+    "members": [
+      [
+        "Funkfreed",
+        "Membre",
+        14
+      ],
+      [
+        "Hattori",
+        "Membre",
+        14
+      ],
+      [
+        "Kaku",
+        "Membre",
+        14
+      ],
+      [
+        "Rob Lucci",
+        "Membre",
+        14
+      ],
+      [
+        "Spandam",
+        "Membre",
+        14
+      ],
+      [
+        "Blueno",
+        "Agent du Cipher Pol 9",
+        15
+      ],
+      [
+        "Fukurou",
+        "Membre",
+        15
+      ],
+      [
+        "Jabra",
+        "Agent du Cipher Pol 9",
+        15
+      ],
+      [
+        "Kalifa",
+        "Agent du Cipher Pol 9",
+        15
+      ],
+      [
+        "Kumadori",
+        "Agent du Cipher Pol 9",
+        15
+      ],
+      [
+        "Gismonda",
+        "Membre",
+        26
+      ],
+      [
+        "Guernika",
+        "Membre",
+        26
+      ],
+      [
+        "Joseph",
+        "Membre",
+        26
+      ],
+      [
+        "Maha",
+        "Membre",
+        30
+      ]
+    ]
+  },
+  {
+    "id": "charlotte-family",
+    "name": "Charlotte Family",
+    "tag": "Famille et équipage pirate",
+    "knownAt": 28,
+    "description": "La famille Charlotte constitue le noyau politique, familial et militaire du territoire de Big Mom. Ses membres occupent des fonctions variées et participent à la défense de Totto Land.",
+    "achievements": [
+      {
+        "chapter": 846,
+        "text": "À Whole Cake Island, la famille mobilise ses membres pour contrer l’intrusion des Chapeaux de paille."
+      }
+    ],
+    "members": [
+      [
+        "Charlotte Lola",
+        "Membre",
+        17
+      ],
+      [
+        "Capone Pez",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Amande",
+        "Combattante de la famille Charlotte",
+        28
+      ],
+      [
+        "Charlotte Anana",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Anglais",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Brûlée",
+        "Fille de Charlotte Linlin",
+        28
+      ],
+      [
+        "Charlotte Cadenza",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Citron",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Compo",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Compote",
+        "Fille de Charlotte Linlin",
+        28
+      ],
+      [
+        "Charlotte Custard",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Dacquoise",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Daifuku",
+        "Fils de Charlotte Linlin",
+        28
+      ],
+      [
+        "Charlotte De-Chat",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Dosmarche",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Flampe",
+        "Fille de Charlotte Linlin",
+        28
+      ],
+      [
+        "Charlotte Galette",
+        "Fille de Charlotte Linlin",
+        28
+      ],
+      [
+        "Charlotte Kanten",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Marnier",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Mascarpone",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Mobile",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Mont-d’Or",
+        "Fils de Charlotte Linlin",
+        28
+      ],
+      [
+        "Charlotte Moscato",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Noisette",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Normande",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Nusstorte",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Opera",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Oven",
+        "Fils de Charlotte Linlin",
+        28
+      ],
+      [
+        "Charlotte Praline",
+        "Fille de Charlotte Linlin",
+        28
+      ],
+      [
+        "Charlotte Pudding",
+        "Fille de Charlotte Linlin",
+        28
+      ],
+      [
+        "Charlotte Raisin",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Saint-Marc",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Snack",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Tablet",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Wafers",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Wiro",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Yuen",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Zuccotto",
+        "Membre",
+        28
+      ],
+      [
+        "Charlotte Pound",
+        "Ancien époux de Charlotte Linlin",
+        28
+      ],
+      [
+        "Charlotte Cracker",
+        "Commandant",
+        29
+      ],
+      [
+        "Charlotte Perospero",
+        "Officier",
+        29
+      ]
+    ]
+  },
+  {
+    "id": "new-fishman-pirates",
+    "name": "New Fish-Man Pirates",
+    "tag": "Équipage pirate",
+    "knownAt": 24,
+    "description": "Les Nouveaux Pirates Hommes-Poissons sont un groupe radical qui cherche à prendre le contrôle de l’île des Hommes-Poissons. Leur projet et leur idéologie mettent en lumière les tensions héritées de la discrimination.",
+    "achievements": [
+      {
+        "chapter": 653,
+        "text": "La tentative de coup d’État de Hody Jones est stoppée et son équipage est vaincu sur l’île des Hommes-Poissons."
+      }
+    ],
+    "members": [
+      [
+        "Daruma",
+        "Combattant homme-poisson",
+        24
+      ],
+      [
+        "Dosun",
+        "Combattant homme-poisson",
+        24
+      ],
+      [
+        "Hody Jones",
+        "Capitaine des Nouveaux Pirates Hommes-Poissons",
+        24
+      ],
+      [
+        "Hyouzou",
+        "Membre",
+        24
+      ],
+      [
+        "Ikaros Much",
+        "Combattant homme-poisson",
+        24
+      ],
+      [
+        "Zeo",
+        "Combattant homme-poisson",
+        24
+      ]
+    ]
+  },
+  {
+    "id": "franky-family",
+    "name": "Franky Family",
+    "tag": "Groupe de Water Seven",
+    "knownAt": 14,
+    "descriptionChapter": 375,
+    "preRevealDescription": "À Water Seven, la Franky Family est une bande de récupérateurs et de casseurs de navires qui opère autour du port. Ses activités la mettent sur la route des Chapeaux de paille, sans que son évolution ultérieure soit encore connue.",
+    "description": "La Franky Family est une bande de récupérateurs de Water Seven qui vit de la récupération et de la casse de navires. Ses membres sont d’abord des rivaux des Chapeaux de paille, avant que leur relation ne change à Enies Lobby.",
+    "achievements": [
+      {
+        "chapter": 430,
+        "text": "À Enies Lobby, la Franky Family prend part à l’assaut qui vise à ramener Robin et Franky."
+      }
+    ],
+    "members": [
+      [
+        "Dago",
+        "Membre",
+        14
+      ],
+      [
+        "Footbianco",
+        "Membre",
+        14
+      ],
+      [
+        "Gomorrah",
+        "Membre",
+        14
+      ],
+      [
+        "Kop",
+        "Membre",
+        14
+      ],
+      [
+        "Ottoland",
+        "Membre",
+        14
+      ],
+      [
+        "Schollzo",
+        "Membre",
+        14
+      ],
+      [
+        "Sodom",
+        "Membre",
+        14
+      ]
+    ]
+  },
+  {
+    "id": "galley-la",
+    "name": "Galley-La Company",
+    "tag": "Compagnie de charpentiers",
+    "knownAt": 14,
+    "descriptionChapter": 375,
+    "preRevealDescription": "Galley-La est la principale compagnie de charpentiers de Water Seven. Ses équipes entretiennent les navires et incarnent le savoir-faire maritime de la ville.",
+    "description": "Galley-La est la principale compagnie de charpentiers de Water Seven. Ses équipes entretiennent les navires et incarnent le savoir-faire maritime de la ville; plusieurs de ses ouvriers se retrouvent mêlés à la crise d’Enies Lobby.",
+    "achievements": [
+      {
+        "chapter": 430,
+        "text": "Les charpentiers de Galley-La rejoignent l’opération menée pour libérer leurs compagnons à Enies Lobby."
+      }
+    ],
+    "members": [
+      [
+        "Iceburg",
+        "Maire de Water Seven",
+        14
+      ],
+      [
+        "Paulie",
+        "Charpentier de la Galley-La",
+        14
+      ],
+      [
+        "Peepley Lulu",
+        "Membre",
+        14
+      ],
+      [
+        "Tilestone",
+        "Charpentier de la Galley-La",
+        14
+      ],
+      [
+        "Alice",
+        "Membre",
+        17
+      ]
+    ]
+  },
+  {
+    "id": "nine-red-scabbards",
+    "name": "Nine Red Scabbards",
+    "tag": "Groupe de samouraïs",
+    "knownAt": 27,
+    "descriptionChapter": 1000,
+    "preRevealDescription": "Les Neuf Fourreaux rouges sont un groupe de samouraïs de Wano. Leur histoire et leur objectif se dévoilent au fil des arcs; cette fiche s’en tient aux éléments connus après Zou.",
+    "description": "Les Neuf Fourreaux rouges sont les samouraïs liés à Kozuki Oden et au destin de Wano. Leur histoire relie l’occupation du pays à la préparation d’un soulèvement, puis à l’assaut contre Onigashima.",
+    "achievements": [
+      {
+        "chapter": 1000,
+        "text": "Les Fourreaux rouges participent au raid d’Onigashima, point culminant de la rébellion contre Kaido."
+      }
+    ],
+    "members": [
+      [
+        "Kinemon",
+        "Samouraï de Wano",
+        25
+      ],
+      [
+        "Raizo",
+        "Ninja de Wano",
+        27
+      ],
+      [
+        "Ashura Doji",
+        "Samouraï des Neuf Fourreaux rouges",
+        30
+      ],
+      [
+        "Denjiro",
+        "Samouraï des Neuf Fourreaux rouges",
+        30
+      ],
+      [
+        "Kawamatsu",
+        "Samouraï des Neuf Fourreaux rouges",
+        30
+      ],
+      [
+        "Kikunojo",
+        "Samouraï des Neuf Fourreaux rouges",
+        30
+      ]
+    ]
+  },
+  {
+    "id": "tontatta-pirates",
+    "name": "Tontatta Pirates",
+    "tag": "Équipage pirate",
+    "knownAt": 26,
+    "description": "Les Pirates Tontatta réunissent des guerriers nains de Dressrosa autour de Leo. Leur courage et leur connaissance de l’île en font des alliés importants lors de la révolte contre la famille Don Quichotte.",
+    "achievements": [
+      {
+        "chapter": 799,
+        "text": "Les Pirates Tontatta prennent part à la libération de Dressrosa après la chute du pouvoir de Doflamingo."
+      }
+    ],
+    "members": [
+      [
+        "Baxcon",
+        "Membre",
+        26
+      ],
+      [
+        "Bian",
+        "Membre",
+        26
+      ],
+      [
+        "Bomba (Tontatta)",
+        "Membre",
+        26
+      ],
+      [
+        "Chao",
+        "Membre",
+        26
+      ],
+      [
+        "Inhel",
+        "Membre",
+        26
+      ],
+      [
+        "Kabu",
+        "Membre",
+        26
+      ],
+      [
+        "Maujii",
+        "Membre",
+        26
+      ],
+      [
+        "Pellini",
+        "Membre",
+        26
+      ],
+      [
+        "Rampo",
+        "Membre",
+        26
+      ]
+    ]
+  },
+  {
+    "id": "bellamy-pirates",
+    "name": "Bellamy Pirates",
+    "tag": "Équipage pirate",
+    "knownAt": 11,
+    "description": "Les Pirates de Bellamy sont menés par Bellamy, un pirate qui se moque d’abord des rêves jugés irréalistes. Sa rencontre avec Luffy à Jaya marque un premier tournant dans sa vision de la piraterie.",
+    "achievements": [
+      {
+        "chapter": 237,
+        "text": "À Jaya, Luffy refuse de répondre aux provocations de Bellamy et défend sa conviction que les rêves ont leur place en mer."
+      }
+    ],
+    "members": [
+      [
+        "Sarquiss",
+        "Second de Bellamy",
+        11
+      ]
+    ]
+  },
+  {
+    "id": "barto-club",
+    "name": "Barto Club",
+    "tag": "Équipage pirate",
+    "knownAt": 26,
+    "description": "Le Barto Club est mené par Bartolomeo, un pirate qui admire profondément Luffy. Son équipage se distingue par une fidélité sans réserve à son capitaine et par le soutien qu’il apporte lors des événements de Dressrosa.",
+    "achievements": [
+      {
+        "chapter": 800,
+        "text": "Après la chute de Doflamingo, Bartolomeo et son équipage rejoignent la Grande Flotte du Chapeau de paille."
+      }
+    ],
+    "members": [
+      [
+        "Bartolomeo",
+        "Capitaine pirate",
+        26
+      ],
+      [
+        "Gambia",
+        "Membre",
+        26
+      ]
+    ]
+  },
+  {
+    "id": "beautiful-pirates",
+    "name": "Beautiful Pirates",
+    "tag": "Équipage pirate",
+    "knownAt": 26,
+    "description": "Les Beautiful Pirates naviguent sous le pavillon de Cavendish. Leur capitaine cherche à rester au centre de l’attention, mais l’équipage se retrouve entraîné dans la révolte qui bouleverse Dressrosa.",
+    "achievements": [
+      {
+        "chapter": 800,
+        "text": "Cavendish et son équipage acceptent de soutenir Luffy en rejoignant la Grande Flotte."
+      }
+    ],
+    "members": [
+      [
+        "Cavendish",
+        "1re flotte",
+        26
+      ],
+      [
+        "Farul",
+        "Membre",
+        26
+      ],
+      [
+        "Suleiman",
+        "Membre",
+        26
+      ]
+    ]
+  },
+  {
+    "id": "happo-navy",
+    "name": "Happo Navy",
+    "tag": "Flotte de combat",
+    "knownAt": 26,
+    "description": "La Happo Navy est une flotte de combattants du Pays des Fleurs, liée à la famille Chinjao. Ses dirigeants participent au tournoi de Dressrosa et se rapprochent de Luffy au cours de la lutte contre Doflamingo.",
+    "achievements": [
+      {
+        "chapter": 800,
+        "text": "Après la libération de Dressrosa, la Happo Navy entre dans la Grande Flotte du Chapeau de paille."
+      }
+    ],
+    "members": [
+      [
+        "Baby 5",
+        "Officière",
+        26
+      ],
+      [
+        "Boo",
+        "Membre",
+        26
+      ],
+      [
+        "Sai",
+        "Chef de la Happo Navy",
+        26
+      ]
+    ]
+  },
+  {
+    "id": "yonta-maria",
+    "name": "Yonta Maria Grand Fleet",
+    "tag": "Flotte pirate",
+    "knownAt": 26,
+    "description": "La flotte Yonta Maria est dirigée par Orlumbus. Elle dispose de nombreux navires et de combattants qui choisissent de se placer sous le pavillon de Luffy après la crise de Dressrosa.",
+    "achievements": [
+      {
+        "chapter": 800,
+        "text": "Orlumbus offre le soutien de sa flotte à Luffy et devient l’un des capitaines de la Grande Flotte."
+      }
+    ],
+    "members": [
+      [
+        "Orlumbus",
+        "Amiral de la flotte Yonta Maria",
+        26
+      ],
+      [
+        "Columbus",
+        "Membre",
+        29
+      ]
+    ]
+  },
+  {
+    "id": "ideo-pirates",
+    "name": "Ideo Pirates",
+    "tag": "Équipage pirate",
+    "knownAt": 26,
+    "description": "Les Pirates d’Ideo se forment autour du combattant du même nom après les affrontements de Dressrosa. L’équipage rassemble des combattants issus de parcours différents et choisit de naviguer avec les alliés de Luffy.",
+    "achievements": [
+      {
+        "chapter": 800,
+        "text": "Ideo et ses compagnons rejoignent la Grande Flotte du Chapeau de paille."
+      }
+    ],
+    "members": [
+      [
+        "Abdullah",
+        "Membre",
+        26
+      ],
+      [
+        "Blue Gilly",
+        "Membre",
+        26
+      ],
+      [
+        "Ideo",
+        "Boxeur et capitaine",
+        26
+      ],
+      [
+        "Jeet",
+        "Membre",
+        26
+      ]
+    ]
+  },
+  {
+    "id": "new-giant-warrior-pirates",
+    "name": "New Giant Warrior Pirates",
+    "tag": "Équipage pirate",
+    "knownAt": 26,
+    "description": "Les Nouveaux Pirates Guerriers Géants sont menés par Hajrudin. Leur équipage veut redonner aux géants une place parmi les grandes forces de la mer et s’allie aux capitaines rencontrés à Dressrosa.",
+    "achievements": [
+      {
+        "chapter": 800,
+        "text": "Hajrudin et ses compagnons deviennent l’un des équipages fondateurs de la Grande Flotte du Chapeau de paille."
+      }
+    ],
+    "members": [
+      [
+        "Hajrudin",
+        "Capitaine géant",
+        26
+      ],
+      [
+        "Nash",
+        "Membre",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "fallen-monk-pirates",
+    "name": "Fallen Monk Pirates",
+    "tag": "Équipage pirate",
+    "knownAt": 18,
+    "description": "Les Pirates Moines déchus sont l’équipage d’Urouge, l’un des capitaines de la génération présentée à Sabaody. Leur capitaine est connu pour sa grande résistance et son tempérament de combattant.",
+    "achievements": [
+      {
+        "chapter": 498,
+        "text": "À Sabaody, Urouge prend part aux affrontements qui éclatent lorsque les pirates de sa génération se heurtent aux forces de l’archipel."
+      }
+    ],
+    "members": [
+      [
+        "Urouge",
+        "Membre",
+        18
+      ]
+    ]
+  },
+  {
+    "id": "on-air-pirates",
+    "name": "On Air Pirates",
+    "tag": "Équipage pirate",
+    "knownAt": 18,
+    "descriptionChapter": 654,
+    "preRevealDescription": "Les On Air Pirates sont commandés par Scratchmen Apoo, présenté parmi les capitaines de la nouvelle génération à Sabaody. Leur parcours après l’archipel reste masqué.",
+    "description": "Les On Air Pirates sont commandés par Scratchmen Apoo, pirate de la génération de Luffy présentée à Sabaody. L’équipage entre dans le Nouveau Monde au milieu des rivalités entre capitaines.",
+    "achievements": [
+      {
+        "chapter": 498,
+        "text": "À Sabaody, Apoo apparaît parmi les capitaines de la nouvelle génération et participe aux événements qui précèdent leur départ vers le Nouveau Monde."
+      }
+    ],
+    "members": [
+      [
+        "Scratchmen Apoo",
+        "Membre",
+        18
+      ]
+    ]
+  },
+  {
+    "id": "rolling-pirates",
+    "name": "Rolling Pirates",
+    "tag": "Équipage pirate",
+    "knownAt": 17,
+    "description": "Les Rolling Pirates sont un groupe de survivants dont les ombres ont été volées par Gecko Moria. Leur aide à Luffy au cours de la bataille de Thriller Bark leur permet de prendre part au combat qui met fin à l’emprise de Moria.",
+    "achievements": [
+      {
+        "chapter": 488,
+        "text": "Les Rolling Pirates prêtent leurs ombres à Luffy pour renforcer son combat contre Moria, puis célèbrent avec les Chapeaux de paille le retour des ombres."
+      }
+    ],
+    "members": [
+      [
+        "Charlotte Lola",
+        "Membre",
+        17
+      ]
+    ]
+  },
+  {
+    "id": "flying-pirates",
+    "name": "Flying Pirates",
+    "tag": "Équipage pirate sous-marin",
+    "knownAt": 24,
+    "description": "Les Flying Pirates sont un équipage d’hommes-poissons mené par Vander Decken IX. Depuis les fonds marins, ils menacent les habitants de l’île des Hommes-Poissons et jouent un rôle central dans le conflit de l’arc.",
+    "achievements": [
+      {
+        "chapter": 649,
+        "text": "Après la rupture de leur alliance avec les Nouveaux Pirates Hommes-Poissons, l’équipage est vaincu et Vander Decken est emprisonné."
+      }
+    ],
+    "members": [
+      [
+        "Vander Decken IX",
+        "Capitaine des Pirates Flying",
+        24
+      ]
+    ]
+  },
+  {
+    "id": "nox-pirates",
+    "name": "Nox Pirates",
+    "tag": "Équipage d’explorateurs",
+    "knownAt": 28,
+    "description": "Les Pirates Nox étaient un équipage de minks mené par Pedro. D’abord partis comme explorateurs de Zou, ils recherchaient des ponéglyphes; cette quête leur a valu d’être considérés comme des criminels par le Gouvernement mondial.",
+    "achievements": [
+      {
+        "chapter": 849,
+        "text": "Le récit de Whole Cake Island révèle l’expédition de Pedro et la dissolution des Pirates Nox après leur défaite dans le territoire de Big Mom."
+      }
+    ],
+    "members": [
+      [
+        "Zepo",
+        "Membre",
+        28
+      ],
+      [
+        "Pedro",
+        "Ancien capitaine",
+        28
+      ],
+      [
+        "Pekoms",
+        "Ancien membre",
+        28
+      ]
+    ]
+  },
+  {
+    "id": "maelstrom-spider-pirates",
+    "name": "Maelstrom Spider Pirates",
+    "tag": "Équipage pirate",
+    "knownAt": 21,
+    "description": "Les Pirates de Squard sont un équipage allié à la flotte de Barbe Blanche. Leur capitaine a perdu son équipage lors d’un affrontement passé avec Roger, avant de naviguer sous la protection de Newgate.",
+    "achievements": [
+      {
+        "chapter": 550,
+        "text": "À Marineford, Squard et son équipage rejoignent les forces de Barbe Blanche pour affronter la Marine."
+      }
+    ],
+    "members": [
+      [
+        "Squard",
+        "Capitaine pirate allié à Barbe Blanche",
+        21
+      ]
+    ]
+  },
+  {
+    "id": "barrels-pirates",
+    "name": "Barrels Pirates",
+    "tag": "Équipage pirate",
+    "knownAt": 26,
+    "description": "Les Barrels Pirates étaient menés par Diez Barrels. Lors du flashback de Dressrosa, leur équipage détient le Ope Ope no Mi et cherche à le vendre, ce qui le place au centre du récit de Law et Corazon.",
+    "achievements": [
+      {
+        "chapter": 765,
+        "text": "Le flashback de Dressrosa révèle que l’équipage détenait le Ope Ope no Mi et raconte comment Corazon l’a soustrait à Barrels pour le donner à Law."
+      }
+    ],
+    "members": [
+      [
+        "Diez Barrels",
+        "Membre",
+        26
+      ]
+    ]
+  },
+  {
+    "id": "little-pirates",
+    "name": "Little Pirates",
+    "tag": "Équipage pirate allié",
+    "knownAt": 21,
+    "description": "Les Little Pirates sont menés par Little Oars Jr. et font partie des équipages alliés à Barbe Blanche. Leur capitaine géant contribue à la force de frappe de la flotte pendant la bataille de Marineford.",
+    "achievements": [
+      {
+        "chapter": 568,
+        "text": "À Marineford, Little Oars Jr. ouvre une voie vers la place et permet à des alliés de progresser malgré les défenses de la Marine."
+      }
+    ],
+    "members": [
+      [
+        "Little Oars Jr.",
+        "Membre",
+        21
+      ]
+    ]
+  },
+  {
+    "id": "drake",
+    "name": "Pirates de Drake",
+    "knownAt": 18,
+    "tag": "Équipage pirate",
+    "description": "Les Pirates de Drake sont l’équipage mené par X Drake, un ancien officier de la Marine devenu capitaine pirate. Présentés à Sabaody parmi la Génération terrible, ils naviguent sous un pavillon distinct avant que les choix de leur capitaine ne les conduisent vers les forces de Kaido.",
+    "descriptionChapter": 795,
+    "preRevealDescription": "À Sabaody, X Drake apparaît comme capitaine des Pirates de Drake et l’un des Supernovas. Les raisons de son départ de la Marine et son avenir restent masqués.",
+    "members": [
+      [
+        "X Drake",
+        "Capitaine",
+        18
+      ]
+    ],
+    "achievements": [
+      {
+        "chapter": 498,
+        "text": "X Drake arrive à Sabaody à la tête de son équipage et apparaît parmi les Supernovas."
+      },
+      {
+        "chapter": 795,
+        "text": "Le récit révèle le ralliement de Drake aux Pirates aux Cent Bêtes."
+      }
+    ]
+  },
+  {
+    "id": "gyro-pirates",
+    "name": "Pirates de Gyro",
+    "knownAt": 24,
+    "tag": "Équipage pirate",
+    "description": "Les Pirates de Gyro sont un équipage du South Blue mené par Gyro. En route vers le Nouveau Monde, ils tentent de quitter l’Île des Hommes-Poissons et se heurtent aux Nouveaux Pirates Hommes-Poissons; leur défaite face à Hody Jones marque leur apparition dans le récit.",
+    "members": [
+      [
+        "Gyro",
+        "Capitaine",
+        24
+      ]
+    ],
+    "achievements": [
+      {
+        "chapter": 611,
+        "text": "L’équipage tente de rejoindre la surface, mais Hody Jones le vainc et l’abandonne dans une bulle pour avertir les humains."
+      }
+    ]
+  },
+  {
+    "id": "fake-straw-hat-crew",
+    "name": "Faux équipage du Chapeau de paille",
+    "knownAt": 23,
+    "tag": "Équipage pirate",
+    "description": "À Sabaody, cette bande exploite la disparition des vrais Chapeaux de paille pour recruter sous leur nom. Son chef prétend être Luffy; lorsque la supercherie est révélée, les recrues se dispersent et l’équipage cesse d’exister.",
+    "descriptionChapter": 601,
+    "preRevealDescription": "À Sabaody, une bande pirate recrute sous l’apparence des Chapeaux de paille. L’identité de son chef reste masquée jusqu’à la révélation de la supercherie.",
+    "members": [
+      [
+        "Demalo Black",
+        "Capitaine",
+        23
+      ]
+    ],
+    "achievements": [
+      {
+        "chapter": 601,
+        "text": "Sentomaru expose l’identité du faux Luffy; les pirates recrutés se dispersent et le groupe est démantelé."
+      }
+    ]
+  },
+  {
+    "id": "peachbeard-pirates",
+    "name": "Pirates de Peachbeard",
+    "knownAt": 29,
+    "tag": "Équipage pirate",
+    "description": "Les Pirates de Peachbeard agissent sous l’influence des Pirates de Barbe Noire. Leur attaque contre Lulusia est repoussée par les habitants soutenus par l’Armée révolutionnaire, ce qui situe leur rôle parmi les équipages secondaires du Nouveau Monde.",
+    "members": [
+      [
+        "Peachbeard",
+        "Capitaine",
+        29
+      ]
+    ],
+    "achievements": [
+      {
+        "chapter": 904,
+        "text": "À Lulusia, le raid de l’équipage échoue après que les commandants révolutionnaires ont aidé les habitants à résister."
+      }
     ]
   }
 ]

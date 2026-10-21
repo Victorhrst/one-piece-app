@@ -456,6 +456,37 @@ body { background: var(--cream); color: var(--ink); }
 .character-description { color: #d4dfd8 !important; font-size: 13px !important; line-height: 1.55; }
 .fruit-card { padding: 0; }
 .fruit-image-credit { z-index: 1; }
+.fruit-card-open { display: block; width: 100%; height: 100%; padding: 0; border: 0; color: inherit; background: transparent; text-align: left; cursor: pointer; }
+.fruit-visual { position: relative; }
+.fruit-card-open:hover .fruit-visual { background: radial-gradient(ellipse at 50% 44%,#314141 0,#1d2d2f 48%,#151e21 80%); }
+.fruit-card-open:focus-visible { outline: 2px solid #d5b96e; outline-offset: -3px; border-radius: inherit; }
+.fruit-card-link { display: inline-block; margin-top: 12px; color: #e2c574; font-size: 12px; }
+.fruit-detail-hero { grid-template-columns: minmax(180px,260px) minmax(0,1fr); }
+.fruit-detail-visual { position: relative; display: grid; min-height: 260px; place-items: center; overflow: hidden; border: 1px solid #354542; border-radius: 11px; background: radial-gradient(ellipse at 50% 44%,#263535 0,#1b292b 44%,#151e21 78%); }
+.fruit-detail-visual .fruit-art { width: min(86%,230px); height: 210px; }
+.fruit-detail-visual .fruit-source-image { width: 88%; height: 230px; }
+.fruit-detail-visual .fruit-image-credit { right: 10px; bottom: 9px; max-width: calc(100% - 20px); font-size: 10px; text-align: right; }
+.fruit-detail-section { margin-top: 28px; }
+.fruit-detail-user-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.fruit-user-card { display: flex; min-width: 0; align-items: center; gap: 12px; padding: 14px; border: 1px solid #354542; border-radius: 10px; background: #151f21; }
+.fruit-user-card strong,.fruit-user-card small { display: block; }
+.fruit-user-card strong { color: #f1f1e9; font: 600 16px var(--serif); }
+.fruit-user-card small { margin-top: 5px; color: #b8c6be; font-size: 12px; line-height: 1.5; }
+.fruit-user-icon { display: grid; width: 36px; height: 36px; flex: 0 0 auto; place-items: center; border: 1px solid #596047; border-radius: 50%; color: #e2c574; background: #242b22; font-size: 18px; }
+.fruit-detail-source { margin-top: 20px; color: #99aaa0; font-size: 12px; }
+.fruit-detail-source a { color: #e2c574; }
+
+@media (max-width: 680px) {
+  .fruit-card-open { display: grid; grid-template-columns: 132px minmax(0,1fr); align-items: stretch; }
+  .fruit-card-open .fruit-visual { min-height: 100%; }
+  .fruit-card-open .fruit-source-image { width: 92%; height: 160px; }
+  .fruit-card-open .fruit-image-credit { right: 4px; bottom: 5px; left: 4px; font-size: 8px; text-align: center; }
+}
+@media (max-width: 560px) {
+  .fruit-detail-user-list { grid-template-columns: 1fr; }
+  .fruit-detail-visual { min-height: 210px; }
+  .fruit-detail-visual .fruit-source-image { height: 200px; }
+}
 
 @media (max-width: 900px) {
   .rarity-guide { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -572,7 +603,166 @@ body { background: var(--cream); color: var(--ink); }
 .detail-fact span,.detail-fact strong { display: block; }
 .detail-fact span { color: #aebdb4; font-size: 12px; }
 .detail-fact strong { margin-top: 7px; color: #e7d397; font: 600 15px var(--sans); line-height: 1.5; overflow-wrap: anywhere; }
+.character-art,.crew-art { overflow: hidden; }
+.character-art-large,.crew-art-large { min-height: 220px; background: #182329; }
+.character-bounty { color: #efd789 !important; font-size: 14px !important; font-weight: 650; }
+.bounty-estimate { border-color: #5e715f; background: #1c2b27; color: #c9dfbd !important; }
+.bounty-unknown { color: #aab8b1 !important; font-size: 12px !important; }
+.bounty-sort-note { margin: -8px 0 16px; color: #aab8b1; font-size: 13px; line-height: 1.55; }
+.bounty-estimate-card .section-heading p { max-width: 680px; }
+.profile-story { margin-top: 22px; }
+.profile-timeline { display: grid; gap: 0; max-width: 860px; margin: 0; padding: 0 0 0 9px; list-style: none; }
+.profile-timeline li { position: relative; display: grid; grid-template-columns: 18px minmax(0,1fr); gap: 12px; padding: 0 0 18px; color: #d3dcd4; }
+.profile-timeline li:not(:last-child)::before { position: absolute; top: 12px; bottom: -1px; left: 8px; width: 1px; background: #3c504a; content: ""; }
+.profile-timeline-marker { position: relative; z-index: 1; width: 17px; height: 17px; border: 1px solid #b5a06a; border-radius: 50%; background: #26342f; }
+.profile-timeline-meta { color: #b5c3ba; font-size: 13px; }
+.profile-timeline p { margin: 5px 0 0; color: #e0e5df; font-size: 16px; line-height: 1.65; }
+.bounty-current { display: inline-flex; margin: 0 0 15px; padding: 11px 16px; border: 1px solid #786945; border-radius: 10px; background: #27291f; color: #f1d98d; font: 600 24px var(--serif); }
+.bounty-timeline p { color: #f0d78e; font-weight: 600; }
 .collection-summary strong { color: #f0d38a; font-size: 15px; }
+
+.catalog-filters { justify-content: flex-start; margin: 15px 0 20px; }
+.catalog-filters .filter-search { min-width: 240px; }
+.filter-control { display: flex; min-width: 185px; flex-direction: column; gap: 5px; color: #afbeb5; font-size: 11px; }
+.filter-control .filter-select { width: 100%; max-width: none; font-size: 13px; }
+.crew-flag-image,.crew-flag-art { object-fit: contain; }
+.crew-card-stats { display: flex !important; flex-wrap: wrap; align-items: center; gap: 7px; margin-top: 10px !important; color: #e6d18d !important; font-size: 12px !important; }
+.crew-card-stats .tag { margin: 0; white-space: nowrap; }
+.crew-emperor-badge,.character-emperor-badge { display: inline-flex; width: max-content; padding: 4px 7px; border: 1px solid #796b44; border-radius: 99px; background: #302b1f; color: #f0d789 !important; font-size: 11px !important; line-height: 1.3; }
+.fight-list { display: grid; max-width: 900px; gap: 9px; margin: 0; padding: 0; list-style: none; }
+.fight-row { padding: 15px 17px; border: 1px solid #354542; border-radius: 10px; background: #151f21; }
+.fight-row-title { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 9px; margin-bottom: 6px; }
+.fight-opponent,.fight-opponent-name { padding: 0; border: 0; color: #f0d78e; background: transparent; font: 600 17px var(--serif); text-align: left; }
+.fight-opponent { cursor: pointer; }
+.fight-opponent:hover { color: #fff0ba; text-decoration: underline; }
+.fight-opponent span { color: #d2b56b; font: 14px var(--sans); }
+.fight-result { padding: 5px 8px; border: 1px solid #46544a; border-radius: 99px; color: #dae6dc; background: #202b26; font-size: 12px; }
+.fight-row p { margin: 6px 0 0; color: #c6d1ca; font-size: 14px; line-height: 1.65; }
+.fight-empty { max-width: 900px; padding: 16px; border: 1px dashed #3a4b49; border-radius: 9px; color: #bac9c0; font-size: 14px; line-height: 1.6; }
+
+/* Marine dossiers: full-width cards and a portrait-led command tree. */
+.gov-intro { display: block; margin-bottom: 24px; }
+.system-grid { grid-template-columns: minmax(0,1fr); gap: 14px; }
+.system-card { padding: 20px 22px; border-radius: 13px; background: radial-gradient(ellipse at 100% 0,rgba(201,174,103,.07),transparent 36%),linear-gradient(145deg,#1b2928,#151f21); }
+.system-card-head { align-items: center; }
+.system-card-head > div { min-width: 0; }
+.system-card h3 { margin-top: 7px; font-size: 21px; }
+.system-card > p { max-width: 920px; margin: 13px 0 15px; font-size: 14px; line-height: 1.7; }
+.system-card .tag,.marine-tree-card .tag { border: 1px solid #4b5544; background: #262b22; color: #e4cf8b; }
+.marine-tree-card { margin-bottom: 24px; padding: 23px; border-color: #465248; border-radius: 15px; background: radial-gradient(ellipse at 8% 0,rgba(218,190,114,.11),transparent 34%),linear-gradient(145deg,#1c2928,#141e20); }
+.marine-tree-card .hierarchy-caption { max-width: 850px; margin-bottom: 20px; }
+.marine-tree { display: grid; gap: 0; }
+.marine-rank-group { position: relative; display: grid; grid-template-columns: minmax(165px,.25fr) minmax(0,1fr); gap: 18px; padding: 15px 0 19px; border-top: 1px solid rgba(172,188,170,.16); }
+.marine-rank-group::before { position: absolute; top: -5px; left: 25%; width: 9px; height: 9px; border: 1px solid #d7bb70; border-radius: 50%; background: #1c2928; content: ""; }
+.marine-rank-heading { display: flex; align-items: center; gap: 12px; }
+.marine-rank-index { display: grid; width: 38px; height: 38px; flex: 0 0 auto; place-items: center; border: 1px solid #675d3f; border-radius: 11px; color: #e2cb86; background: #29291f; font: 11px var(--mono); }
+.marine-rank-label { color: #9eafa5; font: 10px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+.marine-rank-heading h4 { margin: 4px 0 0; color: #f0d995; font: 600 17px var(--serif); }
+.marine-rank-members { display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 9px; }
+.gov-member { display: flex; min-width: 0; min-height: 74px; align-items: center; gap: 11px; padding: 8px; border: 1px solid #384944; border-radius: 10px; color: inherit; background: linear-gradient(135deg,#202d2c,#192322); text-align: left; cursor: pointer; transition: border-color .16s ease,transform .16s ease,background .16s ease; }
+.gov-member:hover { transform: translateY(-2px); border-color: #a0874d; background: #27332d; }
+.gov-member-photo,.gov-member-initial { display: grid; width: 52px; height: 58px; flex: 0 0 auto; place-items: center; overflow: hidden; border: 1px solid #45574d; border-radius: 7px; color: #eed995; background: linear-gradient(145deg,#465146,#20292a); object-fit: cover; object-position: center top; font: 24px var(--serif); }
+.gov-member-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: 4px; }
+.gov-member-copy strong { color: #f1f1e9; font: 600 14px var(--serif); line-height: 1.25; }
+.gov-member-copy > span { color: #aebdb4; font-size: 11px; line-height: 1.35; }
+.gov-member-arrow,.gov-chip-arrow { color: #d9bd70; }
+.gov-member-arrow { padding: 0 4px; }
+.member-list { gap: 8px; padding: 5px 0 13px; }
+.member-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px; border-color: #40504a; border-radius: 8px; background: #202b29; }
+.member-chip strong { color: #e9dfbf; }
+.member-chip span { color: #aebdb4; font-size: 11px; }
+.member-chip .gov-chip-arrow { color: #d9bd70; }
+.system-status { border-color: rgba(172,188,170,.16); font-size: 12px; }
+.section-heading { margin-top: 18px; }
+@media (max-width: 720px) {
+  .marine-rank-group { grid-template-columns: 1fr; gap: 12px; }
+  .marine-rank-group::before { left: 14px; }
+  .marine-rank-members { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 480px) {
+  .marine-tree-card,.system-card { padding: 16px; }
+  .marine-rank-members { grid-template-columns: 1fr; }
+  .system-card-head { align-items: flex-start; }
+  .system-card h3 { font-size: 19px; }
+}
+
+/* Command tree connections and compact, illustrated institution dossiers. */
+.marine-tree-card { position: relative; padding: 27px clamp(17px,3vw,34px); overflow: hidden; }
+.marine-tree-card::after { position: absolute; top: -130px; right: -130px; width: 330px; height: 330px; border: 1px solid rgba(208,183,111,.11); border-radius: 50%; box-shadow: 0 0 0 24px rgba(208,183,111,.025),0 0 0 56px rgba(208,183,111,.02); content: ""; pointer-events: none; }
+.marine-tree { position: relative; padding-left: 24px; }
+.marine-tree::before { position: absolute; top: 12px; bottom: 106px; left: 7px; width: 1px; background: linear-gradient(#dbbf72,#547065 80%,transparent); content: ""; }
+.marine-rank-group { grid-template-columns: minmax(180px,.26fr) minmax(0,1fr); gap: 20px; padding: 17px 0 20px; border: 0; }
+.marine-rank-group::before { top: 29px; left: -24px; width: 15px; height: 1px; border: 0; border-radius: 0; background: #9d8955; }
+.marine-rank-heading { align-items: flex-start; padding-top: 11px; }
+.marine-rank-index { width: 34px; height: 34px; border-radius: 10px; }
+.marine-rank-label { font-size: 9px; }
+.marine-rank-heading h4 { font-size: 18px; }
+.marine-rank-members { grid-template-columns: repeat(auto-fit,minmax(175px,1fr)); gap: 10px; }
+.gov-member { min-height: 82px; padding: 9px; border-color: rgba(130,153,139,.29); background: linear-gradient(145deg,rgba(39,56,51,.9),rgba(25,36,35,.95)); }
+.gov-member-photo { width: 54px; height: 62px; }
+.gov-member-initial { display: grid; width: 54px; height: 62px; flex: 0 0 auto; place-items: center; overflow: hidden; border: 1px solid #45574d; border-radius: 7px; color: #eed995; background: linear-gradient(145deg,#465146,#20292a); font: 24px var(--serif); }
+.gov-member-initial[hidden] { display: none !important; }
+.gov-member-photo.gov-member-initial { object-fit: initial; }
+.gov-member-copy strong { font-size: 15px; }
+.marine-links { margin: 15px 0 4px; padding: 15px 0 0; border-top: 1px solid rgba(172,188,170,.16); }
+.marine-links-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 7px; margin-bottom: 10px; }
+.marine-links-heading > span:first-child { color: #e4cf8b; font: 10px var(--mono); letter-spacing: .09em; }
+.marine-links-heading > span:last-child { color: #92a299; font-size: 11px; }
+.marine-links-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 9px; }
+.marine-link { padding: 10px 12px; border: 1px solid #354842; border-radius: 10px; background: rgba(16,26,26,.53); }
+.marine-link-kind { display: block; margin-bottom: 9px; color: #aebdb4; font-size: 11px; }
+.marine-link-pair { display: flex; align-items: center; gap: 8px; }
+.marine-link-node { display: inline-flex; min-width: 0; align-items: center; gap: 5px; padding: 5px 8px; border: 1px solid #4a584b; border-radius: 7px; color: #f0d995; background: #252b23; font: 600 13px var(--sans); cursor: pointer; }
+.marine-link-node:hover { border-color: #b29a5d; background: #303327; }
+.marine-link-node span { font-size: 11px; }
+.marine-link-line { position: relative; height: 1px; flex: 1; min-width: 12px; border-top: 1px dashed #958356; }
+.marine-link-line i { position: absolute; top: -9px; left: calc(50% - 6px); padding: 0 3px; color: #d9bd70; background: #182423; font: normal 12px var(--sans); }
+.system-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; align-items: stretch; }
+.system-card { display: flex; min-width: 0; flex-direction: column; padding: 15px; border-color: #3a4a45; background: linear-gradient(155deg,#1d2a29,#141f20 75%); transition: transform .18s ease,border-color .18s ease; }
+.system-card:hover { transform: translateY(-2px); border-color: #786e4d; }
+.system-card-topline { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 13px; }
+.system-illustration { position: relative; display: grid; width: 76px; height: 58px; place-items: center; overflow: hidden; border: 1px solid rgba(205,185,117,.35); border-radius: 10px; color: #f0d995; background: radial-gradient(circle at 35% 30%,rgba(222,194,115,.24),transparent 42%),linear-gradient(135deg,#34413a,#202a27); }
+.system-illustration::before,.system-illustration::after { position: absolute; border: 1px solid rgba(226,207,148,.17); border-radius: 50%; content: ""; }
+.system-illustration::before { width: 48px; height: 48px; }
+.system-illustration::after { width: 34px; height: 34px; }
+.system-illustration > span { z-index: 1; color: #f0d995; font-size: 22px; text-shadow: 0 2px 9px #111; }
+.system-card-head { display: block; }
+.system-card-head h3 { margin: 0; color: #f2f1e9; font: 600 19px var(--serif); line-height: 1.2; }
+.system-card-head p { min-height: 64px; margin: 8px 0 11px; color: #b2c0b8; font-size: 12px; line-height: 1.6; }
+.system-status-badge { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; padding: 5px 8px; border: 1px solid #46604c; border-radius: 99px; color: #cce0c5; background: #202e27; font-size: 10px; line-height: 1.3; }
+.system-status-badge i { width: 6px; height: 6px; flex: 0 0 auto; border-radius: 50%; background: #8bb38a; }
+.system-status-badge.off { border-color: #684b44; color: #e3b6a7; background: #302420; }
+.system-status-badge.off i { background: #c47765; }
+.gov-system-members { display: grid; grid-template-columns: repeat(auto-fit,minmax(145px,1fr)); gap: 7px; margin-top: 13px; }
+.gov-system-member { display: flex; min-width: 0; min-height: 63px; align-items: center; gap: 8px; padding: 6px; border: 1px solid #374842; border-radius: 9px; color: inherit; background: rgba(29,42,39,.82); text-align: left; cursor: pointer; transition: border-color .16s ease,background .16s ease; }
+.gov-system-member:hover { border-color: #9b8350; background: #29352f; }
+.gov-system-photo { width: 40px; height: 48px; flex: 0 0 auto; border: 1px solid #42534c; border-radius: 6px; object-fit: cover; object-position: center top; background: #26322d; }
+.gov-system-member-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: 3px; }
+.gov-system-member-copy strong { overflow: hidden; color: #f1f1e9; font: 600 12px var(--serif); text-overflow: ellipsis; }
+.gov-system-member-copy > span { overflow: hidden; color: #adbbb2; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.gov-system-member .gov-member-initial { width: 40px; height: 48px; font-size: 18px; }
+.system-empty-note { margin: 14px 0; padding: 12px; border: 1px dashed #43524a; border-radius: 8px; color: #b5c1b8; background: rgba(14,22,23,.35); font-size: 12px; line-height: 1.55; }
+.system-card-foot { display: flex; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(172,188,170,.14); color: #8fa096; font-size: 10px; }
+.system-card-foot span:last-child { color: #c9b876; }
+.section-heading > div > p { color: #aebdb4; }
+@media (max-width: 1050px) {
+  .system-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 760px) {
+  .marine-tree { padding-left: 18px; }
+  .marine-tree::before { left: 5px; }
+  .marine-rank-group { grid-template-columns: 1fr; gap: 11px; padding: 15px 0 17px; }
+  .marine-rank-group::before { left: -18px; width: 12px; }
+  .marine-rank-heading { align-items: center; padding-top: 0; }
+}
+@media (max-width: 560px) {
+  .system-grid { grid-template-columns: 1fr; }
+  .marine-rank-members { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .gov-member { gap: 7px; padding: 6px; }
+  .gov-member-photo,.gov-member-initial { width: 42px; height: 52px; }
+  .gov-member-copy strong { font-size: 13px; }
+  .marine-links-list { grid-template-columns: 1fr; }
+}
 
 @media (max-width: 760px) {
   .detail-hero { grid-template-columns: 150px minmax(0,1fr); gap: 17px; padding: 17px; }
@@ -586,4 +776,211 @@ body { background: var(--cream); color: var(--ink); }
   .detail-member-grid { grid-template-columns: 1fr; }
   .crew-head-copy strong { font-size: 16px; }
   .crew-head-copy > span { font-size: 13px; }
+  .catalog-filters { display: grid; grid-template-columns: 1fr 1fr; }
+  .catalog-filters .filter-search { grid-column: 1 / -1; min-width: 0; }
+  .filter-control { min-width: 0; }
+  .catalog-filters .result-count { grid-column: 1 / -1; }
+  .fight-row-title { align-items: flex-start; flex-direction: column; }
+}
+
+/* Équipages : filtres sur une ligne commune et fiches à hauteurs cohérentes. */
+.crew-catalog-filters {
+  display: grid;
+  grid-template-columns: minmax(260px,1fr) minmax(175px,190px) minmax(190px,220px);
+  align-items: end;
+  gap: 12px;
+  margin: 19px 0 22px;
+}
+.crew-search-control { display: flex; min-width: 0; flex-direction: column; gap: 6px; }
+.crew-control-label,.crew-catalog-filters .filter-control > span {
+  display: block;
+  min-height: 15px;
+  color: #b5c2bb;
+  font-size: 12px;
+  line-height: 15px;
+}
+.crew-catalog-filters .filter-control { min-width: 0; gap: 6px; }
+.crew-catalog-filters .filter-search,.crew-catalog-filters .filter-select {
+  width: 100%;
+  height: 42px;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0 12px;
+  border: 1px solid #3b4b49;
+  border-radius: 8px;
+  background: #141e21;
+  color: #e4ece6;
+  font-size: 14px;
+  line-height: 1.25;
+}
+.crew-catalog-filters .filter-search { display: flex; align-items: center; gap: 9px; }
+.crew-search-control .filter-search { flex: 0 0 42px; box-sizing: border-box; }
+.crew-catalog-filters .filter-search > span { flex: 0 0 auto; color: #c6d2ca; font-size: 20px; line-height: 1; }
+.crew-catalog-filters .filter-search input { height: 100%; min-width: 0; padding: 0; color: #edf2ec; font-size: 14px; line-height: 1.25; }
+.crew-catalog-filters .filter-search input::placeholder { color: #9eafa6; opacity: 1; }
+.crew-catalog-filters .filter-select { padding-right: 34px; }
+.crew-grid { align-items: stretch; gap: 14px; }
+.crew-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #354744;
+  border-radius: 12px;
+  background: linear-gradient(145deg,#192627,#151f21 78%);
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  transition: border-color .16s ease,transform .16s ease,box-shadow .16s ease;
+}
+.crew-card:hover { transform: translateY(-2px); border-color: #687363; box-shadow: 0 12px 25px rgba(0,0,0,.2); }
+.crew-head {
+  display: grid;
+  min-height: 198px;
+  flex: 1 0 auto;
+  grid-template-columns: 60px minmax(0,1fr) 24px;
+  align-items: start;
+  gap: 13px;
+  width: 100%;
+  padding: 17px 16px 15px;
+  border: 0;
+  border-bottom: 1px solid rgba(172,188,170,.17);
+  border-radius: 0;
+  color: inherit;
+  background: transparent;
+  text-align: left;
+}
+.crew-head:hover { background: rgba(255,255,255,.018); }
+.crew-head:focus-visible { position: relative; z-index: 1; outline-offset: -4px; }
+.crew-head .crew-photo,.crew-head .crew-flag-art,.crew-head .crew-flag-image {
+  display: block;
+  width: 60px;
+  height: 56px;
+  flex: 0 0 60px;
+  margin: 0;
+  border: 1px solid #465751;
+  border-radius: 8px;
+  object-fit: contain;
+}
+.crew-head-copy { min-width: 0; align-self: stretch; }
+.crew-head-copy strong { margin: 0; font-size: 19px; line-height: 1.3; overflow-wrap: anywhere; }
+.crew-head-copy > span { margin-top: 7px; }
+.crew-head-copy > span:nth-child(2) {
+  display: -webkit-box;
+  min-height: calc(1.55em * 4);
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+.crew-card-stats { margin-top: 11px !important; }
+.crew-open-mark {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  align-self: start;
+  place-items: center;
+  margin-top: 1px;
+  border: 1px solid rgba(210,190,132,.24);
+  border-radius: 50%;
+  color: #e5c978;
+  font-size: 14px;
+  line-height: 1;
+  transition: background .16s ease,border-color .16s ease;
+}
+.crew-open:hover .crew-open-mark { border-color: #9b8550; background: #2a3025; }
+.member-list {
+  display: flex;
+  min-height: 58px;
+  flex: 0 0 auto;
+  align-content: center;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  padding: 10px 14px 12px;
+  background: rgba(7,13,14,.15);
+}
+.member-chip {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 38px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  padding: 7px 9px;
+  border: 1px solid #3b4a46;
+  border-radius: 7px;
+  background: #202b29;
+  line-height: 1.25;
+}
+.member-chip strong { min-width: 0; overflow: hidden; color: #eee4c5; font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+.member-chip span { min-width: 0; max-width: 150px; color: #b6c3bb; font-size: 11px; text-overflow: ellipsis; }
+.member-more { justify-content: center; color: #c5d1ca; font-size: 12px; }
+
+.ship-grid,.ship-related-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px; }
+.ship-card { min-width: 0; overflow: hidden; border: 1px solid #354744; border-radius: 13px; background: linear-gradient(145deg,#1b2929,#151f21 78%); box-shadow: 0 8px 20px rgba(0,0,0,.12); transition: border-color .16s ease,transform .16s ease,box-shadow .16s ease; }
+.ship-card:hover { transform: translateY(-2px); border-color: #71806e; box-shadow: 0 12px 25px rgba(0,0,0,.2); }
+.ship-card-open { display: flex; width: 100%; height: 100%; flex-direction: column; padding: 0; border: 0; color: inherit; background: transparent; text-align: left; }
+.ship-card-open:focus-visible { outline-offset: -4px; }
+.ship-card-visual { overflow: hidden; background: #17282c; }
+.ship-art { display: block; width: 100%; aspect-ratio: 18 / 11; object-fit: cover; }
+.ship-card-copy { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 17px 18px 18px; }
+.ship-card-copy .tag { border: 1px solid rgba(211,189,132,.32); background: #282a22; color: #e7d496; }
+.ship-card-copy h2 { margin: 10px 0 0; color: #f0eee5; font: 600 21px var(--serif); line-height: 1.2; }
+.ship-card-copy p { min-height: 4.6em; margin: 8px 0 12px; color: #c1cec6; font-size: 14px; line-height: 1.55; }
+.ship-card-meta { margin-top: auto; color: #e2ca86; font-size: 12px; }
+.ship-card-link { margin-top: 12px; color: #d9bd74; font-size: 12px; font-weight: 600; }
+.ship-card-open:hover .ship-card-link { color: #fff0ba; }
+.ship-card-compact .ship-card-copy { padding: 14px 15px 16px; }
+.ship-card-compact .ship-card-copy h2 { font-size: 18px; }
+.ship-card-compact .ship-card-copy p { min-height: 0; font-size: 13px; }
+.ship-card-compact .ship-art { aspect-ratio: 18 / 9; }
+.ship-detail-hero { grid-template-columns: minmax(220px, 360px) minmax(0,1fr); }
+.ship-detail-visual { min-width: 0; overflow: hidden; border: 1px solid #42534c; border-radius: 11px; background: #17282c; }
+.ship-art-large { aspect-ratio: 18 / 12; }
+.detail-badges .ship-crew-link { padding: 7px 10px; border: 1px solid #48564a; border-radius: 99px; color: #e7d397; background: #222b24; font-size: 12px; }
+.ship-crew-link:hover { border-color: #c9ad63; background: #30362a; }
+.ship-crew-link span { padding: 0; border: 0; background: transparent; }
+.ship-detail-source { margin: 20px 0 0; color: #aebdb4; font-size: 13px; }
+.ship-detail-source a { color: #e3ca81; }
+.ship-catalog-filters { justify-content: space-between; }
+.ship-catalog-filters .filter-search { display: flex; align-items: center; gap: 9px; }
+.ship-catalog-filters .filter-search > span { color: #c6d2ca; font-size: 20px; }
+.ship-catalog-filters input { min-width: 0; height: 100%; color: #edf2ec; font-size: 14px; }
+.ship-catalog-filters input::placeholder { color: #9eafa6; opacity: 1; }
+.ship-catalog-filters .result-count { color: #bac9c0; font-size: 13px; }
+.crew-ships-section { margin-top: 28px; }
+
+@media (max-width: 820px) {
+  .crew-catalog-filters { grid-template-columns: minmax(0,1fr) minmax(150px,.65fr); }
+  .crew-search-control { grid-column: 1 / -1; }
+  .crew-grid { grid-template-columns: 1fr; }
+  .crew-head { min-height: 180px; }
+  .ship-detail-hero { grid-template-columns: minmax(170px,250px) minmax(0,1fr); }
+}
+@media (max-width: 560px) {
+  .crew-catalog-filters { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px; }
+  .crew-search-control { grid-column: 1 / -1; }
+  .crew-catalog-filters .filter-search,.crew-catalog-filters .filter-select { height: 42px; }
+  .crew-grid { gap: 11px; }
+  .crew-head { min-height: 0; grid-template-columns: 52px minmax(0,1fr) 22px; gap: 10px; padding: 14px 12px 13px; }
+  .crew-head .crew-photo,.crew-head .crew-flag-art,.crew-head .crew-flag-image { width: 52px; height: 50px; flex-basis: 52px; }
+  .crew-head-copy strong { font-size: 17px; }
+  .crew-head-copy > span { font-size: 13px; }
+  .crew-head-copy > span:nth-child(2) { min-height: calc(1.5em * 4); }
+  .crew-card-stats { gap: 6px; font-size: 11px !important; }
+  .member-list { min-height: 54px; gap: 6px; padding: 9px 10px 10px; }
+  .member-chip { min-height: 36px; max-width: 100%; gap: 6px; padding: 6px 8px; }
+  .member-chip strong { font-size: 12px; }
+  .member-chip span { max-width: 115px; font-size: 10px; }
+  .ship-grid,.ship-related-grid { grid-template-columns: 1fr; gap: 11px; }
+  .ship-card-copy { padding: 15px; }
+  .ship-card-copy h2 { font-size: 19px; }
+  .ship-card-copy p { min-height: 0; font-size: 13px; }
+  .ship-detail-hero { grid-template-columns: 1fr; }
+  .ship-detail-visual { max-width: 440px; }
+  .ship-catalog-filters { display: grid; grid-template-columns: 1fr; gap: 9px; }
+  .ship-catalog-filters .filter-search { min-width: 0; height: 42px; }
+}
+@media (max-width: 380px) {
+  .crew-catalog-filters { grid-template-columns: 1fr; }
+  .crew-search-control { grid-column: auto; }
 }
