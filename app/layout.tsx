@@ -27,6 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Script src="/modules/characters.js" strategy="beforeInteractive" />
         <Script src="/modules/fruits.js" strategy="beforeInteractive" />
         <Script src="/modules/sources.js" strategy="beforeInteractive" />
+        <Script src="/modules/map.js" strategy="beforeInteractive" />
         <Script src="/app.js" strategy="afterInteractive" />
       </body>
     </html>

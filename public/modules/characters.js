@@ -212,12 +212,17 @@ window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
     return html + '</div>';
   }
 
-  function renderCharacterDetail(routeKey, returnCrew) {
+  function renderCharacterDetail(routeKey, returnCrew, returnLocation) {
     var characters = collectCharacters();
     var key = String(routeKey || "");
     var character = characters.find(function (item) { return identityKey(item.name) === key || stripMarks(item.name).replace(/[^a-z0-9]+/g,"-") === key; });
+    var back = returnLocation
+      ? '<button class="detail-back" data-map-location="' + escapeHtml(returnLocation) + '">← Retour à la fiche du lieu</button>'
+      : returnCrew
+        ? '<button class="detail-back" data-open-crew="' + escapeHtml(returnCrew) + '">← Retour à la fiche de l’équipage</button>'
+        : '<button class="detail-back" data-page="characters">← Retour aux personnages</button>';
     if (!progressArc()) return heading("FICHE PERSONNAGE", "Personnage", "Choisis d’abord un arc pour ouvrir les fiches sans spoiler.", "◎") + progressHint();
-    if (!character) return heading("FICHE PERSONNAGE", "Fiche indisponible", "Ce personnage n’est pas répertorié dans les informations accessibles jusqu’à ton arc.", "◎") + '<button class="detail-back" data-page="characters">← Retour aux personnages</button>';
+    if (!character) return heading("FICHE PERSONNAGE", "Fiche indisponible", "Ce personnage n’est pas répertorié dans les informations accessibles jusqu’à ton arc.", "◎") + back;
     var affiliations = character.affiliations.filter(function (item,index,list) { return list.indexOf(item) === index; });
     var firstChapter = Number(character.firstAppearanceChapter || character.firstChapter) || 0;
     var firstArc = DATA.arcs.find(function (arc) { return firstChapter >= Number(arc.chapterStart) && firstChapter <= Number(arc.chapterEnd); }) || DATA.arcs[character.knownAt] || progressArc();
@@ -225,9 +230,6 @@ window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
     var description = character.description && character.description !== character.role
       ? character.description
       : character.name + ' est répertorié' + (character.role ? ' comme ' + character.role.toLowerCase() : '') + (affiliations.length ? ' et rattaché' + (character.role && /e$/.test(character.role) ? 'e' : '') + ' à ' + affiliations.join(', ') : '') + '.';
-    var back = returnCrew
-      ? '<button class="detail-back" data-open-crew="' + escapeHtml(returnCrew) + '">← Retour à la fiche de l’équipage</button>'
-      : '<button class="detail-back" data-page="characters">← Retour aux personnages</button>';
     var emperor = character.greatEmperor ? '<span>' + escapeHtml(character.emperorTitle || "Empereur connu à cet arc") + '</span>' : '';
     var html = back + '<section class="detail-hero character-detail-hero">' + characterImage(character,true) + '<div class="detail-hero-copy"><span class="eyebrow">FICHE PERSONNAGE</span><h1>' + escapeHtml(character.name) + '</h1><p>' + escapeHtml(description) + '</p><div class="detail-badges"><span>' + escapeHtml(character.role || "Rôle non précisé") + '</span><span>' + escapeHtml(firstChapterLabel) + ' · ' + escapeHtml(firstArc.name) + (character.firstChapter ? ' · chapitre ' + escapeHtml(character.firstChapter) : '') + '</span>' + emperor + '</div></div></section>';
     html += '<div class="detail-facts-grid"><article class="detail-fact"><span>Rôle documenté</span><strong>' + escapeHtml(character.role || "Non précisé") + '</strong></article><article class="detail-fact"><span>Affiliation' + (affiliations.length > 1 ? 's' : '') + '</span><strong>' + escapeHtml(affiliations.join(" · ") || "Non précisée") + '</strong></article><article class="detail-fact"><span>Repère de la fiche</span><strong>' + escapeHtml(firstArc.name) + '</strong></article></div>';

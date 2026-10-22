@@ -33,6 +33,11 @@
     crewSort: "alpha",
     crewEmperorsOnly: false,
     rarity: "Toutes",
+    mapQuery: "",
+    mapSea: "Toutes les mers",
+    mapType: "Tous les types",
+    mapZoom: 1,
+    mapScrollLeft: 0,
     toastTimer: null,
     catalogLoading: false,
     loading: false,
@@ -456,13 +461,13 @@
 
 
   function pageTitle(page) {
-    var titles = {home:"ACCUEIL",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES", "crew-detail":"FICHE D’ÉQUIPAGE",ships:"BATEAUX", "ship-detail":"FICHE DE BATEAU",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES",characters:"PERSONNAGES", "character-detail":"FICHE PERSONNAGE",fruits:"FRUITS DU DÉMON", "fruit-detail":"FICHE FRUIT DU DÉMON",sources:"SOURCES"};
+    var titles = {home:"ACCUEIL",map:"CARTE DU MONDE","location-detail":"FICHE DE LIEU",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES", "crew-detail":"FICHE D’ÉQUIPAGE",ships:"BATEAUX", "ship-detail":"FICHE DE BATEAU",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES",characters:"PERSONNAGES", "character-detail":"FICHE PERSONNAGE",fruits:"FRUITS DU DÉMON", "fruit-detail":"FICHE FRUIT DU DÉMON",sources:"SOURCES"};
     return titles[page] || "ACCUEIL";
   }
 
   function routeIdentity() {
     var detail = state.detail || {};
-    return JSON.stringify([state.page, detail.key || "", detail.returnCrew || ""]);
+    return JSON.stringify([state.page, detail.key || "", detail.returnCrew || "", detail.returnLocation || ""]);
   }
 
   function viewCacheKey(route) {
@@ -479,6 +484,11 @@
       state.crewSort,
       state.crewEmperorsOnly,
       state.rarity,
+      state.mapQuery,
+      state.mapSea,
+      state.mapType,
+      state.mapZoom,
+      state.mapScrollLeft,
       state.catalogLoading,
       state.guideLoading,
       state.fruitLoreLoaded,
@@ -527,7 +537,7 @@
     }
     if (route.indexOf("#personnage/") === 0) {
       state.page = "character-detail";
-      state.detail = { type:"character", key:decodeRoutePart(route.slice("#personnage/".length)), returnCrew:window.history.state && window.history.state.returnCrew || null };
+      state.detail = { type:"character", key:decodeRoutePart(route.slice("#personnage/".length)), returnCrew:window.history.state && window.history.state.returnCrew || null, returnLocation:window.history.state && window.history.state.returnLocation || null };
       return;
     }
     if (route.indexOf("#fruit/") === 0) {
@@ -535,8 +545,13 @@
       state.detail = { type:"fruit", key:decodeRoutePart(route.slice("#fruit/".length)) };
       return;
     }
+    if (route.indexOf("#lieu/") === 0) {
+      state.page = "location-detail";
+      state.detail = { type:"location", key:decodeRoutePart(route.slice("#lieu/".length)) };
+      return;
+    }
     var page = route.indexOf("#page/") === 0 ? decodeRoutePart(route.slice("#page/".length)) : "home";
-    var allowed = ["home","guide","crews","ships","government","blades","characters","fruits","sources"];
+    var allowed = ["home","map","guide","crews","ships","government","blades","characters","fruits","sources"];
     state.page = allowed.indexOf(page) >= 0 ? page : "home";
     state.detail = null;
   }
@@ -559,7 +574,13 @@
       }
     }
     if (!renderedFromCache && (!activeView || activeView.route !== route || activeView.cacheKey !== cacheKey)) {
+      if (page === "map") {
+        var oldMapViewport = document.getElementById("worldMapViewport");
+        if (oldMapViewport) state.mapScrollLeft = oldMapViewport.scrollLeft;
+      }
       var html = page === "home" ? window.GRANDLINE_PAGES.renderHome()
+        : page === "map" ? window.GRANDLINE_PAGES.renderMap()
+        : page === "location-detail" ? window.GRANDLINE_PAGES.renderLocationDetail(state.detail && state.detail.key)
         : page === "guide" ? window.GRANDLINE_PAGES.renderGuide()
         : page === "crews" ? window.GRANDLINE_PAGES.renderCrews()
         : page === "crew-detail" ? window.GRANDLINE_PAGES.renderCrewDetail(state.detail && state.detail.key)
@@ -568,19 +589,23 @@
         : page === "government" ? window.GRANDLINE_PAGES.renderGovernment()
         : page === "blades" ? window.GRANDLINE_PAGES.renderBlades()
         : page === "characters" ? window.GRANDLINE_PAGES.renderCharacters()
-        : page === "character-detail" ? window.GRANDLINE_PAGES.renderCharacterDetail(state.detail && state.detail.key, state.detail && state.detail.returnCrew)
+        : page === "character-detail" ? window.GRANDLINE_PAGES.renderCharacterDetail(state.detail && state.detail.key, state.detail && state.detail.returnCrew, state.detail && state.detail.returnLocation)
         : page === "fruits" ? window.GRANDLINE_PAGES.renderFruits()
         : page === "fruit-detail" ? window.GRANDLINE_PAGES.renderFruitDetail(state.detail && state.detail.key)
         : window.GRANDLINE_PAGES.renderSources();
       content.innerHTML = html;
+      if (page === "map") {
+        var newMapViewport = document.getElementById("worldMapViewport");
+        if (newMapViewport) newMapViewport.scrollLeft = state.mapScrollLeft;
+      }
     }
     activeView = {
       route:route,
       cacheKey:cacheKey,
-      cacheable:!state.query.trim() && !state.catalogLoading && !state.guideLoading
+      cacheable:page !== "location-detail" && !state.query.trim() && !state.catalogLoading && !state.guideLoading
     };
     document.getElementById("crumbCurrent").textContent = pageTitle(page);
-    var activePage = page === "ship-detail" ? "ships" : page === "crew-detail" ? "crews" : page === "character-detail" ? "characters" : page === "fruit-detail" ? "fruits" : page;
+    var activePage = page === "location-detail" ? "map" : page === "ship-detail" ? "ships" : page === "crew-detail" ? "crews" : page === "character-detail" ? "characters" : page === "fruit-detail" ? "fruits" : page;
     document.querySelectorAll(".nav-item[data-page]").forEach(function (button) {
       button.classList.toggle("active", button.getAttribute("data-page") === activePage);
     });
@@ -633,6 +658,16 @@
     }).catch(function () {});
   }
 
+  function openLocationDetail(key) {
+    state.page = "location-detail";
+    state.detail = { type:"location", key:String(key || "") };
+    state.query = "";
+    window.history.pushState({page:"location-detail"}, "", "#lieu/" + encodeURIComponent(state.detail.key));
+    document.body.classList.remove("menu-open");
+    render();
+    scrollToPageTop();
+  }
+
   function openCrewDetail(key) {
     state.page = "crew-detail";
     state.detail = { type:"crew", key:String(key || "") };
@@ -651,10 +686,10 @@
     scrollToPageTop();
   }
 
-  function openCharacterDetail(key, returnCrew) {
+  function openCharacterDetail(key, returnCrew, returnLocation) {
     state.page = "character-detail";
-    state.detail = { type:"character", key:String(key || ""), returnCrew:returnCrew || null };
-    window.history.pushState({page:"character-detail",returnCrew:returnCrew || null}, "", "#personnage/" + encodeURIComponent(state.detail.key));
+    state.detail = { type:"character", key:String(key || ""), returnCrew:returnCrew || null, returnLocation:returnLocation || null };
+    window.history.pushState({page:"character-detail",returnCrew:returnCrew || null,returnLocation:returnLocation || null}, "", "#personnage/" + encodeURIComponent(state.detail.key));
     document.body.classList.remove("menu-open");
     render();
     scrollToPageTop();
@@ -849,10 +884,10 @@
   }
 
   var pageContext = { DATA:DATA, state:state, progressArc:progressArc, emperorsRevealed:emperorsRevealed, visibleEpisodes:visibleEpisodes, visibleChapters:visibleChapters, escapeHtml:escapeHtml, stripMarks:stripMarks, safeCharacterName:safeCharacterName, identityKey:identityKey, episodeNumber:episodeNumber, chapterNumber:chapterNumber, chapterValues:chapterValues, formatChapterValues:formatChapterValues, volumeText:volumeText, arcLabelForEpisode:arcLabelForEpisode, filtered:filtered, heading:heading, progressHint:progressHint, plain:plain };
-  window.GRANDLINE_PAGES = Object.assign({}, window.GRANDLINE_PAGE_FACTORIES.home(pageContext), window.GRANDLINE_PAGE_FACTORIES.guide(pageContext), window.GRANDLINE_PAGE_FACTORIES.crews(pageContext), window.GRANDLINE_PAGE_FACTORIES.ships(pageContext), window.GRANDLINE_PAGE_FACTORIES.government(pageContext), window.GRANDLINE_PAGE_FACTORIES.blades(pageContext), window.GRANDLINE_PAGE_FACTORIES.characters(pageContext), window.GRANDLINE_PAGE_FACTORIES.fruits(pageContext), window.GRANDLINE_PAGE_FACTORIES.sources(pageContext));
+  window.GRANDLINE_PAGES = Object.assign({}, window.GRANDLINE_PAGE_FACTORIES.home(pageContext), window.GRANDLINE_PAGE_FACTORIES.map(pageContext), window.GRANDLINE_PAGE_FACTORIES.guide(pageContext), window.GRANDLINE_PAGE_FACTORIES.crews(pageContext), window.GRANDLINE_PAGE_FACTORIES.ships(pageContext), window.GRANDLINE_PAGE_FACTORIES.government(pageContext), window.GRANDLINE_PAGE_FACTORIES.blades(pageContext), window.GRANDLINE_PAGE_FACTORIES.characters(pageContext), window.GRANDLINE_PAGE_FACTORIES.fruits(pageContext), window.GRANDLINE_PAGE_FACTORIES.sources(pageContext));
 
   document.addEventListener("click", function (event) {
-    var target = event.target.closest("button,[data-page],[data-open-fruit],[data-open-ship]");
+    var target = event.target.closest("button,[data-page],[data-open-fruit],[data-open-ship],[data-map-location]");
     if (!target) return;
     if (target.id === "updateButton") {
       updateLive(true);
@@ -870,6 +905,22 @@
       setPage(target.getAttribute("data-page"));
       return;
     }
+    if (target.hasAttribute("data-map-location")) {
+      event.preventDefault();
+      openLocationDetail(target.getAttribute("data-map-location"));
+      return;
+    }
+    if (target.hasAttribute("data-map-zoom")) {
+      var zoomAction = target.getAttribute("data-map-zoom");
+      state.mapZoom = zoomAction === "reset" ? 1 : Math.max(.72, Math.min(1.35, state.mapZoom + (zoomAction === "in" ? .12 : -.12)));
+      window.GRANDLINE_PAGES.updateMapZoom();
+      return;
+    }
+    if (target.hasAttribute("data-map-retry")) {
+      state.mapLoading = false;
+      render();
+      return;
+    }
     if (target.hasAttribute("data-open-crew")) {
       openCrewDetail(target.getAttribute("data-open-crew"));
       return;
@@ -879,7 +930,7 @@
       return;
     }
     if (target.hasAttribute("data-open-character")) {
-      openCharacterDetail(target.getAttribute("data-open-character"),target.getAttribute("data-return-crew"));
+      openCharacterDetail(target.getAttribute("data-open-character"),target.getAttribute("data-return-crew"),target.getAttribute("data-return-location"));
       return;
     }
     if (target.hasAttribute("data-open-fruit")) {
@@ -937,6 +988,18 @@
       global.setSelectionRange(state.query.length, state.query.length);
       return;
     }
+    if (event.target.matches("[data-map-search]")) {
+      state.mapQuery = event.target.value;
+      var oldMap = document.getElementById("worldMapViewport");
+      state.mapScrollLeft = oldMap ? oldMap.scrollLeft : 0;
+      render();
+      var mapSearch = document.querySelector("[data-map-search]");
+      if (mapSearch) {
+        mapSearch.focus();
+        mapSearch.setSelectionRange(state.mapQuery.length, state.mapQuery.length);
+      }
+      return;
+    }
     if (["guideSearch","bladeSearch","characterSearch","crewSearch"].indexOf(event.target.id) !== -1) {
       state.query = event.target.value;
       if (state.page === "guide") state.guideLimit = 30;
@@ -953,7 +1016,17 @@
 
   document.addEventListener("change", function (event) {
     var target = event.target;
-    if (target.matches("[data-character-sort]")) {
+    if (target.matches("[data-map-sea]")) {
+      state.mapSea = target.value;
+      var seaMap = document.getElementById("worldMapViewport");
+      state.mapScrollLeft = seaMap ? seaMap.scrollLeft : 0;
+      render();
+    } else if (target.matches("[data-map-type]")) {
+      state.mapType = target.value;
+      var typeMap = document.getElementById("worldMapViewport");
+      state.mapScrollLeft = typeMap ? typeMap.scrollLeft : 0;
+      render();
+    } else if (target.matches("[data-character-sort]")) {
       state.characterSort = target.value === "bounty" ? "bounty" : "alpha";
       render();
     } else if (target.matches("[data-character-emperors]")) {

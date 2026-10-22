@@ -31,7 +31,7 @@ flowchart LR
 | `content/crews.json` | Présentation des équipages, composition et accomplissements datés. |
 | `content/ships.json` | Notices de bateaux, liens d’équipage et moments datés filtrés selon l’arc. |
 | `public/fruit-lore.json` | Descriptions développées et détenteurs connus avec leur repère de révélation. |
-| `public/modules/` | Dépôt navigateur et vues d’accueil, d’index, de fiches et de collections. |
+| `public/modules/` | Dépôt navigateur et vues d’accueil, de carte, d’index, de fiches et de collections. |
 | `public/app.js` | Point d’entrée : navigation par URL, progression et actions globales. |
 
 ## Modèle de données
@@ -59,6 +59,8 @@ Le navigateur enregistre localement l’arc choisi. Chaque requête de catalogue
 Les transformations de nom comme les alias, les révélations progressives de grades et les types de fruits restent gérés par les fiches éditoriales locales. Les détenteurs de fruits sont filtrés selon leur chapitre de révélation, séparément de la première apparition du fruit. Les pouvoirs ou affiliations déduits mais non confirmés sont indiqués comme incertains.
 
 Les fiches d’équipage, de bateau, de personnage et de fruit sont rendues par leurs modules respectifs. Les bateaux, leurs événements et leurs associations sont filtrés par chapitre avant d’être envoyés au navigateur. Les routes `#equipage/...`, `#bateau/...`, `#personnage/...` et `#fruit/...` permettent les liens directs et l’historique précédent/suivant; elles recherchent uniquement dans le catalogue déjà filtré par progression.
+
+`public/modules/map.js` contient les repères cartographiques et les fiches courtes de lieux. Chaque entrée porte l’identifiant d’un arc de première découverte. Le module filtre cette liste avant de produire les marqueurs, résultats de recherche, filtres et fiches; une route `#lieu/...` inconnue ou non débloquée affiche un écran générique. La carte s’appuie sur la progression locale et ne contacte pas de source externe. Son dessin SVG est un schéma original, sans coordonnées à l’échelle; les points d’îles sont des repères d’itinéraire, pas des positions géographiques canons établies.
 
 ## Chemin de mise à jour
 
