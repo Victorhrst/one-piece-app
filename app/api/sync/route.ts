@@ -123,18 +123,20 @@ function findArcId(chapter: number | null) {
 
 function curatedFruit(name: string, model: string) {
   const keys = [name, model].map(normalize).filter(Boolean);
-  return knownFruits.find((fruit) => {
-    if (fruit.apiName) {
-      const sourceName = normalize(name);
-      const curatedName = normalize(fruit.apiName);
-      const sourceModel = normalize(model);
-      const nameMatches = sourceName === curatedName || (sourceModel && sourceName.indexOf(curatedName) === 0 && sourceName.indexOf(sourceModel) >= 0);
-      const expectedModel = normalize(fruit.apiModel);
-      const modelMatches = fruit.apiModel == null ? (!sourceModel || sourceModel === "unknown") : sourceModel === expectedModel;
-      if (nameMatches && modelMatches) return true;
-    }
-    return [fruit.name, ...(fruit.apiNames ?? [])].map(normalize).some((key) => keys.includes(key));
-  }) ?? null;
+  const sourceName = normalize(name);
+  const sourceModel = normalize(model);
+  const modelKnown = sourceModel && sourceModel !== "unknown" && sourceModel !== "inconnu";
+  const modeledFruit = knownFruits.find((fruit) => {
+    if (!fruit.apiModel) return false;
+    const expectedModel = normalize(fruit.apiModel);
+    const canonicalName = normalize(fruit.name);
+    const apiName = normalize(fruit.apiName);
+    const nameMatches = sourceName === apiName || sourceName === canonicalName || (sourceModel && apiName && sourceName.indexOf(apiName) === 0 && sourceName.indexOf(sourceModel) >= 0);
+    return Boolean(nameMatches && (modelKnown ? sourceModel === expectedModel : sourceName === canonicalName));
+  });
+  if (modeledFruit) return modeledFruit;
+  if (modelKnown) return null;
+  return knownFruits.find((fruit) => !fruit.apiModel && [fruit.name, ...(fruit.apiNames ?? [])].map(normalize).some((key) => keys.includes(key))) ?? null;
 }
 
 function curatedShip(name: string) {

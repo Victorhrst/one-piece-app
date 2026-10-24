@@ -33,6 +33,7 @@
     crewSort: "alpha",
     crewEmperorsOnly: false,
     rarity: "Toutes",
+    fruitCategory: "all",
     mapQuery: "",
     mapSea: "Toutes les mers",
     mapType: "Tous les types",
@@ -484,6 +485,7 @@
       state.crewSort,
       state.crewEmperorsOnly,
       state.rarity,
+      state.fruitCategory,
       state.mapQuery,
       state.mapSea,
       state.mapType,
@@ -973,6 +975,10 @@
     }
     if (target.hasAttribute("data-rarity")) {
       state.rarity = target.getAttribute("data-rarity");
+      render();
+    }
+    if (target.hasAttribute("data-fruit-category")) {
+      state.fruitCategory = target.getAttribute("data-fruit-category") || "all";
       render();
     }
   });

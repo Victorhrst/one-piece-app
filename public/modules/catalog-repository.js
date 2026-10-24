@@ -26,18 +26,27 @@
 
   function enrichFruit(record, data, fruitLore) {
     var recordNames = [record.name, record.model].concat(record.aliases || []).map(normalized).filter(Boolean);
+    var recordModel = normalized(record.model);
+    if (/^(unknown|inconnu|none|null|aconfirmer)$/.test(recordModel)) recordModel = "";
     var known = (data.fruits || []).find(function (fruit) {
-      var aliases = [fruit.name].concat(fruit.apiNames || []).map(normalized);
-      return aliases.some(function (alias) { return recordNames.indexOf(alias) >= 0; });
+      var canonicalName = normalized(fruit.name);
+      var aliases = [fruit.name, fruit.apiName].concat(fruit.apiNames || []).map(normalized).filter(Boolean);
+      if (!aliases.some(function (alias) { return recordNames.indexOf(alias) >= 0; })) return false;
+      var curatedModel = normalized(fruit.apiModel);
+      if (curatedModel) return recordModel ? recordModel === curatedModel : normalized(record.name) === canonicalName;
+      if (recordModel) return normalized(record.name) === canonicalName && /,\s*(?:model|mod[eè]le)\s+/i.test(String(fruit.name || ""));
+      return true;
     });
+    var loreNames = known ? [known.name] : record.model ? [] : [record.name].concat(record.aliases || []);
     var lore = (fruitLore && Object.keys(fruitLore)).map(function (key) { return fruitLore[key]; }).find(function (entry) {
-      return [entry.name].concat(entry.aliases || []).some(function (name) { return recordNames.indexOf(normalized(name)) >= 0; });
+      var entryNames = [entry.name].concat(entry.aliases || []).map(normalized);
+      return loreNames.some(function (name) { return entryNames.indexOf(normalized(name)) >= 0; });
     }) || null;
     var typeLabel = record.type || (known && known.typeHistory && known.typeHistory[0] && known.typeHistory[0].label) || "Type à confirmer";
     return Object.assign({}, known || {}, record, {
       name: (known && known.name) || (lore && lore.name) || record.name,
-      firstSeen: Number(record.knownAt),
-      firstChapter: record.firstChapter,
+      firstSeen: Number(known && known.firstSeen != null ? known.firstSeen : record.knownAt),
+      firstChapter: Number(known && known.firstChapter || record.firstChapter) || null,
       knownAs: (known && known.knownAs) || record.description || "Description non renseignée dans la source.",
       typeHistory: (known && known.typeHistory) || [{ from: Number(record.knownAt), label: typeLabel }],
       user: (lore && lore.users && lore.users.length && lore.users[0].name) || (known && known.user) || "Utilisateur à confirmer",
@@ -51,17 +60,50 @@
     });
   }
 
+  function isFruitImage(fruit) {
+    if (!fruit.image) return false;
+    try {
+      var url = new URL(fruit.image, "https://grand-line.invalid");
+      var path = decodeURIComponent(url.pathname).split("/revision/")[0];
+      var filename = path.split("/").pop() || "";
+      var normalizeName = function (value) { return normalized(value); };
+      var model = String(fruit.model || "").trim();
+      if (!model) {
+        var match = String(fruit.name || "").match(/,\s*(?:model|mod[eè]le)\s+(.+)$/i);
+        if (match) model = match[1];
+      }
+      var modelMatches = !model || normalizeName(filename).indexOf(normalizeName(model)) !== -1;
+      if (/supabase\.co$/i.test(url.hostname) && /\/devil-fruits\//i.test(url.pathname)) return modelMatches;
+      if (/beastform|humanform|hybridform|anime|manga|attack|ability|scene|shot/.test(normalizeName(filename))) return false;
+      var roots = [fruit.name].concat(fruit.aliases || []).map(function (name) {
+        return String(name || "").split(/,\s*(?:model|mod[eè]le)\s*/i)[0];
+      }).map(normalizeName).filter(function (name) { return name.length >= 6; });
+      var nameMatches = roots.some(function (root) { return normalizeName(path).indexOf(root) !== -1; });
+      return nameMatches && modelMatches;
+    } catch { return false; }
+  }
+
+  function fruitIdentity(fruit) {
+    var name = normalized(fruit.name);
+    var model = normalized(fruit.model);
+    if (/^(unknown|inconnu|none|null|aconfirmer)$/.test(model)) model = "";
+    if (name === normalized("Gomu Gomu no Mi") || /,\s*(?:model|mod[eè]le)\s+/i.test(String(fruit.name || ""))) model = "";
+    return name + (model ? "::" + model : "");
+  }
+
   function mergeFruitRows(records, data, fruitLore) {
     var mergedFruits = new Map();
     records.map(function (fruit) { return enrichFruit(fruit, data, fruitLore); }).forEach(function (fruit) {
-      var key = normalized(fruit.name);
+      var key = fruitIdentity(fruit);
       var existing = mergedFruits.get(key);
       if (!existing) {
         mergedFruits.set(key, fruit);
         return;
       }
       var merged = Object.assign({}, existing, fruit);
-      merged.image = fruit.image || existing.image || null;
+      var imageRecord = isFruitImage(fruit) ? fruit : isFruitImage(existing) ? existing : null;
+      merged.image = imageRecord ? imageRecord.image : null;
+      merged.imageSource = imageRecord ? imageRecord.imageSource : null;
       merged.longDescription = fruit.longDescription || existing.longDescription || null;
       merged.users = fruit.users && fruit.users.length ? fruit.users : existing.users || [];
       mergedFruits.set(key, merged);

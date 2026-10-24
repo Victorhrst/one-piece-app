@@ -207,13 +207,14 @@ window.GRANDLINE_DATA = {
     {name:"Shirauo",image:"https://static.wikia.nocookie.net/onepiece/images/1/18/Shirauo_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Shirauo",kind:"Nodachi",firstSeen:29,gradeKnown:null,grade:"Non classée",ownerHistory:[{from:29,name:"Charlotte Amande"}],note:"Le long sabre de Charlotte Amande. Aucun grade de Meitō n’est confirmé ici."}
   ],
   fruits: [
-    {name:"Gomu Gomu no Mi",firstSeen:0,knownAs:"Fruit du caoutchoutier",typeHistory:[{from:0,label:"Paramecia, selon la classification connue"},{from:30,label:"Hito Hito no Mi, modèle Nika · Zoan mythique"}],user:"Monkey D. Luffy"},
+    {name:"Gomu Gomu no Mi",apiName:"Hito Hito no Mi",apiModel:"Nika",firstSeen:0,firstChapter:1,knownAs:"Fruit du caoutchoutier",typeHistory:[{from:0,label:"Paramecia, selon la classification connue"},{from:30,label:"Hito Hito no Mi, modèle Nika · Zoan mythique"}],user:"Monkey D. Luffy"},
     {name:"Bara Bara no Mi",firstSeen:1,knownAs:"Fruit du fragment",typeHistory:[{from:1,label:"Paramecia"}],user:"Baggy"},
     {name:"Moku Moku no Mi",firstSeen:5,knownAs:"Fruit du fumigène",typeHistory:[{from:5,label:"Logia"}],user:"Smoker"},
     {name:"Suna Suna no Mi",firstSeen:10,knownAs:"Fruit des sables",typeHistory:[{from:10,label:"Logia"}],user:"Crocodile"},
     {name:"Mera Mera no Mi",firstSeen:22,knownAs:"Fruit du feu",typeHistory:[{from:22,label:"Logia"}],user:"Ace"},
     {name:"Goro Goro no Mi",firstSeen:12,knownAs:"Fruit de la foudre",typeHistory:[{from:12,label:"Logia"}],user:"Ener"},
     {name:"Hito Hito no Mi",firstSeen:9,knownAs:"Fruit de l’humain",typeHistory:[{from:9,label:"Zoan"}],user:"Tony Tony Chopper"},
+    {name:"Hito Hito no Mi, modèle Daibutsu",apiName:"Hito Hito no Mi",apiModel:"Buddha",firstSeen:21,firstChapter:571,knownAs:"Zoan mythique permettant à Sengoku de prendre une forme de Bouddha géant et une forme hybride.",typeHistory:[{from:21,label:"Zoan mythique"}],user:"Sengoku"},
     {name:"Ope Ope no Mi",firstSeen:18,knownAs:"Fruit de l’opération",typeHistory:[{from:18,label:"Paramecia"}],user:"Trafalgar Law"},
     {name:"Ito Ito no Mi",firstSeen:26,knownAs:"Fruit des fils",typeHistory:[{from:26,label:"Paramecia"}],user:"Don Quichotte Doflamingo"},
     {name:"Toki Toki no Mi",firstSeen:30,knownAs:"Fruit du temps",typeHistory:[{from:30,label:"Paramecia"}],user:"Kozuki Toki"},

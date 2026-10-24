@@ -1,6 +1,8 @@
 [
   {
     "name": "Gomu Gomu no Mi",
+    "apiName": "Hito Hito no Mi",
+    "apiModel": "Nika",
     "firstSeen": 0,
     "knownAs": "Fruit du caoutchoutier",
     "typeHistory": [
@@ -86,6 +88,21 @@
       }
     ],
     "user": "Tony Tony Chopper"
+  },
+  {
+    "name": "Hito Hito no Mi, modèle Daibutsu",
+    "apiName": "Hito Hito no Mi",
+    "apiModel": "Buddha",
+    "firstSeen": 21,
+    "firstChapter": 571,
+    "knownAs": "Zoan mythique permettant à Sengoku de prendre une forme de Bouddha géant et une forme hybride.",
+    "typeHistory": [
+      {
+        "from": 21,
+        "label": "Zoan mythique"
+      }
+    ],
+    "user": "Sengoku"
   },
   {
     "name": "Ope Ope no Mi",
