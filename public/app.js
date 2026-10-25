@@ -47,6 +47,7 @@
     toastTimer: null,
     catalogLoading: false,
     loading: false,
+    governmentBookPage: 0,
     renderRevision: 0
   };
   var arcSource = null;
@@ -508,7 +509,7 @@
 
   function routeIdentity() {
     var detail = state.detail || {};
-    return JSON.stringify([state.page, detail.key || "", detail.returnCrew || "", detail.returnLocation || ""]);
+    return JSON.stringify([state.page, detail.key || "", detail.returnCrew || "", detail.returnLocation || "", detail.returnPage || ""]);
   }
 
   function viewCacheKey(route) {
@@ -517,6 +518,7 @@
       state.renderRevision,
       state.progress,
       state.query,
+      state.governmentBookPage,
       state.guideMode,
       state.guideLimit,
       state.characterLimit,
@@ -581,7 +583,7 @@
     }
     if (route.indexOf("#personnage/") === 0) {
       state.page = "character-detail";
-      state.detail = { type:"character", key:decodeRoutePart(route.slice("#personnage/".length)), returnCrew:window.history.state && window.history.state.returnCrew || null, returnLocation:window.history.state && window.history.state.returnLocation || null };
+      state.detail = { type:"character", key:decodeRoutePart(route.slice("#personnage/".length)), returnCrew:window.history.state && window.history.state.returnCrew || null, returnLocation:window.history.state && window.history.state.returnLocation || null, returnPage:window.history.state && window.history.state.returnPage || null };
       return;
     }
     if (route.indexOf("#fruit/") === 0) {
@@ -635,7 +637,7 @@
         : page === "government" ? window.GRANDLINE_PAGES.renderGovernment()
         : page === "blades" ? window.GRANDLINE_PAGES.renderBlades()
         : page === "characters" ? window.GRANDLINE_PAGES.renderCharacters()
-        : page === "character-detail" ? window.GRANDLINE_PAGES.renderCharacterDetail(state.detail && state.detail.key, state.detail && state.detail.returnCrew, state.detail && state.detail.returnLocation)
+        : page === "character-detail" ? window.GRANDLINE_PAGES.renderCharacterDetail(state.detail && state.detail.key, state.detail && state.detail.returnCrew, state.detail && state.detail.returnLocation, state.detail && state.detail.returnPage)
         : page === "fruits" ? window.GRANDLINE_PAGES.renderFruits()
         : page === "fruit-detail" ? window.GRANDLINE_PAGES.renderFruitDetail(state.detail && state.detail.key)
         : window.GRANDLINE_PAGES.renderSources();
@@ -732,10 +734,11 @@
     scrollToPageTop();
   }
 
-  function openCharacterDetail(key, returnCrew, returnLocation) {
+  function openCharacterDetail(key, returnCrew, returnLocation, returnPage) {
+    returnPage = returnPage === "government" ? "government" : null;
     state.page = "character-detail";
-    state.detail = { type:"character", key:String(key || ""), returnCrew:returnCrew || null, returnLocation:returnLocation || null };
-    window.history.pushState({page:"character-detail",returnCrew:returnCrew || null,returnLocation:returnLocation || null}, "", "#personnage/" + encodeURIComponent(state.detail.key));
+    state.detail = { type:"character", key:String(key || ""), returnCrew:returnCrew || null, returnLocation:returnLocation || null, returnPage:returnPage };
+    window.history.pushState({page:"character-detail",returnCrew:returnCrew || null,returnLocation:returnLocation || null,returnPage:returnPage}, "", "#personnage/" + encodeURIComponent(state.detail.key));
     document.body.classList.remove("menu-open");
     render();
     scrollToPageTop();
@@ -953,6 +956,13 @@
       saveProgress(true);
       return;
     }
+    if (target.hasAttribute("data-gov-book-page")) {
+      state.governmentBookPage = Number(target.getAttribute("data-gov-book-page")) || 0;
+      render();
+      var activeBookPage = document.querySelector('.gov-book-dot[aria-current="page"]');
+      if (activeBookPage) activeBookPage.focus();
+      return;
+    }
     if (target.hasAttribute("data-page")) {
       setPage(target.getAttribute("data-page"));
       return;
@@ -982,7 +992,7 @@
       return;
     }
     if (target.hasAttribute("data-open-character")) {
-      openCharacterDetail(target.getAttribute("data-open-character"),target.getAttribute("data-return-crew"),target.getAttribute("data-return-location"));
+      openCharacterDetail(target.getAttribute("data-open-character"),target.getAttribute("data-return-crew"),target.getAttribute("data-return-location"),target.getAttribute("data-return-page"));
       return;
     }
     if (target.hasAttribute("data-open-fruit")) {

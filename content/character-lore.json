@@ -6621,5 +6621,62 @@
       }
     ],
     "bounties": []
+  },
+  {
+    "name": "Saint Charlos",
+    "role": "Noble mondial",
+    "group": "Nobles mondiaux",
+    "knownAt": 18,
+    "firstChapter": 499,
+    "firstRevealChapter": 499,
+    "roleChapter": 499,
+    "groupChapter": 499,
+    "descriptionChapter": 499,
+    "standalone": true,
+    "image": "https://one-piece.com/o/assets/images/anime/character/data/Saint_Charlos/img.jpg",
+    "imageSource": "https://one-piece.com/character/Saint_Charlos/index.html",
+    "description": "Saint Charlos est un Noble mondial rencontré sur l’archipel Sabaody. Sa tenue et ses privilèges le distinguent immédiatement des autres personnages de l’archipel.",
+    "achievements": [
+      {"chapter":499,"text":"Première apparition parmi les Nobles mondiaux à l’archipel Sabaody."}
+    ],
+    "bounties": []
+  },
+  {
+    "name": "Saint Rosward",
+    "role": "Noble mondial",
+    "group": "Nobles mondiaux",
+    "knownAt": 18,
+    "firstChapter": 497,
+    "firstRevealChapter": 497,
+    "roleChapter": 497,
+    "groupChapter": 497,
+    "descriptionChapter": 497,
+    "standalone": true,
+    "image": "https://one-piece.com/o/assets/images/anime/character/data/Saint_Roswald/img.jpg",
+    "imageSource": "https://one-piece.com/character/Saint_Roswald/index.html",
+    "description": "Saint Rosward est un Noble mondial aperçu sur l’archipel Sabaody. Il appartient à une famille influente de Mary Geoise et se déplace avec les privilèges propres à cette classe.",
+    "achievements": [
+      {"chapter":497,"text":"Première apparition à Sabaody parmi les Nobles mondiaux présents aux enchères."}
+    ],
+    "bounties": []
+  },
+  {
+    "name": "Saint Shalria",
+    "role": "Noble mondiale",
+    "group": "Nobles mondiaux",
+    "knownAt": 18,
+    "firstChapter": 497,
+    "firstRevealChapter": 497,
+    "roleChapter": 497,
+    "groupChapter": 497,
+    "descriptionChapter": 497,
+    "standalone": true,
+    "image": "https://one-piece.com/o/assets/images/anime/character/data/Saint_Shalria/img.jpg",
+    "imageSource": "https://one-piece.com/character/Saint_Shalria/index.html",
+    "description": "Saint Shalria est une Noble mondiale aperçue sur l’archipel Sabaody. Sa tenue cérémonielle et son casque à bulle rappellent l’isolement imposé aux habitants de Mary Geoise.",
+    "achievements": [
+      {"chapter":497,"text":"Première apparition à Sabaody parmi les Nobles mondiaux présents aux enchères."}
+    ],
+    "bounties": []
   }
 ]

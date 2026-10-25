@@ -12,6 +12,8 @@ const LAST_INDEXED_CHAPTER = Math.max(...(arcSource as { chapterEnd: number }[])
 type CharacterLore = {
   name: string;
   standalone?: boolean;
+  image?: string;
+  imageSource?: string;
   aliases?: string[];
   knownAt?: number;
   firstChapter?: number;
@@ -211,7 +213,7 @@ async function readCharacters(db: D1Database, arcOrder: number, chapterEnd: numb
     list.push(membership);
     memberships.set(key, list);
   }
-  const rows = (result.results ?? []).map((row) => {
+  const rows = (result.results ?? []).map<Record<string, unknown> | null>((row) => {
     const profile = characterLoreByName.get(normalized(row.name));
     const visibleMemberships = memberships.get(String(row.id)) ?? [];
     const sourceMembership = visibleMemberships.find((item) => item.role && item.role !== "Membre") ?? visibleMemberships[0];
@@ -261,6 +263,8 @@ async function readCharacters(db: D1Database, arcOrder: number, chapterEnd: numb
     const title = emperorTitle(name, chapterEnd);
     return Object.assign({}, publicRow, {
       name: profile?.name ?? row.name,
+      image: row.image ?? profile?.image ?? null,
+      imageSource: row.imageSource ?? profile?.imageSource ?? null,
       firstChapter: visibleFirstChapter,
       firstAppearanceChapter: appearanceChapter <= chapterEnd ? appearanceChapter : null,
       firstRevealChapter: profile?.firstRevealChapter ?? profile?.firstChapter ?? row.firstChapter,
@@ -294,7 +298,7 @@ async function readCharacters(db: D1Database, arcOrder: number, chapterEnd: numb
     const achievements = (profile.achievements ?? []).filter((item) => item.chapter <= chapterEnd);
     const title = emperorTitle(profile.name, chapterEnd);
     rows.push({
-      id: "curated-" + normalized(profile.name), name: profile.name, image: null, imageSource: null,
+      id: "curated-" + normalized(profile.name), name: profile.name, image: profile.image ?? null, imageSource: profile.imageSource ?? null,
       firstChapter: chapter <= chapterEnd ? chapter : revealChapter,
       firstAppearanceChapter: chapter <= chapterEnd ? chapter : null,
       firstRevealChapter: revealChapter, knownAt: order,
@@ -317,6 +321,7 @@ async function readCharacters(db: D1Database, arcOrder: number, chapterEnd: numb
     if (!existing.imageSource && row.imageSource) existing.imageSource = row.imageSource;
   }
   const allRows = Array.from(uniqueRows.values());
+  allRows.sort((left, right) => Number(left.knownAt ?? 0) - Number(right.knownAt ?? 0) || String(left.name ?? "").localeCompare(String(right.name ?? ""), "fr"));
   return { rows: allRows.slice(offset, offset + limit), total: allRows.length };
 }
 

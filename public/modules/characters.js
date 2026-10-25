@@ -213,7 +213,7 @@ window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
     return html + '</div>';
   }
 
-  function renderCharacterDetail(routeKey, returnCrew, returnLocation) {
+  function renderCharacterDetail(routeKey, returnCrew, returnLocation, returnPage) {
     var characters = collectCharacters();
     var key = String(routeKey || "");
     var character = characters.find(function (item) { return identityKey(item.name) === key || stripMarks(item.name).replace(/[^a-z0-9]+/g,"-") === key; });
@@ -221,7 +221,9 @@ window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
       ? '<button class="detail-back" data-map-location="' + escapeHtml(returnLocation) + '">← Retour à la fiche du lieu</button>'
       : returnCrew
         ? '<button class="detail-back" data-open-crew="' + escapeHtml(returnCrew) + '">← Retour à la fiche de l’équipage</button>'
-        : '<button class="detail-back" data-page="characters">← Retour aux personnages</button>';
+        : returnPage === "government"
+          ? '<button class="detail-back" data-page="government">← Retour à la Marine</button>'
+          : '<button class="detail-back" data-page="characters">← Retour aux personnages</button>';
     if (!progressArc()) return heading("FICHE PERSONNAGE", "Personnage", "Choisis d’abord un arc pour ouvrir les fiches sans spoiler.", "◎") + progressHint();
     if (!character) return heading("FICHE PERSONNAGE", "Fiche indisponible", "Ce personnage n’est pas répertorié dans les informations accessibles jusqu’à ton arc.", "◎") + back;
     var affiliations = character.affiliations.filter(function (item,index,list) { return list.indexOf(item) === index; });

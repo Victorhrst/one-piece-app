@@ -163,21 +163,21 @@ window.GRANDLINE_DATA = {
     {id:"cipher-pol",name:"Cipher Pol",kind:"Renseignement",knownAt:14,description:"Un réseau d’unités de renseignement du Gouvernement mondial. Les divisions portent des numéros.",status:"active",members:[
       ["Rob Lucci","Agent du Cipher Pol",14],["Kaku","Agent du Cipher Pol",14],["Spandam","Directeur du Cipher Pol",14]
     ]},
-    {id:"buster-call",name:"Buster Call",kind:"Opération militaire",knownAt:15,description:"Une opération d’ampleur exceptionnelle mobilisant une force navale importante sur ordre d’une autorité habilitée.",status:"active",members:[]},
+    {id:"buster-call",name:"Buster Call",kind:"Opération militaire",knownAt:15,description:"Une directive militaire exceptionnelle déclenchée par un escargophone doré. Elle mobilise cinq vice-amiraux et dix navires de guerre pour raser la cible désignée.",status:"active",members:[],facts:[["Activation","Escargophone doré"],["Commandement","5 vice-amiraux"],["Déploiement","10 navires de guerre"]]},
     {id:"cp0",name:"Cipher Pol Aigis 0",kind:"Renseignement",knownAt:26,description:"Une unité d’élite du Cipher Pol associée aux intérêts des plus hautes autorités.",status:"active",members:[
       ["Rob Lucci","Agent",31],["Kaku","Agent",31],["Stussy","Agent",31]
     ]},
     {id:"world-nobles",name:"Nobles mondiaux",kind:"Gouvernement",knownAt:18,description:"Une classe privilégiée au sommet de l’ordre politique mondial.",status:"active",members:[
       ["Saint Charlos","Noble mondial",18],["Saint Rosward","Noble mondial",18],["Saint Shalria","Noble mondiale",18]
     ]},
-    {id:"five-elders",name:"Les Cinq Doyens",kind:"Gouvernement",knownAt:15,description:"Les cinq dirigeants visibles au sommet de la hiérarchie politique mondiale.",status:"active",members:[
-      ["Saint Jaygarcia Saturn","Doyen",31],["Saint Marcus Mars","Doyen",31],["Saint Topman Warcury","Doyen",31],["Saint Ethanbaron V. Nusjuro","Doyen",31],["Saint Shepherd Ju Peter","Doyen",31]
+    {id:"five-elders",name:"Les Cinq Doyens",kind:"Gouvernement",knownAt:11,description:"Un conseil de cinq dirigeants au sommet du Gouvernement mondial. Leurs premières apparitions se font dans l’ombre; les identités individuelles ne sont révélées que bien plus tard.",status:"active",members:[
+      ["Saint Jaygarcia Saturn","Doyen",31,31],["Saint Marcus Mars","Doyen",31],["Saint Topman Warcury","Doyen",31],["Saint Ethanbaron V. Nusjuro","Doyen",31],["Saint Shepherd Ju Peter","Doyen",31],["Saint Figarland Garling","Doyen",31]
     ]},
     {id:"revolutionaries",name:"Armée révolutionnaire",kind:"Mouvement",knownAt:16,description:"Un mouvement opposé au pouvoir politique établi du Gouvernement mondial.",status:"active",members:[
       ["Monkey D. Dragon","Chef",16],["Sabo","Chef d’état-major",22],["Emporio Ivankov","Commandant",21],["Koala","Officière",22]
     ]},
-    {id:"sword",name:"SWORD",kind:"Unité de la Marine",knownAt:29,description:"Une unité spéciale de la Marine dont les membres agissent avec une autonomie particulière.",status:"active",members:[
-      ["X Drake","Officier",29],["Koby","Officier",29],["Helmeppo","Officier",29],["Prince Grus","Officier",29]
+    {id:"sword",name:"SWORD",kind:"Unité de la Marine",knownAt:30,description:"Une unité secrète de la Marine révélée au cours de l’arc Wano.",descriptionByArc:[{from:31,text:"Une unité secrète de la Marine dont les membres ont remis leur démission et peuvent agir avec une large autonomie. Le Gouvernement peut nier toute responsabilité dans leurs opérations."}],status:"active",members:[
+      ["X Drake","Officier",30],["Koby","Officier",30],["Helmeppo","Officier",31],["Prince Grus","Officier",31],["Hibari","Officière",31],["Kujaku","Contre-amirale",31]
     ]},
     {id:"impel-down",name:"Impel Down",kind:"Système pénitentiaire",knownAt:20,description:"La grande prison sous-marine du Gouvernement mondial, organisée en niveaux de sécurité.",status:"active",members:[
       ["Magellan","Directeur",20],["Hannyabal","Directeur adjoint",20]
