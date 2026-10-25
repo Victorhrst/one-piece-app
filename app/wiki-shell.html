@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
     <script src="./data.js" defer></script>
+    <script src="./modules/favorites.js" defer></script>
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -25,16 +26,17 @@
         <p class="sidebar-caption">LE WIKI QUI GARDE LE CAP</p>
         <nav class="main-nav">
           <span class="nav-label">EXPLORER</span>
-          <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span><span>Accueil</span></button>
-          <button class="nav-item" data-page="map"><span class="nav-icon">⌖</span><span>Carte du monde</span></button>
-          <button class="nav-item" data-page="guide"><span class="nav-icon">▤</span><span>Épisodes & chapitres</span></button>
-          <button class="nav-item" data-page="crews"><span class="nav-icon">⚑</span><span>Équipages</span></button>
-          <button class="nav-item" data-page="ships"><span class="nav-icon">⛵</span><span>Bateaux</span></button>
-          <button class="nav-item" data-page="government"><span class="nav-icon">⚓</span><span>Marine & Gouvernement</span></button>
-          <button class="nav-item" data-page="blades"><span class="nav-icon">⌁</span><span>Les lames</span></button>
+          <button class="nav-item active" data-page="home" aria-label="Accueil" title="Accueil"><span class="nav-icon">⌂</span><span>Accueil</span></button>
+          <button class="nav-item" data-page="favorites" aria-label="Mes favoris" title="Mes favoris"><span class="nav-icon">☆</span><span>Mes favoris</span></button>
+          <button class="nav-item" data-page="map" aria-label="Carte du monde" title="Carte du monde"><span class="nav-icon">⌖</span><span>Carte du monde</span></button>
+          <button class="nav-item" data-page="guide" aria-label="Épisodes et chapitres" title="Épisodes et chapitres"><span class="nav-icon">▤</span><span>Épisodes & chapitres</span></button>
+          <button class="nav-item" data-page="crews" aria-label="Équipages" title="Équipages"><span class="nav-icon">⚑</span><span>Équipages</span></button>
+          <button class="nav-item" data-page="ships" aria-label="Bateaux" title="Bateaux"><span class="nav-icon">⛵</span><span>Bateaux</span></button>
+          <button class="nav-item" data-page="government" aria-label="Marine et Gouvernement" title="Marine et Gouvernement"><span class="nav-icon">⚓</span><span>Marine & Gouvernement</span></button>
+          <button class="nav-item" data-page="blades" aria-label="Les lames" title="Les lames"><span class="nav-icon">⌁</span><span>Les lames</span></button>
           <span class="nav-label nav-label-spaced">COMPLÉTER LA CARTE</span>
-          <button class="nav-item" data-page="characters"><span class="nav-icon">◎</span><span>Personnages</span></button>
-          <button class="nav-item" data-page="fruits"><span class="nav-icon">◉</span><span>Fruits du Démon</span></button>
+          <button class="nav-item" data-page="characters" aria-label="Personnages" title="Personnages"><span class="nav-icon">◎</span><span>Personnages</span></button>
+          <button class="nav-item" data-page="fruits" aria-label="Fruits du Démon" title="Fruits du Démon"><span class="nav-icon">◉</span><span>Fruits du Démon</span></button>
         </nav>
         <div class="sidebar-bottom">
           <div class="safety-card">

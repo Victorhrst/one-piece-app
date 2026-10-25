@@ -1,6 +1,6 @@
 window.GRANDLINE_PAGE_FACTORIES = window.GRANDLINE_PAGE_FACTORIES || {};
 window.GRANDLINE_PAGE_FACTORIES.fruits = function (context) {
-  var { DATA, state, progressArc, escapeHtml, stripMarks, identityKey, safeCharacterName, filtered, heading, progressHint } = context;
+  var { DATA, state, progressArc, escapeHtml, stripMarks, identityKey, safeCharacterName, filtered, heading, progressHint, favoriteButton } = context;
   var illustrationCache = new Map();
   var fruitSource = null;
   var fruitProgress = null;
@@ -260,7 +260,8 @@ window.GRANDLINE_PAGE_FACTORIES.fruits = function (context) {
       var users = visibleFruitUsers(fruit);
       var userLabel = users.length ? users.map(function (user) { return user.displayName; }).join(", ") : "non confirmé dans les sources consultées";
       var artwork = fruitIllustration(fruit, DATA.fruits.indexOf(fruit) + (state.fruits || []).indexOf(fruit));
-      html += '<article class="fruit-card"><button class="fruit-card-open" data-open-fruit="' + escapeHtml(fruitRouteKey(fruit)) + '" aria-label="Ouvrir la fiche du ' + escapeHtml(fruitDisplayName(fruit)) + '"><div class="fruit-visual">' + artwork + '</div><div class="fruit-card-copy"><span class="fruit-type">' + escapeHtml(fruitTypeLabel(fruit)) + '</span><h3>' + escapeHtml(fruitDisplayName(fruit)) + '</h3><p>' + escapeHtml(cardDescription) + '<br>Utilisateur' + (users.length > 1 ? 's connus' : ' connu') + ' : ' + escapeHtml(userLabel) + (fruit.canonStatus ? '<br><span class="fruit-source-status">' + escapeHtml(fruit.canonStatus) + '</span>' : '') + '</p><span class="fruit-card-link">Ouvrir la fiche complète ↗</span></div></button></article>';
+      var fruitKey = fruitRouteKey(fruit);
+      html += '<article class="fruit-card"><button class="fruit-card-open" data-open-fruit="' + escapeHtml(fruitKey) + '" aria-label="Ouvrir la fiche du ' + escapeHtml(fruitDisplayName(fruit)) + '"><div class="fruit-visual">' + artwork + '</div><div class="fruit-card-copy"><span class="fruit-type">' + escapeHtml(fruitTypeLabel(fruit)) + '</span><h3>' + escapeHtml(fruitDisplayName(fruit)) + '</h3><p>' + escapeHtml(cardDescription) + '<br>Utilisateur' + (users.length > 1 ? 's connus' : ' connu') + ' : ' + escapeHtml(userLabel) + (fruit.canonStatus ? '<br><span class="fruit-source-status">' + escapeHtml(fruit.canonStatus) + '</span>' : '') + '</p><span class="fruit-card-link">Ouvrir la fiche complète ↗</span></div></button>' + favoriteButton("fruit",fruitKey,fruitDisplayName(fruit),"card-favorite") + '</article>';
     });
     if (!fruits.length) html += '<div class="empty-state"><strong>Aucun résultat</strong>Essaie un autre fruit ou utilisateur.</div>';
     return html + '</div>';
@@ -280,12 +281,12 @@ window.GRANDLINE_PAGE_FACTORIES.fruits = function (context) {
           return fruitUserCard(user, firstArc);
         }).join("") + '</div>'
       : '<div class="empty-state"><strong>Aucun utilisateur confirmé</strong>Les sources consultées ne permettent pas encore d’attribuer ce fruit à une personne précise.</div>';
-    var html = '<button class="detail-back" data-page="fruits">← Retour au catalogue</button><section class="detail-hero fruit-detail-hero"><div class="fruit-detail-visual">' + art + '</div><div class="detail-hero-copy"><span class="eyebrow">FICHE FRUIT DU DÉMON</span><h1>' + escapeHtml(fruitDisplayName(fruit)) + '</h1><p>' + escapeHtml(description) + '</p><div class="detail-badges"><span>' + escapeHtml(type) + '</span><span>Première mention connue · ' + escapeHtml(firstArc.name) + (fruit.firstChapter ? ' · chapitre ' + escapeHtml(fruit.firstChapter) : '') + '</span></div></div></section>';
+    var html = '<button class="detail-back" data-page="fruits">← Retour au catalogue</button><section class="detail-hero fruit-detail-hero"><div class="fruit-detail-visual">' + art + '</div><div class="detail-hero-copy"><span class="eyebrow">FICHE FRUIT DU DÉMON</span><h1>' + escapeHtml(fruitDisplayName(fruit)) + '</h1><p>' + escapeHtml(description) + '</p><div class="detail-badges"><span>' + escapeHtml(type) + '</span><span>Première mention connue · ' + escapeHtml(firstArc.name) + (fruit.firstChapter ? ' · chapitre ' + escapeHtml(fruit.firstChapter) : '') + '</span></div><div class="favorite-detail-row">' + favoriteButton("fruit",fruitRouteKey(fruit),fruitDisplayName(fruit),"favorite-inline") + '<span>Garder ce fruit dans mes favoris</span></div></div></section>';
     html += '<section class="fruit-detail-section"><div class="section-heading detail-section-heading"><div><h2>Utilisateurs connus</h2><p>Les détenteurs ne sont affichés qu’à partir de leur révélation dans l’histoire.</p></div><span class="tag">' + users.length + ' fiche' + (users.length > 1 ? 's' : '') + '</span></div>' + userHtml + '</section>';
     html += '<div class="detail-facts-grid"><article class="detail-fact"><span>Type connu à cet arc</span><strong>' + escapeHtml(type) + '</strong></article><article class="detail-fact"><span>Première mention recensée</span><strong>' + escapeHtml(firstArc.name) + (fruit.firstChapter ? ' · ch. ' + escapeHtml(fruit.firstChapter) : '') + '</strong></article><article class="detail-fact"><span>Statut de la fiche</span><strong>' + escapeHtml(fruit.canonStatus || "Canon manga") + '</strong></article></div>';
     if (fruit.sourceUrl || fruit.image) html += '<p class="fruit-detail-source">Données de catalogue : <a href="' + escapeHtml(fruit.sourceUrl || fruit.imageSource || "https://www.onepieceapi.com/documentation") + '" target="_blank" rel="noreferrer">source de référence ↗</a>. Les images vérifiées du fruit gardent le crédit de leur source.</p>';
     return html;
   }
 
-  return { currentFruitType, renderFruits, renderFruitDetail };
+  return { collectFruits, currentFruitType, fruitDisplayName, fruitIllustration, fruitRouteKey, renderFruits, renderFruitDetail };
 };

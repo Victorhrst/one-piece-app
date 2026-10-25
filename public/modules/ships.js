@@ -1,6 +1,6 @@
 window.GRANDLINE_PAGE_FACTORIES = window.GRANDLINE_PAGE_FACTORIES || {};
 window.GRANDLINE_PAGE_FACTORIES.ships = function (context) {
-  var { DATA, state, progressArc, escapeHtml, stripMarks, filtered, heading, progressHint } = context;
+  var { DATA, state, progressArc, escapeHtml, stripMarks, filtered, heading, progressHint, favoriteButton } = context;
   var shipSource = null;
   var shipProgress = null;
   var shipCatalogCache = null;
@@ -82,7 +82,7 @@ window.GRANDLINE_PAGE_FACTORIES.ships = function (context) {
     var crewLabel = crew ? crew.name : (ship.affiliationLabel || "Équipage non précisé");
     var description = ship.description || "Fiche de navire à compléter.";
     var preview = description.length > 180 ? description.slice(0,177).trimEnd() + "…" : description;
-    return '<article class="ship-card' + (compact ? ' ship-card-compact' : '') + '"><button class="ship-card-open" data-open-ship="' + escapeHtml(shipKey(ship)) + '" aria-label="Ouvrir la fiche du ' + escapeHtml(ship.name) + '"><div class="ship-card-visual">' + shipIllustration(ship,false) + '</div><div class="ship-card-copy"><span class="tag">' + escapeHtml(ship.type) + '</span><h2>' + escapeHtml(ship.name) + '</h2><p>' + escapeHtml(preview) + '</p><span class="ship-card-meta">' + escapeHtml(crewLabel) + ' · chapitre ' + escapeHtml(ship.firstChapter) + '</span><span class="ship-card-link">Ouvrir la fiche complète ↗</span></div></button></article>';
+    return '<article class="ship-card' + (compact ? ' ship-card-compact' : '') + '"><button class="ship-card-open" data-open-ship="' + escapeHtml(shipKey(ship)) + '" aria-label="Ouvrir la fiche du ' + escapeHtml(ship.name) + '"><div class="ship-card-visual">' + shipIllustration(ship,false) + '</div><div class="ship-card-copy"><span class="tag">' + escapeHtml(ship.type) + '</span><h2>' + escapeHtml(ship.name) + '</h2><p>' + escapeHtml(preview) + '</p><span class="ship-card-meta">' + escapeHtml(crewLabel) + ' · chapitre ' + escapeHtml(ship.firstChapter) + '</span><span class="ship-card-link">Ouvrir la fiche complète ↗</span></div></button>' + favoriteButton("ship",shipKey(ship),ship.name,"card-favorite") + '</article>';
   }
 
   function renderShips() {
@@ -126,12 +126,12 @@ window.GRANDLINE_PAGE_FACTORIES.ships = function (context) {
       timeline += '<div class="fight-empty">Aucun événement daté supplémentaire n’est documenté pour ce navire à ce point du récit.</div>';
     }
     timeline += '</section>';
-    var html = '<button class="detail-back" data-page="ships">← Retour aux bateaux</button><section class="detail-hero ship-detail-hero"><div class="ship-detail-visual">' + shipIllustration(ship,true) + '</div><div class="detail-hero-copy"><span class="eyebrow">FICHE DE BATEAU</span><h1>' + escapeHtml(ship.name) + '</h1><p>' + escapeHtml(ship.description) + '</p><div class="detail-badges"><span>' + escapeHtml(ship.type) + '</span><span>Première apparition connue · ' + escapeHtml(firstArc.name) + ' · chapitre ' + escapeHtml(ship.firstChapter) + '</span>' + crewBadge + '</div></div></section>';
+    var html = '<button class="detail-back" data-page="ships">← Retour aux bateaux</button><section class="detail-hero ship-detail-hero"><div class="ship-detail-visual">' + shipIllustration(ship,true) + '</div><div class="detail-hero-copy"><span class="eyebrow">FICHE DE BATEAU</span><h1>' + escapeHtml(ship.name) + '</h1><p>' + escapeHtml(ship.description) + '</p><div class="detail-badges"><span>' + escapeHtml(ship.type) + '</span><span>Première apparition connue · ' + escapeHtml(firstArc.name) + ' · chapitre ' + escapeHtml(ship.firstChapter) + '</span>' + crewBadge + '</div><div class="favorite-detail-row">' + favoriteButton("ship",shipKey(ship),ship.name,"favorite-inline") + '<span>Garder ce bateau dans mes favoris</span></div></div></section>';
     html += '<div class="detail-facts-grid"><article class="detail-fact"><span>Type de navire</span><strong>' + escapeHtml(ship.type) + '</strong></article><article class="detail-fact"><span>Équipage associé</span><strong>' + (crew ? escapeHtml(crew.name) : escapeHtml(ship.affiliationLabel || "Non précisé")) + '</strong></article><article class="detail-fact"><span>Première apparition connue</span><strong>' + escapeHtml(firstArc.name) + ' · chapitre ' + escapeHtml(ship.firstChapter) + '</strong></article></div>';
     html += timeline;
     if (ship.imageSource) html += '<p class="ship-detail-source">Illustration de référence : <a href="' + escapeHtml(ship.imageSource) + '" target="_blank" rel="noreferrer">source du visuel ↗</a>.</p>';
     return html;
   }
 
-  return { collectShips, renderShips, renderShipDetail, renderCrewShips };
+  return { collectShips, renderShips, renderShipDetail, renderCrewShips, shipIllustration };
 };

@@ -1,6 +1,6 @@
 window.GRANDLINE_PAGE_FACTORIES = window.GRANDLINE_PAGE_FACTORIES || {};
 window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
-  var { DATA, state, progressArc, emperorsRevealed, escapeHtml, stripMarks, identityKey, safeCharacterName, filtered, heading, progressHint } = context;
+  var { DATA, state, progressArc, emperorsRevealed, escapeHtml, stripMarks, identityKey, safeCharacterName, filtered, heading, progressHint, favoriteButton } = context;
   var emperorCrewReveal = {"pirates du roux":432,"pirates de barbe blanche":432,"pirates de barbe noire":650,"pirates de big mom":651,"pirates aux cent betes":698,"pirates au chapeau de paille":1053,"cross guild":1058};
   var characterSource = null;
   var characterProgress = null;
@@ -203,7 +203,8 @@ window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
       var estimate = bounties.length ? null : estimateBounty(item);
       var bounty = bounties.length ? '<span class="character-bounty">Prime connue · ' + bountyText(bounties[bounties.length-1].amount) + '</span>' : (estimate ? '<span class="character-bounty bounty-estimate">Estimation · ' + estimateText(estimate) + '</span>' : '');
       var emperor = item.greatEmperor ? '<span class="character-emperor-badge">' + escapeHtml(item.emperorTitle || "Empereur connu") + '</span>' : '';
-      html += '<button class="character-card character-open" data-open-character="' + escapeHtml(identityKey(item.name)) + '">' + characterImage(item,false) + '<span class="character-card-copy"><strong>' + escapeHtml(item.name) + '</strong><span>' + escapeHtml(item.role) + ' · ' + escapeHtml(item.group) + '</span>' + (item.description && item.description !== item.role ? '<span class="character-description">' + escapeHtml(item.description) + '</span>' : '') + bounty + emperor + '</span><span class="character-open-mark" aria-hidden="true">↗</span></button>';
+      var characterKey = identityKey(item.name);
+      html += '<div class="character-card-wrap"><button class="character-card character-open" data-open-character="' + escapeHtml(characterKey) + '">' + characterImage(item,false) + '<span class="character-card-copy"><strong>' + escapeHtml(item.name) + '</strong><span>' + escapeHtml(item.role) + ' · ' + escapeHtml(item.group) + '</span>' + (item.description && item.description !== item.role ? '<span class="character-description">' + escapeHtml(item.description) + '</span>' : '') + bounty + emperor + '</span><span class="character-open-mark" aria-hidden="true">↗</span></button>' + favoriteButton("character",characterKey,item.name,"card-favorite") + '</div>';
     });
     if (!characters.length) html += state.catalogLoading
       ? '<div class="empty-state"><strong>Chargement des fiches</strong>Le catalogue se met à jour jusqu’à ton arc.</div>'
@@ -231,10 +232,11 @@ window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
       ? character.description
       : character.name + ' est répertorié' + (character.role ? ' comme ' + character.role.toLowerCase() : '') + (affiliations.length ? ' et rattaché' + (character.role && /e$/.test(character.role) ? 'e' : '') + ' à ' + affiliations.join(', ') : '') + '.';
     var emperor = character.greatEmperor ? '<span>' + escapeHtml(character.emperorTitle || "Empereur connu à cet arc") + '</span>' : '';
-    var html = back + '<section class="detail-hero character-detail-hero">' + characterImage(character,true) + '<div class="detail-hero-copy"><span class="eyebrow">FICHE PERSONNAGE</span><h1>' + escapeHtml(character.name) + '</h1><p>' + escapeHtml(description) + '</p><div class="detail-badges"><span>' + escapeHtml(character.role || "Rôle non précisé") + '</span><span>' + escapeHtml(firstChapterLabel) + ' · ' + escapeHtml(firstArc.name) + (character.firstChapter ? ' · chapitre ' + escapeHtml(character.firstChapter) : '') + '</span>' + emperor + '</div></div></section>';
+    var characterKey = identityKey(character.name);
+    var html = back + '<section class="detail-hero character-detail-hero">' + characterImage(character,true) + '<div class="detail-hero-copy"><span class="eyebrow">FICHE PERSONNAGE</span><h1>' + escapeHtml(character.name) + '</h1><p>' + escapeHtml(description) + '</p><div class="detail-badges"><span>' + escapeHtml(character.role || "Rôle non précisé") + '</span><span>' + escapeHtml(firstChapterLabel) + ' · ' + escapeHtml(firstArc.name) + (character.firstChapter ? ' · chapitre ' + escapeHtml(character.firstChapter) : '') + '</span>' + emperor + '</div><div class="favorite-detail-row">' + favoriteButton("character",characterKey,character.name,"favorite-inline") + '<span>Garder ce personnage dans mes favoris</span></div></div></section>';
     html += '<div class="detail-facts-grid"><article class="detail-fact"><span>Rôle documenté</span><strong>' + escapeHtml(character.role || "Non précisé") + '</strong></article><article class="detail-fact"><span>Affiliation' + (affiliations.length > 1 ? 's' : '') + '</span><strong>' + escapeHtml(affiliations.join(" · ") || "Non précisée") + '</strong></article><article class="detail-fact"><span>Repère de la fiche</span><strong>' + escapeHtml(firstArc.name) + '</strong></article></div>';
     return html + renderJourney(character) + renderFights(character);
   }
 
-  return { collectCharacters, renderCharacters, renderCharacterDetail };
+  return { collectCharacters, renderCharacters, renderCharacterDetail, characterImage };
 };

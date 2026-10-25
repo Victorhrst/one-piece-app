@@ -4,6 +4,8 @@
   var DATA = window.GRANDLINE_DATA;
   var STORAGE_KEY = "grand-line-progress-v1";
   var CACHE_KEY = "grand-line-safe-cache-v3";
+  var FAVORITES_KEY = "grand-line-favorites-v1";
+  var FAVORITE_TYPES = ["crew", "character", "ship", "blade", "fruit"];
   var state = {
     page: "home",
     detail: null,
@@ -34,6 +36,9 @@
     crewEmperorsOnly: false,
     rarity: "Toutes",
     fruitCategory: "all",
+    favorites: [],
+    favoriteFilter: "all",
+    favoriteQuery: "",
     mapQuery: "",
     mapSea: "Toutes les mers",
     mapType: "Tous les types",
@@ -69,6 +74,41 @@
       var number = Number(value);
       return Number.isInteger(number) && number >= -1 && number < 100 ? number : null;
     } catch (_) { return null; }
+  }
+
+  function readFavorites() {
+    try {
+      var saved = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
+      if (!Array.isArray(saved)) return;
+      var seen = new Set();
+      state.favorites = saved.filter(function (item) {
+        if (!item || FAVORITE_TYPES.indexOf(item.type) < 0 || typeof item.key !== "string" || !item.key || item.key.length > 180) return false;
+        var identity = item.type + ":" + item.key;
+        if (seen.has(identity)) return false;
+        seen.add(identity);
+        return true;
+      });
+    } catch {}
+  }
+
+  function isFavorite(type, key) {
+    return state.favorites.some(function (item) { return item.type === type && item.key === String(key); });
+  }
+
+  function favoriteButton(type, key, name, extraClass) {
+    var active = isFavorite(type, key);
+    var safeName = escapeHtml(name || "cet élément");
+    return '<button type="button" class="favorite-toggle ' + (extraClass || "") + (active ? ' is-favorite' : '') + '" data-favorite-type="' + escapeHtml(type) + '" data-favorite-key="' + escapeHtml(key) + '" aria-pressed="' + (active ? 'true' : 'false') + '" aria-label="' + (active ? 'Retirer ' + safeName + ' des favoris' : 'Ajouter ' + safeName + ' aux favoris') + '" title="' + (active ? 'Retirer des favoris' : 'Ajouter aux favoris') + '"><span aria-hidden="true">' + (active ? '★' : '☆') + '</span></button>';
+  }
+
+  function toggleFavorite(type, key) {
+    var normalizedKey = String(key || "");
+    var index = state.favorites.findIndex(function (item) { return item.type === type && item.key === normalizedKey; });
+    if (index >= 0) state.favorites.splice(index, 1);
+    else state.favorites.push({type:type,key:normalizedKey});
+    try { localStorage.setItem(FAVORITES_KEY, JSON.stringify(state.favorites)); } catch {}
+    invalidatePageViews();
+    render();
   }
 
   function readCache() {
@@ -462,7 +502,7 @@
 
 
   function pageTitle(page) {
-    var titles = {home:"ACCUEIL",map:"CARTE DU MONDE","location-detail":"FICHE DE LIEU",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES", "crew-detail":"FICHE D’ÉQUIPAGE",ships:"BATEAUX", "ship-detail":"FICHE DE BATEAU",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES",characters:"PERSONNAGES", "character-detail":"FICHE PERSONNAGE",fruits:"FRUITS DU DÉMON", "fruit-detail":"FICHE FRUIT DU DÉMON",sources:"SOURCES"};
+    var titles = {home:"ACCUEIL",favorites:"MES FAVORIS",map:"CARTE DU MONDE","location-detail":"FICHE DE LIEU",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES", "crew-detail":"FICHE D’ÉQUIPAGE",ships:"BATEAUX", "ship-detail":"FICHE DE BATEAU",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES",characters:"PERSONNAGES", "character-detail":"FICHE PERSONNAGE",fruits:"FRUITS DU DÉMON", "fruit-detail":"FICHE FRUIT DU DÉMON",sources:"SOURCES"};
     return titles[page] || "ACCUEIL";
   }
 
@@ -495,7 +535,9 @@
       state.guideLoading,
       state.fruitLoreLoaded,
       state.unclassifiedFruits,
-      state.characterTotal
+      state.characterTotal,
+      state.favoriteFilter,
+      state.favoriteQuery
     ]);
   }
 
@@ -553,7 +595,7 @@
       return;
     }
     var page = route.indexOf("#page/") === 0 ? decodeRoutePart(route.slice("#page/".length)) : "home";
-    var allowed = ["home","map","guide","crews","ships","government","blades","characters","fruits","sources"];
+    var allowed = ["home","favorites","map","guide","crews","ships","government","blades","characters","fruits","sources"];
     state.page = allowed.indexOf(page) >= 0 ? page : "home";
     state.detail = null;
   }
@@ -561,6 +603,7 @@
   function render() {
     var content = document.getElementById("pageContent");
     var page = state.page;
+    document.body.classList.toggle("home-immersive", page === "home");
     var route = routeIdentity();
     var cacheKey = viewCacheKey(route);
     var routeChanged = Boolean(activeView && activeView.route !== route);
@@ -581,6 +624,7 @@
         if (oldMapViewport) state.mapScrollLeft = oldMapViewport.scrollLeft;
       }
       var html = page === "home" ? window.GRANDLINE_PAGES.renderHome()
+        : page === "favorites" ? window.GRANDLINE_PAGES.renderFavorites()
         : page === "map" ? window.GRANDLINE_PAGES.renderMap()
         : page === "location-detail" ? window.GRANDLINE_PAGES.renderLocationDetail(state.detail && state.detail.key)
         : page === "guide" ? window.GRANDLINE_PAGES.renderGuide()
@@ -647,15 +691,15 @@
     render();
     scrollToPageTop();
     if (page === "guide") loadGuideCatalog(false);
-    if (page === "fruits") loadFruitLoreForPage();
+    if (page === "fruits" || page === "favorites") loadFruitLoreForPage();
   }
 
   function loadFruitLoreForPage() {
-    if (state.progress === null || state.progress < 0 || (state.page !== "fruits" && state.page !== "fruit-detail")) return;
+    if (state.progress === null || state.progress < 0 || (state.page !== "fruits" && state.page !== "fruit-detail" && state.page !== "favorites")) return;
     window.GRANDLINE_REPOSITORY.loadFruitLore(state, DATA).then(function (updated) {
       if (!updated) return;
       invalidatePageViews();
-      if (state.page === "fruits" || state.page === "fruit-detail") render();
+      if (state.page === "fruits" || state.page === "fruit-detail" || state.page === "favorites") render();
       scheduleSafeCache();
     }).catch(function () {});
   }
@@ -885,12 +929,18 @@
     setPage("sources");
   }
 
-  var pageContext = { DATA:DATA, state:state, progressArc:progressArc, emperorsRevealed:emperorsRevealed, visibleEpisodes:visibleEpisodes, visibleChapters:visibleChapters, escapeHtml:escapeHtml, stripMarks:stripMarks, safeCharacterName:safeCharacterName, identityKey:identityKey, episodeNumber:episodeNumber, chapterNumber:chapterNumber, chapterValues:chapterValues, formatChapterValues:formatChapterValues, volumeText:volumeText, arcLabelForEpisode:arcLabelForEpisode, filtered:filtered, heading:heading, progressHint:progressHint, plain:plain };
-  window.GRANDLINE_PAGES = Object.assign({}, window.GRANDLINE_PAGE_FACTORIES.home(pageContext), window.GRANDLINE_PAGE_FACTORIES.map(pageContext), window.GRANDLINE_PAGE_FACTORIES.guide(pageContext), window.GRANDLINE_PAGE_FACTORIES.crews(pageContext), window.GRANDLINE_PAGE_FACTORIES.ships(pageContext), window.GRANDLINE_PAGE_FACTORIES.government(pageContext), window.GRANDLINE_PAGE_FACTORIES.blades(pageContext), window.GRANDLINE_PAGE_FACTORIES.characters(pageContext), window.GRANDLINE_PAGE_FACTORIES.fruits(pageContext), window.GRANDLINE_PAGE_FACTORIES.sources(pageContext));
+  var pageContext = { DATA:DATA, state:state, progressArc:progressArc, emperorsRevealed:emperorsRevealed, visibleEpisodes:visibleEpisodes, visibleChapters:visibleChapters, escapeHtml:escapeHtml, stripMarks:stripMarks, safeCharacterName:safeCharacterName, identityKey:identityKey, episodeNumber:episodeNumber, chapterNumber:chapterNumber, chapterValues:chapterValues, formatChapterValues:formatChapterValues, volumeText:volumeText, arcLabelForEpisode:arcLabelForEpisode, filtered:filtered, heading:heading, progressHint:progressHint, plain:plain, favoriteButton:favoriteButton, isFavorite:isFavorite };
+  window.GRANDLINE_PAGES = Object.assign({}, window.GRANDLINE_PAGE_FACTORIES.home(pageContext), window.GRANDLINE_PAGE_FACTORIES.map(pageContext), window.GRANDLINE_PAGE_FACTORIES.guide(pageContext), window.GRANDLINE_PAGE_FACTORIES.crews(pageContext), window.GRANDLINE_PAGE_FACTORIES.ships(pageContext), window.GRANDLINE_PAGE_FACTORIES.government(pageContext), window.GRANDLINE_PAGE_FACTORIES.blades(pageContext), window.GRANDLINE_PAGE_FACTORIES.characters(pageContext), window.GRANDLINE_PAGE_FACTORIES.fruits(pageContext), window.GRANDLINE_PAGE_FACTORIES.favorites(pageContext), window.GRANDLINE_PAGE_FACTORIES.sources(pageContext));
 
   document.addEventListener("click", function (event) {
     var target = event.target.closest("button,[data-page],[data-open-fruit],[data-open-ship],[data-map-location]");
     if (!target) return;
+    if (target.hasAttribute("data-favorite-type")) {
+      event.preventDefault();
+      event.stopPropagation();
+      toggleFavorite(target.getAttribute("data-favorite-type"), target.getAttribute("data-favorite-key"));
+      return;
+    }
     if (target.id === "updateButton") {
       updateLive(true);
       return;
@@ -981,6 +1031,10 @@
       state.fruitCategory = target.getAttribute("data-fruit-category") || "all";
       render();
     }
+    if (target.hasAttribute("data-favorite-filter")) {
+      state.favoriteFilter = target.getAttribute("data-favorite-filter") || "all";
+      render();
+    }
   });
 
   document.addEventListener("input", function (event) {
@@ -1003,6 +1057,16 @@
       if (mapSearch) {
         mapSearch.focus();
         mapSearch.setSelectionRange(state.mapQuery.length, state.mapQuery.length);
+      }
+      return;
+    }
+    if (event.target.matches("[data-favorite-search]")) {
+      state.favoriteQuery = event.target.value;
+      render();
+      var favoriteSearch = document.querySelector("[data-favorite-search]");
+      if (favoriteSearch) {
+        favoriteSearch.focus();
+        favoriteSearch.setSelectionRange(state.favoriteQuery.length, state.favoriteQuery.length);
       }
       return;
     }
@@ -1065,11 +1129,12 @@
   window.addEventListener("popstate", function () {
     restoreRouteFromHash();
     render();
-    if (state.page === "fruits" || state.page === "fruit-detail") loadFruitLoreForPage();
+    if (state.page === "fruits" || state.page === "fruit-detail" || state.page === "favorites") loadFruitLoreForPage();
     scrollToPageTop();
   });
 
   state.progress = readProgress();
+  readFavorites();
   readCache();
   state.catalogLoading = state.progress !== null && state.progress >= 0;
   restoreRouteFromHash();

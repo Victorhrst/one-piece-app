@@ -1,6 +1,6 @@
 window.GRANDLINE_PAGE_FACTORIES = window.GRANDLINE_PAGE_FACTORIES || {};
 window.GRANDLINE_PAGE_FACTORIES.crews = function (context) {
-  var { DATA, state, progressArc, emperorsRevealed, escapeHtml, stripMarks, identityKey, safeCharacterName, filtered, heading, progressHint } = context;
+  var { DATA, state, progressArc, emperorsRevealed, escapeHtml, stripMarks, identityKey, safeCharacterName, filtered, heading, progressHint, favoriteButton } = context;
   var bountyIndex = null;
   var bountySource = null;
   var crewSource = null;
@@ -239,7 +239,7 @@ window.GRANDLINE_PAGE_FACTORIES.crews = function (context) {
       var crewImageMarkup = crewImage(crew,false);
       var bounty = crewBounty(crew);
       var emperorBadge = crew.greatEmperor ? '<span class="crew-emperor-badge">' + escapeHtml(crew.emperorTitle || "Empereur connu") + '</span>' : '';
-      html += '<article class="crew-card"><button class="crew-head crew-open" data-open-crew="' + escapeHtml(key) + '" aria-label="Ouvrir la fiche de ' + escapeHtml(crew.name) + '">' + crewImageMarkup + '<span class="crew-head-copy"><strong>' + escapeHtml(crew.name) + '</strong><span>' + escapeHtml(crew.description || "La composition se dévoile au fil des apparitions.") + '</span><span class="crew-card-stats">' + escapeHtml(crewBountyLabel(bounty)) + emperorBadge + '<span class="tag">' + escapeHtml(crew.tag || "Équipage") + '</span></span></span><span class="crew-open-mark" aria-hidden="true">↗</span></button><div class="member-list">';
+      html += '<article class="crew-card"><button class="crew-head crew-open" data-open-crew="' + escapeHtml(key) + '" aria-label="Ouvrir la fiche de ' + escapeHtml(crew.name) + '">' + crewImageMarkup + '<span class="crew-head-copy"><strong>' + escapeHtml(crew.name) + '</strong><span>' + escapeHtml(crew.description || "La composition se dévoile au fil des apparitions.") + '</span><span class="crew-card-stats">' + escapeHtml(crewBountyLabel(bounty)) + emperorBadge + '<span class="tag">' + escapeHtml(crew.tag || "Équipage") + '</span></span></span><span class="crew-open-mark" aria-hidden="true">↗</span></button>' + favoriteButton("crew",key,crew.name,"card-favorite") + '<div class="member-list">';
       members.slice(0,6).forEach(function (member) {
         html += '<button class="member-chip" data-open-character="' + escapeHtml(identityKey(member.name)) + '"><strong>' + escapeHtml(member.displayName) + '</strong><span>' + escapeHtml(member.role) + '</span></button>';
       });
@@ -260,7 +260,7 @@ window.GRANDLINE_PAGE_FACTORIES.crews = function (context) {
     var portrait = crewImage(crew,true);
     var crewPrice = crewBounty(crew);
     var emperorLabel = crew.greatEmperor ? '<span>' + escapeHtml(crew.emperorTitle || "Empereur connu à cet arc") + '</span>' : '';
-    var html = '<button class="detail-back" data-page="crews">← Retour aux équipages</button><section class="detail-hero crew-detail-hero">' + portrait + '<div class="detail-hero-copy"><span class="eyebrow">' + escapeHtml(crew.tag || "Équipage") + '</span><h1>' + escapeHtml(crew.name) + '</h1><p>' + escapeHtml(crew.description || "La composition et les repères de cet équipage se dévoilent au fil de l’histoire.") + '</p><div class="detail-badges"><span>' + members.length + ' membre' + (members.length > 1 ? 's' : '') + ' connu' + (members.length > 1 ? 's' : '') + '</span><span>Repère : ' + escapeHtml(progressArc().name) + '</span><span>' + escapeHtml(crewBountyLabel(crewPrice)) + '</span>' + emperorLabel + '</div></div></section>';
+    var html = '<button class="detail-back" data-page="crews">← Retour aux équipages</button><section class="detail-hero crew-detail-hero">' + portrait + '<div class="detail-hero-copy"><span class="eyebrow">' + escapeHtml(crew.tag || "Équipage") + '</span><h1>' + escapeHtml(crew.name) + '</h1><p>' + escapeHtml(crew.description || "La composition et les repères de cet équipage se dévoilent au fil de l’histoire.") + '</p><div class="detail-badges"><span>' + members.length + ' membre' + (members.length > 1 ? 's' : '') + ' connu' + (members.length > 1 ? 's' : '') + '</span><span>Repère : ' + escapeHtml(progressArc().name) + '</span><span>' + escapeHtml(crewBountyLabel(crewPrice)) + '</span>' + emperorLabel + '</div><div class="favorite-detail-row">' + favoriteButton("crew",crewKey(crew),crew.name,"favorite-inline") + '<span>Garder cet équipage dans mes favoris</span></div></div></section>';
     html += renderCrewAchievements(crew);
     html += window.GRANDLINE_PAGES.renderCrewShips(crewKey(crew));
     html += '<div class="section-heading detail-section-heading"><div><h2>Membres connus</h2><p>Les membres dont la première apparition se situe après ton arc restent masqués.</p></div></div><div class="detail-member-grid">';
@@ -273,5 +273,5 @@ window.GRANDLINE_PAGE_FACTORIES.crews = function (context) {
     return html + '</div>';
   }
 
-  return { renderCrews, renderCrewDetail, collectCrews };
+  return { renderCrews, renderCrewDetail, collectCrews, crewImage };
 };

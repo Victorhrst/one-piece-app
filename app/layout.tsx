@@ -18,6 +18,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {children}
         <Script src="/data.js" strategy="beforeInteractive" />
         <Script src="/modules/catalog-repository.js" strategy="beforeInteractive" />
+        <Script src="/modules/favorites.js" strategy="beforeInteractive" />
         <Script src="/modules/home.js" strategy="beforeInteractive" />
         <Script src="/modules/guide.js" strategy="beforeInteractive" />
         <Script src="/modules/crews.js" strategy="beforeInteractive" />

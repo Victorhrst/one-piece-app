@@ -1,6 +1,6 @@
 window.GRANDLINE_PAGE_FACTORIES = window.GRANDLINE_PAGE_FACTORIES || {};
 window.GRANDLINE_PAGE_FACTORIES.blades = function (context) {
-  var { DATA, state, progressArc, escapeHtml, safeCharacterName, filtered, heading, progressHint } = context;
+  var { DATA, state, progressArc, escapeHtml, stripMarks, safeCharacterName, filtered, heading, progressHint, favoriteButton } = context;
   function currentBladeOwner(blade) {
     var entries = blade.ownerHistory.filter(function (entry) { return entry.from <= state.progress; });
     return entries.length ? safeCharacterName(entries[entries.length - 1].name) : "Porteur non connu à cet arc";
@@ -38,7 +38,8 @@ window.GRANDLINE_PAGE_FACTORIES.blades = function (context) {
     blades.forEach(function (blade) {
       var gradeVisible = blade.gradeKnown === null || blade.gradeKnown <= state.progress;
       var grade = bladeGradeLabel(blade);
-      html += '<article class="blade-card"><div class="blade-visual">' + bladeIllustration(blade, DATA.blades.indexOf(blade)) + '</div><div class="blade-card-copy"><div class="blade-type">' + escapeHtml(blade.kind) + '</div><h3>' + escapeHtml(blade.name) + '</h3><span class="blade-grade ' + (gradeVisible ? "" : "unknown") + '">' + escapeHtml(grade) + '</span><p class="blade-owner">Porteur à ton stade : <strong>' + escapeHtml(currentBladeOwner(blade)) + '</strong></p><p class="blade-note">' + escapeHtml(blade.note) + '</p></div></article>';
+      var bladeKey = stripMarks(blade.name).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+      html += '<article class="blade-card"><div class="blade-visual">' + bladeIllustration(blade, DATA.blades.indexOf(blade)) + '</div><div class="blade-card-copy"><div class="blade-type">' + escapeHtml(blade.kind) + '</div><h3>' + escapeHtml(blade.name) + '</h3><span class="blade-grade ' + (gradeVisible ? "" : "unknown") + '">' + escapeHtml(grade) + '</span><p class="blade-owner">Porteur à ton stade : <strong>' + escapeHtml(currentBladeOwner(blade)) + '</strong></p><p class="blade-note">' + escapeHtml(blade.note) + '</p></div>' + favoriteButton("blade",bladeKey,blade.name,"card-favorite") + '</article>';
     });
     if (!blades.length) html += '<div class="empty-state"><strong>Aucune lame dans cette catégorie</strong>Essaie un autre filtre.</div>';
     html += '</div>';
