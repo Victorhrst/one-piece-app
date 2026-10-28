@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Les lames — Deux katanas croisés</title>
+  <g transform="rotate(-38 32 33)">
+    <path d="M31 5c7 11 7 24 4 35h-6c3-13 4-24 2-35Z" fill="#edf1f7" stroke="#b58b43" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M31 8c3 12 2 21 0 30" stroke="#f3d38b" stroke-width="1.6" stroke-linecap="round"/>
+    <rect x="29" y="43" width="6" height="15" rx="2" fill="#b58b43"/>
+    <path d="m29 46 6 3m-6 2 6 3" stroke="#f3d38b" stroke-width="1.7"/>
+    <path d="M25 41h14M29 58h6" stroke="#e7b95a" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+  <g transform="rotate(38 32 33)">
+    <path d="M31 5c7 11 7 24 4 35h-6c3-13 4-24 2-35Z" fill="#edf1f7" stroke="#b58b43" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M31 8c3 12 2 21 0 30" stroke="#f3d38b" stroke-width="1.6" stroke-linecap="round"/>
+    <rect x="29" y="43" width="6" height="15" rx="2" fill="#e7b95a"/>
+    <path d="m29 46 6 3m-6 2 6 3" stroke="#b58b43" stroke-width="1.7"/>
+    <path d="M25 41h14M29 58h6" stroke="#f3d38b" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+</svg>

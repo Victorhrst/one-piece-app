@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Mes favoris — Le trésor étoilé</title>
+  <desc id="desc">Une étoile à cinq branches dans un médaillon de trésor doré.</desc>
+  <circle cx="32" cy="33" r="24" stroke="#e7b95a" stroke-width="4"/>
+  <path d="M14.8 49.7a24 24 0 0 0 36.8-2.1" stroke="#b58b43" stroke-width="4" stroke-linecap="round"/>
+  <path d="m32 15 5.7 11.6 12.8 1.9-9.2 9 2.2 12.7L32 44.2l-11.5 6 2.2-12.7-9.2-9 12.8-1.9L32 15Z" fill="#e7b95a" stroke="#e7b95a" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M32 15v19.2l-18.5-5.7 12.8-1.9L32 15Z" fill="#edf1f7"/>
+  <path d="m32 34.2 11.5 16-2.2-12.7 9.2-9L32 34.2Z" fill="#b58b43"/>
+  <path d="M14 23a20 20 0 0 1 9-8" stroke="#f3d38b" stroke-width="2.6" stroke-linecap="round"/>
+</svg>

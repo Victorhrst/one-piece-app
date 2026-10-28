@@ -1,6 +1,6 @@
 window.GRANDLINE_PAGE_FACTORIES = window.GRANDLINE_PAGE_FACTORIES || {};
 window.GRANDLINE_PAGE_FACTORIES.favorites = function (context) {
-  var { DATA, state, progressArc, escapeHtml, stripMarks, identityKey, heading, progressHint, favoriteButton } = context;
+  var { DATA, state, progressArc, escapeHtml, stripMarks, identityKey, heading, pageIcon, progressHint, favoriteButton } = context;
   var categories = [
     { id:"all", label:"Tout" },
     { id:"crew", label:"Équipages" },
@@ -105,7 +105,7 @@ window.GRANDLINE_PAGE_FACTORIES.favorites = function (context) {
       return stripMarks([entry.label,entry.item.name,descriptionFor(entry.type,entry.item),metaFor(entry.type,entry.item)].join(" ")).indexOf(query) >= 0;
     });
 
-    html += '<div class="favorites-intro"><span class="favorites-intro-icon" aria-hidden="true">✦</span><div><strong>' + entries.length + ' favori' + (entries.length > 1 ? 's' : '') + ' dans ta collection</strong><p>Ta sélection reste enregistrée sur cet appareil et suit ton arc de lecture.</p></div></div>';
+    html += '<div class="favorites-intro"><span class="favorites-intro-icon" aria-hidden="true">' + pageIcon("favorites") + '</span><div><strong>' + entries.length + ' favori' + (entries.length > 1 ? 's' : '') + ' dans ta collection</strong><p>Ta sélection reste enregistrée sur cet appareil et suit ton arc de lecture.</p></div></div>';
     html += '<div class="favorites-toolbar"><label class="filter-search favorites-search"><span aria-hidden="true">⌕</span><input type="search" data-favorite-search value="' + escapeHtml(state.favoriteQuery) + '" placeholder="Rechercher dans mes favoris…" aria-label="Rechercher dans mes favoris"></label><div class="favorites-filters" role="group" aria-label="Filtrer les favoris">' + categories.map(function (category) {
       var count = category.id === "all" ? counts.all : counts[category.id];
       if (category.id !== "all" && !count) return "";
@@ -115,7 +115,7 @@ window.GRANDLINE_PAGE_FACTORIES.favorites = function (context) {
     if (!entries.length && state.catalogLoading) {
       html += '<div class="empty-state favorites-empty"><strong>Chargement de ta collection</strong>Les fiches se mettent à jour jusqu’à ' + escapeHtml(progressArc().name) + '.</div>';
     } else if (!entries.length) {
-      html += '<div class="empty-state favorites-empty"><span class="favorites-empty-star" aria-hidden="true">☆</span><strong>Ta collection commence ici</strong>Ajoute une fiche avec l’étoile pour la retrouver facilement dans cette page.<div class="favorites-empty-actions"><button class="button-secondary" data-page="crews">Équipages</button><button class="button-secondary" data-page="characters">Personnages</button><button class="button-secondary" data-page="ships">Bateaux</button><button class="button-secondary" data-page="blades">Lames</button><button class="button-secondary" data-page="fruits">Fruits du Démon</button></div></div>';
+      html += '<div class="empty-state favorites-empty"><span class="favorites-empty-star" aria-hidden="true">' + pageIcon("favorites") + '</span><strong>Ta collection commence ici</strong>Ajoute une fiche avec l’étoile pour la retrouver facilement dans cette page.<div class="favorites-empty-actions"><button class="button-secondary" data-page="crews">Équipages</button><button class="button-secondary" data-page="characters">Personnages</button><button class="button-secondary" data-page="ships">Bateaux</button><button class="button-secondary" data-page="blades">Lames</button><button class="button-secondary" data-page="fruits">Fruits du Démon</button></div></div>';
     } else if (!visible.length) {
       html += '<div class="empty-state favorites-empty"><strong>Aucun résultat</strong>Essaie un autre nom ou une autre catégorie.</div>';
     } else {

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Sources et données</title>
+  <desc id="desc">Une plume de scribe sur un parchemin déroulé.</desc>
+  <path d="M15 17h28c-3 3-3 6-3 11v21H12V24c0-4 1-6 3-7Z" fill="#e7b95a"/>
+  <path d="M15 17h28c4 0 6 3 6 7H24c0-4-3-7-9-7Z" fill="#f3d38b"/>
+  <path d="M8 46h31v5c0 5 9 5 9 0v-5h7v5c0 6-4 9-10 9H16c-6 0-8-3-8-9v-5Z" fill="#b58b43"/>
+  <path d="M8 46h31v5c0 4 2 6 6 6H16c-5 0-8-3-8-7v-4Z" fill="#e7b95a"/>
+  <path d="M20 30h9m-9 6h5" stroke="#b58b43" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="M33 40C32 21 43 7 58 5c-1 15-9 29-25 35Z" fill="#edf1f7"/>
+  <path d="M33 40C39 23 49 12 58 5c-1 15-9 29-25 35Z" fill="#f3d38b"/>
+  <path d="M29 46 53 12" stroke="#b58b43" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="m42 26 7 1m-4-8 6 1" stroke="#edf1f7" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

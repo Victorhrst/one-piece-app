@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Épisodes et chapitres — Le carnet de voyage</title>
+  <desc id="desc">Un livre ouvert avec des lignes de lecture et un symbole de lecture vidéo.</desc>
+  <path d="M5 15c9-3 18-1 27 4 9-5 18-7 27-4v38c-9-3-18-1-27 4-9-5-18-7-27-4V15Z" fill="#b58b43" stroke="#b58b43" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M8 10c8.5-2 16.5 0 24 5v36c-7.5-5-15.5-7-24-5V10Z" fill="#edf1f7"/>
+  <path d="M56 10c-8.5-2-16.5 0-24 5v36c7.5-5 15.5-7 24-5V10Z" fill="#f3d38b"/>
+  <path d="M32 16v37" stroke="#e7b95a" stroke-width="3" stroke-linecap="round"/>
+  <path d="m14 20 11 3m-11 5 11 3m-11 5 8 2" stroke="#b58b43" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="m41 23 10 7-10 7V23Z" fill="#b58b43" stroke="#b58b43" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M37 46c5-2.4 10-3.1 15-2.6" stroke="#e7b95a" stroke-width="2.6" stroke-linecap="round"/>
+</svg>

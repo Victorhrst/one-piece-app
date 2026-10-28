@@ -1,6 +1,6 @@
 window.GRANDLINE_PAGE_FACTORIES = window.GRANDLINE_PAGE_FACTORIES || {};
 window.GRANDLINE_PAGE_FACTORIES.home = function (context) {
-  var { progressArc, escapeHtml } = context;
+  var { progressArc, escapeHtml, pageIcon } = context;
 
   function renderHome() {
     var arc = progressArc();
@@ -20,10 +20,10 @@ window.GRANDLINE_PAGE_FACTORIES.home = function (context) {
     html += '<p class="home-eyebrow"><span aria-hidden="true"></span> LE WIKI QUI GARDE LE CAP</p>';
     html += '<h1>' + heroTitle + '</h1>';
     html += '<p class="home-description">' + escapeHtml(heroDescription) + '</p>';
-    html += '<button type="button" class="home-current-arc" data-action="open-progress" aria-label="Choisir ou modifier mon arc"><span class="home-current-symbol" aria-hidden="true">⌖</span><span class="home-current-copy"><span>TON REPÈRE</span><strong>' + escapeHtml(arc ? arc.name : "Pas encore défini") + '</strong></span><span class="home-current-action">' + (arc ? "Modifier" : "Choisir mon arc") + ' <span aria-hidden="true">→</span></span></button>';
-    html += '<div class="home-primary-actions"><button class="home-explore-button" data-page="map"><span class="home-button-icon" aria-hidden="true">⌖</span><span>Explorer la carte</span><span class="home-button-arrow" aria-hidden="true">↗</span></button><button class="home-guide-button" data-page="guide"><span class="home-button-icon" aria-hidden="true">▤</span><span>Épisodes & chapitres</span><span class="home-button-arrow" aria-hidden="true">↗</span></button></div>';
+    html += '<button type="button" class="home-current-arc" data-action="open-progress" aria-label="Choisir ou modifier mon arc"><span class="home-current-symbol" aria-hidden="true">' + pageIcon("progress") + '</span><span class="home-current-copy"><span>TON REPÈRE</span><strong>' + escapeHtml(arc ? arc.name : "Pas encore défini") + '</strong></span><span class="home-current-action">' + (arc ? "Modifier" : "Choisir mon arc") + ' <span aria-hidden="true">→</span></span></button>';
+    html += '<div class="home-primary-actions"><button class="home-explore-button" data-page="map"><span class="home-button-icon" aria-hidden="true">' + pageIcon("map") + '</span><span>Explorer la carte</span><span class="home-button-arrow" aria-hidden="true">↗</span></button><button class="home-guide-button" data-page="guide"><span class="home-button-icon" aria-hidden="true">' + pageIcon("guide") + '</span><span>Épisodes & chapitres</span><span class="home-button-arrow" aria-hidden="true">↗</span></button></div>';
     html += '</main>';
-    html += '<footer class="home-footer"><nav class="home-shortcuts" aria-label="Accès rapide"><button data-page="favorites"><span aria-hidden="true">☆</span><span>Mes favoris</span></button><button data-page="crews"><span aria-hidden="true">⚑</span><span>Équipages</span></button><button data-page="characters"><span aria-hidden="true">◎</span><span>Personnages</span></button><button data-page="ships"><span aria-hidden="true">⛵</span><span>Bateaux</span></button><button data-page="fruits"><span aria-hidden="true">◉</span><span>Fruits du Démon</span></button></nav><p class="home-disclaimer">Projet de fan indépendant · les images restent la propriété de leurs ayants droit.</p></footer>';
+    html += '<footer class="home-footer"><nav class="home-shortcuts" aria-label="Accès rapide"><button data-page="favorites"><span aria-hidden="true">' + pageIcon("favorites") + '</span><span>Mes favoris</span></button><button data-page="crews"><span aria-hidden="true">' + pageIcon("crews") + '</span><span>Équipages</span></button><button data-page="characters"><span aria-hidden="true">' + pageIcon("characters") + '</span><span>Personnages</span></button><button data-page="ships"><span aria-hidden="true">' + pageIcon("ships") + '</span><span>Bateaux</span></button><button data-page="fruits"><span aria-hidden="true">' + pageIcon("fruits") + '</span><span>Fruits du Démon</span></button></nav><p class="home-disclaimer">Projet de fan indépendant · les images restent la propriété de leurs ayants droit.</p></footer>';
     html += '</section>';
     return html;
   }

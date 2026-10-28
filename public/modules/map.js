@@ -4,6 +4,7 @@ window.GRANDLINE_PAGE_FACTORIES.map = function (context) {
   var state = context.state;
   var escapeHtml = context.escapeHtml;
   var heading = context.heading;
+  var pageIcon = context.pageIcon;
   var safeCharacterName = context.safeCharacterName;
   var identityKey = context.identityKey;
 
@@ -418,7 +419,7 @@ window.GRANDLINE_PAGE_FACTORIES.map = function (context) {
   function renderLocationDetail(key) {
     // Resolve from the already-filtered collection so a copied or guessed hash cannot reveal a locked name.
     var location = visibleLocations().find(function (item) { return item.id === key; });
-    if (!location) return '<div class="location-locked"><p class="eyebrow">FICHE DE LIEU</p><div class="page-title-row"><div><h1>Ce lieu n’est pas disponible</h1><p>Cette fiche n’est pas accessible à ton repère de lecture.</p></div><span class="page-ornament" aria-hidden="true">⌖</span></div><div class="empty-state"><strong>Continue à ton rythme</strong>Seuls les lieux déjà découverts peuvent être ouverts.<br><br><button class="button-primary" data-action="open-progress">Mon arc de lecture <span>→</span></button> <button class="button-secondary location-back" data-page="map">Retour à la carte</button></div></div>';
+    if (!location) return '<div class="location-locked"><p class="eyebrow">FICHE DE LIEU</p><div class="page-title-row"><div><h1>Ce lieu n’est pas disponible</h1><p>Cette fiche n’est pas accessible à ton repère de lecture.</p></div><span class="page-ornament" aria-hidden="true">' + pageIcon("map") + '</span></div><div class="empty-state"><strong>Continue à ton rythme</strong>Seuls les lieux déjà découverts peuvent être ouverts.<br><br><button class="button-primary" data-action="open-progress">Mon arc de lecture <span>→</span></button> <button class="button-secondary location-back" data-page="map">Retour à la carte</button></div></div>';
     var requiredIndex = arcIndex(location.arc);
     var requiredArc = DATA.arcs[requiredIndex];
     var nearby = visibleLocations().filter(function (item) { return item.id !== location.id && item.sea === location.sea; }).slice(0, 5);

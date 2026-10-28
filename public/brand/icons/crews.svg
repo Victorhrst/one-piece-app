@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Équipages — Pavillon pirate</title>
+  <path d="M11 8v49" stroke="#b58b43" stroke-width="5" stroke-linecap="round"/>
+  <path d="M9.5 9v45" stroke="#f3d38b" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14 12c12-8 25 6 42-1l-5 14 5 14c-17 7-30-7-42 1V12Z" fill="#e7b95a"/>
+  <path d="M14 35c13-7 25 5 40 0l2 4c-17 7-30-7-42 1v-5Z" fill="#b58b43"/>
+  <path d="m27 31 15 8m-15-1 15-8" stroke="#edf1f7" stroke-width="3" stroke-linecap="round"/>
+  <path d="M26 24a8 8 0 1 1 16 0c0 4-2 6-5 7v3h-6v-3c-3-1-5-3-5-7Z" fill="#edf1f7" stroke="#0b1120" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="m30 23 2 2m6-2-2 2" stroke="#0b1120" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="m34 27-1.5 2h3L34 27Z" fill="#0b1120"/>
+  <path d="M5 58h14" stroke="#e7b95a" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -470,8 +470,16 @@
     });
   }
 
+  var pageIcons = {home:"home",favorites:"favorites",map:"map",guide:"guide",crews:"crews",ships:"ships",government:"government",blades:"blades",poneglyphs:"poneglyphs",characters:"characters",fruits:"fruits",sources:"sources"};
+  var pageSymbols = {"⌂":"home","☆":"favorites","⌖":"map","▤":"guide","⚑":"crews","⛵":"ships","⚓":"government","⌁":"blades","◈":"poneglyphs","◎":"characters","◉":"fruits","✦":"sources"};
+
+  function pageIcon(page) {
+    var source = page === "progress" ? "/brand/log-pose.svg" : "/brand/icons/" + (pageIcons[page] || "home") + ".svg";
+    return '<img class="page-symbol" src="' + source + '" width="24" height="24" alt="" aria-hidden="true" decoding="async">';
+  }
+
   function heading(eyebrow, title, description, symbol) {
-    return '<div class="page-title-row"><div><div class="eyebrow">' + escapeHtml(eyebrow) + '</div><h1>' + escapeHtml(title) + '</h1><p>' + escapeHtml(description) + '</p></div><div class="page-ornament" aria-hidden="true">' + escapeHtml(symbol || "✦") + '</div></div>';
+    return '<div class="page-title-row"><div><div class="eyebrow">' + escapeHtml(eyebrow) + '</div><h1>' + escapeHtml(title) + '</h1><p>' + escapeHtml(description) + '</p></div><div class="page-ornament" aria-hidden="true">' + pageIcon(pageSymbols[symbol] || "sources") + '</div></div>';
   }
 
   function progressHint() {
@@ -969,7 +977,7 @@
     setPage("sources");
   }
 
-  var pageContext = { DATA:DATA, state:state, progressArc:progressArc, emperorsRevealed:emperorsRevealed, visibleEpisodes:visibleEpisodes, visibleChapters:visibleChapters, escapeHtml:escapeHtml, stripMarks:stripMarks, safeCharacterName:safeCharacterName, identityKey:identityKey, episodeNumber:episodeNumber, chapterNumber:chapterNumber, chapterValues:chapterValues, formatChapterValues:formatChapterValues, volumeText:volumeText, arcLabelForEpisode:arcLabelForEpisode, filtered:filtered, heading:heading, progressHint:progressHint, plain:plain, favoriteButton:favoriteButton, isFavorite:isFavorite };
+  var pageContext = { DATA:DATA, state:state, progressArc:progressArc, emperorsRevealed:emperorsRevealed, visibleEpisodes:visibleEpisodes, visibleChapters:visibleChapters, escapeHtml:escapeHtml, stripMarks:stripMarks, safeCharacterName:safeCharacterName, identityKey:identityKey, episodeNumber:episodeNumber, chapterNumber:chapterNumber, chapterValues:chapterValues, formatChapterValues:formatChapterValues, volumeText:volumeText, arcLabelForEpisode:arcLabelForEpisode, filtered:filtered, heading:heading, pageIcon:pageIcon, progressHint:progressHint, plain:plain, favoriteButton:favoriteButton, isFavorite:isFavorite };
   window.GRANDLINE_PAGES = Object.assign({}, window.GRANDLINE_PAGE_FACTORIES.home(pageContext), window.GRANDLINE_PAGE_FACTORIES.map(pageContext), window.GRANDLINE_PAGE_FACTORIES.guide(pageContext), window.GRANDLINE_PAGE_FACTORIES.crews(pageContext), window.GRANDLINE_PAGE_FACTORIES.ships(pageContext), window.GRANDLINE_PAGE_FACTORIES.government(pageContext), window.GRANDLINE_PAGE_FACTORIES.blades(pageContext), window.GRANDLINE_PAGE_FACTORIES.poneglyphs(pageContext), window.GRANDLINE_PAGE_FACTORIES.characters(pageContext), window.GRANDLINE_PAGE_FACTORIES.fruits(pageContext), window.GRANDLINE_PAGE_FACTORIES.favorites(pageContext), window.GRANDLINE_PAGE_FACTORIES.sources(pageContext));
 
   document.addEventListener("toggle", function (event) {
