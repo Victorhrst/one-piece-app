@@ -32,8 +32,8 @@ button { cursor: pointer; }
 .app-shell { min-height: 100vh; }
 .sidebar { position: fixed; z-index: 5; inset: 0 auto 0 0; display: flex; width: 256px; flex-direction: column; padding: 29px 17px 18px; background: var(--navy-deep); color: #f3f3e9; }
 .brand { display: flex; align-items: center; gap: 11px; padding: 0 10px; color: var(--gold); text-decoration: none; }
-.brand-mark { width: 38px; height: 38px; display: grid; place-items: center; }
-.brand-mark svg { width: 100%; height: 100%; }
+.brand-mark { width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center; }
+.brand-mark svg,.brand-mark img { display: block; width: 100%; height: 100%; }
 .brand-type { display: flex; flex-direction: column; font-size: 17px; letter-spacing: .16em; line-height: 1.02; }
 .brand-type em { font-style: normal; font-weight: 400; font-size: 13px; letter-spacing: .31em; margin-top: 4px; }
 .sidebar-caption { margin: 25px 10px 23px; color: var(--ink-2); font: 9px var(--mono); letter-spacing: .1em; }
