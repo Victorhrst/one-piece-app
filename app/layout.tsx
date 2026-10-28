@@ -11,7 +11,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="fr">
       <head>
-        <meta name="theme-color" content="#0d1316" />
+        <meta name="theme-color" content="#0b1120" />
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>

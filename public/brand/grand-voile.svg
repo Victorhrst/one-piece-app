@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Grand Line — La Grand-Voile</title>
+  <desc id="desc">Deux voiles géométriques dorées surmontent une coque et une vague.</desc>
+  <path d="M33 7c8 7 14 18 18 30H33V7Z" fill="#e7b95a"/>
+  <path d="M27 17 11 37h16V17Z" fill="#e7b95a" opacity=".65"/>
+  <path d="M11 42h42l-8 8H20l-9-8Z" fill="#d9e1ef"/>
+  <path d="M12 57c5-4 9-4 14-1s9 3 14 0 9-3 13 0" stroke="#e7b95a" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

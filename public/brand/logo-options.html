@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1120">
+    <title>Grand Line — Propositions de logo</title>
+    <style>
+      :root { color-scheme: dark; --navy: #0b1120; --surface: #121c2d; --gold: #e7b95a; --text: #edf1f8; --muted: #a3b0c7; --line: #2b374c; font-family: "Segoe UI", Arial, sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-width: 300px; background: var(--navy); color: var(--text); }
+      a { color: inherit; }
+      a:focus-visible { outline: 3px solid var(--gold); outline-offset: 5px; }
+      .sheet { width: min(1320px, 100%); margin: 0 auto; padding: 64px 40px 36px; }
+      .eyebrow { margin: 0 0 15px; color: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: .19em; text-transform: uppercase; }
+      .intro { display: flex; justify-content: space-between; align-items: flex-end; gap: 36px; margin-bottom: 38px; }
+      h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(36px, 4vw, 58px); font-weight: 500; line-height: 1.08; letter-spacing: -.04em; }
+      .lede { max-width: 630px; margin: 19px 0 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+      .palette { display: flex; flex: 0 0 auto; gap: 14px; padding-bottom: 3px; }
+      .swatch { display: grid; gap: 8px; color: var(--muted); font: 10px Consolas, monospace; }
+      .swatch i { display: block; width: 54px; height: 36px; border: 1px solid var(--line); border-radius: 7px; background: var(--swatch); }
+      .proposals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+      .proposal { overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+      .proposal.recommended { border-color: #8c723f; }
+      .proposal-head { display: flex; min-height: 62px; align-items: center; justify-content: space-between; gap: 10px; padding: 18px 22px; border-bottom: 1px solid var(--line); }
+      .number { color: var(--muted); font: 11px Consolas, monospace; letter-spacing: .1em; }
+      .badge { padding: 5px 8px; border: 1px solid #6e5b37; border-radius: 20px; background: #2c2930; color: #f0c979; font-size: 10px; font-weight: 600; }
+      .direction { color: var(--muted); font-size: 10px; letter-spacing: .06em; }
+      .showcase { display: flex; height: 244px; flex-direction: column; align-items: center; justify-content: center; gap: 22px; background: radial-gradient(ellipse at center, #1c2941, var(--surface) 72%); }
+      .showcase img { display: block; width: 100px; height: 100px; }
+      .wordmark { display: flex; flex-direction: column; color: var(--gold); font-size: 20px; line-height: 1.02; letter-spacing: .16em; }
+      .wordmark strong { font-weight: 700; }
+      .wordmark span { margin-top: 5px; font-size: 16px; font-weight: 400; letter-spacing: .31em; }
+      .showcase .wordmark { text-align: center; padding-left: .16em; }
+      .showcase .wordmark span { padding-left: .15em; }
+      .details { padding: 23px 22px 22px; }
+      h2 { margin: 0; font-family: Georgia, serif; font-size: 25px; font-weight: 500; letter-spacing: -.02em; }
+      .description { min-height: 76px; margin: 12px 0 22px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+      .scale-label { margin: 0 0 9px; color: var(--muted); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; }
+      .sidebar-preview { display: flex; min-height: 83px; align-items: center; gap: 11px; padding: 18px 17px; border: 1px solid var(--line); border-radius: 9px; background: var(--navy); }
+      .sidebar-preview img { display: block; width: 38px; height: 38px; flex: 0 0 38px; }
+      .sidebar-preview .wordmark { font-size: 17px; }
+      .sidebar-preview .wordmark span { margin-top: 4px; font-size: 13px; }
+      .download { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 20px; padding-top: 17px; border-top: 1px solid var(--line); color: var(--gold); font-size: 12px; text-decoration: none; }
+      .download:hover { color: #f7d690; }
+      .download span { font-size: 17px; }
+      .recommendation { display: flex; gap: 18px; margin-top: 26px; padding: 22px 24px; border: 1px solid var(--line); border-radius: 12px; background: #10192a; }
+      .recommendation > span { color: var(--gold); font-size: 22px; line-height: 1.25; }
+      .recommendation strong { color: var(--text); font-size: 14px; font-weight: 600; }
+      .recommendation p { margin: 7px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+      footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-top: 29px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+      footer a { color: var(--gold); text-decoration: none; }
+      footer a:hover { text-decoration: underline; }
+      @media (max-width: 1000px) { .sheet { padding: 42px 24px 28px; } .intro { align-items: flex-start; flex-direction: column; gap: 24px; } .proposals { gap: 12px; } .details { padding: 20px 16px; } .proposal-head { padding-right: 16px; padding-left: 16px; } .description { min-height: 110px; } .sidebar-preview { padding-right: 12px; padding-left: 12px; } }
+      @media (max-width: 720px) { .sheet { width: min(520px, 100%); padding: 32px 18px 26px; } .intro { margin-bottom: 26px; } .lede { font-size: 14px; } .proposals { grid-template-columns: 1fr; gap: 20px; } .showcase { height: 232px; } .details { padding: 22px; } .description { min-height: 0; } .sidebar-preview { padding: 18px 17px; } .recommendation { padding: 19px; } }
+      @media (prefers-reduced-motion: no-preference) { .download { transition: color .15s ease; } }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <header class="intro">
+        <div>
+          <p class="eyebrow">Grand Line · Identité visuelle</p>
+          <h1>Trois façons de garder le cap.</h1>
+          <p class="lede">Des symboles dessinés pour le coin supérieur gauche du wiki, avec un bleu marine presque noir et un doré chaleureux. Chaque piste est présentée en grand et à sa taille réelle dans le menu.</p>
+        </div>
+        <div class="palette" aria-label="Palette : bleu marine #0b1120, surface #121c2d et doré #e7b95a">
+          <span class="swatch"><i style="--swatch: #0b1120" aria-hidden="true"></i>#0B1120</span>
+          <span class="swatch"><i style="--swatch: #121c2d" aria-hidden="true"></i>#121C2D</span>
+          <span class="swatch"><i style="--swatch: #e7b95a" aria-hidden="true"></i>#E7B95A</span>
+        </div>
+      </header>
+      <section class="proposals" aria-label="Propositions de logo">
+        <article class="proposal recommended" aria-labelledby="log-pose-title">
+          <div class="proposal-head"><span class="number">01 / EXPLORATION</span><span class="badge">Recommandé</span></div>
+          <div class="showcase" aria-label="Aperçu agrandi du logo Le Log Pose">
+            <img src="./log-pose.svg" alt="Cadran et aiguille de navigation dorée">
+            <div class="wordmark" aria-label="Grand Line"><strong>GRAND</strong><span>LINE</span></div>
+          </div>
+          <div class="details">
+            <h2 id="log-pose-title">Le Log Pose</h2>
+            <p class="description">Une aiguille, un cap, un voyage. Une identité liée à l’exploration et au rythme de lecture, avec un symbole immédiatement lisible.</p>
+            <p class="scale-label">Dans le menu · symbole de 38 px</p>
+            <div class="sidebar-preview" aria-label="Logo Le Log Pose à la taille du menu">
+              <img src="./log-pose.svg" alt="">
+              <div class="wordmark" aria-label="Grand Line"><strong>GRAND</strong><span>LINE</span></div>
+            </div>
+            <a class="download" href="./log-pose.svg" download="grand-line-log-pose.svg">Télécharger le symbole SVG <span aria-hidden="true">↓</span></a>
+          </div>
+        </article>
+        <article class="proposal" aria-labelledby="grand-voile-title">
+          <div class="proposal-head"><span class="number">02 / AVENTURE</span><span class="direction">MARITIME</span></div>
+          <div class="showcase" aria-label="Aperçu agrandi du logo La Grand-Voile">
+            <img src="./grand-voile.svg" alt="Voilier géométrique doré sur une vague">
+            <div class="wordmark" aria-label="Grand Line"><strong>GRAND</strong><span>LINE</span></div>
+          </div>
+          <div class="details">
+            <h2 id="grand-voile-title">La Grand-Voile</h2>
+            <p class="description">Des voiles tendues et une ligne d’horizon. Une piste qui évoque les équipages, la mer et le départ vers la prochaine île.</p>
+            <p class="scale-label">Dans le menu · symbole de 38 px</p>
+            <div class="sidebar-preview" aria-label="Logo La Grand-Voile à la taille du menu">
+              <img src="./grand-voile.svg" alt="">
+              <div class="wordmark" aria-label="Grand Line"><strong>GRAND</strong><span>LINE</span></div>
+            </div>
+            <a class="download" href="./grand-voile.svg" download="grand-line-grand-voile.svg">Télécharger le symbole SVG <span aria-hidden="true">↓</span></a>
+          </div>
+        </article>
+        <article class="proposal" aria-labelledby="monogramme-title">
+          <div class="proposal-head"><span class="number">03 / SIGNATURE</span><span class="direction">TYPOGRAPHIQUE</span></div>
+          <div class="showcase" aria-label="Aperçu agrandi du logo Le Monogramme GL">
+            <img src="./monogramme-gl.svg" alt="Monogramme géométrique des lettres G et L">
+            <div class="wordmark" aria-label="Grand Line"><strong>GRAND</strong><span>LINE</span></div>
+          </div>
+          <div class="details">
+            <h2 id="monogramme-title">Le Monogramme GL</h2>
+            <p class="description">Les initiales du wiki deviennent un emblème. Le point doré marque une destination et donne au site une signature plus sobre.</p>
+            <p class="scale-label">Dans le menu · symbole de 38 px</p>
+            <div class="sidebar-preview" aria-label="Logo Le Monogramme GL à la taille du menu">
+              <img src="./monogramme-gl.svg" alt="">
+              <div class="wordmark" aria-label="Grand Line"><strong>GRAND</strong><span>LINE</span></div>
+            </div>
+            <a class="download" href="./monogramme-gl.svg" download="grand-line-monogramme-gl.svg">Télécharger le symbole SVG <span aria-hidden="true">↓</span></a>
+          </div>
+        </article>
+      </section>
+      <aside class="recommendation" aria-label="Recommandation">
+        <span aria-hidden="true">↗</span>
+        <div><strong>Ma préférence : Le Log Pose.</strong><p>Il prolonge « Le wiki qui garde le cap » et reste reconnaissable dans le menu compact. La Grand-Voile met davantage l’accent sur l’aventure ; le monogramme donne une identité plus discrète.</p></div>
+      </aside>
+      <footer><span>Propositions à comparer · Le logo actuel du site est conservé en attendant le choix.</span><a href="/">Revenir au wiki →</a></footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Grand Line — Le Log Pose</title>
+  <desc id="desc">Un cadran doré et une aiguille bicolore indiquent le cap.</desc>
+  <circle cx="32" cy="32" r="24" stroke="#e7b95a" stroke-width="1.8" opacity=".65"/>
+  <path d="M32 3v6m0 46v6M3 32h6m46 0h6" stroke="#e7b95a" stroke-width="2" stroke-linecap="round"/>
+  <g transform="rotate(30 32 32)">
+    <path d="m32 11 6 21-6-3-6 3 6-21Z" fill="#e7b95a"/>
+    <path d="m32 53-6-21 6 3 6-3-6 21Z" fill="#d9e1ef"/>
+  </g>
+  <circle cx="32" cy="32" r="2.7" fill="#e7b95a"/>
+</svg>
