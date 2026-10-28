@@ -5,7 +5,18 @@
   var STORAGE_KEY = "grand-line-progress-v1";
   var CACHE_KEY = "grand-line-safe-cache-v3";
   var FAVORITES_KEY = "grand-line-favorites-v1";
+  var CHARACTER_DENSITY_KEY = "grand-line-character-density-v1";
+  var PONEGLYPH_NOTES_KEY = "grand-line-poneglyph-notes-v1";
   var FAVORITE_TYPES = ["crew", "character", "ship", "blade", "fruit"];
+  function readCharacterDensity() {
+    try { return localStorage.getItem(CHARACTER_DENSITY_KEY) === "compact" ? "compact" : "comfortable"; } catch { return "comfortable"; }
+  }
+  function readPoneglyphNotes() {
+    try {
+      var notes = JSON.parse(localStorage.getItem(PONEGLYPH_NOTES_KEY) || "[]");
+      return Array.isArray(notes) ? notes.filter(function (item) { return typeof item === "string" && item.length <= 80; }) : [];
+    } catch { return []; }
+  }
   var state = {
     page: "home",
     detail: null,
@@ -32,6 +43,14 @@
     query: "",
     characterSort: "alpha",
     characterEmperorsOnly: false,
+    characterDensity: readCharacterDensity(),
+    characterFiltersOpen: window.innerWidth > 680,
+    characterAffiliation: "",
+    characterRole: "",
+    characterBountyFilter: "all",
+    characterListReturn: null,
+    poneglyphFilter: "all",
+    poneglyphNotes: readPoneglyphNotes(),
     crewSort: "alpha",
     crewEmperorsOnly: false,
     rarity: "Toutes",
@@ -99,7 +118,7 @@
   function favoriteButton(type, key, name, extraClass) {
     var active = isFavorite(type, key);
     var safeName = escapeHtml(name || "cet élément");
-    return '<button type="button" class="favorite-toggle ' + (extraClass || "") + (active ? ' is-favorite' : '') + '" data-favorite-type="' + escapeHtml(type) + '" data-favorite-key="' + escapeHtml(key) + '" aria-pressed="' + (active ? 'true' : 'false') + '" aria-label="' + (active ? 'Retirer ' + safeName + ' des favoris' : 'Ajouter ' + safeName + ' aux favoris') + '" title="' + (active ? 'Retirer des favoris' : 'Ajouter aux favoris') + '"><span aria-hidden="true">' + (active ? '★' : '☆') + '</span></button>';
+    return '<button type="button" class="favorite-toggle ' + (extraClass || "") + (active ? ' is-favorite' : '') + '" data-favorite-type="' + escapeHtml(type) + '" data-favorite-key="' + escapeHtml(key) + '" aria-pressed="' + (active ? 'true' : 'false') + '" aria-label="' + (active ? 'Retirer ' + safeName + ' des favoris' : 'Ajouter ' + safeName + ' aux favoris') + '" title="' + (active ? 'Retirer des favoris' : 'Ajouter aux favoris') + '"><span class="favorite-toggle-icon" aria-hidden="true">' + (active ? '★' : '☆') + '</span></button>';
   }
 
   function toggleFavorite(type, key) {
@@ -317,6 +336,7 @@
     {key:"law",aliases:["Trafalgar D. Water Law","Trafalgar Law"],revealAt:26,earlyName:"Trafalgar Law",lateName:"Trafalgar Law"},
     {key:"doflamingo",aliases:["Donquixote Doflamingo","Don Quichotte Doflamingo","Doflamingo"],revealAt:11,earlyName:"Doflamingo",lateName:"Don Quichotte Doflamingo"},
     {key:"sanji",aliases:["Vinsmoke Sanji","Sanji"],revealAt:28,earlyName:"Sanji",lateName:"Vinsmoke Sanji"},
+    {key:"demaro-black",aliases:["Demaro Black","Demalo Black"],revealAt:23,earlyName:"Demaro Black",lateName:"Demaro Black"},
     {key:"momonosuke",aliases:["Kozuki Momonosuke","Momonosuke"],revealAt:30,earlyName:"Momonosuke",lateName:"Kozuki Momonosuke"},
     {key:"kuzan",aliases:["Kuzan","Aokiji"],revealAt:31,earlyName:"Aokiji",lateName:"Kuzan"}
   ];
@@ -503,7 +523,7 @@
 
 
   function pageTitle(page) {
-    var titles = {home:"ACCUEIL",favorites:"MES FAVORIS",map:"CARTE DU MONDE","location-detail":"FICHE DE LIEU",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES", "crew-detail":"FICHE D’ÉQUIPAGE",ships:"BATEAUX", "ship-detail":"FICHE DE BATEAU",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES",characters:"PERSONNAGES", "character-detail":"FICHE PERSONNAGE",fruits:"FRUITS DU DÉMON", "fruit-detail":"FICHE FRUIT DU DÉMON",sources:"SOURCES"};
+    var titles = {home:"ACCUEIL",favorites:"MES FAVORIS",map:"CARTE DU MONDE","location-detail":"FICHE DE LIEU",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES", "crew-detail":"FICHE D’ÉQUIPAGE",ships:"BATEAUX", "ship-detail":"FICHE DE BATEAU",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES",poneglyphs:"PONÉGLYPHES",characters:"PERSONNAGES", "character-detail":"FICHE PERSONNAGE",fruits:"FRUITS DU DÉMON", "fruit-detail":"FICHE FRUIT DU DÉMON",sources:"SOURCES"};
     return titles[page] || "ACCUEIL";
   }
 
@@ -524,6 +544,10 @@
       state.characterLimit,
       state.characterSort,
       state.characterEmperorsOnly,
+      state.characterDensity,
+      state.characterAffiliation,
+      state.characterRole,
+      state.characterBountyFilter,
       state.crewSort,
       state.crewEmperorsOnly,
       state.rarity,
@@ -539,7 +563,9 @@
       state.unclassifiedFruits,
       state.characterTotal,
       state.favoriteFilter,
-      state.favoriteQuery
+      state.favoriteQuery,
+      state.poneglyphFilter,
+      state.poneglyphNotes.join("|")
     ]);
   }
 
@@ -563,6 +589,14 @@
 
   function scrollToPageTop() {
     window.scrollTo({top:0,left:0,behavior:"instant"});
+  }
+
+  function renderCharacterView(focusSelector) {
+    var scrollTop = window.scrollY;
+    render();
+    var focusTarget = focusSelector && document.querySelector(focusSelector);
+    if (focusTarget) focusTarget.focus({preventScroll:true});
+    window.scrollTo({top:scrollTop,left:0,behavior:"instant"});
   }
 
   function decodeRoutePart(value) {
@@ -597,7 +631,7 @@
       return;
     }
     var page = route.indexOf("#page/") === 0 ? decodeRoutePart(route.slice("#page/".length)) : "home";
-    var allowed = ["home","favorites","map","guide","crews","ships","government","blades","characters","fruits","sources"];
+    var allowed = ["home","favorites","map","guide","crews","ships","government","blades","poneglyphs","characters","fruits","sources"];
     state.page = allowed.indexOf(page) >= 0 ? page : "home";
     state.detail = null;
   }
@@ -636,6 +670,7 @@
         : page === "ship-detail" ? window.GRANDLINE_PAGES.renderShipDetail(state.detail && state.detail.key)
         : page === "government" ? window.GRANDLINE_PAGES.renderGovernment()
         : page === "blades" ? window.GRANDLINE_PAGES.renderBlades()
+        : page === "poneglyphs" ? window.GRANDLINE_PAGES.renderPoneglyphs()
         : page === "characters" ? window.GRANDLINE_PAGES.renderCharacters()
         : page === "character-detail" ? window.GRANDLINE_PAGES.renderCharacterDetail(state.detail && state.detail.key, state.detail && state.detail.returnCrew, state.detail && state.detail.returnLocation, state.detail && state.detail.returnPage)
         : page === "fruits" ? window.GRANDLINE_PAGES.renderFruits()
@@ -685,6 +720,7 @@
     state.detail = null;
     if (window.location.hash !== "#page/" + page) window.history.pushState({page:page}, "", "#page/" + page);
     state.query = "";
+    state.characterListReturn = null;
     state.guideLimit = 30;
     state.characterLimit = 90;
     var search = document.getElementById("globalSearch");
@@ -736,9 +772,10 @@
 
   function openCharacterDetail(key, returnCrew, returnLocation, returnPage) {
     returnPage = returnPage === "government" ? "government" : null;
+    if (state.page === "characters" && !returnCrew && !returnLocation && !returnPage) state.characterListReturn = {scrollTop:window.scrollY};
     state.page = "character-detail";
     state.detail = { type:"character", key:String(key || ""), returnCrew:returnCrew || null, returnLocation:returnLocation || null, returnPage:returnPage };
-    window.history.pushState({page:"character-detail",returnCrew:returnCrew || null,returnLocation:returnLocation || null,returnPage:returnPage}, "", "#personnage/" + encodeURIComponent(state.detail.key));
+    window.history.pushState({page:"character-detail",returnCrew:returnCrew || null,returnLocation:returnLocation || null,returnPage:returnPage,returnToCharacters:Boolean(state.characterListReturn)}, "", "#personnage/" + encodeURIComponent(state.detail.key));
     document.body.classList.remove("menu-open");
     render();
     scrollToPageTop();
@@ -933,15 +970,77 @@
   }
 
   var pageContext = { DATA:DATA, state:state, progressArc:progressArc, emperorsRevealed:emperorsRevealed, visibleEpisodes:visibleEpisodes, visibleChapters:visibleChapters, escapeHtml:escapeHtml, stripMarks:stripMarks, safeCharacterName:safeCharacterName, identityKey:identityKey, episodeNumber:episodeNumber, chapterNumber:chapterNumber, chapterValues:chapterValues, formatChapterValues:formatChapterValues, volumeText:volumeText, arcLabelForEpisode:arcLabelForEpisode, filtered:filtered, heading:heading, progressHint:progressHint, plain:plain, favoriteButton:favoriteButton, isFavorite:isFavorite };
-  window.GRANDLINE_PAGES = Object.assign({}, window.GRANDLINE_PAGE_FACTORIES.home(pageContext), window.GRANDLINE_PAGE_FACTORIES.map(pageContext), window.GRANDLINE_PAGE_FACTORIES.guide(pageContext), window.GRANDLINE_PAGE_FACTORIES.crews(pageContext), window.GRANDLINE_PAGE_FACTORIES.ships(pageContext), window.GRANDLINE_PAGE_FACTORIES.government(pageContext), window.GRANDLINE_PAGE_FACTORIES.blades(pageContext), window.GRANDLINE_PAGE_FACTORIES.characters(pageContext), window.GRANDLINE_PAGE_FACTORIES.fruits(pageContext), window.GRANDLINE_PAGE_FACTORIES.favorites(pageContext), window.GRANDLINE_PAGE_FACTORIES.sources(pageContext));
+  window.GRANDLINE_PAGES = Object.assign({}, window.GRANDLINE_PAGE_FACTORIES.home(pageContext), window.GRANDLINE_PAGE_FACTORIES.map(pageContext), window.GRANDLINE_PAGE_FACTORIES.guide(pageContext), window.GRANDLINE_PAGE_FACTORIES.crews(pageContext), window.GRANDLINE_PAGE_FACTORIES.ships(pageContext), window.GRANDLINE_PAGE_FACTORIES.government(pageContext), window.GRANDLINE_PAGE_FACTORIES.blades(pageContext), window.GRANDLINE_PAGE_FACTORIES.poneglyphs(pageContext), window.GRANDLINE_PAGE_FACTORIES.characters(pageContext), window.GRANDLINE_PAGE_FACTORIES.fruits(pageContext), window.GRANDLINE_PAGE_FACTORIES.favorites(pageContext), window.GRANDLINE_PAGE_FACTORIES.sources(pageContext));
+
+  document.addEventListener("toggle", function (event) {
+    if (event.target.matches && event.target.matches("[data-character-filter-details]")) state.characterFiltersOpen = event.target.open;
+  }, true);
 
   document.addEventListener("click", function (event) {
-    var target = event.target.closest("button,[data-page],[data-open-fruit],[data-open-ship],[data-map-location]");
+    var target = event.target.closest("button,[data-page],[data-open-fruit],[data-open-ship],[data-map-location],.character-card[data-open-character]");
     if (!target) return;
     if (target.hasAttribute("data-favorite-type")) {
       event.preventDefault();
       event.stopPropagation();
       toggleFavorite(target.getAttribute("data-favorite-type"), target.getAttribute("data-favorite-key"));
+      return;
+    }
+    if (target.hasAttribute("data-expand-character-summary")) {
+      var card = target.closest(".character-card");
+      var summary = card && card.querySelector(".character-description");
+      if (summary) {
+        var expanded = target.getAttribute("aria-expanded") !== "true";
+        target.setAttribute("aria-expanded",expanded ? "true" : "false");
+        summary.classList.toggle("is-expanded",expanded);
+        target.innerHTML = expanded ? 'Réduire <span aria-hidden="true">⌃</span>' : 'Lire le résumé <span aria-hidden="true">⌄</span>';
+      }
+      return;
+    }
+    if (target.hasAttribute("data-character-density")) {
+      state.characterDensity = target.getAttribute("data-character-density") === "compact" ? "compact" : "comfortable";
+      try { localStorage.setItem(CHARACTER_DENSITY_KEY,state.characterDensity); } catch {}
+      renderCharacterView('[data-character-density="' + state.characterDensity + '"]');
+      return;
+    }
+    if (target.hasAttribute("data-toggle-character-emperors")) {
+      state.characterEmperorsOnly = emperorsRevealed() ? !state.characterEmperorsOnly : false;
+      renderCharacterView("[data-toggle-character-emperors]");
+      return;
+    }
+    if (target.hasAttribute("data-clear-character-filter")) {
+      var clearFilter = target.getAttribute("data-clear-character-filter");
+      if (clearFilter === "all") {
+        state.query = "";
+        state.characterAffiliation = "";
+        state.characterRole = "";
+        state.characterBountyFilter = "all";
+        state.characterEmperorsOnly = false;
+      } else if (clearFilter === "query") state.query = "";
+      else if (clearFilter === "affiliation") state.characterAffiliation = "";
+      else if (clearFilter === "role") state.characterRole = "";
+      else if (clearFilter === "bounty") state.characterBountyFilter = "all";
+      else if (clearFilter === "emperors") state.characterEmperorsOnly = false;
+      var globalSearchInput = document.getElementById("globalSearch");
+      if (globalSearchInput) globalSearchInput.value = state.query;
+      renderCharacterView("#characterSearch");
+      return;
+    }
+    if (target.hasAttribute("data-character-suggestion")) {
+      var suggestionType = target.getAttribute("data-character-suggestion");
+      var suggestionValue = target.getAttribute("data-value") || "";
+      state.characterAffiliation = suggestionType === "affiliation" ? suggestionValue : "";
+      state.characterRole = "";
+      state.characterBountyFilter = "all";
+      state.characterEmperorsOnly = false;
+      state.query = suggestionType === "query" ? suggestionValue : "";
+      var suggestionSearch = document.getElementById("globalSearch");
+      if (suggestionSearch) suggestionSearch.value = state.query;
+      renderCharacterView("#characterSearch");
+      return;
+    }
+    if (target.hasAttribute("data-return-character-list")) {
+      if (state.characterListReturn && window.history.state && window.history.state.returnToCharacters) window.history.back();
+      else setPage("characters");
       return;
     }
     if (target.id === "updateButton") {
@@ -961,6 +1060,21 @@
       render();
       var activeBookPage = document.querySelector('.gov-book-dot[aria-current="page"]');
       if (activeBookPage) activeBookPage.focus();
+      return;
+    }
+    if (target.hasAttribute("data-poneglyph-filter")) {
+      state.poneglyphFilter = target.getAttribute("data-poneglyph-filter") || "all";
+      renderCharacterView('[data-poneglyph-filter="' + state.poneglyphFilter + '"]');
+      return;
+    }
+    if (target.hasAttribute("data-poneglyph-note")) {
+      var noteKey = target.getAttribute("data-poneglyph-note");
+      var noteIndex = state.poneglyphNotes.indexOf(noteKey);
+      if (noteIndex >= 0) state.poneglyphNotes.splice(noteIndex,1);
+      else state.poneglyphNotes.push(noteKey);
+      try { localStorage.setItem(PONEGLYPH_NOTES_KEY,JSON.stringify(state.poneglyphNotes)); } catch {}
+      invalidatePageViews();
+      render();
       return;
     }
     if (target.hasAttribute("data-page")) {
@@ -1052,10 +1166,9 @@
       state.query = event.target.value;
       if (state.page === "guide") state.guideLimit = 30;
       if (state.page === "characters") state.characterLimit = 90;
-      render();
+      renderCharacterView("#globalSearch");
       var global = document.getElementById("globalSearch");
-      global.focus();
-      global.setSelectionRange(state.query.length, state.query.length);
+      if (global) global.setSelectionRange(state.query.length, state.query.length);
       return;
     }
     if (event.target.matches("[data-map-search]")) {
@@ -1080,12 +1193,12 @@
       }
       return;
     }
-    if (["guideSearch","bladeSearch","characterSearch","crewSearch"].indexOf(event.target.id) !== -1) {
+    if (["guideSearch","bladeSearch","characterSearch","crewSearch","poneglyphSearch"].indexOf(event.target.id) !== -1) {
       state.query = event.target.value;
       if (state.page === "guide") state.guideLimit = 30;
       if (state.page === "characters") state.characterLimit = 90;
-      render();
       var id = event.target.id;
+      renderCharacterView("#" + id);
       var input = document.getElementById(id);
       if (input) {
         input.focus();
@@ -1108,10 +1221,19 @@
       render();
     } else if (target.matches("[data-character-sort]")) {
       state.characterSort = target.value === "bounty" ? "bounty" : "alpha";
-      render();
+      renderCharacterView("[data-character-sort]");
     } else if (target.matches("[data-character-emperors]")) {
       state.characterEmperorsOnly = emperorsRevealed() && target.value === "yes";
-      render();
+      renderCharacterView("[data-toggle-character-emperors]");
+    } else if (target.matches("[data-character-affiliation]")) {
+      state.characterAffiliation = target.value;
+      renderCharacterView("[data-character-affiliation]");
+    } else if (target.matches("[data-character-role]")) {
+      state.characterRole = target.value;
+      renderCharacterView("[data-character-role]");
+    } else if (target.matches("[data-character-bounty]")) {
+      state.characterBountyFilter = target.value;
+      renderCharacterView("[data-character-bounty]");
     } else if (target.matches("[data-crew-sort]")) {
       state.crewSort = target.value === "bounty" ? "bounty" : "alpha";
       render();
@@ -1136,11 +1258,16 @@
     if (event.target.id === "progressModal") closeProgress();
   });
 
-  window.addEventListener("popstate", function () {
+  window.addEventListener("popstate", function (event) {
     restoreRouteFromHash();
+    var returnToCharacterList = state.page === "characters" && state.characterListReturn && event.state && event.state.page === "characters";
+    var characterScrollTop = returnToCharacterList ? state.characterListReturn.scrollTop : 0;
     render();
     if (state.page === "fruits" || state.page === "fruit-detail" || state.page === "favorites") loadFruitLoreForPage();
-    scrollToPageTop();
+    if (returnToCharacterList) {
+      state.characterListReturn = null;
+      window.requestAnimationFrame(function () { window.scrollTo({top:characterScrollTop,left:0,behavior:"instant"}); });
+    } else scrollToPageTop();
   });
 
   state.progress = readProgress();

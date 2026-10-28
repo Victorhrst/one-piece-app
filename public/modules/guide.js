@@ -7,10 +7,14 @@ window.GRANDLINE_PAGE_FACTORIES.guide = function (context) {
     if (!arc) return html + progressHint();
     var eps = visibleEpisodes();
     var chs = visibleChapters();
-    html += '<div class="guide-tabs"><button class="guide-tab ' + (state.guideMode === "episodes" ? "active" : "") + '" data-guide-mode="episodes">Épisodes <span>(' + eps.length + ')</span></button><button class="guide-tab ' + (state.guideMode === "chapters" ? "active" : "") + '" data-guide-mode="chapters">Chapitres <span>(' + chs.length + ')</span></button></div>';
-    html += '<div class="filter-row"><label class="filter-search"><span>⌕</span><input id="guideSearch" type="search" value="' + escapeHtml(state.query) + '" placeholder="' + (state.guideMode === "episodes" ? "Rechercher un épisode ou un chapitre…" : "Rechercher un chapitre ou un tome…") + '"></label><span class="result-count">' + (state.guideMode === "episodes" ? eps.length : chs.length) + ' entrées jusqu’à ' + escapeHtml(arc.name) + '</span></div>';
+    var arcs = visibleArcs();
+    var modeCounts = { episodes: eps.length, chapters: chs.length, arcs: arcs.length };
+    html += '<div class="guide-tabs"><button class="guide-tab ' + (state.guideMode === "episodes" ? "active" : "") + '" data-guide-mode="episodes">Épisodes <span>(' + eps.length + ')</span></button><button class="guide-tab ' + (state.guideMode === "chapters" ? "active" : "") + '" data-guide-mode="chapters">Chapitres <span>(' + chs.length + ')</span></button><button class="guide-tab ' + (state.guideMode === "arcs" ? "active" : "") + '" data-guide-mode="arcs">Arcs <span>(' + arcs.length + ')</span></button></div>';
+    var searchPlaceholder = state.guideMode === "episodes" ? "Rechercher un épisode ou un chapitre…" : state.guideMode === "chapters" ? "Rechercher un chapitre ou un tome…" : "Rechercher un arc ou une saga…";
+    html += '<div class="filter-row"><label class="filter-search"><span>⌕</span><input id="guideSearch" type="search" value="' + escapeHtml(state.query) + '" placeholder="' + searchPlaceholder + '"></label><span class="result-count">' + (modeCounts[state.guideMode] || 0) + ' entrées jusqu’à ' + escapeHtml(arc.name) + '</span></div>';
     if (state.guideMode === "episodes") html += renderEpisodeRows(eps);
-    else html += renderChapterRows(chs);
+    else if (state.guideMode === "chapters") html += renderChapterRows(chs);
+    else html += renderArcRows(arcs);
     return html;
   }
 
@@ -60,6 +64,24 @@ window.GRANDLINE_PAGE_FACTORIES.guide = function (context) {
     return html;
   }
 
+  function visibleArcs() {
+    var last = DATA.arcs.findIndex(function (item) { return item.id === progressArc().id; });
+    return DATA.arcs.slice(0, last + 1);
+  }
+
+  function renderArcRows(arcs) {
+    var list = filtered(state.query, arcs, function (item) { return [item.name, item.saga, item.episodeStart, item.chapterStart, item.volumeStart]; });
+    if (!list.length) return '<div class="empty-state"><strong>Aucun arc trouvé</strong>Essaie un nom d’arc ou de saga.</div>';
+    var visible = list.slice(0, state.guideLimit);
+    var html = '<div class="guide-list">';
+    visible.forEach(function (item) {
+      html += '<article class="catalogue-row"><div class="catalogue-main"><div class="catalogue-number">ARC</div><div class="catalogue-title"><strong>' + escapeHtml(item.name) + '</strong><span>' + escapeHtml(item.saga) + '</span></div><div class="catalogue-meta">Épisodes ' + escapeHtml(item.episodeStart) + '–' + escapeHtml(item.episodeEnd) + ' · chapitres ' + escapeHtml(item.chapterStart) + '–' + escapeHtml(item.chapterEnd) + '</div><div class="catalogue-volume">T. ' + escapeHtml(item.volumeStart) + '–' + escapeHtml(item.volumeEnd) + '</div></div></article>';
+    });
+    html += '</div>';
+    if (list.length > visible.length) html += '<button class="show-more" data-show-more>Afficher 30 autres arcs · ' + (list.length - visible.length) + ' restants</button>';
+    return html;
+  }
+
   function arcForChapter(number) {
     return DATA.arcs.find(function (arc) { return number >= arc.chapterStart && number <= arc.chapterEnd; }) || progressArc() || DATA.arcs[0];
   }
@@ -68,5 +90,5 @@ window.GRANDLINE_PAGE_FACTORIES.guide = function (context) {
     var arc = progressArc();
     return '<div class="collection-summary">Pour ' + escapeHtml(arc.name) + ' : épisodes ' + escapeHtml(arc.episodeStart) + '–' + escapeHtml(arc.episodeEnd) + ', chapitres ' + escapeHtml(arc.chapterStart) + '–' + escapeHtml(arc.chapterEnd) + ', tomes ' + escapeHtml(arc.volumeStart) + '–' + escapeHtml(arc.volumeEnd) + '. Ces plages sont indicatives et peuvent inclure des épisodes de transition.</div>';
   }
-  return { renderGuide, renderEpisodeRows, renderChapterRows, arcForChapter, renderArcRangeTable };
+  return { renderGuide, renderEpisodeRows, renderChapterRows, renderArcRows, arcForChapter, renderArcRangeTable };
 };

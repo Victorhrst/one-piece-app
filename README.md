@@ -6,7 +6,7 @@ Wiki francophone à thème sombre, filtré selon le dernier arc vu ou lu. Le cho
 
 - `app/page.tsx` sert la coque HTML dans le rendu du site.
 - `public/app.js` gère la navigation, l’état de progression et les événements de l’interface.
-- `public/modules/` contient le dépôt client et les vues séparées par fonctionnalité : accueil, carte du monde, guide, équipages, bateaux, personnages, fruits, lames et institutions.
+- `public/modules/` contient le dépôt client et les vues séparées par fonctionnalité : accueil, carte du monde, guide, équipages, bateaux, personnages, fruits, lames, institutions et carnet progressif des ponéglyphes.
 - `app/api/` contient les routes du catalogue local et de synchronisation.
 - `db/schema.ts` définit les tables D1; les migrations SQL générées sont conservées sous `drizzle/` avec leurs snapshots Drizzle.
 - `content/` conserve les arcs, les profils progressifs de personnages, les accomplissements d’équipages, les notices de bateaux et les chronologies de fruits.

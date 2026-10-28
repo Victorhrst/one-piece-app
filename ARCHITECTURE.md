@@ -31,7 +31,7 @@ flowchart LR
 | `content/crews.json` | Présentation des équipages, composition et accomplissements datés. |
 | `content/ships.json` | Notices de bateaux, liens d’équipage et moments datés filtrés selon l’arc. |
 | `public/fruit-lore.json` | Descriptions développées et détenteurs connus avec leur repère de révélation. |
-| `public/modules/` | Dépôt navigateur et vues d’accueil, de carte, d’index, de fiches et de collections. |
+| `public/modules/` | Dépôt navigateur et vues d’accueil, de carte, d’index, de fiches, de collections et du carnet progressif des ponéglyphes. |
 | `public/app.js` | Point d’entrée : navigation par URL, progression et actions globales. |
 
 ## Modèle de données
@@ -57,6 +57,8 @@ Les tables ont des index sur les noms et arcs pour que le filtre reste rapide. L
 Le navigateur enregistre localement l’arc choisi. Chaque requête de catalogue envoie l’identifiant de cet arc; l’API D1 ne renvoie que les personnages, groupes, membres et fruits datés avant ou pendant cette progression. Une entrée sans date de première apparition n’est pas incluse dans la réponse. Les membres ont un arc propre, distinct de celui de leur équipage.
 
 Les transformations de nom comme les alias, les révélations progressives de grades et les types de fruits restent gérés par les fiches éditoriales locales. Les détenteurs de fruits sont filtrés selon leur chapitre de révélation, séparément de la première apparition du fruit. Les pouvoirs ou affiliations déduits mais non confirmés sont indiqués comme incertains.
+
+Le carnet des ponéglyphes affiche chaque lieu à partir de son arc de découverte. Le parcours des quatre Road Poneglyphes reste masqué avant Zou, puis distingue les repères lus, les copies obtenues et la piste encore inconnue. Les annotations personnelles sont conservées sur l’appareil.
 
 Les fiches d’équipage, de bateau, de personnage et de fruit sont rendues par leurs modules respectifs. Les bateaux, leurs événements et leurs associations sont filtrés par chapitre avant d’être envoyés au navigateur. Les routes `#equipage/...`, `#bateau/...`, `#personnage/...` et `#fruit/...` permettent les liens directs et l’historique précédent/suivant; elles recherchent uniquement dans le catalogue déjà filtré par progression.
 
