@@ -20,6 +20,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <meta name="theme-color" content="#0b1120" />
         <link rel="stylesheet" href="/styles.css" />
+        <link rel="stylesheet" href="/blades.css" />
       </head>
       <body>
         {children}

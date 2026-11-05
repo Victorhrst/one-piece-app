@@ -187,24 +187,1505 @@ window.GRANDLINE_DATA = {
     ]}
   ],
   blades: [
-    {name:"Wado Ichimonji",image:"https://static.wikia.nocookie.net/onepiece/images/5/56/Wado_Ichimonji_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Wado_Ichimonji",kind:"Katana",apiNames:["Wadō Ichimonji"],firstSeen:0,gradeKnown:30,grade:"Ō Wazamono",ownerHistory:[{from:0,name:"Roronoa Zoro"}],note:"Lame blanche transmise à Zoro après la perte d’une amie d’enfance. Son rang est révélé plus tard dans le récit."},
-    {name:"Sandai Kitetsu",image:"https://static.wikia.nocookie.net/onepiece/images/c/c3/Sandai_Kitetsu_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Sandai_Kitetsu",kind:"Katana",firstSeen:5,gradeKnown:5,grade:"Ryō Wazamono",ownerHistory:[{from:5,name:"Roronoa Zoro"}],note:"Une lame de la lignée Kitetsu, reconnue pour son tempérament dangereux."},
-    {name:"Yubashiri",image:"https://static.wikia.nocookie.net/onepiece/images/f/ff/Yubashiri_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Yubashiri",kind:"Katana",firstSeen:5,gradeKnown:5,grade:"Ryō Wazamono",ownerHistory:[{from:5,name:"Roronoa Zoro"},{from:15,name:"Détruite"}],note:"Une lame légère obtenue à Loguetown."},
-    {name:"Yoru",image:"https://static.wikia.nocookie.net/onepiece/images/c/c0/Yoru_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Yoru",kind:"Kokutō · sabre noir",firstSeen:3,gradeKnown:21,grade:"Saijō Ō Wazamono",ownerHistory:[{from:3,name:"Dracule Mihawk"}],note:"Un des sabres noirs les plus célèbres du monde."},
-    {name:"Shusui",image:"https://static.wikia.nocookie.net/onepiece/images/9/95/Shusui_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Shusui",kind:"Kokutō · sabre noir",firstSeen:17,gradeKnown:30,grade:"Ō Wazamono",ownerHistory:[{from:17,name:"Ryuma"},{from:17,name:"Roronoa Zoro"},{from:30,name:"Rendu à Wano"}],note:"La lame noire de Ryuma, rencontrée à Thriller Bark."},
-    {name:"Enma",image:"https://static.wikia.nocookie.net/onepiece/images/f/f8/Enma_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Enma",kind:"Katana",firstSeen:30,gradeKnown:30,grade:"Ō Wazamono",ownerHistory:[{from:30,name:"Kozuki Oden"},{from:30,name:"Roronoa Zoro"}],note:"Une lame exigeante, héritée de Kozuki Oden."},
-    {name:"Ame no Habakiri",image:"https://static.wikia.nocookie.net/onepiece/images/1/1b/Ame_no_Habakiri_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Ame_no_Habakiri",kind:"Katana",firstSeen:30,gradeKnown:30,grade:"Ō Wazamono",ownerHistory:[{from:30,name:"Kozuki Oden"},{from:30,name:"Kozuki Momonosuke"}],note:"La seconde lame célèbre de Kozuki Oden."},
-    {name:"Nidai Kitetsu",image:"https://static.wikia.nocookie.net/onepiece/images/f/f7/Nidai_Kitetsu_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Nidai_Kitetsu",kind:"Katana",firstSeen:30,gradeKnown:30,grade:"Ō Wazamono",ownerHistory:[{from:30,name:"Tenguyama Hitetsu"}],note:"Une autre lame renommée de la lignée Kitetsu."},
-    {name:"Kikoku",image:"https://static.wikia.nocookie.net/onepiece/images/5/50/Kikoku_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Kikoku",kind:"Longue épée",firstSeen:18,gradeKnown:null,grade:"Non classée",ownerHistory:[{from:18,name:"Trafalgar Law"}],note:"La longue épée portée par Trafalgar Law."},
-    {name:"Shigure",image:"https://static.wikia.nocookie.net/onepiece/images/1/14/Shigure_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Shigure",kind:"Katana",firstSeen:5,gradeKnown:5,grade:"Ryō Wazamono",ownerHistory:[{from:5,name:"Tashigi"}],note:"La lame de Tashigi, officier de la Marine."},
-    {name:"Durandal",image:"https://static.wikia.nocookie.net/onepiece/images/8/8b/Durandal_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Durandal",kind:"Sabre",firstSeen:26,gradeKnown:null,grade:"Non classée",ownerHistory:[{from:26,name:"Cavendish"}],note:"Le sabre de Cavendish."},
-    {name:"Pretzel",image:"https://static.wikia.nocookie.net/onepiece/images/6/61/Pretzel_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Pretzel",kind:"Épée longue",firstSeen:29,gradeKnown:null,grade:"Non classée",ownerHistory:[{from:29,name:"Charlotte Cracker"}],note:"L’arme de Charlotte Cracker."},
-    {name:"Raiu",image:"https://static.wikia.nocookie.net/onepiece/images/2/2b/Raiu_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Raiu",kind:"Nodachi",firstSeen:21,gradeKnown:null,grade:"Non classée",ownerHistory:[{from:21,name:"Shiryu"}],note:"La longue lame de Shiryu."},
-    {name:"Soul Solid",image:"https://static.wikia.nocookie.net/onepiece/images/5/59/Soul_Solid_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Soul_Solid",kind:"Canne-épée",firstSeen:24,gradeKnown:null,grade:"Non classée",ownerHistory:[{from:24,name:"Brook"}],note:"La canne-épée de Brook."},
-    {name:"Murakumogiri",image:"https://static.wikia.nocookie.net/onepiece/images/a/ac/Murakumogiri_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Murakumogiri",kind:"Naginata",firstSeen:21,gradeKnown:21,grade:"Saijō Ō Wazamono",ownerHistory:[{from:21,name:"Edward Newgate (Barbe Blanche)"}],note:"Une arme d’exception portée par Barbe Blanche."},
-    {name:"Ace — sabre de Roger",image:"https://static.wikia.nocookie.net/onepiece/images/f/f7/Ace_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Ace",kind:"Sabre",apiNames:["Ace","Ēsu"],firstSeen:30,gradeKnown:30,grade:"Saijō Ō Wazamono",ownerHistory:[{from:30,name:"Gol D. Roger"}],note:"À ne pas confondre avec Portgas D. Ace : c’est le sabre de Gol D. Roger."},
-    {name:"Kashu",image:"https://static.wikia.nocookie.net/onepiece/images/f/f8/Kashu_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Kashu",kind:"Katana",apiNames:["Kashū"],firstSeen:10,gradeKnown:10,grade:"Ryō Wazamono",ownerHistory:[{from:10,name:"Tashigi (arme confisquée)"}],note:"Une lame confisquée par la Marine à un agent de Baroque Works."},
-    {name:"Shirauo",image:"https://static.wikia.nocookie.net/onepiece/images/1/18/Shirauo_Infobox.png/revision/latest/scale-to-width-down/560",imageSource:"https://onepiece.fandom.com/wiki/Shirauo",kind:"Nodachi",firstSeen:29,gradeKnown:null,grade:"Non classée",ownerHistory:[{from:29,name:"Charlotte Amande"}],note:"Le long sabre de Charlotte Amande. Aucun grade de Meitō n’est confirmé ici."}
+    {
+      "name": "Wado Ichimonji",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/5/56/Wado_Ichimonji_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Wado_Ichimonji",
+      "kind": "Katana",
+      "apiNames": [
+        "Wadō Ichimonji"
+      ],
+      "firstSeen": 0,
+      "gradeKnown": 5,
+      "grade": "Ō Wazamono",
+      "ownerHistory": [
+        {
+          "from": 0,
+          "name": "Kuina",
+          "role": "Ancienne propriétaire"
+        },
+        {
+          "from": 0,
+          "name": "Roronoa Zoro",
+          "role": "Porteur"
+        }
+      ],
+      "note": "Le katana blanc de Zoro, lié à la promesse faite à son amie d’enfance Kuina.",
+      "firstChapter": 5,
+      "lore": [
+        {
+          "from": 0,
+          "title": "Une promesse à tenir",
+          "text": "Après la mort de Kuina, Zoro reçoit ce sabre de son maître Koushirou. Il le conserve comme le symbole de leur ambition commune : devenir le meilleur épéiste."
+        },
+        {
+          "from": 3,
+          "title": "L’épreuve de Baratie",
+          "text": "Lors du duel contre Mihawk, les deux autres sabres de Zoro se brisent. Wado Ichimonji résiste au choc."
+        },
+        {
+          "from": 30,
+          "title": "Une origine à Wano",
+          "text": "La lame a été forgée par Shimotsuki Kozaburo, également créateur d’Enma. Cette parenté aide Zoro à se familiariser avec sa nouvelle arme."
+        }
+      ],
+      "traits": [
+        {
+          "from": 0,
+          "label": "Fourreau blanc",
+          "text": "Sa monture claire permet de l’identifier parmi les trois sabres de Zoro."
+        },
+        {
+          "from": 0,
+          "label": "Santōryū",
+          "text": "Zoro le tient souvent entre les dents lorsqu’il combat à trois sabres."
+        }
+      ],
+      "smithHistory": [
+        {
+          "from": 30,
+          "name": "Shimotsuki Kozaburo"
+        }
+      ],
+      "statusHistory": [
+        {
+          "from": 0,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [
+        "Wadō Ichimonji"
+      ],
+      "source": "https://onepiece.fandom.com/wiki/Wado_Ichimonji"
+    },
+    {
+      "name": "Sandai Kitetsu",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/c/c3/Sandai_Kitetsu_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Sandai_Kitetsu",
+      "kind": "Katana",
+      "firstSeen": 5,
+      "gradeKnown": 5,
+      "grade": "Wazamono",
+      "ownerHistory": [
+        {
+          "from": 5,
+          "name": "Ipponmatsu",
+          "role": "Ancien propriétaire"
+        },
+        {
+          "from": 5,
+          "name": "Roronoa Zoro",
+          "role": "Porteur"
+        }
+      ],
+      "note": "Un katana de la lignée Kitetsu, réputé maudit et choisi par Zoro à Loguetown.",
+      "firstChapter": 97,
+      "lore": [
+        {
+          "from": 5,
+          "title": "La chance contre la malédiction",
+          "text": "Pour convaincre Ipponmatsu de lui céder l’arme, Zoro la lance en l’air et expose son bras à sa chute. La lame l’évite : le marchand la lui offre."
+        },
+        {
+          "from": 30,
+          "title": "L’œuvre d’Hitetsu",
+          "text": "Tenguyama Hitetsu révèle avoir forgé Sandai Kitetsu en s’inspirant de Nidai Kitetsu."
+        }
+      ],
+      "traits": [
+        {
+          "from": 5,
+          "label": "Lame réputée maudite",
+          "text": "Les sabres Kitetsu sont associés à des récits de destins funestes pour leurs porteurs."
+        },
+        {
+          "from": 5,
+          "label": "Troisième génération",
+          "text": "Sandai désigne la troisième génération de cette lignée. Son grade est Wazamono."
+        }
+      ],
+      "smithHistory": [
+        {
+          "from": 30,
+          "name": "Tenguyama Hitetsu"
+        }
+      ],
+      "statusHistory": [
+        {
+          "from": 5,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Sandai_Kitetsu"
+    },
+    {
+      "name": "Yubashiri",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/f/ff/Yubashiri_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Yubashiri",
+      "kind": "Katana",
+      "firstSeen": 5,
+      "gradeKnown": 5,
+      "grade": "Ryō Wazamono",
+      "ownerHistory": [
+        {
+          "from": 5,
+          "name": "Ipponmatsu",
+          "role": "Ancien propriétaire"
+        },
+        {
+          "from": 5,
+          "name": "Roronoa Zoro",
+          "role": "Porteur documenté"
+        }
+      ],
+      "note": "Une lame légère et précieuse, offerte à Zoro par le marchand de Loguetown.",
+      "firstChapter": 97,
+      "lore": [
+        {
+          "from": 5,
+          "title": "Le cadeau d’Ipponmatsu",
+          "text": "Impressionné par l’audace de Zoro face à Sandai Kitetsu, Ipponmatsu lui remet aussi Yubashiri, un héritage familial et la meilleure lame de son magasin."
+        },
+        {
+          "from": 15,
+          "title": "La rouille d’Enies Lobby",
+          "text": "Le pouvoir de Shū ronge la lame jusqu’à la rendre inutilisable. Zoro garde pourtant ses restes par respect pour les combats menés avec elle."
+        },
+        {
+          "from": 17,
+          "title": "Un dernier repos",
+          "text": "Zoro dépose les restes de Yubashiri à Thriller Bark, sur le lieu de sépulture des pirates du Rumbar."
+        }
+      ],
+      "traits": [
+        {
+          "from": 5,
+          "label": "Grande légèreté",
+          "text": "Zoro apprécie sa maniabilité, qui favorise des mouvements rapides."
+        },
+        {
+          "from": 5,
+          "label": "Monture noire",
+          "text": "Une poignée et un fourreau sombres, rehaussés de détails dorés."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 5,
+          "label": "En usage"
+        },
+        {
+          "from": 15,
+          "label": "Détruite"
+        },
+        {
+          "from": 17,
+          "label": "Déposée à Thriller Bark"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Yubashiri"
+    },
+    {
+      "name": "Yoru",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/c/c0/Yoru_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Yoru",
+      "kind": "Grande épée",
+      "firstSeen": 3,
+      "gradeKnown": 21,
+      "grade": "Saijō Ō Wazamono",
+      "ownerHistory": [
+        {
+          "from": 3,
+          "name": "Dracule Mihawk",
+          "role": "Porteur"
+        }
+      ],
+      "note": "L’immense lame noire en forme de croix de Dracule Mihawk.",
+      "firstChapter": 49,
+      "lore": [
+        {
+          "from": 3,
+          "title": "La démonstration de Baratie",
+          "text": "Yoru tranche le galion de Krieg puis intervient à la fin du duel de Mihawk contre Zoro. Son gabarit contraste avec la précision de son porteur."
+        },
+        {
+          "from": 21,
+          "title": "Sur le champ de Marineford",
+          "text": "Mihawk projette des entailles à longue distance et coupe une énorme masse de glace. Yoru figure parmi les douze lames du rang suprême."
+        }
+      ],
+      "traits": [
+        {
+          "from": 3,
+          "label": "Lame noire",
+          "text": "Yoru est une kokutō : une lame durablement noire."
+        },
+        {
+          "from": 3,
+          "label": "Garde en croix",
+          "text": "Sa grande garde ornée et sa lame courbe lui donnent une silhouette immédiatement reconnaissable."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 3,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Yoru"
+    },
+    {
+      "name": "Shusui",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/9/95/Shusui_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Shusui",
+      "kind": "Katana",
+      "firstSeen": 17,
+      "gradeKnown": 17,
+      "grade": "Ō Wazamono",
+      "ownerHistory": [
+        {
+          "from": 17,
+          "name": "Ryuma",
+          "role": "Ancien porteur"
+        },
+        {
+          "from": 17,
+          "name": "Roronoa Zoro",
+          "role": "Porteur documenté"
+        }
+      ],
+      "note": "La lame noire de Ryuma, que Zoro rencontre à Thriller Bark.",
+      "firstChapter": 448,
+      "lore": [
+        {
+          "from": 17,
+          "title": "L’héritage de Ryuma",
+          "text": "Après sa défaite, Ryuma reconnaît Zoro comme un digne successeur et lui confie Shusui. Sa puissance et son poids demandent un temps d’adaptation."
+        },
+        {
+          "from": 26,
+          "title": "Un trésor national",
+          "text": "Les échanges avec Kin’emon révèlent l’importance de cette arme pour le pays de Wano et son lien avec la tombe de Ryuma."
+        },
+        {
+          "from": 30,
+          "title": "Le retour à Wano",
+          "text": "Récupérée par Gyukimaru, Shusui retourne auprès de Ryuma. Zoro accepte de la laisser au pays et reçoit Enma en échange."
+        }
+      ],
+      "traits": [
+        {
+          "from": 17,
+          "label": "Lame noire",
+          "text": "Sa lame sombre est une kokutō, particulièrement résistante."
+        },
+        {
+          "from": 17,
+          "label": "Poids important",
+          "text": "Plus lourde que Yubashiri, elle amplifie la force des attaques de Zoro."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 17,
+          "label": "En usage"
+        },
+        {
+          "from": 30,
+          "label": "Restituée à Wano"
+        }
+      ],
+      "aliases": [
+        "Shūsui"
+      ],
+      "source": "https://onepiece.fandom.com/wiki/Shusui"
+    },
+    {
+      "name": "Enma",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/f/f8/Enma_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Enma",
+      "kind": "Katana",
+      "firstSeen": 30,
+      "gradeKnown": 30,
+      "grade": "Ō Wazamono",
+      "ownerHistory": [
+        {
+          "from": 30,
+          "name": "Kozuki Oden",
+          "role": "Ancien porteur"
+        },
+        {
+          "from": 30,
+          "name": "Kozuki Hiyori",
+          "role": "Héritière"
+        },
+        {
+          "from": 30,
+          "name": "Roronoa Zoro",
+          "role": "Porteur"
+        }
+      ],
+      "note": "Le katana d’Oden transmis à Zoro, dont la maîtrise exige un contrôle exceptionnel du Haki.",
+      "firstChapter": 954,
+      "lore": [
+        {
+          "from": 30,
+          "title": "L’échange proposé par Hiyori",
+          "text": "Pour que Shusui reste à Wano, Hiyori offre à Zoro la lame héritée de son père. Enma rejoint alors Wado Ichimonji et Sandai Kitetsu."
+        },
+        {
+          "from": 30,
+          "title": "Une arme qui met son porteur à l’épreuve",
+          "text": "Lors du premier essai de Zoro, Enma absorbe davantage de Haki que prévu et tranche une partie du littoral. Apprendre à réguler cette dépense devient essentiel."
+        }
+      ],
+      "traits": [
+        {
+          "from": 30,
+          "label": "Haki exigeant",
+          "text": "Enma puise de force dans le Haki de l’armement de son porteur."
+        },
+        {
+          "from": 30,
+          "label": "L’héritage d’Oden",
+          "text": "Oden la maniait avec Ame no Habakiri, notamment contre Kaido."
+        }
+      ],
+      "smithHistory": [
+        {
+          "from": 30,
+          "name": "Shimotsuki Kozaburo"
+        }
+      ],
+      "statusHistory": [
+        {
+          "from": 30,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Enma"
+    },
+    {
+      "name": "Ame no Habakiri",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/1/1b/Ame_no_Habakiri_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Ame_no_Habakiri",
+      "kind": "Katana",
+      "firstSeen": 30,
+      "gradeKnown": 30,
+      "grade": "Ō Wazamono",
+      "ownerHistory": [
+        {
+          "from": 30,
+          "name": "Kozuki Oden",
+          "role": "Ancien porteur"
+        },
+        {
+          "from": 30,
+          "name": "Kozuki Momonosuke",
+          "role": "Héritier"
+        }
+      ],
+      "note": "Le katana blanc d’Oden, légué à son fils Momonosuke.",
+      "firstChapter": 954,
+      "lore": [
+        {
+          "from": 30,
+          "title": "L’autre lame d’Oden",
+          "text": "Ame no Habakiri forme avec Enma la paire de sabres du style à deux lames d’Oden. Les deux armes participent à la blessure infligée à Kaido."
+        },
+        {
+          "from": 30,
+          "title": "Un héritage pour Momonosuke",
+          "text": "Conservée par Tenguyama Hitetsu, la lame est destinée à Momonosuke. Il hésite d’abord à accepter cet héritage, estimant ne pas encore être digne de porter le sabre de son père."
+        }
+      ],
+      "traits": [
+        {
+          "from": 30,
+          "label": "Monture blanche",
+          "text": "La poignée et le fourreau clairs contrastent avec Enma. Sa garde est trilobée."
+        },
+        {
+          "from": 30,
+          "label": "Grand rang",
+          "text": "Elle appartient aux vingt et une lames Ō Wazamono."
+        }
+      ],
+      "smithHistory": [
+        {
+          "from": 30,
+          "name": "Tenguyama Hitetsu"
+        }
+      ],
+      "statusHistory": [
+        {
+          "from": 30,
+          "label": "Léguée à Momonosuke, conservée à Wano"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Ame_no_Habakiri"
+    },
+    {
+      "name": "Nidai Kitetsu",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/f/f7/Nidai_Kitetsu_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Nidai_Kitetsu",
+      "kind": "Katana",
+      "firstSeen": 30,
+      "gradeKnown": 30,
+      "grade": "Ō Wazamono",
+      "ownerHistory": [
+        {
+          "from": 30,
+          "name": "Tenguyama Hitetsu",
+          "role": "Gardien de la lame"
+        },
+        {
+          "from": 30,
+          "name": "Monkey D. Luffy",
+          "role": "Emprunteur temporaire"
+        },
+        {
+          "from": 30,
+          "name": "Tenguyama Hitetsu",
+          "role": "Gardien après restitution"
+        }
+      ],
+      "note": "Le katana de deuxième génération de la lignée Kitetsu, conservé à Wano.",
+      "firstChapter": 912,
+      "lore": [
+        {
+          "from": 30,
+          "title": "Le sabre emprunté par Luffy",
+          "text": "Luffy emporte Nidai Kitetsu depuis la maison d’Hitetsu. Zoro en remarque aussitôt la qualité et tente à plusieurs reprises de l’examiner."
+        },
+        {
+          "from": 30,
+          "title": "Le retour chez Hitetsu",
+          "text": "Après les événements d’Udon, Kikunojo récupère la lame et la rapporte à son gardien. Le katana a été forgé par Kotetsu, un ancêtre d’Hitetsu."
+        }
+      ],
+      "traits": [
+        {
+          "from": 30,
+          "label": "Deuxième génération",
+          "text": "Nidai Kitetsu appartient au grand rang, au-dessus de Sandai Kitetsu."
+        },
+        {
+          "from": 30,
+          "label": "Réputation maudite",
+          "text": "Comme les autres Kitetsu, cette lame possède une réputation inquiétante."
+        }
+      ],
+      "smithHistory": [
+        {
+          "from": 30,
+          "name": "Kotetsu"
+        }
+      ],
+      "statusHistory": [
+        {
+          "from": 30,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Nidai_Kitetsu"
+    },
+    {
+      "name": "Kikoku",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/5/50/Kikoku_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Kikoku",
+      "kind": "Nodachi",
+      "firstSeen": 18,
+      "gradeKnown": null,
+      "grade": "Non classée",
+      "ownerHistory": [
+        {
+          "from": 18,
+          "name": "Trafalgar Law",
+          "role": "Porteur"
+        }
+      ],
+      "note": "La longue épée de Trafalgar Law, reconnaissable à son fourreau marqué de croix.",
+      "firstChapter": 498,
+      "lore": [
+        {
+          "from": 18,
+          "title": "L’arme de Law",
+          "text": "Law porte cette longue lame à l’épaule. Sa garde garnie de fourrure et son fourreau sombre aux croix blanches la distinguent des katanas classiques."
+        },
+        {
+          "from": 25,
+          "title": "Au cœur de la ROOM",
+          "text": "Kikoku accompagne les découpes spatiales du pouvoir de Law. Ces effets viennent de l’Ope Ope no Mi et ne constituent pas une capacité autonome du métal."
+        },
+        {
+          "from": 30,
+          "title": "Les techniques de K-ROOM",
+          "text": "Avec l’éveil de son fruit, Law enveloppe Kikoku de K-ROOM et peut transmettre des attaques internes comme Shock Wille."
+        }
+      ],
+      "traits": [
+        {
+          "from": 18,
+          "label": "Très longue lame",
+          "text": "Son format de type ōdachi favorise une grande portée."
+        },
+        {
+          "from": 26,
+          "label": "Lame réputée maudite",
+          "text": "Les SBS précisent sa nature maudite et l’absence de grade dans la classification."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 18,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Kikoku"
+    },
+    {
+      "name": "Shigure",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/1/14/Shigure_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Shigure",
+      "kind": "Katana",
+      "firstSeen": 5,
+      "gradeKnown": 5,
+      "grade": "Wazamono",
+      "ownerHistory": [
+        {
+          "from": 5,
+          "name": "Tashigi",
+          "role": "Porteuse"
+        }
+      ],
+      "note": "Le katana personnel de Tashigi, passionnée par les lames renommées.",
+      "firstChapter": 97,
+      "lore": [
+        {
+          "from": 5,
+          "title": "La lame d’une connaisseuse",
+          "text": "Tashigi récupère Shigure chez Ipponmatsu à Loguetown. Elle connaît les classements des Meitō et souhaite retirer les lames célèbres des mains de criminels."
+        },
+        {
+          "from": 25,
+          "title": "Toujours auprès de Tashigi",
+          "text": "Shigure reste son arme de combat après l’ellipse, notamment lors des affrontements de Punk Hazard."
+        }
+      ],
+      "traits": [
+        {
+          "from": 5,
+          "label": "Grade Wazamono",
+          "text": "Shigure relève du rang Wazamono, distinct des cinquante Ryō Wazamono."
+        },
+        {
+          "from": 5,
+          "label": "Garde à quatre lobes",
+          "text": "Son fourreau présente une partie texturée et une partie plus lisse."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 5,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Shigure"
+    },
+    {
+      "name": "Durandal",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/8/8b/Durandal_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Durandal",
+      "kind": "Rapière",
+      "firstSeen": 26,
+      "gradeKnown": null,
+      "grade": "Non classée",
+      "ownerHistory": [
+        {
+          "from": 26,
+          "name": "Cavendish",
+          "role": "Porteur"
+        }
+      ],
+      "note": "La rapière de Cavendish, aussi élégante que résistante.",
+      "firstChapter": 704,
+      "lore": [
+        {
+          "from": 26,
+          "title": "Au Colisée Corrida",
+          "text": "Cavendish présente Durandal lors de son affrontement avec Chinjao. Sa lame plie légèrement sous l’impact sans rompre."
+        },
+        {
+          "from": 26,
+          "title": "Le style Biken",
+          "text": "La rapière accompagne les techniques de Cavendish, telles que Blue Bird et Swan Lake. Son grade exact n’est pas confirmé."
+        }
+      ],
+      "traits": [
+        {
+          "from": 26,
+          "label": "Lame flexible",
+          "text": "La souplesse de son métal lui permet d’encaisser des chocs importants."
+        },
+        {
+          "from": 26,
+          "label": "Rapière",
+          "text": "Une longue pointe et une monture ouvragée adaptées aux attaques d’estoc."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 26,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Durandal"
+    },
+    {
+      "name": "Pretzel",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/6/61/Pretzel_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Pretzel",
+      "kind": "Épée longue",
+      "firstSeen": 28,
+      "gradeKnown": null,
+      "grade": "Non classée",
+      "ownerHistory": [
+        {
+          "from": 28,
+          "name": "Charlotte Cracker",
+          "role": "Porteur"
+        }
+      ],
+      "note": "L’épée longue de Charlotte Cracker, à la garde ronde évoquant un biscuit.",
+      "firstChapter": 835,
+      "lore": [
+        {
+          "from": 28,
+          "title": "L’original et ses copies",
+          "text": "Cracker possède une véritable Pretzel et façonne de grandes répliques en biscuit pour ses soldats. Il faut distinguer la lame de ses duplications."
+        },
+        {
+          "from": 28,
+          "title": "Des coups d’estoc puissants",
+          "text": "Les techniques Roll Pretzel et Honey Pretzel exploitent la force de Cracker. Le Haki de l’armement renforce les assauts de son épée."
+        }
+      ],
+      "traits": [
+        {
+          "from": 28,
+          "label": "Double tranchant",
+          "text": "Cette grande épée droite possède une lame affûtée des deux côtés."
+        },
+        {
+          "from": 28,
+          "label": "Copies en biscuit",
+          "text": "Les exemplaires géants des soldats proviennent du Bisu Bisu no Mi."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 28,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Pretzel"
+    },
+    {
+      "name": "Raiu",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/d/d7/Shiryu%27s_Katana.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Raiu",
+      "kind": "Nodachi",
+      "firstSeen": 20,
+      "gradeKnown": null,
+      "grade": "Non classée",
+      "ownerHistory": [
+        {
+          "from": 20,
+          "name": "Shiryu",
+          "role": "Porteur"
+        }
+      ],
+      "note": "La longue lame de Shiryu, récupérée lors de sa libération à Impel Down.",
+      "firstChapter": 542,
+      "lore": [
+        {
+          "from": 20,
+          "title": "Le sabre du geôlier",
+          "text": "Raiu est rendu à Shiryu lorsqu’il est libéré pour intervenir dans la prison. Il se retourne aussitôt contre les gardes venus l’accompagner."
+        },
+        {
+          "from": 30,
+          "title": "Une lame reconnue",
+          "text": "Les fiches Vivre Card identifient Raiu comme une lame renommée, sans lui attribuer de rang précis parmi les grades."
+        }
+      ],
+      "traits": [
+        {
+          "from": 20,
+          "label": "Grande portée",
+          "text": "Son format nodachi offre une très longue lame courbe."
+        },
+        {
+          "from": 20,
+          "label": "Monture rouge et blanche",
+          "text": "Une garde anguleuse accompagne la poignée rouge et le fourreau bicolore."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 20,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Raiu"
+    },
+    {
+      "name": "Soul Solid",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/5/59/Soul_Solid_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Soul_Solid",
+      "kind": "Canne-épée",
+      "firstSeen": 24,
+      "gradeKnown": null,
+      "grade": "Non classée",
+      "ownerHistory": [
+        {
+          "from": 24,
+          "name": "Brook",
+          "role": "Porteur"
+        }
+      ],
+      "note": "La canne-épée de Brook, qu’il nomme Soul Solid après l’ellipse.",
+      "firstChapter": 442,
+      "lore": [
+        {
+          "from": 24,
+          "title": "Une lame dissimulée",
+          "text": "Brook utilise une lame fine cachée dans sa canne. Son escrime joue sur la vitesse, le dégainement et les effets retardés."
+        },
+        {
+          "from": 24,
+          "title": "Le froid de l’âme",
+          "text": "En découvrant davantage les pouvoirs du Yomi Yomi no Mi, Brook peut envelopper sa lame du froid des enfers. Il révèle le nom Soul Solid durant son combat contre Zeo."
+        },
+        {
+          "from": 28,
+          "title": "Face aux homies",
+          "text": "Les attaques chargées de son énergie spirituelle peuvent atteindre les homies de Big Mom. Ce pouvoir appartient à Brook, plutôt qu’à la lame seule."
+        }
+      ],
+      "traits": [
+        {
+          "from": 24,
+          "label": "Shikomizue",
+          "text": "Le fourreau ressemble à une canne et dissimule une épée fine."
+        },
+        {
+          "from": 24,
+          "label": "Attaques glacées",
+          "text": "Brook combine son escrime avec les propriétés de son âme."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 24,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Soul_Solid"
+    },
+    {
+      "name": "Murakumogiri",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/a/ac/Murakumogiri_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Murakumogiri",
+      "kind": "Naginata",
+      "firstSeen": 16,
+      "gradeKnown": 30,
+      "grade": "Saijō Ō Wazamono",
+      "ownerHistory": [
+        {
+          "from": 16,
+          "name": "Edward Newgate (Barbe Blanche)",
+          "role": "Porteur documenté"
+        }
+      ],
+      "note": "L’immense naginata de Barbe Blanche : une arme d’hast, plutôt qu’un sabre.",
+      "firstChapter": 434,
+      "lore": [
+        {
+          "from": 16,
+          "title": "La rencontre des deux capitaines",
+          "text": "Cette arme apparaît lors du choc entre Barbe Blanche et Shanks. Sa longue hampe et sa large lame courbe correspondent au gabarit de Newgate."
+        },
+        {
+          "from": 21,
+          "title": "L’arme de Marineford",
+          "text": "Barbe Blanche associe ses coups de naginata à son pouvoir sismique, ce qui lui permet de frapper de nombreux adversaires à la fois."
+        },
+        {
+          "from": 25,
+          "title": "Un monument au capitaine",
+          "text": "Après la guerre, Murakumogiri est dressée sur sa tombe avec son manteau et l’emblème de son équipage."
+        }
+      ],
+      "traits": [
+        {
+          "from": 16,
+          "label": "Arme d’hast",
+          "text": "La lame courbe au bout d’une longue hampe donne une grande allonge."
+        },
+        {
+          "from": 30,
+          "label": "Rang suprême",
+          "text": "Les SBS et ouvrages officiels la classent parmi les douze Saijō Ō Wazamono."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 16,
+          "label": "En usage"
+        },
+        {
+          "from": 25,
+          "label": "Dressée sur la tombe de Barbe Blanche"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Murakumogiri"
+    },
+    {
+      "name": "Ace — sabre de Roger",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/9/9b/Ace_%28Sword%29_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Ace_(Sword)",
+      "kind": "Sabre",
+      "apiNames": [
+        "Ace",
+        "Ēsu"
+      ],
+      "firstSeen": 30,
+      "gradeKnown": 30,
+      "grade": "Saijō Ō Wazamono",
+      "ownerHistory": [
+        {
+          "from": 30,
+          "name": "Gol D. Roger",
+          "role": "Dernier porteur connu"
+        }
+      ],
+      "note": "Ace est le nom du sabre de Gol D. Roger, à distinguer de Portgas D. Ace.",
+      "firstChapter": 966,
+      "lore": [
+        {
+          "from": 30,
+          "title": "Le sabre du Roi des pirates",
+          "text": "Roger emploie cette arme dans les souvenirs du voyage d’Oden. Elle accompagne notamment son attaque Kamusari et son affrontement avec Barbe Blanche."
+        },
+        {
+          "from": 30,
+          "title": "Une destination inconnue",
+          "text": "Les Vivre Cards confirment son nom et son rang suprême. Le récit n’établit pas ce qu’est devenue la lame après la fin du voyage de Roger."
+        }
+      ],
+      "traits": [
+        {
+          "from": 30,
+          "label": "Rang suprême",
+          "text": "Ace figure parmi les douze Saijō Ō Wazamono."
+        },
+        {
+          "from": 30,
+          "label": "Haki du porteur",
+          "text": "Roger peut imprégner ses coups du Haki de l’armement et du Haki des rois."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 30,
+          "label": "Localisation actuelle inconnue"
+        }
+      ],
+      "aliases": [
+        "Ace",
+        "Ēsu"
+      ],
+      "source": "https://onepiece.fandom.com/wiki/Ace_(Sword)"
+    },
+    {
+      "name": "Kashu",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/f/f8/Kashu_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Kashu",
+      "kind": "Katana",
+      "apiNames": [
+        "Kashū"
+      ],
+      "firstSeen": 8,
+      "gradeKnown": 8,
+      "grade": "Ryō Wazamono",
+      "ownerHistory": [
+        {
+          "from": 8,
+          "name": "Mr. 11",
+          "role": "Ancien porteur"
+        },
+        {
+          "from": 8,
+          "name": "Tashigi",
+          "role": "Détentrice après confiscation"
+        }
+      ],
+      "note": "Un katana de grand intérêt pour Tashigi, pris à l’agent Mr. 11 de Baroque Works.",
+      "firstChapter": 128,
+      "lore": [
+        {
+          "from": 8,
+          "title": "Une lame retirée à un criminel",
+          "text": "Après avoir vaincu Mr. 11, Tashigi récupère Kashu. Cet épisode illustre son projet de réunir les lames célèbres utilisées par des criminels."
+        },
+        {
+          "from": 8,
+          "title": "Une qualité reconnue",
+          "text": "Kashu appartient aux cinquante Ryō Wazamono. Le manga donne peu de détails sur ses capacités ou sur l’identité de son forgeron."
+        }
+      ],
+      "traits": [
+        {
+          "from": 8,
+          "label": "Rang des cinquante",
+          "text": "Une des lames classées Ryō Wazamono."
+        },
+        {
+          "from": 8,
+          "label": "Visuel peu documenté",
+          "text": "Le manga montre surtout sa lame ; les adaptations complètent son apparence."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 8,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [
+        "Kashū"
+      ],
+      "source": "https://onepiece.fandom.com/wiki/Kashu"
+    },
+    {
+      "name": "Shirauo",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/1/18/Shirauo_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Shirauo",
+      "kind": "Nodachi",
+      "firstSeen": 28,
+      "gradeKnown": null,
+      "grade": "Non classée",
+      "ownerHistory": [
+        {
+          "from": 28,
+          "name": "Charlotte Amande",
+          "role": "Porteuse"
+        }
+      ],
+      "note": "Le très long nodachi de Charlotte Amande, reconnaissable à sa garde en forme de poisson.",
+      "firstChapter": 827,
+      "lore": [
+        {
+          "from": 28,
+          "title": "La lame d’Amande",
+          "text": "Amande emploie ce sabre à Totto Land. Sa longueur offre une grande portée et permet de traverser de larges cibles."
+        },
+        {
+          "from": 28,
+          "title": "Une coupe maîtrisée",
+          "text": "Avec Slow Ballad, Amande tranche à vitesse réduite tout en conservant un fort pouvoir de coupe. Aucun grade précis n’a été confirmé."
+        }
+      ],
+      "traits": [
+        {
+          "from": 28,
+          "label": "Garde de poisson",
+          "text": "La garde blanche rappelle un poisson et fait écho au nom de la lame."
+        },
+        {
+          "from": 28,
+          "label": "Très grande longueur",
+          "text": "Son fourreau atteint presque la taille de sa porteuse."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 28,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [
+        "Shirauo"
+      ],
+      "source": "https://onepiece.fandom.com/wiki/Shirauo"
+    },
+    {
+      "name": "Gryphon",
+      "firstChapter": 234,
+      "firstSeen": 11,
+      "grade": "Non classée",
+      "gradeKnown": null,
+      "kind": "Sabre",
+      "ownerHistory": [
+        {
+          "from": 11,
+          "name": "Shanks",
+          "role": "Porteur"
+        }
+      ],
+      "note": "Le sabre de Shanks, porté à la hanche et manié de la main droite.",
+      "lore": [
+        {
+          "from": 11,
+          "title": "L’arme du Roux",
+          "text": "Ce sabre apparaît à la hanche de Shanks lors de sa rencontre avec un messager de Barbe Blanche. Ses origines et son rang ne sont pas établis."
+        },
+        {
+          "from": 16,
+          "title": "Un choc dans le ciel",
+          "text": "Gryphon affronte Murakumogiri lors de la rencontre entre Shanks et Barbe Blanche. Leurs armes se heurtent et le ciel se fend au-dessus du navire."
+        },
+        {
+          "from": 21,
+          "title": "La fin de la guerre",
+          "text": "À Marineford, Shanks utilise Gryphon pour arrêter une attaque d’Akainu et intervenir dans le conflit."
+        }
+      ],
+      "traits": [
+        {
+          "from": 11,
+          "label": "Monture sobre",
+          "text": "Une garde ronde et une branche de protection entourent la poignée."
+        },
+        {
+          "from": 11,
+          "label": "Grade inconnu",
+          "text": "La force de son porteur ne permet pas de déduire le rang officiel du sabre."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 11,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [
+        "Griffon"
+      ],
+      "source": "https://onepiece.fandom.com/wiki/Gryphon",
+      "image": "",
+      "imageSource": "https://onepiece.fandom.com/wiki/Gryphon"
+    },
+    {
+      "name": "Kiribachi",
+      "firstChapter": 92,
+      "firstSeen": 4,
+      "grade": "Non classée",
+      "gradeKnown": null,
+      "kind": "Zanbatō",
+      "ownerHistory": [
+        {
+          "from": 4,
+          "name": "Arlong",
+          "role": "Dernier porteur connu"
+        }
+      ],
+      "note": "L’imposante épée-scie d’Arlong, garnie de dents évoquant celles d’un requin.",
+      "lore": [
+        {
+          "from": 4,
+          "title": "L’arme d’Arlong Park",
+          "text": "Arlong récupère Kiribachi dans son arsenal pour affronter Luffy. La taille de cette épée-scie lui permet de frapper à travers les murs du bâtiment."
+        },
+        {
+          "from": 4,
+          "title": "Une lame endommagée",
+          "text": "Dans la salle des cartes de Nami, Luffy casse plusieurs dents de Kiribachi. Arlong poursuit le combat avec l’arme abîmée."
+        }
+      ],
+      "traits": [
+        {
+          "from": 4,
+          "label": "Lame dentée",
+          "text": "Six grandes pointes noires forment le tranchant initial de cette arme."
+        },
+        {
+          "from": 4,
+          "label": "Épée géante",
+          "text": "Son gabarit relève du zanbatō, une catégorie de grandes épées."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 4,
+          "label": "Endommagée à Arlong Park"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Kiribachi",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/a/a8/Kiribachi_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Kiribachi"
+    },
+    {
+      "name": "Funkfreed",
+      "firstChapter": 365,
+      "firstSeen": 15,
+      "grade": "Non classée",
+      "gradeKnown": null,
+      "kind": "Sabre",
+      "ownerHistory": [
+        {
+          "from": 15,
+          "name": "Spandam",
+          "role": "Porteur"
+        }
+      ],
+      "note": "Le sabre-éléphant de Spandam, animé par le pouvoir d’un Fruit du Démon.",
+      "lore": [
+        {
+          "from": 15,
+          "title": "Une arme vivante",
+          "text": "Funkfreed a absorbé le Zou Zou no Mi, un Zoan. Il peut prendre la forme d’un éléphant ou combiner la lame avec son corps animal."
+        },
+        {
+          "from": 15,
+          "title": "À Enies Lobby",
+          "text": "Spandam utilise Funkfreed pour compenser sa faible force physique. Face à Franky, l’éléphant se laisse intimider et finit utilisé contre son propre maître."
+        }
+      ],
+      "traits": [
+        {
+          "from": 15,
+          "label": "Zou Zou no Mi",
+          "text": "Le pouvoir animal vient d’un Fruit du Démon, plutôt que du grade de la lame."
+        },
+        {
+          "from": 15,
+          "label": "Forme hybride",
+          "text": "La trompe se prolonge en lame et permet des attaques flexibles."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 15,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Funkfreed",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/f/f1/Funkfreed_Anime_Concept_Art.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Funkfreed"
+    },
+    {
+      "name": "Napoleon",
+      "firstChapter": 651,
+      "firstSeen": 28,
+      "grade": "Non classée",
+      "gradeKnown": null,
+      "kind": "Épée longue",
+      "ownerHistory": [
+        {
+          "from": 28,
+          "name": "Charlotte Linlin (Big Mom)",
+          "role": "Porteuse"
+        }
+      ],
+      "note": "Le bicorne vivant de Big Mom, capable de se transformer en une épée gigantesque.",
+      "lore": [
+        {
+          "from": 28,
+          "title": "Un homie particulier",
+          "text": "Napoleon contient un fragment de l’âme de Big Mom. Il peut quitter son apparence de chapeau pour prendre plusieurs formes de lames."
+        },
+        {
+          "from": 28,
+          "title": "Les attaques de Big Mom",
+          "text": "Il sert notamment à Ikoku et peut être associé aux flammes de Prometheus avec Cognac. Ces effets dépendent de Big Mom et de ses homies."
+        },
+        {
+          "from": 30,
+          "title": "Les combats d’Onigashima",
+          "text": "Napoleon accompagne Big Mom dans ses affrontements à Wano et combine ses forces avec Prometheus puis Hera."
+        }
+      ],
+      "traits": [
+        {
+          "from": 28,
+          "label": "Arme vivante",
+          "text": "Napoleon parle, agit et possède sa propre personnalité."
+        },
+        {
+          "from": 28,
+          "label": "Formes multiples",
+          "text": "Il peut modifier la longueur et la silhouette de sa lame."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 28,
+          "label": "En usage"
+        },
+        {
+          "from": 30,
+          "label": "Situation inconnue après Onigashima"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Napoleon",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/a/a8/Napoleon_as_a_Longsword.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Napoleon"
+    },
+    {
+      "name": "Soto Muso",
+      "firstChapter": 948,
+      "firstSeen": 30,
+      "grade": "Non classée",
+      "gradeKnown": null,
+      "kind": "Katana",
+      "ownerHistory": [
+        {
+          "from": 30,
+          "name": "Kawamatsu",
+          "role": "Porteur"
+        }
+      ],
+      "note": "Le sabre de Kawamatsu, compagnon de son style de combat du kappa.",
+      "lore": [
+        {
+          "from": 30,
+          "title": "Retrouvailles à Udon",
+          "text": "Séparé de son arme pendant sa captivité, Kawamatsu récupère Soto Muso lorsque Raizo le libère. Il reprend immédiatement le combat avec elle."
+        },
+        {
+          "from": 30,
+          "title": "Un compagnon de jeunesse",
+          "text": "Les souvenirs de Wano montrent que Kawamatsu a acheté cette lame à l’époque où les futurs Fourreaux rouges amélioraient leur tenue grâce à Yasuie."
+        }
+      ],
+      "traits": [
+        {
+          "from": 30,
+          "label": "Sans garde",
+          "text": "Sa monture simple comprend une poignée sombre à motifs et ne possède pas de tsuba."
+        },
+        {
+          "from": 30,
+          "label": "Style du kappa",
+          "text": "La force des techniques vient de l’escrime et du physique de Kawamatsu."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 30,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [
+        "Soto Musō",
+        "Sotomuso"
+      ],
+      "source": "https://onepiece.fandom.com/wiki/Soto_Muso",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/6/6a/Soto_Muso_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Soto_Muso"
+    },
+    {
+      "name": "Kessui",
+      "firstChapter": 541,
+      "firstSeen": 20,
+      "grade": "Non classée",
+      "gradeKnown": null,
+      "kind": "Naginata",
+      "ownerHistory": [
+        {
+          "from": 20,
+          "name": "Hannyabal",
+          "role": "Porteur"
+        }
+      ],
+      "note": "L’arme à double lame de Hannyabal, réservée aux situations graves à Impel Down.",
+      "lore": [
+        {
+          "from": 20,
+          "title": "Deux sabres en une arme",
+          "text": "Kessui réunit deux lames de katana aux extrémités d’une longue hampe. Cette disposition permet d’attaquer de plusieurs côtés."
+        },
+        {
+          "from": 20,
+          "title": "La défense de la prison",
+          "text": "Hannyabal affronte Luffy avec cette arme. En la faisant tourner rapidement, il produit les roues enflammées de sa technique Hannya Carnival."
+        }
+      ],
+      "traits": [
+        {
+          "from": 20,
+          "label": "Double lame",
+          "text": "Un katana est placé à chaque extrémité de la hampe."
+        },
+        {
+          "from": 20,
+          "label": "Grande allonge",
+          "text": "Son format d’arme d’hast permet de tenir les adversaires à distance."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 20,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Kessui",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/9/90/Kessui_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Kessui"
+    },
+    {
+      "name": "Yakuza Kasen",
+      "firstChapter": 701,
+      "firstSeen": 31,
+      "grade": "Saijō Ō Wazamono",
+      "gradeKnown": 31,
+      "kind": "Canne-épée",
+      "ownerHistory": [
+        {
+          "from": 26,
+          "name": "Issho (Fujitora)",
+          "role": "Porteur"
+        }
+      ],
+      "note": "La canne-épée de Fujitora, discrète au repos et redoutable entre ses mains.",
+      "lore": [
+        {
+          "from": 26,
+          "title": "Une canne et une lame",
+          "text": "Fujitora utilise le fourreau comme canne pour se déplacer. Au combat, il dégaine une lame droite, souvent tenue en prise inversée."
+        },
+        {
+          "from": 26,
+          "title": "L’escrime et la gravité",
+          "text": "Le sabre accompagne ses techniques gravitationnelles. La gravité vient du Zushi Zushi no Mi de Fujitora, plutôt que de l’arme elle-même."
+        },
+        {
+          "from": 31,
+          "title": "Une origine révélée dans les SBS",
+          "text": "Les SBS du tome 109 donnent le nom Yakuza Kasen, son rang suprême et son créateur : Fugetsu Kisaburo, un forgeron de Wano."
+        }
+      ],
+      "traits": [
+        {
+          "from": 26,
+          "label": "Shikomizue",
+          "text": "L’épée est cachée dans une canne de bois à l’apparence ordinaire."
+        },
+        {
+          "from": 31,
+          "label": "Rang suprême",
+          "text": "Une des douze Saijō Ō Wazamono."
+        }
+      ],
+      "smithHistory": [
+        {
+          "from": 31,
+          "name": "Fugetsu Kisaburo"
+        }
+      ],
+      "statusHistory": [
+        {
+          "from": 26,
+          "label": "En usage"
+        }
+      ],
+      "aliases": [],
+      "source": "https://onepiece.fandom.com/wiki/Yakuza_Kasen",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/c/c7/Yakuza_Kasen_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Yakuza_Kasen"
+    },
+    {
+      "name": "Same-kiri Bocho",
+      "firstChapter": 717,
+      "firstSeen": 26,
+      "grade": "Non classée",
+      "gradeKnown": null,
+      "kind": "Zanbatō",
+      "ownerHistory": [
+        {
+          "from": 26,
+          "name": "Bastille",
+          "role": "Dernier porteur connu"
+        }
+      ],
+      "note": "L’immense couperet du vice-amiral Bastille, rencontré à Dressrosa.",
+      "lore": [
+        {
+          "from": 26,
+          "title": "Le couperet du vice-amiral",
+          "text": "Bastille porte cette grande lame lorsqu’il attend les combattants du Colisée Corrida. Son apparence évoque un couperet géant."
+        },
+        {
+          "from": 26,
+          "title": "La rencontre avec Sabo",
+          "text": "Lorsque Bastille tente de l’attaquer, Sabo saisit la lame et la brise avec sa technique de griffe. Son grade officiel demeure inconnu."
+        }
+      ],
+      "traits": [
+        {
+          "from": 26,
+          "label": "Couperet géant",
+          "text": "Sa large lame et sa poignée à pompon composent une arme de grande taille."
+        },
+        {
+          "from": 26,
+          "label": "Grade inconnu",
+          "text": "Aucun rang Meitō précis n’a été confirmé pour cette arme."
+        }
+      ],
+      "smithHistory": [],
+      "statusHistory": [
+        {
+          "from": 26,
+          "label": "Brisée à Dressrosa"
+        }
+      ],
+      "aliases": [
+        "Same-kiri Bōchō"
+      ],
+      "source": "https://onepiece.fandom.com/wiki/Same-kiri_Bocho",
+      "image": "https://static.wikia.nocookie.net/onepiece/images/c/ca/Same-kiri_Bocho_Infobox.png/revision/latest/scale-to-width-down/560",
+      "imageSource": "https://onepiece.fandom.com/wiki/Same-kiri_Bocho"
+    }
   ],
   fruits: [
     {name:"Gomu Gomu no Mi",apiName:"Hito Hito no Mi",apiModel:"Nika",firstSeen:0,firstChapter:1,knownAs:"Fruit du caoutchoutier",typeHistory:[{from:0,label:"Paramecia, selon la classification connue"},{from:30,label:"Hito Hito no Mi, modèle Nika · Zoan mythique"}],user:"Monkey D. Luffy"},

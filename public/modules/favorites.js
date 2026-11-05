@@ -29,7 +29,7 @@ window.GRANDLINE_PAGE_FACTORIES.favorites = function (context) {
       { type:"crew", label:"Équipage", items:pages.collectCrews() },
       { type:"character", label:"Personnage", items:pages.collectCharacters() },
       { type:"ship", label:"Bateau", items:pages.collectShips() },
-      { type:"blade", label:"Lame", items:DATA.blades.filter(function (item) { return item.firstSeen <= state.progress; }) },
+      { type:"blade", label:"Lame", items:pages.collectBlades() },
       { type:"fruit", label:"Fruit du Démon", items:pages.collectFruits() }
     ];
   }
@@ -54,15 +54,7 @@ window.GRANDLINE_PAGE_FACTORIES.favorites = function (context) {
     if (type === "character") return 'data-open-character="' + escapeHtml(key) + '"';
     if (type === "ship") return 'data-open-ship="' + escapeHtml(key) + '"';
     if (type === "fruit") return 'data-open-fruit="' + escapeHtml(key) + '"';
-    return 'data-page="blades"';
-  }
-
-  function bladeArtwork(blade) {
-    var name = String(blade.name || "Lame");
-    var id = "favorite-blade-" + slug(name);
-    var fallback = '<svg class="favorite-blade-art" viewBox="0 0 160 180" role="img" aria-label="Illustration de ' + escapeHtml(name) + '"><defs><linearGradient id="' + id + '" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#9a8050"/><stop offset=".48" stop-color="#f0e3bc"/><stop offset="1" stop-color="#78958b"/></linearGradient></defs><path d="m77 22 12-12 10 10-12 12 25 82-11 12-32-77-12-1-9-9 8-8 1-12 9-9 9 9z" fill="url(#' + id + ')" stroke="#e3d2a5" stroke-width="3" stroke-linejoin="round"/><path d="m62 110 34 34-8 8-34-34z" fill="#8b5a36" stroke="#e3d2a5" stroke-width="3"/><path d="m54 127 25 25m-14-31 25 25m-9-34 25 25" stroke="#d9bc7b" stroke-width="3" stroke-linecap="round"/><path d="m116 101 14 14-12 12-14-14z" fill="#263c3b" stroke="#e3d2a5" stroke-width="3"/></svg>';
-    if (!blade.image) return fallback;
-    return '<img class="favorite-blade-image" src="' + escapeHtml(blade.image) + '" alt="" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="favorite-blade-fallback" hidden>' + fallback + '</span>';
+    return 'data-open-blade="' + escapeHtml(key) + '"';
   }
 
   function artworkFor(type, item) {
@@ -70,7 +62,7 @@ window.GRANDLINE_PAGE_FACTORIES.favorites = function (context) {
     if (type === "crew") return pages.crewImage(item,false);
     if (type === "character") return pages.characterImage(item,false);
     if (type === "ship") return pages.shipIllustration(item,false);
-    if (type === "blade") return bladeArtwork(item);
+    if (type === "blade") return pages.bladeIllustration(item,false);
     return pages.fruitIllustration(item,DATA.fruits.indexOf(item));
   }
 
@@ -78,7 +70,7 @@ window.GRANDLINE_PAGE_FACTORIES.favorites = function (context) {
     var name = type === "fruit" ? window.GRANDLINE_PAGES.fruitDisplayName(item) : item.name;
     var description = descriptionFor(type, item);
     var art = artworkFor(type,item);
-    return '<article class="favorite-card"><button type="button" class="favorite-card-open" ' + openAttributes(type,key) + '><span class="favorite-card-art">' + art + '</span><span class="favorite-card-copy"><span class="favorite-card-type">' + escapeHtml(label) + '</span><strong>' + escapeHtml(name) + '</strong><span class="favorite-card-meta">' + escapeHtml(metaFor(type,item)) + '</span><span class="favorite-card-description">' + escapeHtml(description) + '</span><span class="favorite-card-link">' + (type === "blade" ? 'Voir les lames ↗' : 'Ouvrir la fiche ↗') + '</span></span></button>' + favoriteButton(type,key,name,"favorite-card-remove") + '</article>';
+    return '<article class="favorite-card"><button type="button" class="favorite-card-open" ' + openAttributes(type,key) + '><span class="favorite-card-art">' + art + '</span><span class="favorite-card-copy"><span class="favorite-card-type">' + escapeHtml(label) + '</span><strong>' + escapeHtml(name) + '</strong><span class="favorite-card-meta">' + escapeHtml(metaFor(type,item)) + '</span><span class="favorite-card-description">' + escapeHtml(description) + '</span><span class="favorite-card-link">Ouvrir la fiche ↗</span></span></button>' + favoriteButton(type,key,name,"favorite-card-remove") + '</article>';
   }
 
   function renderFavorites() {

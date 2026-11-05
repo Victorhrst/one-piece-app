@@ -54,6 +54,11 @@
     crewSort: "alpha",
     crewEmperorsOnly: false,
     rarity: "Toutes",
+    bladeKind: "all",
+    bladeSort: "alpha",
+    bladeFavoritesOnly: false,
+    bladeGuideOpen: false,
+    bladeListReturn: null,
     fruitCategory: "all",
     favorites: [],
     favoriteFilter: "all",
@@ -531,13 +536,13 @@
 
 
   function pageTitle(page) {
-    var titles = {home:"ACCUEIL",favorites:"MES FAVORIS",map:"CARTE DU MONDE","location-detail":"FICHE DE LIEU",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES", "crew-detail":"FICHE D’ÉQUIPAGE",ships:"BATEAUX", "ship-detail":"FICHE DE BATEAU",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES",poneglyphs:"PONÉGLYPHES",characters:"PERSONNAGES", "character-detail":"FICHE PERSONNAGE",fruits:"FRUITS DU DÉMON", "fruit-detail":"FICHE FRUIT DU DÉMON",sources:"SOURCES"};
+    var titles = {home:"ACCUEIL",favorites:"MES FAVORIS",map:"CARTE DU MONDE","location-detail":"FICHE DE LIEU",guide:"ÉPISODES & CHAPITRES",crews:"ÉQUIPAGES", "crew-detail":"FICHE D’ÉQUIPAGE",ships:"BATEAUX", "ship-detail":"FICHE DE BATEAU",government:"MARINE & GOUVERNEMENT",blades:"LES LAMES","blade-detail":"FICHE DE LAME",poneglyphs:"PONÉGLYPHES",characters:"PERSONNAGES", "character-detail":"FICHE PERSONNAGE",fruits:"FRUITS DU DÉMON", "fruit-detail":"FICHE FRUIT DU DÉMON",sources:"SOURCES"};
     return titles[page] || "ACCUEIL";
   }
 
   function routeIdentity() {
     var detail = state.detail || {};
-    return JSON.stringify([state.page, detail.key || "", detail.returnCrew || "", detail.returnLocation || "", detail.returnPage || ""]);
+    return JSON.stringify([state.page, detail.key || "", detail.returnCrew || "", detail.returnLocation || "", detail.returnPage || "", detail.returnBlade || ""]);
   }
 
   function viewCacheKey(route) {
@@ -559,6 +564,10 @@
       state.crewSort,
       state.crewEmperorsOnly,
       state.rarity,
+      state.bladeKind,
+      state.bladeSort,
+      state.bladeFavoritesOnly,
+      state.bladeGuideOpen,
       state.fruitCategory,
       state.mapQuery,
       state.mapSea,
@@ -613,6 +622,7 @@
 
   function restoreRouteFromHash() {
     var route = window.location.hash || "";
+    if (window.history.state && window.history.state.bladesView) state.bladeListReturn = window.history.state.bladesView;
     if (route.indexOf("#equipage/") === 0) {
       state.page = "crew-detail";
       state.detail = { type:"crew", key:decodeRoutePart(route.slice("#equipage/".length)) };
@@ -625,7 +635,12 @@
     }
     if (route.indexOf("#personnage/") === 0) {
       state.page = "character-detail";
-      state.detail = { type:"character", key:decodeRoutePart(route.slice("#personnage/".length)), returnCrew:window.history.state && window.history.state.returnCrew || null, returnLocation:window.history.state && window.history.state.returnLocation || null, returnPage:window.history.state && window.history.state.returnPage || null };
+      state.detail = { type:"character", key:decodeRoutePart(route.slice("#personnage/".length)), returnCrew:window.history.state && window.history.state.returnCrew || null, returnLocation:window.history.state && window.history.state.returnLocation || null, returnPage:window.history.state && window.history.state.returnPage || null, returnBlade:window.history.state && window.history.state.returnBlade || null };
+      return;
+    }
+    if (route.indexOf("#lame/") === 0) {
+      state.page = "blade-detail";
+      state.detail = { type:"blade", key:decodeRoutePart(route.slice("#lame/".length)) };
       return;
     }
     if (route.indexOf("#fruit/") === 0) {
@@ -642,6 +657,7 @@
     var allowed = ["home","favorites","map","guide","crews","ships","government","blades","poneglyphs","characters","fruits","sources"];
     state.page = allowed.indexOf(page) >= 0 ? page : "home";
     state.detail = null;
+    if (state.page === "blades" && window.history.state && window.history.state.bladesView) restoreBladeListView(window.history.state.bladesView);
   }
 
   function render() {
@@ -678,9 +694,10 @@
         : page === "ship-detail" ? window.GRANDLINE_PAGES.renderShipDetail(state.detail && state.detail.key)
         : page === "government" ? window.GRANDLINE_PAGES.renderGovernment()
         : page === "blades" ? window.GRANDLINE_PAGES.renderBlades()
+        : page === "blade-detail" ? window.GRANDLINE_PAGES.renderBladeDetail(state.detail && state.detail.key)
         : page === "poneglyphs" ? window.GRANDLINE_PAGES.renderPoneglyphs()
         : page === "characters" ? window.GRANDLINE_PAGES.renderCharacters()
-        : page === "character-detail" ? window.GRANDLINE_PAGES.renderCharacterDetail(state.detail && state.detail.key, state.detail && state.detail.returnCrew, state.detail && state.detail.returnLocation, state.detail && state.detail.returnPage)
+        : page === "character-detail" ? window.GRANDLINE_PAGES.renderCharacterDetail(state.detail && state.detail.key, state.detail && state.detail.returnCrew, state.detail && state.detail.returnLocation, state.detail && state.detail.returnPage, state.detail && state.detail.returnBlade)
         : page === "fruits" ? window.GRANDLINE_PAGES.renderFruits()
         : page === "fruit-detail" ? window.GRANDLINE_PAGES.renderFruitDetail(state.detail && state.detail.key)
         : window.GRANDLINE_PAGES.renderSources();
@@ -696,7 +713,7 @@
       cacheable:page !== "location-detail" && !state.query.trim() && !state.catalogLoading && !state.guideLoading
     };
     document.getElementById("crumbCurrent").textContent = pageTitle(page);
-    var activePage = page === "location-detail" ? "map" : page === "ship-detail" ? "ships" : page === "crew-detail" ? "crews" : page === "character-detail" ? "characters" : page === "fruit-detail" ? "fruits" : page;
+    var activePage = page === "location-detail" ? "map" : page === "ship-detail" ? "ships" : page === "crew-detail" ? "crews" : page === "character-detail" ? "characters" : page === "fruit-detail" ? "fruits" : page === "blade-detail" ? "blades" : page;
     document.querySelectorAll(".nav-item[data-page]").forEach(function (button) {
       button.classList.toggle("active", button.getAttribute("data-page") === activePage);
     });
@@ -729,6 +746,7 @@
     if (window.location.hash !== "#page/" + page) window.history.pushState({page:page}, "", "#page/" + page);
     state.query = "";
     state.characterListReturn = null;
+    state.bladeListReturn = null;
     state.guideLimit = 30;
     state.characterLimit = 90;
     var search = document.getElementById("globalSearch");
@@ -778,12 +796,12 @@
     scrollToPageTop();
   }
 
-  function openCharacterDetail(key, returnCrew, returnLocation, returnPage) {
+  function openCharacterDetail(key, returnCrew, returnLocation, returnPage, returnBlade) {
     returnPage = returnPage === "government" ? "government" : null;
     if (state.page === "characters" && !returnCrew && !returnLocation && !returnPage) state.characterListReturn = {scrollTop:window.scrollY};
     state.page = "character-detail";
-    state.detail = { type:"character", key:String(key || ""), returnCrew:returnCrew || null, returnLocation:returnLocation || null, returnPage:returnPage };
-    window.history.pushState({page:"character-detail",returnCrew:returnCrew || null,returnLocation:returnLocation || null,returnPage:returnPage,returnToCharacters:Boolean(state.characterListReturn)}, "", "#personnage/" + encodeURIComponent(state.detail.key));
+    state.detail = { type:"character", key:String(key || ""), returnCrew:returnCrew || null, returnLocation:returnLocation || null, returnPage:returnPage, returnBlade:returnBlade || null };
+    window.history.pushState({page:"character-detail",returnCrew:returnCrew || null,returnLocation:returnLocation || null,returnPage:returnPage,returnBlade:returnBlade || null,bladesView:returnBlade ? state.bladeListReturn : null,returnToCharacters:Boolean(state.characterListReturn)}, "", "#personnage/" + encodeURIComponent(state.detail.key));
     document.body.classList.remove("menu-open");
     render();
     scrollToPageTop();
@@ -796,6 +814,47 @@
     document.body.classList.remove("menu-open");
     render();
     scrollToPageTop();
+  }
+
+  function openBladeDetail(key) {
+    if (state.page === "blades") {
+      state.bladeListReturn = {query:state.query,rarity:state.rarity,kind:state.bladeKind,sort:state.bladeSort,favorites:state.bladeFavoritesOnly,scrollTop:window.scrollY,key:String(key || "")};
+      window.history.replaceState(Object.assign({},window.history.state,{page:"blades",bladesView:state.bladeListReturn}), "", window.location.href);
+    }
+    state.page = "blade-detail";
+    state.detail = {type:"blade",key:String(key || "")};
+    window.history.pushState({page:"blade-detail",bladesView:state.bladeListReturn}, "", "#lame/" + encodeURIComponent(state.detail.key));
+    document.body.classList.remove("menu-open");
+    render();
+    scrollToPageTop();
+  }
+
+  function restoreBladeListView(view) {
+    if (!view) return;
+    state.query = view.query || "";
+    state.rarity = view.rarity || "Toutes";
+    state.bladeKind = view.kind || "all";
+    state.bladeSort = view.sort || "alpha";
+    state.bladeFavoritesOnly = Boolean(view.favorites);
+    var search = document.getElementById("globalSearch");
+    if (search) search.value = state.query;
+  }
+
+  function returnToBladeList() {
+    var view = state.bladeListReturn;
+    state.page = "blades";
+    state.detail = null;
+    if (view) restoreBladeListView(view);
+    else state.query = "";
+    window.history.pushState({page:"blades",bladesView:view}, "", "#page/blades");
+    render();
+    window.requestAnimationFrame(function () {
+      if (view && view.key) {
+        var link = document.querySelector('[data-open-blade="' + view.key.replace(/[^a-z0-9-]/g,"") + '"]');
+        if (link) link.focus({preventScroll:true});
+      }
+      window.scrollTo({top:view ? view.scrollTop : 0,left:0,behavior:"instant"});
+    });
   }
 
   function openProgress() {
@@ -982,10 +1041,11 @@
 
   document.addEventListener("toggle", function (event) {
     if (event.target.matches && event.target.matches("[data-character-filter-details]")) state.characterFiltersOpen = event.target.open;
+    if (event.target.matches && event.target.matches(".arsenal-guide")) state.bladeGuideOpen = event.target.open;
   }, true);
 
   document.addEventListener("click", function (event) {
-    var target = event.target.closest("button,[data-page],[data-open-fruit],[data-open-ship],[data-map-location],.character-card[data-open-character]");
+    var target = event.target.closest("button,[data-page],[data-open-fruit],[data-open-ship],[data-open-blade],[data-map-location],.character-card[data-open-character]");
     if (!target) return;
     if (target.hasAttribute("data-favorite-type")) {
       event.preventDefault();
@@ -1051,6 +1111,25 @@
       else setPage("characters");
       return;
     }
+    if (target.hasAttribute("data-return-blade-list")) {
+      returnToBladeList();
+      return;
+    }
+    if (target.hasAttribute("data-blade-reset")) {
+      state.query = "";
+      state.rarity = "Toutes";
+      state.bladeKind = "all";
+      state.bladeFavoritesOnly = false;
+      var bladeGlobalSearch = document.getElementById("globalSearch");
+      if (bladeGlobalSearch) bladeGlobalSearch.value = "";
+      renderCharacterView("#bladeSearch");
+      return;
+    }
+    if (target.hasAttribute("data-blade-favorites")) {
+      state.bladeFavoritesOnly = !state.bladeFavoritesOnly;
+      renderCharacterView("[data-blade-favorites]");
+      return;
+    }
     if (target.id === "updateButton") {
       updateLive(true);
       return;
@@ -1113,8 +1192,14 @@
       openShipDetail(target.getAttribute("data-open-ship"));
       return;
     }
+    if (target.hasAttribute("data-open-blade")) {
+      if (target.tagName === "A" && (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button)) return;
+      event.preventDefault();
+      openBladeDetail(target.getAttribute("data-open-blade"));
+      return;
+    }
     if (target.hasAttribute("data-open-character")) {
-      openCharacterDetail(target.getAttribute("data-open-character"),target.getAttribute("data-return-crew"),target.getAttribute("data-return-location"),target.getAttribute("data-return-page"));
+      openCharacterDetail(target.getAttribute("data-open-character"),target.getAttribute("data-return-crew"),target.getAttribute("data-return-location"),target.getAttribute("data-return-page"),target.getAttribute("data-return-blade"));
       return;
     }
     if (target.hasAttribute("data-open-fruit")) {
@@ -1157,7 +1242,7 @@
     }
     if (target.hasAttribute("data-rarity")) {
       state.rarity = target.getAttribute("data-rarity");
-      render();
+      renderCharacterView('.arsenal-filter-chips [data-rarity="' + state.rarity + '"]');
     }
     if (target.hasAttribute("data-fruit-category")) {
       state.fruitCategory = target.getAttribute("data-fruit-category") || "all";
@@ -1217,7 +1302,13 @@
 
   document.addEventListener("change", function (event) {
     var target = event.target;
-    if (target.matches("[data-map-sea]")) {
+    if (target.id === "bladeKind") {
+      state.bladeKind = target.value;
+      renderCharacterView("#bladeKind");
+    } else if (target.id === "bladeSort") {
+      state.bladeSort = ["alpha","grade","discovery"].indexOf(target.value) >= 0 ? target.value : "alpha";
+      renderCharacterView("#bladeSort");
+    } else if (target.matches("[data-map-sea]")) {
       state.mapSea = target.value;
       var seaMap = document.getElementById("worldMapViewport");
       state.mapScrollLeft = seaMap ? seaMap.scrollLeft : 0;
@@ -1268,11 +1359,15 @@
 
   window.addEventListener("popstate", function (event) {
     restoreRouteFromHash();
+    var bladeView = state.page === "blades" && (event.state && event.state.bladesView || state.bladeListReturn);
+    if (bladeView) restoreBladeListView(bladeView);
     var returnToCharacterList = state.page === "characters" && state.characterListReturn && event.state && event.state.page === "characters";
     var characterScrollTop = returnToCharacterList ? state.characterListReturn.scrollTop : 0;
     render();
     if (state.page === "fruits" || state.page === "fruit-detail" || state.page === "favorites") loadFruitLoreForPage();
-    if (returnToCharacterList) {
+    if (bladeView) {
+      window.requestAnimationFrame(function () { window.scrollTo({top:bladeView.scrollTop || 0,left:0,behavior:"instant"}); });
+    } else if (returnToCharacterList) {
       state.characterListReturn = null;
       window.requestAnimationFrame(function () { window.scrollTo({top:characterScrollTop,left:0,behavior:"instant"}); });
     } else scrollToPageTop();

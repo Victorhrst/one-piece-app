@@ -445,12 +445,14 @@ window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
     return '<div class="character-affiliation-entry is-static">' + visual + copy + '</div>';
   }
 
-  function renderCharacterDetail(routeKey, returnCrew, returnLocation, returnPage) {
+  function renderCharacterDetail(routeKey, returnCrew, returnLocation, returnPage, returnBlade) {
     var characters = collectCharacters();
     var key = String(routeKey || "");
     var character = characters.find(function (item) { return identityKey(item.name) === key || stripMarks(item.name).replace(/[^a-z0-9]+/g,"-") === key; });
-    var back = returnLocation
-      ? '<button class="detail-back" data-map-location="' + escapeHtml(returnLocation) + '">← Retour à la fiche du lieu</button>'
+    var back = returnBlade
+      ? '<button class="detail-back" data-open-blade="' + escapeHtml(returnBlade) + '">← Retour à la fiche de la lame</button>'
+      : returnLocation
+        ? '<button class="detail-back" data-map-location="' + escapeHtml(returnLocation) + '">← Retour à la fiche du lieu</button>'
       : returnCrew
         ? '<button class="detail-back" data-open-crew="' + escapeHtml(returnCrew) + '">← Retour à la fiche de l’équipage</button>'
         : returnPage === "government"
@@ -469,7 +471,7 @@ window.GRANDLINE_PAGE_FACTORIES.characters = function (context) {
     var characterKey = identityKey(character.name);
     var html = back + '<section class="detail-hero character-detail-hero">' + characterImage(character,true) + '<div class="detail-hero-copy"><span class="eyebrow">FICHE PERSONNAGE</span><h1>' + escapeHtml(character.name) + '</h1><p>' + escapeHtml(description) + '</p><div class="detail-badges"><span>' + escapeHtml(character.role || "Rôle non précisé") + '</span><span>' + escapeHtml(firstChapterLabel) + ' · ' + escapeHtml(firstArc.name) + (character.firstChapter ? ' · chapitre ' + escapeHtml(character.firstChapter) : '') + '</span>' + emperor + '</div><div class="favorite-detail-row">' + favoriteButton("character",characterKey,character.name,"favorite-inline") + '<span>Garder ce personnage dans mes favoris</span></div></div></section>';
     html += '<div class="detail-facts-grid"><article class="detail-fact"><span>Rôle documenté</span><strong>' + escapeHtml(character.role || "Non précisé") + '</strong></article><article class="detail-fact character-affiliation-fact"><span>Affiliation' + (affiliations.length > 1 ? 's' : '') + '</span><div class="character-affiliation-list">' + (affiliations.length ? affiliations.map(renderAffiliationEntry).join("") : '<div class="character-affiliation-entry is-static"><span class="character-affiliation-visual"><span class="character-affiliation-emblem character-affiliation-initial" aria-hidden="true">?</span></span><span class="character-affiliation-copy"><strong>Non précisée</strong></span></div>') + '</div></article><article class="detail-fact"><span>Repère de la fiche</span><strong>' + escapeHtml(firstArc.name) + '</strong></article></div>';
-    return html + renderJourney(character) + renderFights(character);
+    return html + renderJourney(character) + renderFights(character) + window.GRANDLINE_PAGES.renderCharacterBlades(character);
   }
 
   return { collectCharacters, renderCharacters, renderCharacterDetail, characterImage };
