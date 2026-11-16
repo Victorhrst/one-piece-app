@@ -108,3 +108,30 @@ Les données de référence et les correspondances sont issues de sources commun
 - [Liste communautaire des Fruits du Démon](https://www.reddit.com/r/OnePiece/comments/1gkr07k/devil_fruit_list/) — point de départ pour certaines chronologies.
 
 Grand Line est un projet de fan indépendant, sans affiliation à Eiichiro Oda, Shueisha ou Toei Animation. Les personnages, marques et images de One Piece appartiennent à leurs ayants droit. Une licence logicielle n’est pas encore publiée dans ce dépôt ; aucune autorisation de réutilisation du code ou des contenus ne doit être déduite de sa présence sur GitHub.
+
+## Aperçu du site
+
+Quelques captures réelles de l’interface. Les pages de la carte et des Grands Corsaires sont repliées pour éviter les spoilers accidentels.
+
+<table>
+  <tbody>
+    <tr>
+      <td width="50%"><strong>Accueil</strong><br /><img src="docs/screenshots/accueil.png" alt="Accueil de Grand Line avec le repère de progression" width="100%" /></td>
+      <td width="50%"><strong>Fruits du Démon</strong><br /><img src="docs/screenshots/fruits-du-demon.png" alt="Catalogue des Fruits du Démon filtré par arc" width="100%" /></td>
+    </tr>
+    <tr>
+      <td width="50%"><strong>Fiche personnage</strong><br /><img src="docs/screenshots/fiche-personnage.png" alt="Fiche progressive de Luffy" width="100%" /></td>
+      <td width="50%"><strong>Équipages</strong><br /><img src="docs/screenshots/equipages.png" alt="Catalogue des équipages filtré par progression" width="100%" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<details>
+  <summary>⚠️ Spoilers — Carte du monde (cliquer pour afficher)</summary>
+  <p><img src="docs/screenshots/carte-du-monde.png" alt="Carte du monde avec les lieux connus jusqu’à la Rêverie" width="100%" /></p>
+</details>
+
+<details>
+  <summary>⚠️ Spoilers — Les Sept Grands Corsaires (cliquer pour afficher)</summary>
+  <p><img src="docs/screenshots/grands-corsaires.png" alt="Page Marine et Gouvernement présentant les Sept Grands Corsaires" width="100%" /></p>
+</details>
